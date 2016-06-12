@@ -1,0 +1,65 @@
+Assets/2DPlatformer.meta
+Assets/2DPlatformer/Controller2D.cs
+Assets/2DPlatformer/Controller2D.cs.meta
+Assets/2DPlatformer/EnemyController.cs
+Assets/2DPlatformer/EnemyController.cs.meta
+Assets/2DPlatformer/PlatformController.cs
+Assets/2DPlatformer/PlatformController.cs.meta
+Assets/2DPlatformer/PlayerController.cs
+Assets/2DPlatformer/PlayerController.cs.meta
+Assets/2DPlatformer/RaycastController.cs
+Assets/2DPlatformer/RaycastController.cs.meta
+Assets/2DPlatformer/Spike.unity
+Assets/2DPlatformer/Spike.unity.meta
+Assets/Standard Assets/Utility/
+Assets/Standard Assets/Utility.meta
+Assets/Standard Assets/ParticleSystems/
+Assets/Standard Assets/PhysicsMaterials/
+*.meta
+Assets/Standard Assets/Effects/
+Assets/Standard Assets/Cameras/
+Assets/Standard Assets/CrossPlatformInput/CrossPlatformInputGuidelines.txt
+Assets/Standard Assets/CrossPlatformInput/Prefabs/CarTiltControls.prefab
+Assets/Standard Assets/CrossPlatformInput/Prefabs/DualTouchControls.prefab
+Assets/Standard Assets/CrossPlatformInput/Prefabs/MobileAircraftControls.prefab
+Assets/Standard Assets/CrossPlatformInput/Prefabs/MobileSingleStickControl.prefab
+Assets/Standard Assets/CrossPlatformInput/Prefabs/MobileTiltControlRig.prefab
+Assets/Standard Assets/CrossPlatformInput/Scripts/AxisTouchButton.cs
+Assets/Standard Assets/CrossPlatformInput/Scripts/ButtonHandler.cs
+Assets/Standard Assets/CrossPlatformInput/Scripts/CrossPlatformInputManager.cs
+Assets/Standard Assets/CrossPlatformInput/Scripts/InputAxisScrollbar.cs
+Assets/Standard Assets/CrossPlatformInput/Scripts/Joystick.cs
+Assets/Standard Assets/CrossPlatformInput/Scripts/MobileControlRig.cs
+Assets/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific/MobileInput.cs
+Assets/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific/StandaloneInput.cs
+Assets/Standard Assets/CrossPlatformInput/Scripts/TiltInput.cs
+Assets/Standard Assets/CrossPlatformInput/Scripts/TouchPad.cs
+Assets/Standard Assets/CrossPlatformInput/Scripts/VirtualInput.cs
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonAcceleratorOverSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonAcceleratorUpSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonArrowOverSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonArrowUpSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonBrakeOverSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonBrakeUpSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonCameraCycleUpSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonResetSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonSpacebarSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonThumbstickOverSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonThumbstickUpSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonTimescaleFullUpSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonTimescaleSlowUpSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/SliderBackgroundSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/SliderHandleSprite.png
+Assets/Standard Assets/CrossPlatformInput/Sprites/TouchpadSprite.png
+*.ogg
+*.mp3
+*.ttf
+*.png
+*.png~
+*.wav
+*.jpg
+*.kra
+*.mat
+*.flac
+*.WAV
+*.aif
