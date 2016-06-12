@@ -63,3 +63,10 @@ Assets/Standard Assets/CrossPlatformInput/Sprites/TouchpadSprite.png
 *.flac
 *.WAV
 *.aif
+Library/
+ProjectSettings/
+Temp/
+.vs/BraveBoy/v14/.suo
+*.csproj
+*.sln
+*.userprefs
