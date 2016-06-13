@@ -9,7 +9,8 @@ public class AbstractDamageCollider : AbstractClass
 	{
 		light,
 		medium,
-		heavy
+		heavy,
+        ranged
 	}
 	;
 	public DamageType type;

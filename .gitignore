@@ -71,3 +71,5 @@ ProjectSettings/
 *.htm
 Temp/
 .vs/BraveBoy/v14/.suo
+.vs/
+obj/

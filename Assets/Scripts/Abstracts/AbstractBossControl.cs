@@ -18,10 +18,14 @@ public class AbstractBossControl : AbstractClass
 	public const string ANIM_REAPPEAR_END = "reappearEnd";
 
 	public const string ANIM_SPECIAL_START = "specialStart";
-	public const string ANIM_SPECIAL_END = "specialUpdate";
 	public const string ANIM_SPECIAL_UPDATE = "specialEnd";
+	public const string ANIM_SPECIAL_END = "specialUpdate";
 
-	public const string ANIM_DYING_START = "dyingStart";
+    public const string ANIM_RANGED_START = "rangedStart";
+    public const string ANIM_RANGED_UPDATE = "rangedEnd";
+    public const string ANIM_RANGED_END = "rangedUpdate";
+
+    public const string ANIM_DYING_START = "dyingStart";
 	public const string ANIM_DYING_UPDATE = "dyingUpdate";
 	public const string ANIM_DYING_END = "dyingEnd";
 
@@ -89,10 +93,12 @@ public class AbstractBossControl : AbstractClass
 	protected virtual void Start ()
 	{		
 		_anim = GetComponent<Animator> ();
-		BossAbstractBehaviour[] eabs = _anim.GetBehaviours<BossAbstractBehaviour> ();
-		for (var i = eabs.Length - 1; i >= 0; i--) {
-			eabs [i].boss = this;
-		}
+        if (_anim != null) {
+            BossAbstractBehaviour[] eabs = _anim.GetBehaviours<BossAbstractBehaviour>();
+            for (var i = eabs.Length - 1; i >= 0; i--) {
+                eabs[i].boss = this;
+            }
+        }
 		
 		// Set the first state.
 		setBossAction (BossAction.spawn);
