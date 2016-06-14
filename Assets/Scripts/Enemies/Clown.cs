@@ -144,7 +144,7 @@ public class Clown : AbstractEnemyControl
 			randomdrop (healItem);
 			Destroy (gameObject);
 			break;
-		case AbstractEnemyControl.ANIM_PISTOL_FIRE:
+		case AbstractEnemyControl.ANIM_SHOOT_START:
 			Shoot ();
 			break;
 		}
@@ -252,6 +252,12 @@ public class Clown : AbstractEnemyControl
 
 	protected override void Shoot ()
 	{
+        if (clownWater == null)
+        {
+            setState(EnemyStates.move);
+            return;
+        }
+
 		GameObject go;
 		ClownWater bullet;
 		if (facingLeft) {

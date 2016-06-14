@@ -65,7 +65,7 @@ public class AbstractClass : MonoBehaviour
 	public virtual void randomdrop (GameObject drop)
 	{
 		int dropRaffle = Random.Range (1, 100);
-		if (dropRaffle >= 70) {
+        if (dropRaffle >= 70 && drop != null) {
 			GameObject newDrop = Instantiate (drop, transform.position, transform.rotation) as GameObject;
 			newDrop.transform.parent = transform.parent;
 		}

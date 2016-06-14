@@ -98,10 +98,10 @@ public class RobotGun : AbstractEnemyControl
 				} else {
 					// OK, gun's ready. Set cooldown and fire.
 					gunCooldown = gunCooldownTime;
-					_anim.SetTrigger ("Fire");
+					_anim.SetTrigger ("Heavy");
 				}
 			} else if (meleeCooldown <= 0) {
-                    _anim.SetTrigger (Random.value > .5 ? "Attack1" : "Attack2");
+                _anim.SetTrigger ("Attack");
 			}
 			_anim.SetBool ("IsMoving", false);
 			break;
@@ -144,7 +144,7 @@ public class RobotGun : AbstractEnemyControl
 			randomdrop (healItem);
 			Destroy (gameObject);
 			break;
-		case AbstractEnemyControl.ANIM_PISTOL_FIRE:
+		case AbstractEnemyControl.ANIM_SHOOT_START:
 			Shoot ();
 			break;
 		}

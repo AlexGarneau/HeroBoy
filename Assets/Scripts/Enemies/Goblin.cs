@@ -113,7 +113,10 @@ public class Goblin : AbstractEnemyControl
 				    setState (EnemyStates.move);
 			    }
 			    break;
-		    case AbstractEnemyControl.ANIM_DEATH_END:
+            case AbstractEnemyControl.ANIM_SHOOT_START:
+                Shoot();
+                break;
+            case AbstractEnemyControl.ANIM_DEATH_END:
 			    randomdrop (healItem);
 			    Destroy (gameObject);
 			    break;

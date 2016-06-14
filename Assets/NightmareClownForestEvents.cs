@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NightmareClownForestEvents : MonoBehaviour {
+public class NightmareClownForestStates : MonoBehaviour {
 
     int progress = 0;
 
-    public enum ClownForestEvents
+    public enum ClownForestStates
     {
-        enter,
+        enterOne,
+        enterTwo,
         farEnd1,
         farEnd2,
         farEnd3,
@@ -22,6 +23,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
         upToTent
     }
     ;
+    public ClownForestStates forestState;
 
     public enum sfx
     {
@@ -62,47 +64,50 @@ public class NightmareClownForestEvents : MonoBehaviour {
         _anim = GetComponent<Animator>();
     }
 
-    void setState(ClownForestEvents newState)
+    void setState(ClownForestStates newState)
     {
         switch (newState)
         {
-            case ClownForestEvents.enter:
+            case ClownForestStates.enterOne:
 
                 break;
-            case ClownForestEvents.farEnd1:
+            case ClownForestStates.enterTwo:
 
                 break;
-            case ClownForestEvents.farEnd2:
+            case ClownForestStates.farEnd1:
 
                 break;
-            case ClownForestEvents.farEnd3:
+            case ClownForestStates.farEnd2:
 
                 break;
-            case ClownForestEvents.backToCentre:
+            case ClownForestStates.farEnd3:
 
                 break;
-            case ClownForestEvents.rightSide:
+            case ClownForestStates.backToCentre:
 
                 break;
-            case ClownForestEvents.centreAgain:
+            case ClownForestStates.rightSide:
 
                 break;
-            case ClownForestEvents.leftCentre:
+            case ClownForestStates.centreAgain:
 
                 break;
-            case ClownForestEvents.upRight:
+            case ClownForestStates.leftCentre:
 
                 break;
-            case ClownForestEvents.down:
+            case ClownForestStates.upRight:
 
                 break;
-            case ClownForestEvents.upTrick:
+            case ClownForestStates.down:
 
                 break;
-            case ClownForestEvents.downAgain:
+            case ClownForestStates.upTrick:
 
                 break;
-            case ClownForestEvents.upToTent:
+            case ClownForestStates.downAgain:
+
+                break;
+            case ClownForestStates.upToTent:
 
                 break;
         }
@@ -114,9 +119,9 @@ public class NightmareClownForestEvents : MonoBehaviour {
         switch (obj.name)
         {
             case "EndEnter":
-                if (schoolState == SchoolEvents.enterOne)
+                if (forestState == ClownForestStates.enterOne)
                 {
-                    setState(SchoolEvents.enterTwo);
+                    setState(ClownForestStates.enterTwo);
                 }
                 break;
         }

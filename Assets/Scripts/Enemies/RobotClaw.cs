@@ -65,7 +65,7 @@ public class RobotClaw: AbstractEnemyControl
 
 	protected override void setState (EnemyStates newState)
 	{
-        Debug.Log("Bully Set State: " + newState);
+        Debug.Log("RobotClaw Set State: " + newState);
 		switch (newState) {
 		case EnemyStates.move:
 			_anim.SetBool ("IsMoving", true);

@@ -144,7 +144,7 @@ public class Pirate : AbstractEnemyControl
 			randomdrop (healItem);
 			Destroy (gameObject);
 			break;
-		case AbstractEnemyControl.ANIM_PISTOL_FIRE:
+		case AbstractEnemyControl.ANIM_SHOOT_START:
 			Shoot ();
 			break;
 		}

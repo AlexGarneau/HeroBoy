@@ -33,13 +33,16 @@ public class Skeleton : AbstractEnemyControl
 		for (var i = eabs.Length - 1; i >= 0; i--) {
 			eabs [i].enemy = this;
 		}
+        _anim.SetFloat("Health", _enemHealth);
 
-		// Set the first state.
-		setState (EnemyStates.spawn);
+        // Set the first state.
+        setState (EnemyStates.spawn);
 	}
 
 	protected override void Update ()
 	{
+        Debug.Log("SKELETON UPDATE: " + _enemHealth);
+
 		switch (state) {
 		case EnemyStates.move:
 			break;
