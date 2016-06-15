@@ -17,7 +17,7 @@ public class Goblin : AbstractEnemyControl
 	{
         base.Start();
 		base._enemHealth = 40f;
-		base._enemMoveSpeed = 1f;
+		base._enemMoveSpeed = 3f;
 		base._enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;

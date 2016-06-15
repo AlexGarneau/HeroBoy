@@ -15,7 +15,8 @@ public class PlayerControl : AbstractClass
         dodging,
         stunned,
         dying,
-        shoulderdash
+        shoulderdash,
+        clownDrill
     }
     ;
     public PlayerStates state;
@@ -198,6 +199,9 @@ public class PlayerControl : AbstractClass
                 break;
             case PlayerStates.attacking:
                 PlayerAction();
+                break;
+            case PlayerStates.clownDrill:
+                moveSpeed = moveSpeed * 2;
                 break;
             case PlayerStates.dodging:
                 // Player is currently dodging. Cannot move. Must wait until dodge is complete, then set state back to moving.
