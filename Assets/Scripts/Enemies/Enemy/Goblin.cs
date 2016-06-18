@@ -169,22 +169,22 @@ public class Goblin : AbstractEnemyControl
 	{
 		// Create a bomb and make it fly.
 		GameObject go = Instantiate (goblinDart);
-		PirateBomb bomb = go.GetComponent<PirateBomb> ();
+		PirateBullet dart = go.GetComponent<PirateBullet> ();
 		
 		// Position the spawner and the direction.
 		if (facingLeft) {
 			bulletSpawn.position.Set (-Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-			bomb.direction = Vector2.left;
+			dart.direction = Vector2.left;
 		} else {
 			bulletSpawn.position.Set (Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-			bomb.direction = Vector2.right;
+			dart.direction = Vector2.right;
 		}
 		
 		// Setup the bomb's spawn and target. It will animate itself from spawn to the target by means of physics!
-		bomb.setSpawnAndTarget (bulletSpawn.position, new Vector2 (_player.transform.position.x, _player.transform.position.y));
+		//dart.setSpawnAndTarget (bulletSpawn.position, new Vector2 (_player.transform.position.x, _player.transform.position.y));
 		
 		// Put the bomb on the stage.
-		bomb.transform.parent = transform.parent;
+		dart.transform.parent = transform.parent;
 	}
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
