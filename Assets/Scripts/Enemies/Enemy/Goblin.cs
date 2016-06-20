@@ -56,6 +56,7 @@ public class Goblin : AbstractEnemyControl
 		}
 
 		_anim.SetFloat ("Health", _enemHealth);
+        _anim.SetInteger ("PlayerHealth", _playerControl.playerHealth);
 		//_anim.SetBool ("HighGround", highGround);
 		//HighGroundCheck ();
 
@@ -167,25 +168,29 @@ public class Goblin : AbstractEnemyControl
 
 	protected override void Shoot ()
 	{
-		// Create a bomb and make it fly.
-		GameObject go = Instantiate (goblinDart);
-		PirateBullet dart = go.GetComponent<PirateBullet> ();
-		
-		// Position the spawner and the direction.
-		if (facingLeft) {
-			bulletSpawn.position.Set (-Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-			dart.direction = Vector2.left;
-		} else {
-			bulletSpawn.position.Set (Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-			dart.direction = Vector2.right;
-		}
-		
-		// Setup the bomb's spawn and target. It will animate itself from spawn to the target by means of physics!
-		//dart.setSpawnAndTarget (bulletSpawn.position, new Vector2 (_player.transform.position.x, _player.transform.position.y));
-		
-		// Put the bomb on the stage.
-		dart.transform.parent = transform.parent;
-	}
+        GameObject go;
+        GoblinDart dart;
+        if (facingLeft)
+        {
+            go = Instantiate(goblinDart);
+            dart = go.GetComponent<GoblinDart>();
+            bulletSpawn.position.Set(-Mathf.Abs(bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
+            dart.direction = Vector2.left;
+        }
+        else {
+            go = Instantiate(goblinDart);
+            dart = go.GetComponent<GoblinDart>();
+            bulletSpawn.position.Set(Mathf.Abs(bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
+            dart.direction = Vector2.right;
+            dart.transform.localScale = new Vector3(-1,1,1);
+        }
+
+        // Stick the bullet in the spawner.
+        dart.transform.position = bulletSpawn.position;
+
+        // Put the bullet on the stage.
+        dart.transform.parent = transform.parent;
+    }
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{

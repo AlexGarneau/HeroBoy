@@ -7,7 +7,8 @@ public class AbstractEnemyControl : AbstractClass
 	public const string ANIM_SPAWN_END = "spawnEnd";
 	public const string ANIM_ATTACK_START = "attackStart";
 	public const string ANIM_ATTACK_END = "attackEnd";
-	public const string ANIM_DEATH_END = "deathEnd";
+    public const string ANIM_DEATH_START = "deathStart";
+    public const string ANIM_DEATH_END = "deathEnd";
 	public const string ANIM_SHOOT_START = "shootStart";
 	public const string ANIM_BOMB_THROW = "bombThrow";
 	public const string ANIM_INJURED_END = "injuredEnd";

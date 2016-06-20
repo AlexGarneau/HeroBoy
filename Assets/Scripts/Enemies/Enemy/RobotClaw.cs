@@ -6,15 +6,14 @@ public class RobotClaw: AbstractEnemyControl
     protected const float SPECIAL_ATTACK_COUNTDOWN = 30f;
 
     public Collider2D lightHit;
-
-    protected bool highGround;
+    public Animator robotHealthBarAnim;
 
     protected float specialAttackCountdownTimer = 0;
 
 	protected override void Start ()
 	{
         base.Start();
-        base._enemHealth = 80f;
+        base._enemHealth = 100f;
 		base._enemMoveSpeed = 1f;
 		base._enemDamage = 1;
 		base._attackRange = 1.2f;
@@ -23,6 +22,8 @@ public class RobotClaw: AbstractEnemyControl
 		base.isMoving = false;
 
         _controller = gameObject.GetComponent<MovementController2D> ();
+
+        robotHealthBarAnim.SetFloat("Health", _enemHealth);
 
         _damageColliders = gameObject.GetComponentsInChildren<EnemyDamageCollider> (true);
 		if (_damageColliders != null && _damageColliders.Length > 0) {
@@ -39,6 +40,8 @@ public class RobotClaw: AbstractEnemyControl
         {
             eabs[i].enemy = this;
         }
+
+        baseState = EnemyStates.move;
 	}
 
 	protected override void Update()
@@ -56,9 +59,8 @@ public class RobotClaw: AbstractEnemyControl
         specialAttackCountdownTimer -= Time.deltaTime;
 
         _anim.SetFloat ("Health", _enemHealth);
+        _anim.SetInteger("PlayerHealth", _playerControl.playerHealth);
 		_anim.SetBool ("FacingLeft", facingLeft);
-		_anim.SetBool ("HighGround", highGround);
-		HighGroundCheck ();
 
 		base.Update ();
 	}
@@ -159,6 +161,7 @@ public class RobotClaw: AbstractEnemyControl
 	{
 		switch (state) {
 		    case AbstractEnemyControl.ANIM_SPAWN_END:
+                setState(EnemyStates.move);
                 break;
 		    case AbstractEnemyControl.ANIM_ATTACK_START:
 			    break;
@@ -168,7 +171,10 @@ public class RobotClaw: AbstractEnemyControl
 		    case AbstractEnemyControl.ANIM_INJURED_END:
 			    setState (baseState);
 			    break;
-		    case AbstractEnemyControl.ANIM_DEATH_END:
+            case AbstractEnemyControl.ANIM_DEATH_START:
+                setState(EnemyStates.dead);
+                break;
+            case AbstractEnemyControl.ANIM_DEATH_END:
 			    Destroy (gameObject);
 			    break;
 		}
@@ -190,7 +196,9 @@ public class RobotClaw: AbstractEnemyControl
 			xForce = -damage * .005f;
 		}
 
-		switch (type) {
+        robotHealthBarAnim.SetFloat("Health", _enemHealth);
+
+        switch (type) {
 		case AbstractDamageCollider.DamageType.light:
 			_anim.SetTrigger ("IsHit");
 			break;
@@ -210,14 +218,5 @@ public class RobotClaw: AbstractEnemyControl
 		    base.stun (timeInSec);
 		    _anim.SetTrigger ("IsStunned");
         }
-	}
-
-	void HighGroundCheck ()
-	{
-		if (transform.position.y > 0) {
-			highGround = true;
-		} else {
-			highGround = false;
-		}
 	}
 }

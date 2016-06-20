@@ -104,6 +104,8 @@ public class PlayerControl : AbstractClass
     protected float dodgeSpeedMax = 12;
     protected Vector2 dodgeDirection;
 
+    bool gamePaused = false;
+
     void Start ()
 	{
 		_controller = GetComponent<MovementController2D> ();
@@ -161,7 +163,7 @@ public class PlayerControl : AbstractClass
 
 	public override void Update ()
 	{
-		base.Update ();
+        base.Update ();
     
         //INVINCIBILITY FRAMES
         if(tempInvulnTimer > 0)

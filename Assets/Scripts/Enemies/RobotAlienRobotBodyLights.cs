@@ -3,13 +3,15 @@ using System.Collections;
 
 public class RobotAlienRobotBodyLights : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    float _health = 100f;
+
+    void Start()
+    {
+
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+    }
 }

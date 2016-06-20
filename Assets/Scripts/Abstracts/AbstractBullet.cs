@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class AbstractBullet : MonoBehaviour
+public class AbstractBullet : AbstractClass
 {
 	private static WWW www;
 	private static WWW explosionWWW;

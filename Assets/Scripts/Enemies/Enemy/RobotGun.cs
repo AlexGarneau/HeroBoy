@@ -7,22 +7,27 @@ public class RobotGun : AbstractEnemyControl
 	float gunRangeMax = 5f;
 	float gunCooldown = 0f;
 	float gunCooldownTime = 4f;
+    float meleeCooldownTime = 10f;
 
-	public Collider2D lightHit;
+    public Collider2D lightHit;
 
 	public GameObject healItem;
-	public GameObject pirateBullet;
+	public GameObject robotShot;
+
+    public Animator robotHealthBarAnim;
 
 	protected override void Start ()
 	{
         base.Start();
-		base._enemHealth = 50f;
+		base._enemHealth = 100f;
 		base._enemMoveSpeed = 1.2f;
 		base._enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;
 		base.isAlive = true;
 		base.isMoving = false;
+
+        robotHealthBarAnim.SetFloat("Health", _enemHealth);
 
         base.bulletSpawn = transform.Find ("BulletSpawn");
 		_controller = GetComponent<MovementController2D> ();
@@ -51,7 +56,7 @@ public class RobotGun : AbstractEnemyControl
 		case EnemyStates.move:
 			break;
 		case EnemyStates.attack:
-			break;
+            break;
 		case EnemyStates.dead:
 			//DeathTimerDestroy ();
 			break;
@@ -90,19 +95,6 @@ public class RobotGun : AbstractEnemyControl
 			_anim.SetBool ("IsMoving", true);
 			break;
 		case EnemyStates.attack:
-			if (Mathf.Abs (transform.position.x - _player.transform.position.x) > _attackRange) {
-				// Too far for melee. Shoot.
-				if (gunCooldown > 0) {
-					// Wait, gun's not ready yet. Don't switch state.
-					return;
-				} else {
-					// OK, gun's ready. Set cooldown and fire.
-					gunCooldown = gunCooldownTime;
-					_anim.SetTrigger ("Attack");
-				}
-			} else if (meleeCooldown <= 0) {
-                _anim.SetTrigger ("Heavy");
-			}
 			_anim.SetBool ("IsMoving", false);
 			break;
         case EnemyStates.stun:
@@ -118,12 +110,13 @@ public class RobotGun : AbstractEnemyControl
 
 	public override void onAnimationState (string animState)
 	{
+        Debug.Log("New State: " + animState);
 		switch (animState) {
 		case AbstractEnemyControl.ANIM_SPAWN_END:
 			setState (EnemyStates.move);
 			break;
 		case AbstractEnemyControl.ANIM_ATTACK_START:
-
+            
 			break;
 		case AbstractEnemyControl.ANIM_ATTACK_END:
             if (state != EnemyStates.stun)
@@ -171,7 +164,7 @@ public class RobotGun : AbstractEnemyControl
 		float targetX = this.transform.position.x;
 		float targetY = this.transform.position.y;
 
-		if (Mathf.Abs (hD) > rangedToMeleePoint || ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0))) {
+		if (meleeCooldown > 0 || Mathf.Abs (hD) > rangedToMeleePoint || ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0))) {
 			// At gun range (or other pirate in melee range). Back away.
 			if (hD > gunRangeMax) {
 				// Out of gun range. Move in right.
@@ -189,25 +182,25 @@ public class RobotGun : AbstractEnemyControl
 				normHD = 1;
 				targetX = _player.transform.position.x + gunRangeMax;
 				if (vD <= _vertRange && vD >= -_vertRange) {
-					setState (EnemyStates.attack);
-				}
+                    TryShoot();
+                }
 			} else if (hD > -gunRangeMax && hD < 0) {
 				// Within gun range. Move back left as you fire.
 				facingLeft = false;
 				normHD = -1;
 				targetX = _player.transform.position.x - gunRangeMax;
 				if (vD <= _vertRange && vD >= -_vertRange) {
-					setState (EnemyStates.attack);
-				}
+                    TryShoot();
+                }
 			} else {
 				// Exactly at gun range. How about that?
 				normHD = 0;
 				targetX = this.transform.position.x;
 				if (vD <= _vertRange && vD >= -_vertRange) {
-					setState (EnemyStates.attack);
+                    TryShoot();
 				}
 			}
-		} else {
+		} else if (meleeCooldown <= 0) {
 			// Go in for the melee.
 			// X-positioning - move enemy to its closest horizontal range. If too close to the player, back away.
 			//Debug.Log (hD + " - " + _attackRange);
@@ -236,7 +229,7 @@ public class RobotGun : AbstractEnemyControl
 			}
 
 			if (hD <= _attackRange && hD >= -_attackRange && vD <= _vertRange && vD >= -_vertRange) {
-				setState (EnemyStates.attack);
+                TryMelee();
 			}
 		}
 
@@ -250,36 +243,45 @@ public class RobotGun : AbstractEnemyControl
 		_anim.SetBool ("FacingLeft", facingLeft);
 	}
 
+    protected void TryShoot()
+    {
+        if (gunCooldown <= 0)
+        {
+            // OK, gun's ready. Set cooldown and fire.
+            gunCooldown = gunCooldownTime;
+            _anim.SetTrigger("Attack");
+            setState(EnemyStates.attack);
+        }
+    }
+
+    protected void TryMelee()
+    {
+        if (meleeCooldown <= 0)
+        {
+            meleeCooldown = meleeCooldownTime;
+            _anim.SetTrigger("Heavy");
+            setState(EnemyStates.attack);
+        }
+    }
+
 	protected override void Shoot ()
 	{
+        Debug.Log("Shooting the bullet");
 		GameObject go;
-		PirateBullet bullet;
+        RobotShot bullet;
+
 		if (facingLeft) {
-			go = Instantiate (pirateBullet);
-			bullet = go.GetComponent<PirateBullet> ();
+			go = Instantiate (robotShot);
+			bullet = go.GetComponent<RobotShot> ();
 			bulletSpawn.position.Set (-Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
 			bullet.direction = Vector2.left;
 		} else {
-			go = Instantiate (pirateBullet);
-			bullet = go.GetComponent<PirateBullet> ();
+			go = Instantiate (robotShot);
+			bullet = go.GetComponent<RobotShot> ();
 			bulletSpawn.position.Set (Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
 			bullet.direction = Vector2.right;
 		}
 	
-		/*
-		// Create a bullet and make it fly.
-		PirateBullet bullet = BulletFactory.createPirateBullet ();
-
-		// Position the spawner and the direction.
-		if (facingLeft) {
-			bulletSpawn.position.Set (-Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-			bullet.direction = Vector2.left;
-		} else {
-			bulletSpawn.position.Set (Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-			bullet.direction = Vector2.right;
-		}
-		*/
-
 		// Stick the bullet in the spawner.
 		bullet.transform.position = bulletSpawn.position;
 		
@@ -296,6 +298,8 @@ public class RobotGun : AbstractEnemyControl
 		} else {
 			xForce = -knockback * .01f;
 		}
+
+        robotHealthBarAnim.SetFloat("Health", _enemHealth);
 
 		switch (type) {
 		case AbstractDamageCollider.DamageType.light:
