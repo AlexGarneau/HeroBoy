@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NightmareClownForestStates : MonoBehaviour {
+public class NightmareClownForestEvents : MonoBehaviour {
 
     int progress = 0;
 

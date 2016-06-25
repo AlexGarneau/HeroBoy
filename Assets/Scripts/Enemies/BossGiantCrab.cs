@@ -9,7 +9,6 @@ public class BossGiantCrab : AbstractBossControl {
 
     public Collider2D lightHit;
 
-    public GameObject bodyCrab;
     public GameObject bodyPirate;
     public GameObject pirateBomb;
     public GameObject vomitBullet;
@@ -19,6 +18,8 @@ public class BossGiantCrab : AbstractBossControl {
     private int vomitCount = 0;
     private bool highGround = false;
     private bool isVulnerable = false;
+
+    public Animator crabHealthBar;
 
     protected override void Start () {
         base.Start();
@@ -31,10 +32,11 @@ public class BossGiantCrab : AbstractBossControl {
         base.isAlive = true;
         base.isMoving = false;
         base._player = GameObject.FindGameObjectWithTag("Player");
+        base.bulletSpawn = transform.Find("BulletSpawn");
 
         bossState = BOSS_STATE_EASY;
 
-        _anim = bodyCrab.GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
         BossAbstractBehaviour[] eabs = _anim.GetBehaviours<BossAbstractBehaviour>();
         for (var i = eabs.Length - 1; i >= 0; i--) {
             eabs[i].boss = this;
@@ -63,7 +65,7 @@ public class BossGiantCrab : AbstractBossControl {
                 break;
         }
 
-        _anim.SetFloat("Health", _bossHealth);
+        //_anim.SetFloat("Health", _bossHealth);
 
         base.Update();
     }
@@ -174,6 +176,7 @@ public class BossGiantCrab : AbstractBossControl {
         base.stun(timeInSec);
         isVulnerable = false;
         _anim.SetTrigger("IsHit");
+        crabHealthBar.SetTrigger("PirateIsHit");
         if (bossPirate != null) {
             bossPirate.stun(timeInSec);
         }

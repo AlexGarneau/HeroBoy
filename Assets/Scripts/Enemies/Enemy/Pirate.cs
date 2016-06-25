@@ -83,7 +83,7 @@ public class Pirate : AbstractEnemyControl
 
 	protected override void setState (EnemyStates newState)
 	{
-        Debug.Log("SetState: " + newState);
+        //Debug.Log("SetState: " + newState);
 
 		switch (newState) {
 		case EnemyStates.move:

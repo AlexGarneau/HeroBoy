@@ -14,10 +14,10 @@ public class GameControllerBossCrab1 : AbstractGameController
 			spawns [i].spawnDelay = 2;
 		}
 
-		LevelBoundary.left = -13.91f;
-		LevelBoundary.bottom = -2.1f;
-		LevelBoundary.height = 6f;
-		LevelBoundary.bottomWidth = LevelBoundary.topWidth = 13f;
+		LevelBoundary.left = -5.4f;
+		LevelBoundary.bottom = -3.05f;
+		LevelBoundary.height = 4.94f;
+		LevelBoundary.bottomWidth = LevelBoundary.topWidth = 6f;
 	}
 
 	void Update ()
