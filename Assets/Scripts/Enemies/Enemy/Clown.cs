@@ -13,6 +13,10 @@ public class Clown : AbstractEnemyControl
 	public GameObject healItem;
 	public GameObject clownWater;
 
+    private GameObject[] bodyParts;
+    private bool doShudder = false;
+    private float shudderIntensity = 1f;
+
 	protected override void Start ()
 	{
         base.Start();
@@ -77,6 +81,8 @@ public class Clown : AbstractEnemyControl
 				gunCooldown = 0;
 			}
 		}
+
+        if (doShudder) { shudder(); }
 
 		base.Update ();
 	}
@@ -324,7 +330,29 @@ public class Clown : AbstractEnemyControl
 		_anim.SetTrigger ("IsStunned");
 	}
 
-	/*void HighGroundCheck ()
+    public void setShudder (float intensity = 1) {
+        shudderIntensity = intensity;
+        doShudder = true;
+    }
+
+    private void shudder () {
+        for (var i = bodyParts.Length - 1; i >= 0; i--) {
+            Vector3 pos = bodyParts[i].transform.position;
+            Vector3 rot = bodyParts[i].transform.eulerAngles;
+            bodyParts[i].transform.position = new Vector3(
+                pos.x + Random.Range(-shudderIntensity, shudderIntensity),
+                pos.y + Random.Range(-shudderIntensity, shudderIntensity),
+                pos.z
+            );
+            bodyParts[i].transform.eulerAngles = new Vector3(
+                rot.x + Random.Range(-shudderIntensity, shudderIntensity),
+                rot.y + Random.Range(-shudderIntensity, shudderIntensity),
+                rot.z + Random.Range(-shudderIntensity, shudderIntensity)
+            );
+        }
+    }
+
+    /*void HighGroundCheck ()
 	{
 		if (transform.position.y > 0) {
 			highGround = true;
