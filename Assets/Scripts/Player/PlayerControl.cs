@@ -615,7 +615,8 @@ public class PlayerControl : AbstractClass
 		if (playerHealth > 0) {
 			playerHealth -= damage;
 			if (playerHealth <= 0) {
-				// Player dead, yo.
+                // Player dead, yo.
+                SendMessageUpwards("playerDied", null, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 

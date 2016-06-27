@@ -83,6 +83,10 @@ public class SpawnZombie : AbstractClass
 		}
 	}
 
+    public ArrayList getEnemies () {
+        return _enemies;
+    }
+
 	private void autoSpawnEnemy ()
 	{
 		for (int i = zedCount - 1; i >= 0; i--) {

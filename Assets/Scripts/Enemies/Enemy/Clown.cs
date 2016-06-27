@@ -15,7 +15,17 @@ public class Clown : AbstractEnemyControl
 
     private GameObject[] bodyParts;
     private bool doShudder = false;
-    private float shudderIntensity = 1f;
+    private float shudderIntensity = 4f;
+
+    // Phasing variables.
+    private float phaseDelay = 1f;
+    private float phaseTime = 0f;
+    private float phaseProgress = 0f;
+    private float phaseDuration = .5f;
+    private float phaseChance = .1f;
+    private Vector2 phaseDirection;
+    private float phaseDistance = .2f;
+    private bool isPhasing = false;
 
 	protected override void Start ()
 	{
@@ -45,20 +55,51 @@ public class Clown : AbstractEnemyControl
 			eabs [i].enemy = this;
 		}
 
-		// Set the first state.
-		setState (EnemyStates.move);
+        // Get body parts.
+        Transform body = transform.FindChild("Clownsprite");
+        bodyParts = new GameObject[body.childCount];
+        for (int i = body.childCount - 1; i >= 0; i--) {
+            bodyParts[i] = body.GetChild(i).gameObject;
+        }
+
+        // Set the first state.
+        setState (EnemyStates.move);
 	}
 
 	protected override void Update ()
 	{
 		switch (state) {
-		case EnemyStates.move:
-			break;
-		case EnemyStates.attack:
-			break;
-		case EnemyStates.dead:
-			//DeathTimerDestroy ();
-			break;
+		    case EnemyStates.move:
+                if (isPhasing) {
+                    // Phasing is a quick little jump in a random direction. Can be used for dodging, homing in, etc. In this case, it's meant to make the clowns less predictable.
+                    phaseProgress += Time.deltaTime;
+                    if (phaseProgress >= phaseDuration) {
+                        // Phase complete.
+                        phaseProgress = phaseDuration;
+                        isPhasing = false;
+                    } else {
+                        // Phase the clown!
+                        Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+                        Vector2 dest = new Vector2(pos.x + phaseDirection.x * phaseDistance, pos.y + phaseDirection.y * phaseDistance);
+                        pos = Vector2.Lerp(pos, dest, phaseProgress / phaseDuration);
+                        transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+                    }
+                } else {
+                    // Not phasing. Give it a go after delaying an RNG check.
+                    phaseTime += Time.deltaTime;
+                    if (phaseTime > phaseDelay) {
+                        phaseTime = 0;
+                        if (Random.value < phaseChance) {
+                            phase();
+                        }
+                    }
+                }
+			    break;
+		    case EnemyStates.attack:
+			    break;
+		    case EnemyStates.dead:
+			    //DeathTimerDestroy ();
+			    break;
 		}
 
 		_anim.SetFloat ("Health", _enemHealth);
@@ -98,16 +139,13 @@ public class Clown : AbstractEnemyControl
 		case EnemyStates.attack:
 			if (Mathf.Abs (transform.position.x - _player.transform.position.x) > _attackRange) {
 				// Too far for melee. Shoot.
-				if (gunCooldown > 0) {
-					// Wait, gun's not ready yet. Don't switch state.
-					return;
-				} else {
+				if (gunCooldown <= 0) {
 					// OK, gun's ready. Set cooldown and fire.
 					gunCooldown = gunCooldownTime;
 					_anim.SetTrigger ("Fire");
 				}
 			} else if (meleeCooldown <= 0) {
-                    _anim.SetTrigger (Random.value > .5 ? "Attack1" : "Attack2");
+                _anim.SetTrigger ("Attack");
 			}
 			_anim.SetBool ("IsMoving", false);
 			break;
@@ -194,7 +232,7 @@ public class Clown : AbstractEnemyControl
 				facingLeft = true;
 				normHD = 1;
 				targetX = _player.transform.position.x + gunRangeMax;
-				if (vD <= _vertRange && vD >= -_vertRange) {
+				if (vD <= _vertRange && vD >= -_vertRange && gunCooldown <= 0) {
 					setState (EnemyStates.attack);
 				}
 			} else if (hD > -gunRangeMax && hD < 0) {
@@ -202,14 +240,14 @@ public class Clown : AbstractEnemyControl
 				facingLeft = false;
 				normHD = -1;
 				targetX = _player.transform.position.x - gunRangeMax;
-				if (vD <= _vertRange && vD >= -_vertRange) {
+				if (vD <= _vertRange && vD >= -_vertRange && gunCooldown <= 0) {
 					setState (EnemyStates.attack);
 				}
 			} else {
 				// Exactly at gun range. How about that?
 				normHD = 0;
 				targetX = this.transform.position.x;
-				if (vD <= _vertRange && vD >= -_vertRange) {
+				if (vD <= _vertRange && vD >= -_vertRange && gunCooldown <= 0) {
 					setState (EnemyStates.attack);
 				}
 			}
@@ -278,20 +316,6 @@ public class Clown : AbstractEnemyControl
 			bullet.direction = Vector2.right;
 		}
 
-        /*
-		// Create a bullet and make it fly.
-		ClownWater bullet = BulletFactory.createclownWater ();
-
-		// Position the spawner and the direction.
-		if (facingLeft) {
-			bulletSpawn.position.Set (-Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-			bullet.direction = Vector2.left;
-		} else {
-			bulletSpawn.position.Set (Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-			bullet.direction = Vector2.right;
-		}
-		*/
-
         // Stick the bullet in the spawner.
         bullet.transform.position = bulletSpawn.position;
 		
@@ -324,6 +348,12 @@ public class Clown : AbstractEnemyControl
 		}
 	}
 
+    public void phase () {
+        phaseDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        phaseProgress = 0;
+        isPhasing = true;
+    }
+
 	public override void stun (float timeInSec)
 	{
 		base.stun (timeInSec);
@@ -335,15 +365,25 @@ public class Clown : AbstractEnemyControl
         doShudder = true;
     }
 
+    public void setPhaseChance (float chance) {
+        phaseChance = chance;
+    }
+
+    public void setMoveSpeed (float speed) {
+        _enemMoveSpeed = speed;
+    }
+
     private void shudder () {
         for (var i = bodyParts.Length - 1; i >= 0; i--) {
             Vector3 pos = bodyParts[i].transform.position;
             Vector3 rot = bodyParts[i].transform.eulerAngles;
+            /*
             bodyParts[i].transform.position = new Vector3(
-                pos.x + Random.Range(-shudderIntensity, shudderIntensity),
-                pos.y + Random.Range(-shudderIntensity, shudderIntensity),
+                pos.x + Random.Range(-shudderIntensity, shudderIntensity) * .01f,
+                pos.y + Random.Range(-shudderIntensity, shudderIntensity) * .01f,
                 pos.z
             );
+            */
             bodyParts[i].transform.eulerAngles = new Vector3(
                 rot.x + Random.Range(-shudderIntensity, shudderIntensity),
                 rot.y + Random.Range(-shudderIntensity, shudderIntensity),

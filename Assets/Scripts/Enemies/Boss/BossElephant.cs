@@ -19,6 +19,7 @@ public class BossElephant : AbstractBossControl
 	private float bombDelayMax = 2f;
     private float balloonCooldown = 0;
     private float shudderIntensity = 1f;
+    private PlayerControl player;
 
     private GameObject[] bodyParts;
 
@@ -32,9 +33,15 @@ public class BossElephant : AbstractBossControl
 		base.isAlive = true;
 		base.isMoving = false;
 		base._player = GameObject.FindGameObjectWithTag ("Player");
+        player = _player.GetComponent<PlayerControl>();
         balloonSpawn = transform.Find ("BalloonSpawn");
 
-        bodyParts = transform.Find("Body").gameObject.GetComponentsInChildren<GameObject>(false);
+        Transform body = transform.FindChild("Body");
+        bodyParts = new GameObject [body.childCount];
+        for (int i = body.childCount - 1; i >= 0; i--) {
+            bodyParts[i] = body.GetChild(i).gameObject;
+        }
+        Debug.Log(bodyParts + " - " + body.childCount);
 
 		bossState = BOSS_STATE_MELEE;
 
@@ -45,6 +52,7 @@ public class BossElephant : AbstractBossControl
 	{
 		switch (state) {
 		case BossAction.move:
+            MoveToAttack();
 			break;
 		case BossAction.attack:
 			break;
@@ -70,6 +78,7 @@ public class BossElephant : AbstractBossControl
             }
         }
 		_anim.SetFloat ("Health", _bossHealth);
+        _anim.SetFloat("PlayerHealth", player.playerHealth);
 
 		base.Update ();
 	}
@@ -89,14 +98,7 @@ public class BossElephant : AbstractBossControl
 			_anim.SetBool ("IsMoving", true);
 			break;
 		case BossAction.attack:
-			if (bossState == BOSS_STATE_MELEE) {
-				// On High Ground. Throw bomb.
-				_anim.SetTrigger ("Melee");
-			} else if (bossState == BOSS_STATE_RANGED) {
-                // On low ground. Use melee.
-                _anim.SetTrigger("Balloon");
-			}
-			
+			_anim.SetTrigger ("Attack");
 			break;
 		case BossAction.dead:
 			break;
@@ -112,28 +114,21 @@ public class BossElephant : AbstractBossControl
         switch (state) {
             case AbstractEnemyControl.ANIM_SPAWN_END:
                 // Boss spawned.
-                highGround = true;
-                _anim.SetBool("HighGround", highGround);
-                setBossAction(BossAction.retreat);
+                setBossAction(BossAction.move);
                 break;
             case AbstractBossControl.ANIM_ATTACK_END:
-                if (highGround) {
-                    bombDelay = bombDelayMax;
-                    setBossAction(BossAction.stand);
-                } else {
-                    meleeCooldown = MELEE_COOLDOWN;
-                    setBossAction(BossAction.move);
+                meleeCooldown = MELEE_COOLDOWN;
+                balloonCooldown = BALLOON_COOLDOWN;
+                setBossAction(BossAction.move);
+                if (bossState == BOSS_STATE_RANGED) {
+                    // Spawn the balloon.
+                    ThrowBomb();
                 }
                 break;
-            case AbstractBossControl.ANIM_SPECIAL_END:
-                setBossAction(BossAction.move);
-                break;
             case AbstractBossControl.ANIM_DEATH_END:
-                SendMessageUpwards("bossDead", SendMessageOptions.DontRequireReceiver);
-                Destroy(gameObject);
                 break;
             case AbstractBossControl.ANIM_STUN_START:
-                setBossAction(BossAction.move);
+                setBossAction(BossAction.stun);
                 break;
             case AbstractBossControl.ANIM_STUN_END:
                 setBossAction(BossAction.move);
@@ -168,14 +163,19 @@ public class BossElephant : AbstractBossControl
 			return;
 		}
 
+        _anim.SetTrigger("IsHit");
 		_bossHealth -= damage;
 		if (_bossHealth <= 0) {
 			// Boos is dead. Or is it?
 			if (bossState == BOSS_STATE_MELEE) {
-                // Nope, boss is serious now.
+                // Nope, boss is actually serious now.
                 bossState = BOSS_STATE_RANGED;
-                _anim.SetTrigger("Transform");
-			} else {
+
+                // Set bossDying. The battle is effectively over, but the player doesn't know it yet.
+                SendMessageUpwards("bossDying", SendMessageOptions.DontRequireReceiver);
+
+                setBossAction(BossAction.stun);
+            } else {
                 // YOU CAN'T KILL THIS ONE TODAY!
 				stun (1f);
                 _bossHealth = 400f;
@@ -186,7 +186,7 @@ public class BossElephant : AbstractBossControl
 	public override void stun (float timeInSec)
 	{
 		base.stun (timeInSec);
-		_anim.SetTrigger ("Stagger");
+		_anim.SetTrigger ("IsHit");
 	}
 
     private void shudder () {
@@ -194,8 +194,8 @@ public class BossElephant : AbstractBossControl
             Vector3 pos = bodyParts[i].transform.position;
             Vector3 rot = bodyParts[i].transform.eulerAngles;
             bodyParts[i].transform.position = new Vector3(
-                pos.x + Random.Range(-shudderIntensity, shudderIntensity),
-                pos.y + Random.Range(-shudderIntensity, shudderIntensity),
+                pos.x + Random.Range(-shudderIntensity, shudderIntensity) * .1f,
+                pos.y + Random.Range(-shudderIntensity, shudderIntensity) * .1f,
                 pos.z
             );
             bodyParts[i].transform.eulerAngles = new Vector3(
