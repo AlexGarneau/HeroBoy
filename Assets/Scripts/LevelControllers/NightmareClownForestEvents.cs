@@ -305,6 +305,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 circusTent.SetActive(true);
                 break;
         }
+        forestState = newState;
     }
 
     public void onPlayerTrigger(GameObject obj)
