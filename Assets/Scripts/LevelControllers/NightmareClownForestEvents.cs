@@ -61,6 +61,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
     void Start()
     {
         _anim = GetComponent<Animator>();
+        setState(ClownForestStates.enter);
     }
 
     void setState(ClownForestStates newState)
@@ -311,11 +312,62 @@ public class NightmareClownForestEvents : MonoBehaviour {
         Debug.Log("ENTERED TRIGGER: " + obj.name);
         switch (obj.name)
         {
-            case "EndEnter":
+            case "Trigger1":
                 if (forestState == ClownForestStates.enter)
                 {
-                    setState(ClownForestStates.enter);
+                    setState(ClownForestStates.farEnd1);
                 }
+                break;
+            case "Trigger2":
+                if (forestState == ClownForestStates.farEnd1)
+                {
+                    setState(ClownForestStates.farEnd2);
+                }
+                break;
+            case "Trigger3":
+                if (forestState == ClownForestStates.farEnd2)
+                {
+                    setState(ClownForestStates.farEnd3);
+                }
+                break;
+            case "Trigger4":
+                if (forestState == ClownForestStates.farEnd3)
+                {
+                    setState(ClownForestStates.backToCentre);
+                }
+                break;
+            case "Trigger5":
+                if (forestState == ClownForestStates.backToCentre)
+                {
+                    setState(ClownForestStates.rightSide);
+                }
+                break;
+            case "Trigger6":
+                if (forestState == ClownForestStates.rightSide)
+                {
+                    setState(ClownForestStates.centreAgain);
+                }
+                break;
+            case "Trigger7":
+                if (forestState == ClownForestStates.centreAgain)
+                {
+                    setState(ClownForestStates.leftCentre);
+                }
+                break;
+            case "Trigger8":
+                if (forestState == ClownForestStates.leftCentre)
+                {
+                    setState(ClownForestStates.upRight);
+                }
+                break;
+            case "Trigger9":
+                if (forestState == ClownForestStates.upRight)
+                {
+                    setState(ClownForestStates.down);
+                }
+                break;
+            case "EnterTentTrigger":
+
                 break;
         }
     }
