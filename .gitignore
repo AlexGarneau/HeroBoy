@@ -1,4 +1,3 @@
-Assets/2DPlatformer.meta
 Assets/2DPlatformer/Controller2D.cs
 Assets/2DPlatformer/Controller2D.cs.meta
 Assets/2DPlatformer/EnemyController.cs
@@ -12,10 +11,8 @@ Assets/2DPlatformer/RaycastController.cs.meta
 Assets/2DPlatformer/Spike.unity
 Assets/2DPlatformer/Spike.unity.meta
 Assets/Standard Assets/Utility/
-Assets/Standard Assets/Utility.meta
 Assets/Standard Assets/ParticleSystems/
 Assets/Standard Assets/PhysicsMaterials/
-*.meta
 Assets/Standard Assets/Effects/
 Assets/Standard Assets/Cameras/
 Assets/Standard Assets/CrossPlatformInput/CrossPlatformInputGuidelines.txt
