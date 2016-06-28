@@ -14,7 +14,6 @@ public class NightmareClownForestEvents : MonoBehaviour {
         backToCentre,
         rightSide,
         centreAgain,
-        leftCentre,
         upRight,
         down,
         upTrick,
@@ -55,6 +54,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
     public GameObject circusTent;
 
     public GameObject clownShadow;
+    public GameObject clownShadow2;
     public GameObject spawnPoints;
 
     Animator _anim;
@@ -63,6 +63,13 @@ public class NightmareClownForestEvents : MonoBehaviour {
     {
         _anim = GetComponent<Animator>();
         setState(ClownForestStates.enter);
+    }
+
+    void Update()
+    {
+        if(clownShadow.active == true) {
+
+        }
     }
 
     void setState(ClownForestStates newState)
@@ -87,6 +94,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 pathClownEntrance.SetActive(false);
                 circusTent.SetActive(false);
                 clownShadow.SetActive(false);
+                clownShadow2.SetActive(false);
                 break;
             case ClownForestStates.farEnd1:
                 treePack1.SetActive(false);
@@ -162,7 +170,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 circusTent.SetActive(false);
                 break;
             case ClownForestStates.rightSide:
-                treePack1.SetActive(false);
+                treePack1.SetActive(true);
                 treePack2.SetActive(false);
                 treePack3.SetActive(true);
                 treePack4.SetActive(true);
@@ -171,8 +179,8 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 pathCenter.SetActive(true);
                 pathIntro.SetActive(false);
                 pathLoop.SetActive(true);
-                pathTrickLoop.SetActive(true);
-                pathTrickLoop2.SetActive(true);
+                pathTrickLoop.SetActive(false);
+                pathTrickLoop2.SetActive(false);
                 pathSide.SetActive(true);
                 pathDescent.SetActive(false);
                 pathDescentTrick.SetActive(false);
@@ -180,7 +188,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 circusTent.SetActive(false);
                 break;
             case ClownForestStates.centreAgain:
-                treePack1.SetActive(false);
+                treePack1.SetActive(true);
                 treePack2.SetActive(true);
                 treePack3.SetActive(true);
                 treePack4.SetActive(true);
@@ -197,95 +205,60 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 pathClownEntrance.SetActive(false);
                 circusTent.SetActive(false);
                 break;
-            case ClownForestStates.leftCentre:
-                treePack1.SetActive(false);
-                treePack2.SetActive(true);
-                treePack3.SetActive(true);
-                treePack4.SetActive(true);
-                treePack5.SetActive(true);
-                treePack6.SetActive(false);
-                pathCenter.SetActive(true);
-                pathIntro.SetActive(true);
-                pathLoop.SetActive(false);
-                pathTrickLoop.SetActive(true);
-                pathTrickLoop2.SetActive(true);
-                pathSide.SetActive(false);
-                pathDescent.SetActive(false);
-                pathDescentTrick.SetActive(false);
-                pathClownEntrance.SetActive(false);
-                circusTent.SetActive(false);
-                break;
             case ClownForestStates.upRight:
-                treePack1.SetActive(false);
+                treePack1.SetActive(true);
                 treePack2.SetActive(true);
-                treePack3.SetActive(true);
+                treePack3.SetActive(false);
                 treePack4.SetActive(true);
                 treePack5.SetActive(true);
                 treePack6.SetActive(false);
                 pathCenter.SetActive(true);
-                pathIntro.SetActive(true);
+                pathIntro.SetActive(false);
                 pathLoop.SetActive(false);
                 pathTrickLoop.SetActive(false);
                 pathTrickLoop2.SetActive(false);
                 pathSide.SetActive(false);
-                pathDescent.SetActive(false);
+                pathDescent.SetActive(true);
                 pathDescentTrick.SetActive(false);
                 pathClownEntrance.SetActive(false);
                 circusTent.SetActive(false);
                 break;
             case ClownForestStates.down:
-                treePack1.SetActive(false);
+                treePack1.SetActive(true);
                 treePack2.SetActive(true);
-                treePack3.SetActive(true);
+                treePack3.SetActive(false);
                 treePack4.SetActive(true);
                 treePack5.SetActive(true);
-                treePack6.SetActive(false);
-                pathCenter.SetActive(true);
-                pathIntro.SetActive(true);
-                pathLoop.SetActive(false);
-                pathTrickLoop.SetActive(true);
-                pathTrickLoop2.SetActive(true);
-                pathSide.SetActive(false);
-                pathDescent.SetActive(true);
-                pathDescentTrick.SetActive(false);
-                pathClownEntrance.SetActive(false);
-                circusTent.SetActive(false);
-                break;
-            case ClownForestStates.upTrick:
-                treePack1.SetActive(false);
-                treePack2.SetActive(true);
-                treePack3.SetActive(true);
-                treePack4.SetActive(true);
-                treePack5.SetActive(true);
-                treePack6.SetActive(false);
+                treePack6.SetActive(true);
                 pathCenter.SetActive(false);
-                pathIntro.SetActive(true);
+                pathIntro.SetActive(false);
                 pathLoop.SetActive(false);
-                pathTrickLoop.SetActive(true);
-                pathTrickLoop2.SetActive(true);
+                pathTrickLoop.SetActive(false);
+                pathTrickLoop2.SetActive(false);
                 pathSide.SetActive(false);
-                pathDescent.SetActive(true);
+                pathDescent.SetActive(false);
                 pathDescentTrick.SetActive(true);
                 pathClownEntrance.SetActive(false);
                 circusTent.SetActive(false);
                 break;
-            case ClownForestStates.downAgain:
-                treePack1.SetActive(false);
+            case ClownForestStates.upTrick:
+                treePack1.SetActive(true);
                 treePack2.SetActive(true);
-                treePack3.SetActive(true);
+                treePack3.SetActive(false);
                 treePack4.SetActive(true);
                 treePack5.SetActive(true);
-                treePack6.SetActive(false);
-                pathCenter.SetActive(true);
-                pathIntro.SetActive(true);
+                treePack6.SetActive(true);
+                pathCenter.SetActive(false);
+                pathIntro.SetActive(false);
                 pathLoop.SetActive(false);
-                pathTrickLoop.SetActive(true);
-                pathTrickLoop2.SetActive(true);
+                pathTrickLoop.SetActive(false);
+                pathTrickLoop2.SetActive(false);
                 pathSide.SetActive(false);
                 pathDescent.SetActive(false);
-                pathDescentTrick.SetActive(false);
+                pathDescentTrick.SetActive(true);
                 pathClownEntrance.SetActive(false);
                 circusTent.SetActive(false);
+                clownShadow.SetActive(true);
                 break;
             case ClownForestStates.upToTent:
                 treePack1.SetActive(true);
@@ -354,19 +327,23 @@ public class NightmareClownForestEvents : MonoBehaviour {
             case "Trigger7":
                 if (forestState == ClownForestStates.centreAgain)
                 {
-                    setState(ClownForestStates.leftCentre);
-                }
-                break;
-            case "Trigger8":
-                if (forestState == ClownForestStates.leftCentre)
-                {
                     setState(ClownForestStates.upRight);
                 }
                 break;
-            case "Trigger9":
+            case "Trigger8":
                 if (forestState == ClownForestStates.upRight)
                 {
                     setState(ClownForestStates.down);
+                }
+                if (forestState == ClownForestStates.upTrick)
+                {
+                    setState(ClownForestStates.upToTent);
+                }
+                break;
+            case "Trigger9":
+                if (forestState == ClownForestStates.down)
+                {
+                    setState(ClownForestStates.upTrick);
                 }
                 break;
             case "EnterTentTrigger":
