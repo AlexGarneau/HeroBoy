@@ -1,0 +1,445 @@
+fileFormatVersion: 2
+guid: 11cd5cd7bb40e414e891601862ee16fb
+timeCreated: 1458167985
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Clown spritesheet_0
+    21300002: Clown spritesheet_1
+    21300004: Clown spritesheet_2
+    21300006: Clown spritesheet_3
+    21300008: Clown spritesheet_4
+    21300010: Clown spritesheet_6
+    21300012: Clown spritesheet_7
+    21300014: Clown spritesheet_8
+    21300016: Clown spritesheet_9
+    21300018: Clown spritesheet_10
+    21300020: Clown spritesheet_11
+    21300022: Clown spritesheet_12
+    21300024: Clown spritesheet_13
+    21300026: Clown spritesheet_14
+    21300028: Clown spritesheet_15
+    21300030: Clown spritesheet_16
+    21300032: Clown spritesheet_17
+    21300034: Clown spritesheet_19
+    21300036: Clown spritesheet_20
+    21300038: Clown spritesheet_21
+    21300040: Clown spritesheet_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Clown spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 830
+        width: 129
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -61.5, y: 42}
+        - {x: -64.5, y: 38}
+        - {x: -64.5, y: -42}
+        - {x: 64.5, y: -42}
+        - {x: 64.5, y: 42}
+    - name: Clown spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 686
+        width: 165
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -51.5, y: 74.5}
+        - {x: -65.5, y: 64.5}
+        - {x: -82.5, y: 27.5}
+        - {x: -82.5, y: -74.5}
+        - {x: 71.5, y: -74.5}
+        - {x: 82.5, y: -48.5}
+        - {x: 82.5, y: 56.5}
+        - {x: 45.5, y: 74.5}
+    - name: Clown spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 780
+        width: 85
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.5, y: 43}
+        - {x: -39.5, y: 42}
+        - {x: -42.5, y: 40}
+        - {x: -42.5, y: -29}
+        - {x: -34.5, y: -43}
+        - {x: 39.5, y: -43}
+        - {x: 42.5, y: -41}
+        - {x: 42.5, y: 24}
+        - {x: 33.5, y: 43}
+    - name: Clown spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 813
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Clown spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 500
+        width: 158
+        height: 317
+      alignment: 9
+      pivot: {x: 0.5184389, y: 0.13238178}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 66.086655, y: 269.03497}
+        - {x: 31.086655, y: 275.03497}
+        - {x: -63.913345, y: 275.03497}
+        - {x: -63.913345, y: 30.034973}
+        - {x: -51.913345, y: -41.965027}
+        - {x: 19.086655, y: -41.965027}
+        - {x: 26.086655, y: -31.965027}
+        - {x: 63.086655, y: 174.03497}
+        - {x: 66.086655, y: 195.03497}
+      - - {x: -48.913345, y: 171.03497}
+        - {x: -50.913345, y: 170.03497}
+        - {x: -50.913345, y: 167.03497}
+        - {x: -46.913345, y: 163.03497}
+        - {x: -36.913345, y: 163.03497}
+        - {x: -35.913345, y: 164.03497}
+        - {x: -35.913345, y: 170.03497}
+        - {x: -37.913345, y: 171.03497}
+      - - {x: 74.086655, y: 189.03497}
+        - {x: 71.086655, y: 186.03497}
+        - {x: 71.086655, y: 185.03497}
+        - {x: 73.086655, y: 183.03497}
+        - {x: 75.086655, y: 183.03497}
+        - {x: 76.086655, y: 184.03497}
+        - {x: 76.086655, y: 188.03497}
+        - {x: 75.086655, y: 189.03497}
+      - - {x: 72.086655, y: 204.03497}
+        - {x: 72.086655, y: 200.03497}
+        - {x: 74.086655, y: 198.03497}
+        - {x: 76.086655, y: 199.03497}
+        - {x: 76.086655, y: 206.03497}
+        - {x: 74.086655, y: 206.03497}
+    - name: Clown spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 550
+        width: 124
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52, y: 64.5}
+        - {x: -62, y: 55.5}
+        - {x: -62, y: -35.5}
+        - {x: -33, y: -64.5}
+        - {x: 37, y: -64.5}
+        - {x: 48, y: -60.5}
+        - {x: 62, y: -30.5}
+        - {x: 62, y: 58.5}
+        - {x: 41, y: 64.5}
+    - name: Clown spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 603
+        width: 42
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 16.5}
+        - {x: -21, y: 11.5}
+        - {x: -21, y: -12.5}
+        - {x: -13, y: -16.5}
+        - {x: 18, y: -16.5}
+        - {x: 21, y: -11.5}
+        - {x: 21, y: 13.5}
+        - {x: 18, y: 16.5}
+    - name: Clown spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 591
+        width: 108
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49, y: 27}
+        - {x: -49, y: -22}
+        - {x: 21, y: -22}
+        - {x: 47, y: -14}
+        - {x: 47, y: 22}
+        - {x: 45, y: 27}
+    - name: Clown spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 324
+        width: 127
+        height: 198
+      alignment: 9
+      pivot: {x: 0.48881087, y: 0.21292669}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -62.07898, y: 155.84052}
+        - {x: -62.07898, y: 10.840515}
+        - {x: -55.07898, y: -24.159485}
+        - {x: 11.9210205, y: -40.159485}
+        - {x: 26.92102, y: -42.159485}
+        - {x: 64.92102, y: -42.159485}
+        - {x: 64.92102, y: 64.840515}
+        - {x: 44.92102, y: 155.84052}
+      - - {x: 60.92102, y: 122.840515}
+        - {x: 60.92102, y: 116.840515}
+        - {x: 62.92102, y: 114.840515}
+        - {x: 64.92102, y: 115.840515}
+        - {x: 64.92102, y: 122.840515}
+        - {x: 63.92102, y: 123.840515}
+    - name: Clown spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 335
+        width: 93
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2.5, y: 92.5}
+        - {x: -2.5, y: -84.5}
+        - {x: 6.5, y: -92.5}
+        - {x: 33.5, y: -92.5}
+        - {x: 46.5, y: -82.5}
+        - {x: 46.5, y: 59.5}
+        - {x: 38.5, y: 92.5}
+      - - {x: -46.5, y: 92.5}
+        - {x: -46.5, y: -47.5}
+        - {x: -31.5, y: -84.5}
+        - {x: -8.5, y: -84.5}
+        - {x: -0.5, y: -76.5}
+        - {x: -0.5, y: 80.5}
+        - {x: -13.5, y: 92.5}
+    - name: Clown spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 174
+        width: 91
+        height: 141
+      alignment: 9
+      pivot: {x: 0.72410566, y: 0.8719199}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53.893616, y: 18.059296}
+        - {x: -65.893616, y: -29.940704}
+        - {x: -65.893616, y: -118.940704}
+        - {x: -55.893616, y: -122.940704}
+        - {x: 7.1063843, y: -122.940704}
+        - {x: 25.106384, y: -43.940704}
+        - {x: 25.106384, y: 9.059296}
+        - {x: 14.106384, y: 18.059296}
+    - name: Clown spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 188
+        width: 77
+        height: 122
+      alignment: 9
+      pivot: {x: 0.745934, y: 0.8582018}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28.43692, y: 17.299377}
+        - {x: -57.43692, y: -6.7006226}
+        - {x: -57.43692, y: -104.70062}
+        - {x: 3.5630798, y: -104.70062}
+        - {x: 19.56308, y: -57.700623}
+        - {x: 19.56308, y: 17.299377}
+    - name: Clown spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 142
+        width: 118
+        height: 131
+      alignment: 9
+      pivot: {x: 0.19893762, y: 0.8579649}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.47464, y: 18.606598}
+        - {x: -23.47464, y: 17.606598}
+        - {x: -23.47464, y: -66.3934}
+        - {x: 1.5253601, y: -112.3934}
+        - {x: 89.52536, y: -112.3934}
+        - {x: 94.52536, y: -105.3934}
+        - {x: 94.52536, y: -40.393402}
+        - {x: 28.52536, y: 18.606598}
+    - name: Clown spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 298
+        width: 95
+        height: 89
+      alignment: 9
+      pivot: {x: 0.887924, y: 0.8830199}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -0.3527832, y: 7.4112244}
+        - {x: -7.352783, y: 5.4112244}
+        - {x: -83.35278, y: -64.588776}
+        - {x: -83.35278, y: -77.588776}
+        - {x: -82.35278, y: -78.588776}
+        - {x: -42.352783, y: -78.588776}
+        - {x: -24.352783, y: -75.588776}
+        - {x: 10.647217, y: -6.5887756}
+        - {x: 10.647217, y: 5.4112244}
+        - {x: 9.647217, y: 7.4112244}
+    - name: Clown spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 70
+        width: 43
+        height: 123
+      alignment: 9
+      pivot: {x: 0.69841677, y: 0.9555349}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.031921, y: -56.530792}
+        - {x: -11.031921, y: -117.53079}
+        - {x: 12.968079, y: -117.53079}
+        - {x: 12.968079, y: -32.530792}
+        - {x: 8.968079, y: 5.469208}
+        - {x: -12.031921, y: 5.469208}
+        - {x: -22.031921, y: 2.4692078}
+        - {x: -30.031921, y: -10.530792}
+    - name: Clown spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 29
+        width: 185
+        height: 70
+      alignment: 9
+      pivot: {x: 0.75984126, y: 0.7705273}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -130.57063, y: 16.063087}
+        - {x: -140.57063, y: 10.063087}
+        - {x: -140.57063, y: -52.936913}
+        - {x: -138.57063, y: -53.936913}
+        - {x: 44.429367, y: -53.936913}
+        - {x: 44.429367, y: 13.063087}
+        - {x: 39.429367, y: 16.063087}
+    - name: Clown spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 58
+        width: 146
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 28}
+        - {x: -64, y: 25}
+        - {x: -73, y: 20}
+        - {x: -73, y: -17}
+        - {x: -68, y: -23}
+        - {x: -55, y: -28}
+        - {x: 14, y: -28}
+        - {x: 73, y: -14}
+        - {x: 73, y: 15}
+        - {x: 63, y: 28}
+    - name: Clown spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 376
+        width: 76
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 28}
+        - {x: -31, y: 23}
+        - {x: -31, y: -28}
+        - {x: -25, y: -31}
+        - {x: 18, y: -31}
+        - {x: 36, y: -16}
+        - {x: 36, y: 19}
+        - {x: 33, y: 28}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

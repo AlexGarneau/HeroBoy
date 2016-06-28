@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: 507b0ce3195602e4db59f93c88cd3915
+timeCreated: 1448648322
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BullyClose3_0
+    21300002: BullyClose3_1
+    21300004: BullyClose3_2
+    21300006: BullyClose3_3
+    21300008: BullyClose3_4
+    21300010: BullyClose3_5
+    21300012: BullyClose3_6
+    21300014: BullyClose3_7
+    21300016: BullyClose3_8
+    21300018: BullyClose3_9
+    21300020: BullyClose3_10
+    21300022: BullyClose3_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BullyClose3_0
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 439
+        width: 518
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_1
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 464
+        width: 503
+        height: 414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_2
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 740
+        width: 262
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_3
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 742
+        width: 261
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_4
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 48
+        width: 265
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_5
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 8
+        width: 254
+        height: 409
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_6
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 12
+        width: 254
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_7
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 22
+        width: 254
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_8
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 367
+        width: 224
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_9
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 370
+        width: 322
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_10
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 22
+        width: 88
+        height: 74
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose3_12
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 13
+        width: 306
+        height: 216
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

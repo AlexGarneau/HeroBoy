@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: 8307628917159fe44afa5edd92422bbc
+timeCreated: 1466706210
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BossHealthBarBackgroundPirate_0
+    21300002: BossHealthBarBackgroundPirate_1
+    21300004: BossHealthBarBackgroundPirate_2
+    21300006: BossHealthBarBackgroundPirate_3
+    21300008: BossHealthBarBackgroundPirate_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BossHealthBarBackgroundPirate_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 396
+        width: 455
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 227.5, y: -22}
+        - {x: 227.5, y: 47}
+        - {x: 225.5, y: 52}
+        - {x: 9.5, y: 52}
+        - {x: -101.5, y: 51}
+        - {x: -106.5, y: 52}
+        - {x: -194.5, y: 52}
+        - {x: -218.5, y: 51}
+        - {x: -227.5, y: 50}
+        - {x: -227.5, y: -39}
+        - {x: -217.5, y: -44}
+        - {x: -90.5, y: -52}
+        - {x: 102.5, y: -52}
+        - {x: 210.5, y: -47}
+        - {x: 221.5, y: -42}
+        - {x: 224.5, y: -35}
+    - name: BossHealthBarBackgroundPirate_1
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 348
+        width: 264
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: 22.5}
+        - {x: -36, y: 22.5}
+        - {x: -38, y: 18.5}
+        - {x: -38, y: 16.5}
+        - {x: -38, y: 18.5}
+        - {x: -37, y: 22.5}
+        - {x: -87, y: 22.5}
+        - {x: -89, y: 20.5}
+        - {x: -91, y: 16.5}
+        - {x: -91, y: 17.5}
+        - {x: -97, y: 22.5}
+        - {x: -113, y: 22.5}
+        - {x: -132, y: 21.5}
+        - {x: -132, y: -18.5}
+        - {x: -131, y: -22.5}
+        - {x: -10, y: -22.5}
+        - {x: -4, y: 8.5}
+      - - {x: 86, y: 22.5}
+        - {x: 82, y: 20.5}
+        - {x: 82, y: -16.5}
+        - {x: 90, y: -20.5}
+        - {x: 123, y: -20.5}
+        - {x: 130, y: -16.5}
+        - {x: 130, y: 22.5}
+      - - {x: 5, y: 22.5}
+        - {x: 5, y: -19.5}
+        - {x: 74, y: -19.5}
+        - {x: 82, y: -6.5}
+        - {x: 82, y: 20.5}
+        - {x: 78, y: 22.5}
+    - name: BossHealthBarBackgroundPirate_2
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 279
+        width: 438
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 68, y: 24}
+        - {x: 60, y: 20}
+        - {x: 60, y: -24}
+        - {x: 72, y: -24}
+        - {x: 87, y: 5}
+        - {x: 87, y: 24}
+      - - {x: -52, y: 24}
+        - {x: -52, y: -23}
+        - {x: 16, y: -23}
+        - {x: 17, y: -16}
+        - {x: 17, y: 22}
+        - {x: 12, y: 24}
+      - - {x: 105, y: 24}
+        - {x: 94, y: 21}
+        - {x: 94, y: -13}
+        - {x: 96, y: -18}
+        - {x: 115, y: -23}
+        - {x: 215, y: -23}
+        - {x: 215, y: 18}
+        - {x: 207, y: 24}
+      - - {x: -82, y: 23}
+        - {x: -88, y: 23}
+        - {x: -100, y: 18}
+        - {x: -104, y: 12}
+        - {x: -117, y: 23}
+        - {x: -130, y: 23}
+        - {x: -132, y: 22}
+        - {x: -132, y: -21}
+        - {x: -82, y: -21}
+        - {x: -80, y: -20}
+        - {x: -67, y: 6}
+        - {x: -67, y: 18}
+      - - {x: -171, y: 24}
+        - {x: -176, y: 18}
+        - {x: -204, y: 8}
+        - {x: -205, y: 6}
+        - {x: -204, y: 2}
+        - {x: -202, y: 0}
+        - {x: -204, y: -4}
+        - {x: -205, y: 5}
+        - {x: -205, y: 10}
+        - {x: -204, y: 11}
+        - {x: -195, y: 14}
+        - {x: -188, y: 17}
+        - {x: -185, y: 23}
+        - {x: -189, y: 24}
+        - {x: -217, y: 24}
+        - {x: -219, y: 23}
+        - {x: -219, y: -20}
+        - {x: -131, y: -20}
+        - {x: -131, y: 5}
+        - {x: -141, y: 24}
+      - - {x: 60, y: -14}
+        - {x: 60, y: 1}
+        - {x: 59, y: 21}
+        - {x: 57, y: 23}
+        - {x: 19, y: 23}
+        - {x: 19, y: -20}
+        - {x: 31, y: -20}
+        - {x: 34, y: -17}
+        - {x: 49, y: -19}
+        - {x: 58, y: -18}
+    - name: BossHealthBarBackgroundPirate_3
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 203
+        width: 280
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -140, y: 33.5}
+        - {x: -140, y: -27.5}
+        - {x: -137, y: -30.5}
+        - {x: -132, y: -30.5}
+        - {x: -129, y: -27.5}
+        - {x: -127, y: -23.5}
+        - {x: -111, y: -32.5}
+        - {x: -91, y: -32.5}
+        - {x: -82, y: -29.5}
+        - {x: -19, y: -21.5}
+        - {x: -19, y: 33.5}
+      - - {x: -13, y: 28.5}
+        - {x: -16, y: 26.5}
+        - {x: -16, y: -18.5}
+        - {x: -14, y: -20.5}
+        - {x: -8, y: -20.5}
+        - {x: -2, y: -18.5}
+        - {x: -2, y: 26.5}
+        - {x: -5, y: 28.5}
+      - - {x: 106, y: 25.5}
+        - {x: 103, y: 21.5}
+        - {x: 96, y: 32.5}
+        - {x: 80, y: 32.5}
+        - {x: 75, y: 29.5}
+        - {x: 68, y: -1.5}
+        - {x: 68, y: -17.5}
+        - {x: 69, y: -19.5}
+        - {x: 130, y: -19.5}
+        - {x: 138, y: -3.5}
+        - {x: 138, y: 21.5}
+        - {x: 126, y: 25.5}
+      - - {x: 22, y: 9.5}
+        - {x: 30, y: 22.5}
+        - {x: 30, y: 26.5}
+        - {x: 28, y: 29.5}
+        - {x: 6, y: 29.5}
+        - {x: -2, y: 9.5}
+        - {x: -2, y: -17.5}
+        - {x: 51, y: -17.5}
+        - {x: 70, y: -8.5}
+        - {x: 70, y: 27.5}
+        - {x: 69, y: 28.5}
+        - {x: 47, y: 29.5}
+        - {x: 43, y: 29.5}
+        - {x: 25, y: 13.5}
+    - name: BossHealthBarBackgroundPirate_4
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 140
+        width: 160
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 27.5}
+        - {x: -70, y: 22.5}
+        - {x: -75, y: 2.5}
+        - {x: -75, y: -26.5}
+        - {x: -73, y: -27.5}
+        - {x: -42, y: -27.5}
+        - {x: -34, y: -20.5}
+        - {x: -34, y: 17.5}
+        - {x: -43, y: 27.5}
+      - - {x: 28, y: 27.5}
+        - {x: 17, y: 27.5}
+        - {x: 14, y: 25.5}
+        - {x: 3, y: -2.5}
+        - {x: 6, y: 22.5}
+        - {x: 3, y: 27.5}
+        - {x: -7, y: 27.5}
+        - {x: -33, y: 24.5}
+        - {x: -33, y: -26.5}
+        - {x: 35, y: -26.5}
+        - {x: 35, y: 12.5}
+        - {x: 34, y: 20.5}
+      - - {x: 71, y: 22.5}
+        - {x: 67, y: 26.5}
+        - {x: 45, y: 26.5}
+        - {x: 35, y: 23.5}
+        - {x: 35, y: -23.5}
+        - {x: 76, y: -23.5}
+        - {x: 77, y: -19.5}
+        - {x: 77, y: -13.5}
+        - {x: 72, y: -7.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

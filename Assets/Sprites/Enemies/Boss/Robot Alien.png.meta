@@ -1,0 +1,253 @@
+fileFormatVersion: 2
+guid: 661b39b67ec25c04d92e5aded0e09800
+timeCreated: 1459199995
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Robot Alien_0
+    21300002: Robot Alien_1
+    21300004: Robot Alien_2
+    21300006: Robot Alien_3
+    21300008: Robot Alien_4
+    21300010: Robot Alien_6
+    21300012: Robot Alien_7
+    21300014: Robot Alien_8
+    21300016: Robot Alien_9
+    21300018: Robot Alien_10
+    21300020: Robot Alien_11
+    21300022: Robot Alien_12
+    21300024: Robot Alien_13
+    21300026: Robot Alien_14
+    21300028: Robot Alien_15
+    21300030: Robot Alien_16
+    21300032: Robot Alien_5
+    21300034: Robot Alien_17
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Robot Alien_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 708
+        width: 85
+        height: 78
+      alignment: 9
+      pivot: {x: .677481592, y: .410265028}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_1
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 734
+        width: 29
+        height: 47
+      alignment: 9
+      pivot: {x: .541813791, y: .219029203}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_2
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 688
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_3
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 693
+        width: 56
+        height: 47
+      alignment: 9
+      pivot: {x: .806533277, y: .48647356}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_4
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 717
+        width: 86
+        height: 81
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_6
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 642
+        width: 88
+        height: 77
+      alignment: 9
+      pivot: {x: .745752513, y: .333565056}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_7
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 473
+        width: 193
+        height: 195
+      alignment: 9
+      pivot: {x: .569509804, y: .455132276}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_8
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 354
+        width: 250
+        height: 255
+      alignment: 9
+      pivot: {x: .849641621, y: .0975989252}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_9
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 561
+        width: 124
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_10
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 196
+        width: 112
+        height: 246
+      alignment: 9
+      pivot: {x: .862310052, y: .949500203}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_11
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 315
+        width: 53
+        height: 65
+      alignment: 9
+      pivot: {x: .480310977, y: .863889694}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_12
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 339
+        width: 60
+        height: 54
+      alignment: 9
+      pivot: {x: .192960605, y: .500000536}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_13
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 141
+        width: 131
+        height: 144
+      alignment: 9
+      pivot: {x: .917034328, y: .112542786}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_14
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 138
+        width: 55
+        height: 151
+      alignment: 9
+      pivot: {x: .774742544, y: .892589211}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_15
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 75
+        width: 36
+        height: 203
+      alignment: 9
+      pivot: {x: .564576864, y: .90654403}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_16
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 62
+        width: 78
+        height: 212
+      alignment: 9
+      pivot: {x: .678825974, y: .934668541}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_5
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 27
+        width: 86
+        height: 65
+      alignment: 9
+      pivot: {x: .532092452, y: .797222555}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Robot Alien_17
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 129
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

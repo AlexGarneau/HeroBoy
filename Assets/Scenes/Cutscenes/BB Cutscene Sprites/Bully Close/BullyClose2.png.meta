@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: dfe35b1a44574f9449c6e55814b2290e
+timeCreated: 1448648269
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BullyClose2_0
+    21300002: BullyClose2_1
+    21300004: BullyClose2_2
+    21300006: BullyClose2_3
+    21300008: BullyClose2_4
+    21300010: BullyClose2_6
+    21300012: BullyClose2_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BullyClose2_0
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 618
+        width: 137
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose2_1
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 622
+        width: 133
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose2_2
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 634
+        width: 139
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose2_3
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 502
+        width: 140
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose2_4
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 270
+        width: 113
+        height: 160
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose2_6
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 277
+        width: 108
+        height: 159
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyClose2_8
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 290
+        width: 111
+        height: 152
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: de04e200227faef45a22d78cdafd01f2
+timeCreated: 1462933883
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Tutorialbully_0
+    21300002: Tutorialbully_1
+    21300004: Tutorialbully_2
+    21300006: Tutorialbully_3
+    21300008: Tutorialbully_4
+    21300010: Tutorialbully_5
+    21300012: Tutorialbully_6
+    21300014: Tutorialbully_7
+    21300016: Tutorialbully_8
+    21300018: Tutorialbully_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Tutorialbully_0
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 111
+        width: 40
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Tutorialbully_1
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 112
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Tutorialbully_2
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 80
+        width: 43
+        height: 52
+      alignment: 9
+      pivot: {x: 0.734419, y: 0.05307682}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28.580017, y: 49.240005}
+        - {x: -31.580017, y: 40.240005}
+        - {x: -31.580017, y: 7.2400055}
+        - {x: -30.580017, y: 6.2400055}
+        - {x: -9.580017, y: -2.7599945}
+        - {x: 7.419983, y: -2.7599945}
+        - {x: 11.419983, y: 2.2400055}
+        - {x: 11.419983, y: 43.240005}
+        - {x: 8.419983, y: 49.240005}
+    - name: Tutorialbully_3
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 98
+        width: 42
+        height: 5
+      alignment: 9
+      pivot: {x: 0.9466667, y: 0.44400024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Tutorialbully_4
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 76
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Tutorialbully_5
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 7
+        width: 43
+        height: 84
+      alignment: 9
+      pivot: {x: 0.7474422, y: 0.8933333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7.8599854, y: 8.959999}
+        - {x: -29.140015, y: 8.959999}
+        - {x: -32.140015, y: -7.040001}
+        - {x: -32.140015, y: -75.04}
+        - {x: -21.140015, y: -75.04}
+        - {x: 7.8599854, y: -45.04}
+        - {x: 10.859985, y: -25.04}
+        - {x: 10.859985, y: 4.959999}
+    - name: Tutorialbully_6
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 16
+        width: 66
+        height: 74
+      alignment: 9
+      pivot: {x: 0.13939412, y: 0.8405404}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.200012, y: -24.19999}
+        - {x: 6.799988, y: -37.19999}
+        - {x: 46.799988, y: -62.19999}
+        - {x: 56.799988, y: -62.19999}
+        - {x: 56.799988, y: -30.19999}
+        - {x: 51.799988, y: -6.1999893}
+        - {x: 16.799988, y: 11.800011}
+        - {x: -9.200012, y: 11.800011}
+    - name: Tutorialbully_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 13
+        width: 30
+        height: 27
+      alignment: 9
+      pivot: {x: 0.9013335, y: 0.95629585}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Tutorialbully_8
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 7
+        width: 43
+        height: 65
+      alignment: 9
+      pivot: {x: 0.6172093, y: 0.06923061}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22.54, y: 60.50001}
+        - {x: -26.54, y: 56.50001}
+        - {x: -26.54, y: 3.5000114}
+        - {x: -22.54, y: -4.4999886}
+        - {x: 16.46, y: -4.4999886}
+        - {x: 16.46, y: 51.50001}
+        - {x: 9.459999, y: 60.50001}
+    - name: Tutorialbully_9
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 13
+        width: 40
+        height: 24
+      alignment: 9
+      pivot: {x: 0.66800004, y: 0.6516664}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

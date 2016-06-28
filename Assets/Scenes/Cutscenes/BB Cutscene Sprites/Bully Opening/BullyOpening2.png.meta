@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: c4a23dde33e13204ea4d64b4b7b31436
+timeCreated: 1448647982
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BullyOpening2_0
+    21300002: BullyOpening2_1
+    21300004: BullyOpening2_2
+    21300006: BullyOpening2_3
+    21300008: BullyOpening2_4
+    21300010: BullyOpening2_5
+    21300012: BullyOpening2_6
+    21300014: BullyOpening2_7
+    21300016: BullyOpening2_8
+    21300018: BullyOpening2_9
+    21300020: BullyOpening2_10
+    21300022: BullyOpening2_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BullyOpening2_0
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 603
+        width: 184
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_1
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 609
+        width: 183
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_2
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 610
+        width: 179
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_3
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 599
+        width: 165
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_4
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 602
+        width: 161
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_5
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 603
+        width: 164
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_6
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 57
+        width: 183
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_7
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 60
+        width: 184
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_8
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 55
+        width: 179
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_9
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 51
+        width: 183
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_10
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 55
+        width: 179
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: BullyOpening2_11
+      rect:
+        serializedVersion: 2
+        x: 1692
+        y: 60
+        width: 184
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

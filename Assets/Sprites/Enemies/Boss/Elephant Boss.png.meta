@@ -1,0 +1,236 @@
+fileFormatVersion: 2
+guid: 7ea65281f2cdc9842a9abb3ce55087a5
+timeCreated: 1458620221
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Elephant Boss_0
+    21300002: Elephant Boss_1
+    21300004: Elephant Boss_2
+    21300006: Elephant Boss_3
+    21300008: Elephant Boss_4
+    21300010: Elephant Boss_5
+    21300012: Elephant Boss_6
+    21300014: Elephant Boss_10
+    21300016: Elephant Boss_11
+    21300018: Elephant Boss_12
+    21300020: Elephant Boss_18
+    21300022: Elephant Boss_7
+    21300024: Elephant Boss_8
+    21300026: Elephant Boss_9
+    21300028: Elephant Boss_13
+    21300030: Elephant Boss_14
+    21300032: Elephant Boss_15
+    21300034: Elephant Boss_16
+    21300036: Elephant Boss_17
+    21300038: Elephant Boss_19
+    21300040: Elephant Boss_20
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Elephant Boss_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 844
+        width: 593
+        height: 471
+      alignment: 9
+      pivot: {x: .485198468, y: .308986276}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_1
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1104
+        width: 128
+        height: 252
+      alignment: 9
+      pivot: {x: .585716248, y: .830890954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_2
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 1112
+        width: 118
+        height: 218
+      alignment: 9
+      pivot: {x: .5, y: .832168996}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_3
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1113
+        width: 85
+        height: 213
+      alignment: 9
+      pivot: {x: .474184275, y: .850268424}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_4
+      rect:
+        serializedVersion: 2
+        x: 1341
+        y: 1106
+        width: 75
+        height: 237
+      alignment: 9
+      pivot: {x: .587773442, y: .86109221}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_5
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 1045
+        width: 137
+        height: 307
+      alignment: 9
+      pivot: {x: .788305998, y: .885973215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_6
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 525
+        width: 132
+        height: 141
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_10
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 337
+        width: 191
+        height: 296
+      alignment: 9
+      pivot: {x: .664427459, y: .840637028}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_11
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 455
+        width: 404
+        height: 572
+      alignment: 9
+      pivot: {x: .67923969, y: .346550584}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_12
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 26
+        width: 209
+        height: 653
+      alignment: 9
+      pivot: {x: .489501357, y: .933489084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_18
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 342
+        width: 101
+        height: 114
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_8
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 480
+        width: 226
+        height: 106
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_13
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 361
+        width: 241
+        height: 94
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_15
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 233
+        width: 222
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_16
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 120
+        width: 231
+        height: 99
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Elephant Boss_20
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 23
+        width: 223
+        height: 97
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,799 @@
+fileFormatVersion: 2
+guid: 8172283dcb3985d48b9f3551c381368a
+timeCreated: 1464639076
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: RZombieSpriteSheet_0
+    21300002: RZombieSpriteSheet_1
+    21300004: RZombieSpriteSheet_2
+    21300006: RZombieSpriteSheet_3
+    21300008: RZombieSpriteSheet_4
+    21300010: RZombieSpriteSheet_5
+    21300012: RZombieSpriteSheet_6
+    21300014: RZIdle1
+    21300016: RZIdle2
+    21300018: RZIdle3
+    21300020: RZombieSpriteSheet_10
+    21300022: RZombieSpriteSheet_11
+    21300024: RZombieSpriteSheet_12
+    21300026: RZombieSpriteSheet_13
+    21300028: RZombieSpriteSheet_14
+    21300030: RZombieSpriteSheet_15
+    21300032: RZW1
+    21300034: RZW2
+    21300036: RZW3
+    21300038: RZW4
+    21300040: RZW5
+    21300042: RZW6
+    21300044: RZA2
+    21300046: RZA3
+    21300048: RZA4
+    21300050: RZA5
+    21300052: RZA6
+    21300054: RZA1
+    21300056: RZA7
+    21300058: RZA8
+    21300060: RZA9
+    21300062: RZD1
+    21300064: RZD2
+    21300066: RZD3
+    21300068: RZD4
+    21300070: RZD5
+    21300072: RZD6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: RZombieSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 2480
+        width: 285
+        height: 449
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11.829407, y: 246.84656}
+        - {x: -15.170593, y: 246.84656}
+        - {x: -18.170593, y: 243.84656}
+        - {x: -18.170593, y: 237.84656}
+        - {x: -12.170593, y: 233.84656}
+        - {x: 10.829407, y: 216.84656}
+        - {x: 13.829407, y: 215.84656}
+        - {x: 20.829407, y: 215.84656}
+        - {x: 22.829407, y: 222.84656}
+        - {x: 22.829407, y: 231.84656}
+        - {x: 15.829407, y: 243.84656}
+    - name: RZombieSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 2467
+        width: 295
+        height: 445
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6.9252777, y: 244.6195}
+        - {x: -26.074722, y: 244.6195}
+        - {x: -26.074722, y: 232.6195}
+        - {x: -25.074722, y: 227.6195}
+        - {x: 3.9252777, y: 211.6195}
+        - {x: 11.925278, y: 211.6195}
+        - {x: 13.925278, y: 216.6195}
+        - {x: 13.925278, y: 227.6195}
+        - {x: 11.925278, y: 236.6195}
+    - name: RZombieSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 2464
+        width: 326
+        height: 452
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.4215393, y: 248.89355}
+        - {x: -30.57846, y: 248.89355}
+        - {x: -30.57846, y: 235.89355}
+        - {x: -29.57846, y: 233.89355}
+        - {x: 1.4215393, y: 216.89355}
+        - {x: 9.421539, y: 216.89355}
+        - {x: 11.421539, y: 228.89355}
+        - {x: 11.421539, y: 231.89355}
+        - {x: 7.4215393, y: 241.89355}
+    - name: RZombieSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 2471
+        width: 348
+        height: 441
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.4162, y: 242.71631}
+        - {x: -36.4162, y: 232.71631}
+        - {x: -6.4161987, y: 210.71631}
+        - {x: 2.5838013, y: 210.71631}
+        - {x: 4.5838013, y: 215.71631}
+        - {x: 4.5838013, y: 233.71631}
+        - {x: -1.4161987, y: 242.71631}
+    - name: RZombieSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 2469
+        width: 304
+        height: 441
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25.511536, y: 242.61938}
+        - {x: -25.511536, y: 228.61938}
+        - {x: -0.51153564, y: 210.61938}
+        - {x: 12.488464, y: 210.61938}
+        - {x: 12.488464, y: 237.61938}
+        - {x: 7.4884644, y: 242.61938}
+    - name: RZombieSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 1926
+        y: 2467
+        width: 296
+        height: 445
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.140137, y: 244.6195}
+        - {x: -29.140137, y: 236.6195}
+        - {x: -29.140137, y: 223.6195}
+        - {x: 5.8598633, y: 211.6195}
+        - {x: 12.859863, y: 211.6195}
+        - {x: 15.859863, y: 213.6195}
+        - {x: 15.859863, y: 244.6195}
+    - name: RZombieSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 2287
+        y: 2469
+        width: 297
+        height: 440
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.641113, y: 241.84521}
+        - {x: -24.641113, y: 235.84521}
+        - {x: -21.641113, y: 231.84521}
+        - {x: 7.3588867, y: 213.84521}
+        - {x: 13.358887, y: 213.84521}
+        - {x: 16.358887, y: 214.84521}
+        - {x: 16.358887, y: 225.84521}
+        - {x: 13.358887, y: 238.84521}
+        - {x: 12.358887, y: 241.84521}
+    - name: RZIdle1
+      rect:
+        serializedVersion: 2
+        x: 2747
+        y: 2257
+        width: 211
+        height: 452
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.843384, y: 249.35962}
+        - {x: -34.843384, y: 240.35962}
+        - {x: -34.843384, y: 230.35962}
+        - {x: -33.843384, y: 228.35962}
+        - {x: -5.843384, y: 217.35962}
+        - {x: 8.156616, y: 217.35962}
+        - {x: 8.156616, y: 235.35962}
+        - {x: 2.1566162, y: 249.35962}
+    - name: RZIdle2
+      rect:
+        serializedVersion: 2
+        x: 3091
+        y: 2245
+        width: 217
+        height: 463
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -1.668457, y: 254.79456}
+        - {x: -27.668457, y: 254.79456}
+        - {x: -35.668457, y: 244.79456}
+        - {x: -35.668457, y: 238.79456}
+        - {x: -34.668457, y: 232.79456}
+        - {x: -3.668457, y: 218.79456}
+        - {x: 4.331543, y: 218.79456}
+        - {x: 6.331543, y: 219.79456}
+        - {x: 6.331543, y: 242.79456}
+    - name: RZIdle3
+      rect:
+        serializedVersion: 2
+        x: 3438
+        y: 2249
+        width: 215
+        height: 457
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.848145, y: 223.84302}
+        - {x: 7.1518555, y: 223.84302}
+        - {x: 7.1518555, y: 245.84302}
+        - {x: 5.1518555, y: 250.84302}
+        - {x: 0.15185547, y: 251.84302}
+        - {x: -22.848145, y: 251.84302}
+        - {x: -31.848145, y: 240.84302}
+    - name: RZombieSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1933
+        width: 312
+        height: 442
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.612213, y: 242.91187}
+        - {x: -27.612213, y: 238.91187}
+        - {x: -27.612213, y: 220.91187}
+        - {x: 0.38778687, y: 212.91187}
+        - {x: 13.387787, y: 212.91187}
+        - {x: 13.387787, y: 235.91187}
+        - {x: 8.387787, y: 242.91187}
+    - name: RZombieSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 1937
+        width: 317
+        height: 441
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32.888855, y: 242.83142}
+        - {x: -37.888855, y: 234.83142}
+        - {x: -37.888855, y: 225.83142}
+        - {x: -29.888855, y: 223.83142}
+        - {x: -4.888855, y: 211.83142}
+        - {x: 9.111145, y: 211.83142}
+        - {x: 10.111145, y: 214.83142}
+        - {x: 10.111145, y: 231.83142}
+        - {x: 1.111145, y: 242.83142}
+    - name: RZombieSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1944
+        width: 326
+        height: 441
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.262451, y: 242.67078}
+        - {x: -28.262451, y: 241.67078}
+        - {x: -34.26245, y: 233.67078}
+        - {x: -34.26245, y: 227.67078}
+        - {x: -33.26245, y: 223.67078}
+        - {x: -3.2624512, y: 212.67078}
+        - {x: 8.737549, y: 212.67078}
+        - {x: 8.737549, y: 236.67078}
+        - {x: 0.7375488, y: 242.67078}
+    - name: RZombieSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 1939
+        width: 337
+        height: 439
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.230347, y: 241.88}
+        - {x: -39.230347, y: 235.88}
+        - {x: -39.230347, y: 225.88}
+        - {x: -17.230347, y: 216.88}
+        - {x: 0.7696533, y: 216.88}
+        - {x: 0.7696533, y: 228.88}
+        - {x: -0.23034668, y: 234.88}
+        - {x: -5.2303467, y: 241.88}
+    - name: RZombieSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 1937
+        width: 285
+        height: 438
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.246643, y: 241.00879}
+        - {x: -31.246643, y: 225.00879}
+        - {x: -30.246643, y: 220.00879}
+        - {x: -1.2466431, y: 214.00879}
+        - {x: 10.753357, y: 214.00879}
+        - {x: 11.753357, y: 216.00879}
+        - {x: 11.753357, y: 233.00879}
+        - {x: 7.753357, y: 241.00879}
+    - name: RZombieSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 1935
+        width: 281
+        height: 436
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14.120239, y: 239.8634}
+        - {x: -23.12024, y: 228.8634}
+        - {x: -23.12024, y: 220.8634}
+        - {x: -13.120239, y: 215.8634}
+        - {x: 5.8797607, y: 211.8634}
+        - {x: 18.87976, y: 211.8634}
+        - {x: 18.87976, y: 229.8634}
+        - {x: 11.879761, y: 239.8634}
+    - name: RZW1
+      rect:
+        serializedVersion: 2
+        x: 2161
+        y: 1676
+        width: 137
+        height: 452
+      alignment: 9
+      pivot: {x: 0.1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18.307617, y: 248.69653}
+        - {x: 15.307617, y: 247.69653}
+        - {x: 15.307617, y: 232.69653}
+        - {x: 40.307617, y: 210.69653}
+        - {x: 63.307617, y: 210.69653}
+        - {x: 63.307617, y: 234.69653}
+        - {x: 55.307617, y: 248.69653}
+    - name: RZW2
+      rect:
+        serializedVersion: 2
+        x: 2391
+        y: 1680
+        width: 217
+        height: 447
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 98.909424, y: 243.01929}
+        - {x: 88.909424, y: 241.01929}
+        - {x: 80.909424, y: 233.01929}
+        - {x: 80.909424, y: 208.01929}
+        - {x: 86.909424, y: 203.01929}
+        - {x: 115.909424, y: 203.01929}
+        - {x: 119.909424, y: 209.01929}
+        - {x: 119.909424, y: 235.01929}
+        - {x: 110.909424, y: 243.01929}
+    - name: RZW3
+      rect:
+        serializedVersion: 2
+        x: 2707
+        y: 1671
+        width: 213
+        height: 453
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 81.13013, y: 233.2284}
+        - {x: 78.13013, y: 228.2284}
+        - {x: 78.13013, y: 201.2284}
+        - {x: 110.13013, y: 191.2284}
+        - {x: 113.13013, y: 191.2284}
+        - {x: 118.13013, y: 192.2284}
+        - {x: 118.13013, y: 232.2284}
+        - {x: 113.13013, y: 233.2284}
+    - name: RZW4
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 1682
+        width: 192
+        height: 442
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 82.07385, y: 227.245}
+        - {x: 55.073853, y: 227.245}
+        - {x: 52.073853, y: 219.245}
+        - {x: 52.073853, y: 205.245}
+        - {x: 62.073853, y: 197.245}
+        - {x: 77.07385, y: 195.245}
+        - {x: 93.07385, y: 195.245}
+        - {x: 94.07385, y: 198.245}
+        - {x: 94.07385, y: 206.245}
+        - {x: 87.07385, y: 220.245}
+    - name: RZW5
+      rect:
+        serializedVersion: 2
+        x: 3288
+        y: 1669
+        width: 161
+        height: 481
+      alignment: 9
+      pivot: {x: 0.1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7.2023926, y: 264.81006}
+        - {x: -2.7976074, y: 253.81006}
+        - {x: -2.7976074, y: 244.81006}
+        - {x: 38.202393, y: 218.81006}
+        - {x: 45.202393, y: 218.81006}
+        - {x: 48.202393, y: 219.81006}
+        - {x: 48.202393, y: 242.81006}
+        - {x: 47.202393, y: 252.81006}
+        - {x: 37.202393, y: 264.81006}
+    - name: RZW6
+      rect:
+        serializedVersion: 2
+        x: 3540
+        y: 1685
+        width: 155
+        height: 465
+      alignment: 9
+      pivot: {x: 0.25, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5.1505127, y: 255.69788}
+        - {x: -10.150513, y: 248.69788}
+        - {x: -10.150513, y: 230.69788}
+        - {x: 26.849487, y: 213.69788}
+        - {x: 34.849487, y: 213.69788}
+        - {x: 35.849487, y: 214.69788}
+        - {x: 35.849487, y: 252.69788}
+        - {x: 26.849487, y: 255.69788}
+    - name: RZA2
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 901
+        width: 205
+        height: 534
+      alignment: 9
+      pivot: {x: 0.385, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 32.658966, y: 266.617}
+        - {x: 32.658966, y: 235.617}
+        - {x: 40.658966, y: 216.617}
+        - {x: 69.658966, y: 216.617}
+        - {x: 69.658966, y: 263.617}
+        - {x: 67.658966, y: 266.617}
+    - name: RZA3
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 901
+        width: 324
+        height: 535
+      alignment: 9
+      pivot: {x: 0.114, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 81.619995, y: 255.89124}
+        - {x: 81.619995, y: 248.89124}
+        - {x: 97.619995, y: 224.89124}
+        - {x: 107.619995, y: 224.89124}
+        - {x: 112.619995, y: 228.89124}
+        - {x: 112.619995, y: 248.89124}
+        - {x: 101.619995, y: 255.89124}
+    - name: RZA4
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 900
+        width: 323
+        height: 530
+      alignment: 9
+      pivot: {x: 0.134, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 81.41528, y: 258.97162}
+        - {x: 77.41528, y: 256.97162}
+        - {x: 77.41528, y: 244.97162}
+        - {x: 92.41528, y: 229.97162}
+        - {x: 105.41528, y: 229.97162}
+        - {x: 105.41528, y: 252.97162}
+        - {x: 97.41528, y: 258.97162}
+    - name: RZA5
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 903
+        width: 356
+        height: 543
+      alignment: 9
+      pivot: {x: 0.084, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 86.73773, y: 254.68213}
+        - {x: 86.73773, y: 238.68213}
+        - {x: 90.73773, y: 224.68213}
+        - {x: 104.73773, y: 224.68213}
+        - {x: 109.73773, y: 228.68213}
+        - {x: 109.73773, y: 246.68213}
+        - {x: 101.73773, y: 254.68213}
+    - name: RZA6
+      rect:
+        serializedVersion: 2
+        x: 1873
+        y: 898
+        width: 190
+        height: 547
+      alignment: 9
+      pivot: {x: 0.103, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7.1621094, y: 254.03668}
+        - {x: 0.16210938, y: 253.03668}
+        - {x: -5.8378906, y: 243.03668}
+        - {x: -5.8378906, y: 239.03668}
+        - {x: -4.8378906, y: 237.03668}
+        - {x: 6.1621094, y: 237.03668}
+        - {x: 14.162109, y: 238.03668}
+        - {x: 21.16211, y: 245.03668}
+        - {x: 21.16211, y: 251.03668}
+        - {x: 19.16211, y: 254.03668}
+    - name: RZA1
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 907
+        width: 195
+        height: 522
+      alignment: 9
+      pivot: {x: 0.314, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3.5118027, y: 253.11707}
+        - {x: -8.511803, y: 243.11707}
+        - {x: -8.511803, y: 227.11707}
+        - {x: 19.488197, y: 214.11707}
+        - {x: 37.488197, y: 214.11707}
+        - {x: 37.488197, y: 228.11707}
+        - {x: 31.488197, y: 248.11707}
+        - {x: 22.488197, y: 253.11707}
+    - name: RZA7
+      rect:
+        serializedVersion: 2
+        x: 2280
+        y: 907
+        width: 385
+        height: 533
+      alignment: 9
+      pivot: {x: 0.625, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.875732, y: 193.13367}
+        - {x: -38.875732, y: 198.13367}
+        - {x: -72.87573, y: 198.13367}
+        - {x: -77.87573, y: 188.13367}
+        - {x: -77.87573, y: 174.13367}
+        - {x: -74.87573, y: 171.13367}
+        - {x: -67.87573, y: 171.13367}
+        - {x: -38.875732, y: 186.13367}
+        - {x: -33.875732, y: 190.13367}
+    - name: RZA8
+      rect:
+        serializedVersion: 2
+        x: 2743
+        y: 905
+        width: 272
+        height: 530
+      alignment: 9
+      pivot: {x: 0.522, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77.819336, y: 191.71399}
+        - {x: -77.819336, y: 156.71399}
+        - {x: -67.819336, y: 156.71399}
+        - {x: -28.819336, y: 177.71399}
+        - {x: -28.819336, y: 184.71399}
+        - {x: -39.819336, y: 191.71399}
+    - name: RZA9
+      rect:
+        serializedVersion: 2
+        x: 3068
+        y: 894
+        width: 246
+        height: 535
+      alignment: 9
+      pivot: {x: 0.47, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.235596, y: 201.05194}
+        - {x: -49.235596, y: 201.05194}
+        - {x: -60.235596, y: 190.05194}
+        - {x: -60.235596, y: 175.05194}
+        - {x: -58.235596, y: 169.05194}
+        - {x: -47.235596, y: 169.05194}
+        - {x: -16.235596, y: 191.05194}
+        - {x: -16.235596, y: 195.05194}
+        - {x: -17.235596, y: 199.05194}
+    - name: RZD1
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 128
+        width: 163
+        height: 462
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.2431717, y: 253.90198}
+        - {x: 0.24317169, y: 245.90198}
+        - {x: 0.24317169, y: 217.90198}
+        - {x: 16.243172, y: 213.90198}
+        - {x: 39.24317, y: 213.90198}
+        - {x: 39.24317, y: 250.90198}
+        - {x: 38.24317, y: 252.90198}
+        - {x: 36.24317, y: 253.90198}
+    - name: RZD2
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 146
+        width: 302
+        height: 439
+      alignment: 9
+      pivot: {x: 0.1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 130.4053, y: 234.96706}
+        - {x: 126.405304, y: 233.96706}
+        - {x: 121.405304, y: 229.96706}
+        - {x: 123.405304, y: 224.96706}
+        - {x: 134.4053, y: 187.96706}
+        - {x: 141.4053, y: 183.96706}
+        - {x: 150.4053, y: 183.96706}
+        - {x: 150.4053, y: 230.96706}
+        - {x: 143.4053, y: 234.96706}
+    - name: RZD3
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 154
+        width: 389
+        height: 434
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 185.9721, y: 138.98366}
+        - {x: 185.9721, y: 126.98366}
+        - {x: 189.9721, y: 113.98366}
+        - {x: 201.9721, y: 87.98366}
+        - {x: 213.9721, y: 87.98366}
+        - {x: 213.9721, y: 137.98366}
+        - {x: 211.9721, y: 138.98366}
+    - name: RZD4
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 156
+        width: 443
+        height: 426
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 229.36688, y: 42.88672}
+        - {x: 223.36688, y: 9.886719}
+        - {x: 223.36688, y: -0.11328125}
+        - {x: 235.36688, y: -0.11328125}
+        - {x: 244.36688, y: 4.8867188}
+        - {x: 244.36688, y: 42.88672}
+    - name: RZD5
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 111
+        width: 465
+        height: 468
+      alignment: 9
+      pivot: {x: 0, y: 0.12}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 237.77771, y: 39.421074}
+        - {x: 234.77771, y: 38.421074}
+        - {x: 225.77771, y: 19.421074}
+        - {x: 225.77771, y: 5.421074}
+        - {x: 232.77771, y: 4.421074}
+        - {x: 247.77771, y: 4.421074}
+        - {x: 255.77771, y: 10.421074}
+        - {x: 255.77771, y: 32.421074}
+        - {x: 246.77771, y: 39.421074}
+    - name: RZD6
+      rect:
+        serializedVersion: 2
+        x: 2544
+        y: 121
+        width: 478
+        height: 464
+      alignment: 9
+      pivot: {x: 0, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 240.90173, y: 29.661972}
+        - {x: 229.90173, y: 14.661972}
+        - {x: 229.90173, y: 5.661972}
+        - {x: 245.90173, y: 5.661972}
+        - {x: 253.90173, y: 6.661972}
+        - {x: 260.90173, y: 11.661972}
+        - {x: 260.90173, y: 24.661972}
+        - {x: 258.90173, y: 29.661972}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

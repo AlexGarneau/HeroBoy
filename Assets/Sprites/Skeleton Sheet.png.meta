@@ -1,0 +1,331 @@
+fileFormatVersion: 2
+guid: 6659cb7f95571d047a314838a9b86d7b
+timeCreated: 1457006020
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Skeleton Sheet_0
+    21300002: Skeleton Sheet_2
+    21300004: Skeleton Sheet_3
+    21300006: Skeleton Sheet_4
+    21300008: Skeleton Sheet_5
+    21300010: Skeleton Sheet_6
+    21300012: Skeleton Sheet_7
+    21300014: Skeleton Sheet_8
+    21300016: Skeleton Sheet_9
+    21300018: Skeleton Sheet_10
+    21300020: Skeleton Sheet_11
+    21300022: Skeleton Sheet_12
+    21300024: Skeleton Sheet_13
+    21300026: Skeleton Sheet_14
+    21300028: Skeleton Sheet_15
+    21300030: Skeleton Sheet_16
+    21300032: Skeleton Sheet_17
+    21300034: Skeleton Sheet_18
+    21300036: Skeleton Sheet_19
+    21300038: Skeleton Sheet_20
+    21300040: Skeleton Sheet_21
+    21300042: Skeleton Sheet_22
+    21300044: Skeleton Sheet_23
+    21300046: Skeleton Sheet_25
+    21300048: Skeleton Sheet_26
+    21300050: Skeleton Sheet_28
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Skeleton Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 638
+        width: 142
+        height: 203
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 808
+        width: 67
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 687
+        width: 134
+        height: 162
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 681
+        width: 194
+        height: 156
+      alignment: 9
+      pivot: {x: .579999983, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 687
+        width: 163
+        height: 165
+      alignment: 9
+      pivot: {x: .419999987, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 619
+        width: 117
+        height: 165
+      alignment: 9
+      pivot: {x: .653912425, y: .0556525961}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 482
+        width: 151
+        height: 137
+      alignment: 9
+      pivot: {x: .583564878, y: .704676747}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 454
+        width: 146
+        height: 147
+      alignment: 9
+      pivot: {x: .587668836, y: .617471933}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 482
+        width: 59
+        height: 89
+      alignment: 9
+      pivot: {x: .7752437, y: .864929199}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 480
+        width: 126
+        height: 87
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 365
+        width: 89
+        height: 211
+      alignment: 9
+      pivot: {x: .736297965, y: .0813834369}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 263
+        width: 146
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 453
+        width: 43
+        height: 41
+      alignment: 9
+      pivot: {x: .673884928, y: .694525003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 368
+        width: 68
+        height: 57
+      alignment: 9
+      pivot: {x: .818419516, y: .822887778}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 366
+        width: 117
+        height: 79
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 196
+        width: 41
+        height: 143
+      alignment: 9
+      pivot: {x: .690747321, y: .863447309}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 236
+        width: 141
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 242
+        width: 112
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 249
+        width: 112
+        height: 72
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 79
+        width: 55
+        height: 115
+      alignment: 9
+      pivot: {x: .25922823, y: .838549137}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 17
+        width: 282
+        height: 200
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 30
+        width: 175
+        height: 145
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 54
+        width: 188
+        height: 166
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 9
+        width: 108
+        height: 59
+      alignment: 9
+      pivot: {x: .799853623, y: .47967115}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Skeleton Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 51
+        width: 113
+        height: 99
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

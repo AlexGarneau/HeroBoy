@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: 506e1ba80e00bc24c89a43fc8e371062
+timeCreated: 1448862427
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PC3_0
+    21300002: PC3_1
+    21300004: PC3_2
+    21300006: PC3_3
+    21300008: PC3_4
+    21300010: PC3_5
+    21300012: PC3_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PC3_0
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 1779
+        width: 425
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PC3_1
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1772
+        width: 430
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PC3_2
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 1763
+        width: 432
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PC3_3
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 1133
+        width: 428
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PC3_4
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 778
+        width: 288
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PC3_5
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 780
+        width: 300
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PC3_6
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 784
+        width: 295
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

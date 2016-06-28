@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: 15a54e6c1f3959142990d56948127b71
+timeCreated: 1459301495
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Spider Boss_0
+    21300002: Spider Boss_1
+    21300004: Spider Boss_5
+    21300006: Spider Boss_6
+    21300008: Spider Boss_7
+    21300010: Spider Boss_8
+    21300012: Spider Boss_11
+    21300014: Spider Boss_13
+    21300016: Spider Boss_14
+    21300018: Spider Boss_15
+    21300020: Spider Boss_16
+    21300022: Spider Boss_17
+    21300024: Spider Boss_18
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Spider Boss_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 355
+        width: 295
+        height: 302
+      alignment: 9
+      pivot: {x: .901706398, y: .157911584}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_1
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 561
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_5
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 550
+        width: 132
+        height: 85
+      alignment: 9
+      pivot: {x: .584403753, y: .345093489}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_6
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 240
+        width: 141
+        height: 82
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_7
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 256
+        width: 396
+        height: 225
+      alignment: 9
+      pivot: {x: .479538262, y: .126370981}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_8
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 120
+        width: 141
+        height: 84
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_11
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 166
+        width: 71
+        height: 69
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_13
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 148
+        width: 48
+        height: 51
+      alignment: 9
+      pivot: {x: .753211975, y: .817756832}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_14
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 12
+        width: 139
+        height: 84
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_15
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 21
+        width: 51
+        height: 126
+      alignment: 9
+      pivot: {x: .797895253, y: .909962833}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_16
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 17
+        width: 53
+        height: 146
+      alignment: 9
+      pivot: {x: .44266668, y: .888490319}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_17
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 40
+        width: 63
+        height: 102
+      alignment: 9
+      pivot: {x: .252947122, y: .897589743}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spider Boss_18
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 78
+        width: 88
+        height: 37
+      alignment: 9
+      pivot: {x: .143200263, y: .718994737}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

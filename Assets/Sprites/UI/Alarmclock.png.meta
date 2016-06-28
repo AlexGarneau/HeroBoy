@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 4009d6fa210ae7a4da14dc5e93821402
+timeCreated: 1462547473
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Alarmclock_0
+    21300002: Alarmclock_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Alarmclock_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 15
+        width: 391
+        height: 534
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 163.5, y: -170}
+        - {x: 147.5, y: -144}
+        - {x: 162.5, y: -128}
+        - {x: 174.5, y: -110}
+        - {x: 180.5, y: -94}
+        - {x: 190.5, y: -77}
+        - {x: 195.5, y: -55}
+        - {x: 195.5, y: 14}
+        - {x: 189.5, y: 41}
+        - {x: 174.5, y: 71}
+        - {x: 167.5, y: 82}
+        - {x: 157.5, y: 94}
+        - {x: 148.5, y: 105}
+        - {x: 145.5, y: 107}
+        - {x: 151.5, y: 105}
+        - {x: 155.5, y: 104}
+        - {x: 161.5, y: 108}
+        - {x: 179.5, y: 142}
+        - {x: 181.5, y: 155}
+        - {x: 181.5, y: 177}
+        - {x: 171.5, y: 218}
+        - {x: 141.5, y: 220}
+        - {x: 120.5, y: 214}
+        - {x: 104.5, y: 240}
+        - {x: 80.5, y: 258}
+        - {x: 54.5, y: 267}
+        - {x: -54.5, y: 267}
+        - {x: -98.5, y: 259}
+        - {x: -107.5, y: 253}
+        - {x: -118.5, y: 236}
+        - {x: -132.5, y: 208}
+        - {x: -158.5, y: 211}
+        - {x: -179.5, y: 213}
+        - {x: -189.5, y: 204}
+        - {x: -186.5, y: 138}
+        - {x: -174.5, y: 113}
+        - {x: -161.5, y: 93}
+        - {x: -182.5, y: 56}
+        - {x: -189.5, y: 38}
+        - {x: -195.5, y: 12}
+        - {x: -195.5, y: -50}
+        - {x: -191.5, y: -73}
+        - {x: -183.5, y: -94}
+        - {x: -165.5, y: -125}
+        - {x: -140.5, y: -156}
+        - {x: -159.5, y: -176}
+        - {x: -164.5, y: -190}
+        - {x: -174.5, y: -215}
+        - {x: -176.5, y: -237}
+        - {x: -165.5, y: -250}
+        - {x: -142.5, y: -267}
+        - {x: -137.5, y: -267}
+        - {x: -114.5, y: -263}
+        - {x: -94.5, y: -234}
+        - {x: -75.5, y: -195}
+        - {x: -38.5, y: -203}
+        - {x: -28.5, y: -204}
+        - {x: 19.5, y: -204}
+        - {x: 48.5, y: -200}
+        - {x: 75.5, y: -191}
+        - {x: 94.5, y: -245}
+        - {x: 113.5, y: -267}
+        - {x: 141.5, y: -267}
+        - {x: 162.5, y: -257}
+        - {x: 188.5, y: -240}
+        - {x: 189.5, y: -220}
+    - name: Alarmclock_1
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 233
+        width: 43
+        height: 156
+      alignment: 9
+      pivot: {x: 0.4700133, y: 0.12391399}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2.7894287, y: 136.66942}
+        - {x: -20.210571, y: 72.66942}
+        - {x: -20.210571, y: -19.330582}
+        - {x: 18.789429, y: -19.330582}
+        - {x: 22.789429, y: -11.330582}
+        - {x: 22.789429, y: 84.66942}
+        - {x: 20.789429, y: 136.66942}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

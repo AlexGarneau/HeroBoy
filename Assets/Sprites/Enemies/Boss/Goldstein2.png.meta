@@ -1,0 +1,275 @@
+fileFormatVersion: 2
+guid: f174d51faf6e33e44b4e992b3442e2d8
+timeCreated: 1459123125
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Goldstein2_0
+    21300002: Goldstein2_1
+    21300004: Goldstein2_2
+    21300006: Goldstein2_3
+    21300008: Goldstein2_4
+    21300010: Goldstein2_5
+    21300012: Goldstein2_6
+    21300014: Goldstein2_8
+    21300016: Goldstein2_11
+    21300018: Goldstein2_12
+    21300020: Goldstein2_13
+    21300022: Goldstein2_14
+    21300024: Goldstein2_15
+    21300026: Goldstein2_17
+    21300028: Goldstein2_18
+    21300030: Goldstein2_19
+    21300032: Goldstein2_20
+    21300034: Goldstein2_21
+    21300036: Goldstein2_22
+    21300038: Goldstein2_23
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Goldstein2_0
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 847
+        width: 145
+        height: 92
+      alignment: 9
+      pivot: {x: .82357049, y: .499999344}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_1
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 376
+        width: 360
+        height: 625
+      alignment: 9
+      pivot: {x: .552622139, y: .0691606477}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_2
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 871
+        width: 153
+        height: 88
+      alignment: 9
+      pivot: {x: .18277356, y: .536768854}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_3
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 761
+        width: 129
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_4
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 673
+        width: 126
+        height: 150
+      alignment: 9
+      pivot: {x: .808162272, y: .84514159}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_5
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 543
+        width: 178
+        height: 173
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_6
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 689
+        width: 77
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_8
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 568
+        width: 58
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_11
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 522
+        width: 91
+        height: 115
+      alignment: 9
+      pivot: {x: .53555733, y: .274907112}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_12
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 267
+        width: 226
+        height: 291
+      alignment: 9
+      pivot: {x: .363985866, y: .911412418}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_13
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 43
+        width: 230
+        height: 320
+      alignment: 9
+      pivot: {x: .541182518, y: .922855973}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_14
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 201
+        width: 200
+        height: 274
+      alignment: 9
+      pivot: {x: .0955368057, y: .87198776}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_15
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 317
+        width: 150
+        height: 146
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_17
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 73
+        width: 124
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_18
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 19
+        width: 257
+        height: 237
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_19
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 41
+        width: 92
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_20
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 116
+        width: 53
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_21
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 117
+        width: 53
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_22
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 116
+        width: 53
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Goldstein2_23
+      rect:
+        serializedVersion: 2
+        x: 1310
+        y: 0
+        width: 53
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

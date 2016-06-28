@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: ae7f9857dd2e9e84d8f307813b0cb4d3
+timeCreated: 1453526572
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: MaxSpritesheetProjectile_0
+    21300002: MaxSpritesheetProjectile_1
+    21300004: MaxSpritesheetProjectile_2
+    21300006: MaxSpritesheetProjectile_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: MaxSpritesheetProjectile_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 35
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19, y: 19}
+        - {x: -19, y: -19}
+        - {x: 11, y: -19}
+        - {x: 19, y: -16}
+        - {x: 19, y: 16}
+        - {x: 12, y: 19}
+    - name: MaxSpritesheetProjectile_1
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 14
+        width: 154
+        height: 62
+      alignment: 9
+      pivot: {x: 0.77451444, y: 0.5255695}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -113.27522, y: 29.414692}
+        - {x: -117.27522, y: 26.414692}
+        - {x: -119.27522, y: 19.414692}
+        - {x: -119.27522, y: 1.4146919}
+        - {x: -88.27522, y: -32.585308}
+        - {x: 34.724777, y: -32.585308}
+        - {x: 34.724777, y: 29.414692}
+    - name: MaxSpritesheetProjectile_2
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 13
+        width: 121
+        height: 67
+      alignment: 9
+      pivot: {x: 0.7389383, y: 0.49421385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -88.41153, y: 33.887672}
+        - {x: -89.41153, y: 31.887672}
+        - {x: -89.41153, y: -1.1123276}
+        - {x: -52.41153, y: -33.112328}
+        - {x: 31.58847, y: -33.112328}
+        - {x: 31.58847, y: 33.887672}
+    - name: MaxSpritesheetProjectile_3
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 12
+        width: 144
+        height: 76
+      alignment: 9
+      pivot: {x: 0.7788989, y: 0.4120807}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -112.16144, y: 44.681866}
+        - {x: -112.16144, y: -14.318134}
+        - {x: -105.16144, y: -31.318134}
+        - {x: 19.838562, y: -31.318134}
+        - {x: 31.838562, y: -26.318134}
+        - {x: 31.838562, y: 22.681866}
+        - {x: 27.838562, y: 30.681866}
+        - {x: -11.161438, y: 44.681866}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

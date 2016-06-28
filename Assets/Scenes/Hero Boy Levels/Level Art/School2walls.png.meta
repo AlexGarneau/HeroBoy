@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: 621382ebc3f89d04391b9a9d0ad40bb3
+timeCreated: 1460822190
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: School2walls_0
+    21300002: School2walls_1
+    21300004: School2walls_2
+    21300006: School2walls_3
+    21300008: School2walls_4
+    21300010: School2walls_5
+    21300012: School2walls_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: School2walls_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 800
+        width: 742
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: School2walls_1
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 789
+        width: 823
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: School2walls_2
+      rect:
+        serializedVersion: 2
+        x: 2766
+        y: 798
+        width: 800
+        height: 421
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: School2walls_3
+      rect:
+        serializedVersion: 2
+        x: 3620
+        y: 807
+        width: 818
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: School2walls_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 45
+        width: 1702
+        height: 478
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: School2walls_5
+      rect:
+        serializedVersion: 2
+        x: 2753
+        y: 74
+        width: 809
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: School2walls_6
+      rect:
+        serializedVersion: 2
+        x: 3615
+        y: 74
+        width: 836
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

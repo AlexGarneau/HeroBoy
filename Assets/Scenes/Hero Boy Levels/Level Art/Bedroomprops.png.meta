@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: 1e057d14a9a9a85419379c1c83c9958d
+timeCreated: 1460531647
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Bedroomprops_0
+    21300002: Bedroomprops_1
+    21300004: Bedroomprops_2
+    21300006: Bedroomprops_3
+    21300008: Bedroomprops_4
+    21300010: Bedroomprops_5
+    21300012: Bedroomprops_6
+    21300014: Bedroomprops_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Bedroomprops_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 671
+        width: 441
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bedroomprops_1
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 716
+        width: 250
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bedroomprops_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 502
+        width: 323
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bedroomprops_3
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 341
+        width: 207
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bedroomprops_4
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 323
+        width: 216
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bedroomprops_5
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 323
+        width: 157
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bedroomprops_6
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 23
+        width: 441
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Bedroomprops_7
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 48
+        width: 197
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

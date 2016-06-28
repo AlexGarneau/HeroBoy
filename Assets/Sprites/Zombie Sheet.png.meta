@@ -1,0 +1,316 @@
+fileFormatVersion: 2
+guid: 8f1e59c6045b8ed45862a4354a578afb
+timeCreated: 1444712158
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Zombie Sheet_0
+    21300002: Zombie Sheet_1
+    21300004: Zombie Sheet_2
+    21300006: Zombie Sheet_4
+    21300008: Zombie Sheet_5
+    21300010: Zombie Sheet_6
+    21300012: Zombie Sheet_10
+    21300014: Zombie Sheet_12
+    21300016: Zombie Sheet_13
+    21300018: Zombie Sheet_15
+    21300020: Zombie Sheet_16
+    21300022: Zombie Sheet_23
+    21300024: Zombie Sheet_26
+    21300026: Zombie Sheet_27
+    21300028: Zombie Sheet_28
+    21300030: Zombie Sheet_30
+    21300032: Zombie Sheet_32
+    21300034: Zombie Sheet_11
+    21300036: Zombie Sheet_14
+    21300038: Zombie Sheet_17
+    21300040: Zombie Sheet_18
+    21300042: Zombie Sheet_19
+    21300044: Zombie Sheet_20
+    21300046: Zombie Sheet_21
+    21300048: Zombie Sheet_25
+    21300050: Zombie Sheet_29
+    21300052: Zombie Sheet_31
+    21300054: Zombie Sheet_3
+    21300056: Zombie Sheet_7
+    21300058: Zombie Sheet_8
+    21300060: Zombie Sheet_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Zombie Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 615
+        width: 111
+        height: 172
+      alignment: 9
+      pivot: {x: .688052356, y: .0207867287}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 764
+        width: 89
+        height: 45
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 774
+        width: 96
+        height: 44
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 758
+        width: 55
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 710
+        width: 51
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 664
+        width: 104
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 350
+        width: 132
+        height: 212
+      alignment: 9
+      pivot: {x: .961665273, y: .97584939}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 377
+        width: 205
+        height: 223
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 365
+        width: 202
+        height: 213
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 89
+        width: 42
+        height: 242
+      alignment: 9
+      pivot: {x: .363537371, y: .978408039}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 296
+        width: 117
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 216
+        width: 203
+        height: 127
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 354
+        width: 205
+        height: 221
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 233
+        width: 201
+        height: 130
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 387
+        width: 205
+        height: 214
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 11
+        width: 103
+        height: 63
+      alignment: 9
+      pivot: {x: .732790768, y: .692646623}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 16
+        width: 103
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 732
+        width: 112
+        height: 110
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 758
+        width: 77
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 17
+        width: 108
+        height: 167
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 11
+        width: 104
+        height: 136
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 86
+        width: 95
+        height: 170
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Zombie Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 73
+        width: 100
+        height: 153
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

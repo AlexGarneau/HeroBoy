@@ -1,0 +1,286 @@
+fileFormatVersion: 2
+guid: 3628a2b0c0a0d0443940832e5a295ae2
+timeCreated: 1458170760
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Crab Boss_0
+    21300002: Crab Boss_1
+    21300004: Crab Boss_2
+    21300006: Crab Boss_3
+    21300008: Crab Boss_4
+    21300010: Crab Boss_5
+    21300012: Crab Boss_6
+    21300014: Crab Boss_7
+    21300016: Crab Boss_9
+    21300018: Crab Boss_11
+    21300020: Crab Boss_12
+    21300022: Crab Boss_17
+    21300024: Crab Boss_18
+    21300026: Crab Boss_19
+    21300028: Crab Boss_20
+    21300030: Crab Boss_21
+    21300032: Crab Boss_22
+    21300034: Crab Boss_23
+    21300036: Crab Boss_24
+    21300038: Crab Boss_8
+    21300040: Crab Boss_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Crab Boss_0
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 1560
+        width: 276
+        height: 167
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_1
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 1030
+        width: 653
+        height: 740
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_2
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 1263
+        width: 231
+        height: 484
+      alignment: 9
+      pivot: {x: .820770681, y: .932493865}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_3
+      rect:
+        serializedVersion: 2
+        x: 2078
+        y: 1337
+        width: 309
+        height: 371
+      alignment: 9
+      pivot: {x: .398085117, y: .929409444}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_4
+      rect:
+        serializedVersion: 2
+        x: 2476
+        y: 1449
+        width: 270
+        height: 262
+      alignment: 9
+      pivot: {x: .115787759, y: .888873637}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_5
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 1318
+        width: 277
+        height: 169
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_6
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 1100
+        width: 273
+        height: 169
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_7
+      rect:
+        serializedVersion: 2
+        x: 1903
+        y: 1043
+        width: 179
+        height: 184
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_9
+      rect:
+        serializedVersion: 2
+        x: 2141
+        y: 1057
+        width: 183
+        height: 183
+      alignment: 9
+      pivot: {x: .482523263, y: .46723178}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_11
+      rect:
+        serializedVersion: 2
+        x: 2480
+        y: 1046
+        width: 113
+        height: 197
+      alignment: 9
+      pivot: {x: .656496286, y: .106020853}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_12
+      rect:
+        serializedVersion: 2
+        x: 2669
+        y: 1046
+        width: 113
+        height: 197
+      alignment: 9
+      pivot: {x: .308725536, y: .106020853}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_17
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 555
+        width: 1176
+        height: 441
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_18
+      rect:
+        serializedVersion: 2
+        x: 2197
+        y: 572
+        width: 118
+        height: 367
+      alignment: 9
+      pivot: {x: .271095395, y: .936334193}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_19
+      rect:
+        serializedVersion: 2
+        x: 2462
+        y: 561
+        width: 120
+        height: 367
+      alignment: 9
+      pivot: {x: .757244885, y: .941591203}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_20
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 219
+        width: 270
+        height: 261
+      alignment: 9
+      pivot: {x: .900157809, y: .899172366}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_21
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 32
+        width: 310
+        height: 371
+      alignment: 9
+      pivot: {x: .580907404, y: .942030489}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_22
+      rect:
+        serializedVersion: 2
+        x: 1695
+        y: 4
+        width: 231
+        height: 483
+      alignment: 9
+      pivot: {x: .165226653, y: .925473988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_23
+      rect:
+        serializedVersion: 2
+        x: 2155
+        y: 154
+        width: 163
+        height: 354
+      alignment: 9
+      pivot: {x: .795908928, y: .941457629}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_24
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 143
+        width: 163
+        height: 354
+      alignment: 9
+      pivot: {x: .192252502, y: .936007738}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_8
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 84
+        width: 178
+        height: 161
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Crab Boss_10
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 61
+        width: 157
+        height: 187
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

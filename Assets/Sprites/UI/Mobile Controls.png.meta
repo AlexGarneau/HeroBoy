@@ -1,0 +1,224 @@
+fileFormatVersion: 2
+guid: fab675530051ba34e8732d2c5a4b0a54
+timeCreated: 1454953703
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Mobile Controls_0
+    21300002: Mobile Controls_1
+    21300004: Mobile Controls_2
+    21300006: Mobile Controls_3
+    21300008: Mobile Controls_4
+    21300010: Mobile Controls_5
+    21300012: Mobile Controls_6
+    21300014: Mobile Controls_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Mobile Controls_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 9
+        width: 240
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 117, y: -68}
+        - {x: 120, y: -48}
+        - {x: 120, y: 43}
+        - {x: 99, y: 89}
+        - {x: 53, y: 111}
+        - {x: -31, y: 111}
+        - {x: -57, y: 106}
+        - {x: -108, y: 63}
+        - {x: -120, y: 25}
+        - {x: -120, y: -64}
+        - {x: -91, y: -86}
+        - {x: -58, y: -102}
+        - {x: -23, y: -111}
+        - {x: 41, y: -111}
+        - {x: 61, y: -108}
+        - {x: 89, y: -93}
+        - {x: 105, y: -76}
+    - name: Mobile Controls_1
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 200
+        width: 67
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4.5, y: 39}
+        - {x: -12.5, y: 39}
+        - {x: -33.5, y: -21}
+        - {x: -33.5, y: -36}
+        - {x: -31.5, y: -39}
+        - {x: 22.5, y: -39}
+        - {x: 32.5, y: -38}
+        - {x: 33.5, y: -38}
+        - {x: 33.5, y: -11}
+        - {x: 27.5, y: 15}
+    - name: Mobile Controls_2
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 199
+        width: 84
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 40, y: 27.5}
+        - {x: 31, y: 39.5}
+        - {x: -42, y: 39.5}
+        - {x: -42, y: -29.5}
+        - {x: -34, y: -39.5}
+        - {x: 38, y: -39.5}
+        - {x: 42, y: -26.5}
+        - {x: 42, y: 24.5}
+    - name: Mobile Controls_3
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 89
+        width: 84
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 40, y: 27.5}
+        - {x: 31, y: 39.5}
+        - {x: -42, y: 39.5}
+        - {x: -42, y: -29.5}
+        - {x: -34, y: -39.5}
+        - {x: 38, y: -39.5}
+        - {x: 42, y: -26.5}
+        - {x: 42, y: 24.5}
+    - name: Mobile Controls_4
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 93
+        width: 84
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 40, y: 27.5}
+        - {x: 31, y: 39.5}
+        - {x: -42, y: 39.5}
+        - {x: -42, y: -29.5}
+        - {x: -34, y: -39.5}
+        - {x: 38, y: -39.5}
+        - {x: 42, y: -26.5}
+        - {x: 42, y: 24.5}
+    - name: Mobile Controls_5
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 101
+        width: 84
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -42, y: 39.5}
+        - {x: -42, y: -29.5}
+        - {x: -26, y: -39.5}
+        - {x: 37, y: -39.5}
+        - {x: 42, y: -23.5}
+        - {x: 42, y: 39.5}
+    - name: Mobile Controls_6
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 2
+        width: 194
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -97, y: 34.5}
+        - {x: -97, y: -34.5}
+        - {x: 76, y: -34.5}
+        - {x: 89, y: -33.5}
+        - {x: 97, y: -32.5}
+        - {x: 97, y: 34.5}
+    - name: Mobile Controls_7
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 9
+        width: 84
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 40, y: 27.5}
+        - {x: 31, y: 39.5}
+        - {x: -42, y: 39.5}
+        - {x: -42, y: -29.5}
+        - {x: -34, y: -39.5}
+        - {x: 38, y: -39.5}
+        - {x: 42, y: -26.5}
+        - {x: 42, y: 24.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

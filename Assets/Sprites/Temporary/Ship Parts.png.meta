@@ -1,0 +1,253 @@
+fileFormatVersion: 2
+guid: b73432285e8fff04d8c10ac43ce90a6a
+timeCreated: 1447266347
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ship Parts_0
+    21300002: Ship Parts_1
+    21300004: Ship Parts_2
+    21300006: Ship Parts_3
+    21300008: Ship Parts_4
+    21300010: Ship Parts_5
+    21300012: Ship Parts_6
+    21300014: Ship Parts_7
+    21300016: Ship Parts_8
+    21300018: Ship Parts_9
+    21300020: Ship Parts_10
+    21300022: Ship Parts_11
+    21300024: Ship Parts_12
+    21300026: Ship Parts_18
+    21300028: Ship Parts_19
+    21300030: Ship Parts_21
+    21300032: Ship Parts_22
+    21300034: Ship Parts_23
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Ship Parts_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 400
+        width: 102
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_1
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 414
+        width: 38
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_2
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 490
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_3
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 489
+        width: 35
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_4
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 395
+        width: 138
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_5
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 14
+        width: 129
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_6
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 400
+        width: 61
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_7
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 410
+        width: 67
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 134
+        width: 243
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_9
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 284
+        width: 104
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_10
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 230
+        width: 116
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_11
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 152
+        width: 146
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_12
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 16
+        width: 129
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_18
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 27
+        width: 38
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_19
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 13
+        width: 106
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_21
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 29
+        width: 48
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_22
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 21
+        width: 95
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ship Parts_23
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 16
+        width: 85
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
