@@ -55,6 +55,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
     public GameObject circusTent;
 
     public GameObject clownShadow;
+    public GameObject spawnPoints;
 
     Animator _anim;
 
@@ -93,9 +94,9 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 treePack3.SetActive(true);
                 treePack4.SetActive(true);
                 treePack5.SetActive(true);
-                treePack6.SetActive(false);
-                pathCenter.SetActive(true);
-                pathIntro.SetActive(true);
+                treePack6.SetActive(true);
+                pathCenter.SetActive(false);
+                pathIntro.SetActive(false);
                 pathLoop.SetActive(false);
                 pathTrickLoop.SetActive(true);
                 pathTrickLoop2.SetActive(true);
@@ -111,9 +112,9 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 treePack3.SetActive(true);
                 treePack4.SetActive(true);
                 treePack5.SetActive(true);
-                treePack6.SetActive(false);
-                pathCenter.SetActive(true);
-                pathIntro.SetActive(true);
+                treePack6.SetActive(true);
+                pathCenter.SetActive(false);
+                pathIntro.SetActive(false);
                 pathLoop.SetActive(false);
                 pathTrickLoop.SetActive(true);
                 pathTrickLoop2.SetActive(true);
@@ -124,18 +125,18 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 circusTent.SetActive(false);
                 break;
             case ClownForestStates.farEnd3:
-                treePack1.SetActive(false);
-                treePack2.SetActive(true);
+                treePack1.SetActive(true);
+                treePack2.SetActive(false);
                 treePack3.SetActive(true);
                 treePack4.SetActive(true);
-                treePack5.SetActive(true);
+                treePack5.SetActive(false);
                 treePack6.SetActive(false);
                 pathCenter.SetActive(true);
                 pathIntro.SetActive(true);
-                pathLoop.SetActive(false);
-                pathTrickLoop.SetActive(true);
-                pathTrickLoop2.SetActive(true);
-                pathSide.SetActive(false);
+                pathLoop.SetActive(true);
+                pathTrickLoop.SetActive(false);
+                pathTrickLoop2.SetActive(false);
+                pathSide.SetActive(true);
                 pathDescent.SetActive(false);
                 pathDescentTrick.SetActive(false);
                 pathClownEntrance.SetActive(false);
@@ -143,18 +144,18 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 clownShadow.SetActive(true);
                 break;
             case ClownForestStates.backToCentre:
-                treePack1.SetActive(false);
-                treePack2.SetActive(true);
+                treePack1.SetActive(true);
+                treePack2.SetActive(false);
                 treePack3.SetActive(true);
                 treePack4.SetActive(true);
-                treePack5.SetActive(true);
+                treePack5.SetActive(false);
                 treePack6.SetActive(false);
                 pathCenter.SetActive(true);
                 pathIntro.SetActive(true);
-                pathLoop.SetActive(false);
-                pathTrickLoop.SetActive(true);
-                pathTrickLoop2.SetActive(true);
-                pathSide.SetActive(false);
+                pathLoop.SetActive(true);
+                pathTrickLoop.SetActive(false);
+                pathTrickLoop2.SetActive(false);
+                pathSide.SetActive(true);
                 pathDescent.SetActive(false);
                 pathDescentTrick.SetActive(false);
                 pathClownEntrance.SetActive(false);
@@ -162,17 +163,17 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 break;
             case ClownForestStates.rightSide:
                 treePack1.SetActive(false);
-                treePack2.SetActive(true);
+                treePack2.SetActive(false);
                 treePack3.SetActive(true);
                 treePack4.SetActive(true);
-                treePack5.SetActive(true);
+                treePack5.SetActive(false);
                 treePack6.SetActive(false);
                 pathCenter.SetActive(true);
-                pathIntro.SetActive(true);
-                pathLoop.SetActive(false);
+                pathIntro.SetActive(false);
+                pathLoop.SetActive(true);
                 pathTrickLoop.SetActive(true);
                 pathTrickLoop2.SetActive(true);
-                pathSide.SetActive(false);
+                pathSide.SetActive(true);
                 pathDescent.SetActive(false);
                 pathDescentTrick.SetActive(false);
                 pathClownEntrance.SetActive(false);
@@ -186,10 +187,10 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 treePack5.SetActive(true);
                 treePack6.SetActive(false);
                 pathCenter.SetActive(true);
-                pathIntro.SetActive(true);
+                pathIntro.SetActive(false);
                 pathLoop.SetActive(false);
-                pathTrickLoop.SetActive(true);
-                pathTrickLoop2.SetActive(true);
+                pathTrickLoop.SetActive(false);
+                pathTrickLoop2.SetActive(false);
                 pathSide.SetActive(false);
                 pathDescent.SetActive(false);
                 pathDescentTrick.SetActive(false);
@@ -224,8 +225,8 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 pathCenter.SetActive(true);
                 pathIntro.SetActive(true);
                 pathLoop.SetActive(false);
-                pathTrickLoop.SetActive(true);
-                pathTrickLoop2.SetActive(true);
+                pathTrickLoop.SetActive(false);
+                pathTrickLoop2.SetActive(false);
                 pathSide.SetActive(false);
                 pathDescent.SetActive(false);
                 pathDescentTrick.SetActive(false);
@@ -245,7 +246,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 pathTrickLoop.SetActive(true);
                 pathTrickLoop2.SetActive(true);
                 pathSide.SetActive(false);
-                pathDescent.SetActive(false);
+                pathDescent.SetActive(true);
                 pathDescentTrick.SetActive(false);
                 pathClownEntrance.SetActive(false);
                 circusTent.SetActive(false);
@@ -257,14 +258,14 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 treePack4.SetActive(true);
                 treePack5.SetActive(true);
                 treePack6.SetActive(false);
-                pathCenter.SetActive(true);
+                pathCenter.SetActive(false);
                 pathIntro.SetActive(true);
                 pathLoop.SetActive(false);
                 pathTrickLoop.SetActive(true);
                 pathTrickLoop2.SetActive(true);
                 pathSide.SetActive(false);
-                pathDescent.SetActive(false);
-                pathDescentTrick.SetActive(false);
+                pathDescent.SetActive(true);
+                pathDescentTrick.SetActive(true);
                 pathClownEntrance.SetActive(false);
                 circusTent.SetActive(false);
                 break;
@@ -303,6 +304,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 pathDescentTrick.SetActive(false);
                 pathClownEntrance.SetActive(true);
                 circusTent.SetActive(true);
+                spawnPoints.SetActive(true);
                 break;
         }
         forestState = newState;
@@ -368,7 +370,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 }
                 break;
             case "EnterTentTrigger":
-
+                //Application.LoadLevel();
                 break;
         }
     }
