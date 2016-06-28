@@ -31,7 +31,7 @@ public class Clown : AbstractEnemyControl
 	{
         base.Start();
 		base._enemHealth = 50f;
-		base._enemMoveSpeed = 1.2f;
+		base._enemMoveSpeed = .9f;
 		base._enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;

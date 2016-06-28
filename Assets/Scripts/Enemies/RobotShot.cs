@@ -15,6 +15,7 @@ public class RobotShot : AbstractBullet
 
 	public override void Update ()
 	{
+        base.Update();
 		if (life > 0) {
 			transform.Translate (velocity * direction.x * Time.deltaTime, 0, 0);
 			life -= Time.deltaTime;

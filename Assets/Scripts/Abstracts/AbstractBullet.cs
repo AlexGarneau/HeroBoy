@@ -28,7 +28,8 @@ public class AbstractBullet : AbstractClass
 
 	public virtual void Update ()
 	{
-		/*
+        base.Update();
+        /*
 		if (isExploding) {
 			if (life > explosionTime * 2 / 3) {
 				life -= Time.deltaTime;
@@ -48,7 +49,7 @@ public class AbstractBullet : AbstractClass
 			}
 		}
 		*/
-	}
+    }
 
 	public virtual void destroy ()
 	{
