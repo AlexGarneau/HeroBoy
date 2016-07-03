@@ -556,15 +556,9 @@ public class PlayerControl : AbstractClass
 		comboOrder [2] = 0;
 	}
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        Debug.Log("On Trigger Exited: " + other.tag);
-    }
-
     void OnTriggerStay2D(Collider2D other)
     {
         EnemyDamageCollider collider = other.GetComponent<EnemyDamageCollider>();
-        Debug.Log("OnTriggerStay2D: " + other.gameObject);
         if (collider != null)
         {
             damage(collider.damage, collider.type, collider.knockback);
@@ -574,7 +568,6 @@ public class PlayerControl : AbstractClass
 	void OnTriggerEnter2D (Collider2D other)
 	{
         EnemyDamageCollider collider = other.GetComponent<EnemyDamageCollider>();
-        Debug.Log("OnTriggerEnter2D: " + other.gameObject);
         if (collider != null)
         {
             damage(collider.damage, collider.type, collider.knockback);

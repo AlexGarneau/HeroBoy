@@ -104,7 +104,7 @@ public class AbstractBossControl : AbstractClass
                 eabs[i].boss = this;
             }
         }
-		
+        
 		// Set the first state.
 		setBossAction (BossAction.spawn);
 	}
