@@ -73,6 +73,7 @@ public class PlayerControl : AbstractClass
 	ChargeBarScript _chargeBar;
 
 	public PlayerDamageCollider dc;
+    public BoxCollider2D box;
 	public Collider2D healthPickup;
     public Collider2D chargePartPickup;
     public Collider2D chargeFullPickup;
@@ -109,7 +110,7 @@ public class PlayerControl : AbstractClass
     void Start ()
 	{
 		_controller = GetComponent<MovementController2D> ();
-
+        box = GetComponent<BoxCollider2D>();
 		dc = GetComponentInChildren<PlayerDamageCollider> (true);
         
         _chargeBar = GameObject.Find("InGameUI").GetComponentInChildren<ChargeBarScript>();
@@ -555,20 +556,30 @@ public class PlayerControl : AbstractClass
 		comboOrder [2] = 0;
 	}
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        Debug.Log("On Trigger Exited: " + other.tag);
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        EnemyDamageCollider collider = other.GetComponent<EnemyDamageCollider>();
+        Debug.Log("OnTriggerStay2D: " + other.gameObject);
+        if (collider != null)
+        {
+            damage(collider.damage, collider.type, collider.knockback);
+        }
+    }
+    
 	void OnTriggerEnter2D (Collider2D other)
 	{
-        //Debug.Log(other);
-        if (other.tag == "EnemHazard")
+        EnemyDamageCollider collider = other.GetComponent<EnemyDamageCollider>();
+        Debug.Log("OnTriggerEnter2D: " + other.gameObject);
+        if (collider != null)
         {
-            if (tempInvuln != true)
-            {
-                setState(PlayerStates.stunned);
-                tempInvuln = true;
-                tempInvulnTimer = 1f;
-                _anim.SetTrigger("IsHit");
-                damage(20, AbstractDamageCollider.DamageType.light, 1);
-            }
+            damage(collider.damage, collider.type, collider.knockback);
         }
+
         // TODO: For other powerups, you will check their AbstractPowerup Class 
         // and find out what effects it has from there.
         // Eg; Check effect state (health, attack, defence, etc) and level (1, 10, 100) and raise the player's
@@ -612,15 +623,22 @@ public class PlayerControl : AbstractClass
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{
-		if (playerHealth > 0) {
-			playerHealth -= damage;
-			if (playerHealth <= 0) {
-                // Player dead, yo.
-                SendMessageUpwards("playerDied", null, SendMessageOptions.DontRequireReceiver);
-			}
-		}
+        if (tempInvuln != true)
+        {
+            // Hit a player! Do death!
+            setState(PlayerStates.stunned);
+            _anim.SetTrigger("IsHit");
+            tempInvuln = true;
+            tempInvulnTimer = 1f;
 
-        // TODO: Apply stun and knockback.
+            if (playerHealth > 0) {
+			    playerHealth -= damage;
+			    if (playerHealth <= 0) {
+                    // Player dead, yo.
+                    SendMessageUpwards("playerDied", null, SendMessageOptions.DontRequireReceiver);
+			    }
+		    }
+        }
 	}
 
     public void dodge ()
