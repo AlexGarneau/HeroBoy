@@ -44,6 +44,7 @@ public class AbstractBossControl : AbstractClass
 	public float _vertRange;
 	public bool isAlive;
 	public bool isMoving;
+    public bool isInvincible = false;
 	
 	protected GameObject _player;
 	protected float xForce = 0;
@@ -53,6 +54,8 @@ public class AbstractBossControl : AbstractClass
 	
 	protected Rigidbody rigidbody;
 	protected Transform bulletSpawn;
+    protected MovementController2D _controller;
+    protected AbstractDamageCollider[] _damageColliders;
 	
 	public bool facingLeft;
 
@@ -91,8 +94,10 @@ public class AbstractBossControl : AbstractClass
 	protected Animator _anim;
 
 	protected virtual void Start ()
-	{		
-		_anim = GetComponent<Animator> ();
+	{
+        _player = GameObject.FindGameObjectWithTag("Player");
+
+        _anim = GetComponent<Animator> ();
         if (_anim != null) {
             BossAbstractBehaviour[] eabs = _anim.GetBehaviours<BossAbstractBehaviour>();
             for (var i = eabs.Length - 1; i >= 0; i--) {
