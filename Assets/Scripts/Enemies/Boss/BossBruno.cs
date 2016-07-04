@@ -8,7 +8,7 @@ public class BossBruno: AbstractBossControl
 	protected override void Start ()
 	{
         base.Start();
-        base._bossMaxHealth = base._bossHealth = 500f;
+        base._bossMaxHealth = base._bossHealth = 300f;
 		base._enemMoveSpeed = 1f;
 		base._enemDamage = 1;
 		base._attackRange = 1.2f;
