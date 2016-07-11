@@ -12,7 +12,7 @@ public class BossKnight: AbstractBossControl
 	{
         base.Start();
 
-        base._bossMaxHealth = base._bossHealth = 300f;
+        base._bossMaxHealth = base._bossHealth = 3f;
         _anim.SetFloat("Health", _bossHealth);
 
         base._enemMoveSpeed = 1f;
@@ -57,9 +57,6 @@ public class BossKnight: AbstractBossControl
 			break;
 		case BossAction.dead:
 			_anim.SetBool ("IsMoving", false);
-
-            // Knight is dead. But is it the end?
-            SendMessageUpwards("knightDead", null, SendMessageOptions.DontRequireReceiver);
 			break;
 		}
 
@@ -81,9 +78,14 @@ public class BossKnight: AbstractBossControl
 		    case AbstractEnemyControl.ANIM_INJURED_END:
 			    setBossAction (BossAction.move);
 			    break;
-		    case AbstractEnemyControl.ANIM_DEATH_END:
-			    Destroy (gameObject);
-			    break;
+            case AbstractEnemyControl.ANIM_DEATH_START:
+                setBossAction(BossAction.dead);
+                break;
+            case AbstractEnemyControl.ANIM_DEATH_END:
+                // Knight is dead. But is it the end?
+                _anim.SetBool("IsMoving", false);
+                SendMessageUpwards("knightDead", null, SendMessageOptions.DontRequireReceiver);
+                break;
 		}
 	}
 

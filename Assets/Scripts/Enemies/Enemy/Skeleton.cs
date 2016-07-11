@@ -6,8 +6,6 @@ public class Skeleton : AbstractEnemyControl
 	public Collider2D lightHit;
 	public GameObject healItem;
 
-    protected bool highGround;
-
 	protected override void Start ()
 	{
         base.Start();
@@ -55,9 +53,7 @@ public class Skeleton : AbstractEnemyControl
 
 		_anim.SetFloat ("Health", _enemHealth);
 		_anim.SetBool ("FacingLeft", facingLeft);
-		_anim.SetBool ("HighGround", highGround);
         _anim.SetInteger("PlayerHealth", _playerControl.playerHealth);
-		HighGroundCheck ();
 
 		base.Update ();
 	}
@@ -140,14 +136,5 @@ public class Skeleton : AbstractEnemyControl
 	{
 		base.stun (timeInSec);
 		_anim.SetTrigger ("IsStunned");
-	}
-
-	void HighGroundCheck ()
-	{
-		if (transform.position.y > 0) {
-			highGround = true;
-		} else {
-			highGround = false;
-		}
 	}
 }
