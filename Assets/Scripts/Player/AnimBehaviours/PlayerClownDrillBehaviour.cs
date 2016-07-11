@@ -3,12 +3,8 @@ using System.Collections;
 
 public class PlayerClownDrillBehaviour : PlayerAbstractBehaviour
 {
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        player.setPlayerState(PlayerControl.PlayerStates.clownDrill);
-    }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player.setPlayerState(PlayerControl.PlayerStates.mobile);
+        player.setPlayerState(PlayerControl.PlayerStates.clownDrill);
     }
 }

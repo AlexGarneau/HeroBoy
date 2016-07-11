@@ -105,6 +105,9 @@ public class PlayerControl : AbstractClass
     protected float dodgeSpeedMax = 12;
     protected Vector2 dodgeDirection;
 
+    protected float clownDrillVelocity = 0f;
+    protected float clownDrillAccelPerSec = 12f;
+
     bool gamePaused = false;
 
     new void Start ()
@@ -204,7 +207,7 @@ public class PlayerControl : AbstractClass
                 PlayerAction();
                 break;
             case PlayerStates.clownDrill:
-                moveSpeed = moveSpeed * 2;
+                DrillMovement();
                 break;
             case PlayerStates.dodging:
                 // Player is currently dodging. Cannot move. Must wait until dodge is complete, then set state back to moving.
@@ -275,26 +278,21 @@ public class PlayerControl : AbstractClass
             case PlayerStates.mobile:
                 _anim.SetBool("Dodge", false);
                 inputA = inputB = inputC = inputD = false;
-                moveSpeed = 3f;
                 break;
             case PlayerStates.dodging:
                 _anim.SetBool("Dodge", true);
-                moveSpeed = 3f;
                 dodgeSpeed = dodgeSpeedMax;
                 dodgeDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
                 break;
             case PlayerStates.shoulderdash:
                 _anim.SetTrigger("ShoulderDash");
-                moveSpeed = 3f;
                 dodgeSpeed = dodgeSpeedMax;
                 dodgeDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
                 break;
             case PlayerStates.attacking:
-                moveSpeed = 0;
                 isMoving = false;
                 break;
             case PlayerStates.stunned:
-                moveSpeed = 0;
                 dodgeSpeed = dodgeSpeedMax;
                 if(facingRight == true)
                 {
@@ -337,6 +335,25 @@ public class PlayerControl : AbstractClass
         float targetVelY = moveInput.y * moveSpeed;
         _vel.x = Mathf.SmoothDamp(_vel.x, targetVelX, ref velocityXSmoothing, .1f);
         _vel.y = Mathf.SmoothDamp(_vel.y, targetVelY, ref velocityYSmoothing, .1f);
+        _controller.Move(_vel * Time.deltaTime);
+    }
+
+    void DrillMovement() {
+        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        if (moveInput.x < 0) {
+            facingLeft = true;
+            facingRight = false;
+        } else if (moveInput.x > 0) {
+            facingLeft = false;
+            facingRight = true;
+        }
+
+        clownDrillVelocity = Mathf.Max(-moveSpeed * 2, Mathf.Min(moveSpeed * 2, 
+            clownDrillVelocity + (clownDrillAccelPerSec * Time.deltaTime * (facingLeft ? -1f : 1f))
+        ));
+        _vel.x = clownDrillVelocity;
+        _vel.y = Mathf.SmoothDamp(_vel.y, moveInput.y * moveSpeed, ref velocityYSmoothing, .1f);
         _controller.Move(_vel * Time.deltaTime);
     }
 
@@ -524,27 +541,22 @@ public class PlayerControl : AbstractClass
             if (hasMermaidCannon) {
                 _anim.SetTrigger("MermaidCannon");
                 StartCoroutine(fireMermaidCannon());
-                _chargeBar.IncreaseChargePercentage(-200);
             } else if (hasClownDrill) {
                 _anim.SetTrigger("ClownDrill");
                 StartCoroutine(fireClownDrill());
-                _chargeBar.IncreaseChargePercentage(-200);
             } else if (hasMaceOfTrit) {
                 _anim.SetTrigger("Mace");
                 StartCoroutine(fireMaceOfTrit());
-                _chargeBar.IncreaseChargePercentage(-200);
             } else if (hasRARLaser) {
                 _anim.SetTrigger("Staff");
                 StartCoroutine(fireRARLaser());
-                _chargeBar.IncreaseChargePercentage(-200);
             } else {
 				inputD = true;
 				timerD = 0.1f;
 				dc.damage = 100;
 				dc.type = AbstractDamageCollider.DamageType.heavy;
-				_chargeBar.IncreaseChargePercentage (-200);
 			}
-
+			_chargeBar.IncreaseChargePercentage (-200);
             setState(PlayerStates.attacking);
         }
 	}
@@ -694,7 +706,8 @@ public class PlayerControl : AbstractClass
 	}
 
     protected IEnumerator fireClownDrill () {
-        yield return new WaitForSeconds(.01f);
+        yield return new WaitForSeconds(5f);
+        _anim.SetTrigger("ClownDrillComplete");
     }
 
     protected IEnumerator fireMaceOfTrit () {
