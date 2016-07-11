@@ -80,6 +80,10 @@ public class BossKnight: AbstractBossControl
 			    break;
             case AbstractBossControl.ANIM_DYING_START:
                 setBossAction(BossAction.dead);
+                BoxCollider2D[] col = GetComponentsInChildren<BoxCollider2D>();
+                for (var i = col.Length - 1; i >= 0; i--) {
+                    col[i].enabled = false;
+                }
                 break;
             case AbstractBossControl.ANIM_DYING_END:
                 // Knight is dead. But is it the end?

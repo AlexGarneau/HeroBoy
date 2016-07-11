@@ -39,8 +39,6 @@ public class Skeleton : AbstractEnemyControl
 
 	protected override void Update ()
 	{
-        Debug.Log("SKELETON UPDATE: " + _enemHealth);
-
 		switch (state) {
 		case EnemyStates.move:
 			break;
