@@ -9,7 +9,7 @@ public class Skeleton : AbstractEnemyControl
 	protected override void Start ()
 	{
         base.Start();
-		base._enemHealth = 200f;
+		base._enemHealth = 100f;
 		base._enemMoveSpeed = 1f;
 		base._enemDamage = 2;
 		base._attackRange = 1.2f;
