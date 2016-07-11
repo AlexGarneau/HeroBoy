@@ -12,7 +12,7 @@ public class BossKnight: AbstractBossControl
 	{
         base.Start();
 
-        base._bossMaxHealth = base._bossHealth = 3f;
+        base._bossMaxHealth = base._bossHealth = 300f;
         _anim.SetFloat("Health", _bossHealth);
 
         base._enemMoveSpeed = 1f;
@@ -67,21 +67,21 @@ public class BossKnight: AbstractBossControl
 	{
         Debug.Log("BossKnight Animation State: " + state);
 		switch (state) {
-		    case AbstractEnemyControl.ANIM_SPAWN_END:
+		    case AbstractBossControl.ANIM_SPAWN_END:
                 setBossAction(BossAction.move);
                 break;
-		    case AbstractEnemyControl.ANIM_ATTACK_START:
+		    case AbstractBossControl.ANIM_ATTACK_START:
 			    break;
-		    case AbstractEnemyControl.ANIM_ATTACK_END:
+		    case AbstractBossControl.ANIM_ATTACK_END:
 			    setBossAction (BossAction.move);
 			    break;
-		    case AbstractEnemyControl.ANIM_INJURED_END:
+		    case AbstractBossControl.ANIM_STUN_END:
 			    setBossAction (BossAction.move);
 			    break;
-            case AbstractEnemyControl.ANIM_DEATH_START:
+            case AbstractBossControl.ANIM_DYING_START:
                 setBossAction(BossAction.dead);
                 break;
-            case AbstractEnemyControl.ANIM_DEATH_END:
+            case AbstractBossControl.ANIM_DYING_END:
                 // Knight is dead. But is it the end?
                 _anim.SetBool("IsMoving", false);
                 SendMessageUpwards("knightDead", null, SendMessageOptions.DontRequireReceiver);

@@ -107,7 +107,7 @@ public class PlayerControl : AbstractClass
 
     bool gamePaused = false;
 
-    void Start ()
+    new void Start ()
 	{
 		_controller = GetComponent<MovementController2D> ();
         box = GetComponent<BoxCollider2D>();
@@ -520,17 +520,31 @@ public class PlayerControl : AbstractClass
 	{
         Debug.Log("ChargeBar: " + _chargeBar.chargePercentage);
 		if (_chargeBar != null && _chargeBar.chargePercentage >= 100) {
-			if (hasMermaidCannon) {
-				_anim.SetTrigger ("MermaidCannon");
-				StartCoroutine (fireMermaidCannon ());
-				_chargeBar.IncreaseChargePercentage (-200);
-			} else {
+
+            if (hasMermaidCannon) {
+                _anim.SetTrigger("MermaidCannon");
+                StartCoroutine(fireMermaidCannon());
+                _chargeBar.IncreaseChargePercentage(-200);
+            } else if (hasClownDrill) {
+                _anim.SetTrigger("ClownDrill");
+                StartCoroutine(fireClownDrill());
+                _chargeBar.IncreaseChargePercentage(-200);
+            } else if (hasMaceOfTrit) {
+                _anim.SetTrigger("Mace");
+                StartCoroutine(fireMaceOfTrit());
+                _chargeBar.IncreaseChargePercentage(-200);
+            } else if (hasRARLaser) {
+                _anim.SetTrigger("Staff");
+                StartCoroutine(fireRARLaser());
+                _chargeBar.IncreaseChargePercentage(-200);
+            } else {
 				inputD = true;
 				timerD = 0.1f;
 				dc.damage = 100;
 				dc.type = AbstractDamageCollider.DamageType.heavy;
 				_chargeBar.IncreaseChargePercentage (-200);
 			}
+
             setState(PlayerStates.attacking);
         }
 	}
@@ -678,4 +692,16 @@ public class PlayerControl : AbstractClass
 			yield return new WaitForSeconds (.01f);
 		}
 	}
+
+    protected IEnumerator fireClownDrill () {
+        yield return new WaitForSeconds(.01f);
+    }
+
+    protected IEnumerator fireMaceOfTrit () {
+        yield return new WaitForSeconds(.01f);
+    }
+
+    protected IEnumerator fireRARLaser () {
+        yield return new WaitForSeconds(.01f);
+    }
 }

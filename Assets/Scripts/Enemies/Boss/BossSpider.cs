@@ -166,20 +166,19 @@ public class BossSpider: AbstractBossControl
     public override void onAnimationState (string state)
 	{
 		switch (state) {
-		    case AbstractEnemyControl.ANIM_ATTACK_END:
+		    case AbstractBossControl.ANIM_ATTACK_END:
 			    setBossAction (BossAction.stand);
 			    break;
-		    case AbstractEnemyControl.ANIM_INJURED_END:
+		    case AbstractBossControl.ANIM_STUN_END:
 			    setBossAction (BossAction.stand);
-			    break;
-		    case AbstractEnemyControl.ANIM_DEATH_END:
-			    Destroy (gameObject);
 			    break;
 		}
 	}
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{
+        // Spider only takes one kind of damage. Hacking override.
+        damage = 100;
 		base.damage (damage, type, knockback);
 
         if (isInvincible)
