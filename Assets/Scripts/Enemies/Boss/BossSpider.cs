@@ -31,6 +31,8 @@ public class BossSpider: AbstractBossControl
     protected float ms_fall_time = 0.6f;
     protected float ms_squish_time = 0.2f;
 
+    protected Transform webSpawn;
+
     protected override void Start ()
 	{
         base.Start();
@@ -44,7 +46,10 @@ public class BossSpider: AbstractBossControl
 		base._vertRange = 0.2f;
 		base.isAlive = true;
 		base.isMoving = false;
-        
+
+        bulletSpawn = transform.Find("AcidSpawn");
+        webSpawn = transform.Find("WebSpawn");
+
         _controller = gameObject.GetComponent<MovementController2D> ();
         attackCooldown = ATTACK_COOLDOWN;
         sprayCooldown = SPRAY_COOLDOWN;
@@ -146,9 +151,11 @@ public class BossSpider: AbstractBossControl
 		switch (newState) {
 		    case BossAction.attack:            
 			    _anim.SetTrigger ("Attack");
+                fireWeb();
 			    break;
             case BossAction.special:
                 _anim.SetTrigger("Spray");
+                StartCoroutine(rapidFireAcid());
                 break;
 		    case BossAction.dying:
 			    _anim.SetBool ("IsMoving", false);
@@ -166,15 +173,15 @@ public class BossSpider: AbstractBossControl
 		base.setBossAction (newState);
 	}
 
-    protected void vomit()
+    protected void fireAcid()
     {
         GameObject go;
-        VomitBullet bullet;
+        AcidBullet bullet;
 
-        go = Instantiate(webBullet);
-        bullet = go.GetComponent<VomitBullet>();
-        bulletSpawn.position.Set(-Mathf.Abs(bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-        bullet.direction = Vector2.left;
+        go = Instantiate(acidBullet);
+        bullet = go.GetComponent<AcidBullet>();
+        bullet.direction = Vector2.right;
+        bullet.transform.localScale = new Vector3(-1, 1, 1);
 
         // Stick the bullet in the spawner.
         bullet.transform.position = bulletSpawn.position;
@@ -182,30 +189,52 @@ public class BossSpider: AbstractBossControl
         // Put the bullet on the stage.
         bullet.transform.parent = transform.parent;
     }
-
-   /* public void ThrowBomb()
-    {
-        // Create a bomb and make it fly.
-        GameObject go = Instantiate(pirateBomb);
-        PirateBomb bomb = go.GetComponent<PirateBomb>();
-
-        // Position the spawner and the direction.
-        if (facingLeft)
-        {
-            bombSpawn.position.Set(-Mathf.Abs(bombSpawn.position.x), bombSpawn.position.y, bombSpawn.position.z);
-            bomb.direction = Vector2.left;
+    protected IEnumerator rapidFireAcid () {
+        for (int i = 15; i >= 0; i--) {
+            fireAcid();
+            yield return new WaitForSeconds(.15f);
         }
-        else {
-            bombSpawn.position.Set(Mathf.Abs(bombSpawn.position.x), bombSpawn.position.y, bombSpawn.position.z);
-            bomb.direction = Vector2.right;
-        }
+    }
 
-        // Setup the bomb's spawn and target. It will animate itself from spawn to the target by means of physics!
-        bomb.setSpawnAndTarget(bombSpawn.position, new Vector2(_player.transform.position.x, _player.transform.position.y));
+    protected void fireWeb () {
+        GameObject go;
+        WebBullet bullet;
 
-        // Put the bomb on the stage.
-        bomb.transform.parent = transform.parent;
-    }*/
+        go = Instantiate(webBullet);
+        bullet = go.GetComponent<WebBullet>();
+        bullet.direction = Vector2.right;
+        bullet.transform.localScale = new Vector3(-1, 1, 1);
+
+        // Stick the bullet in the spawner.
+        bullet.transform.position = webSpawn.position;
+
+        // Put the bullet on the stage.
+        bullet.transform.parent = transform.parent;
+    }
+
+    /* public void ThrowBomb()
+     {
+         // Create a bomb and make it fly.
+         GameObject go = Instantiate(pirateBomb);
+         PirateBomb bomb = go.GetComponent<PirateBomb>();
+
+         // Position the spawner and the direction.
+         if (facingLeft)
+         {
+             bombSpawn.position.Set(-Mathf.Abs(bombSpawn.position.x), bombSpawn.position.y, bombSpawn.position.z);
+             bomb.direction = Vector2.left;
+         }
+         else {
+             bombSpawn.position.Set(Mathf.Abs(bombSpawn.position.x), bombSpawn.position.y, bombSpawn.position.z);
+             bomb.direction = Vector2.right;
+         }
+
+         // Setup the bomb's spawn and target. It will animate itself from spawn to the target by means of physics!
+         bomb.setSpawnAndTarget(bombSpawn.position, new Vector2(_player.transform.position.x, _player.transform.position.y));
+
+         // Put the bomb on the stage.
+         bomb.transform.parent = transform.parent;
+     }*/
 
     public override void onAnimationState (string state)
 	{
