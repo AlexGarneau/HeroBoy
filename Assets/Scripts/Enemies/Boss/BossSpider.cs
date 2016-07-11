@@ -16,6 +16,9 @@ public class BossSpider: AbstractBossControl
     protected float attackCooldown = 0f;
     protected float sprayCooldown = 0f;
 
+    public GameObject acidBullet;
+    public GameObject webBullet;
+
     // Manual Spawn
     protected int msState = -1;
     protected const int MS_STATE_IDLE = -1;
@@ -162,7 +165,48 @@ public class BossSpider: AbstractBossControl
 
 		base.setBossAction (newState);
 	}
-    
+
+    protected void vomit()
+    {
+        GameObject go;
+        VomitBullet bullet;
+
+        go = Instantiate(webBullet);
+        bullet = go.GetComponent<VomitBullet>();
+        bulletSpawn.position.Set(-Mathf.Abs(bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
+        bullet.direction = Vector2.left;
+
+        // Stick the bullet in the spawner.
+        bullet.transform.position = bulletSpawn.position;
+
+        // Put the bullet on the stage.
+        bullet.transform.parent = transform.parent;
+    }
+
+   /* public void ThrowBomb()
+    {
+        // Create a bomb and make it fly.
+        GameObject go = Instantiate(pirateBomb);
+        PirateBomb bomb = go.GetComponent<PirateBomb>();
+
+        // Position the spawner and the direction.
+        if (facingLeft)
+        {
+            bombSpawn.position.Set(-Mathf.Abs(bombSpawn.position.x), bombSpawn.position.y, bombSpawn.position.z);
+            bomb.direction = Vector2.left;
+        }
+        else {
+            bombSpawn.position.Set(Mathf.Abs(bombSpawn.position.x), bombSpawn.position.y, bombSpawn.position.z);
+            bomb.direction = Vector2.right;
+        }
+
+        // Setup the bomb's spawn and target. It will animate itself from spawn to the target by means of physics!
+        bomb.setSpawnAndTarget(bombSpawn.position, new Vector2(_player.transform.position.x, _player.transform.position.y));
+
+        // Put the bomb on the stage.
+        bomb.transform.parent = transform.parent;
+    }*/
+
     public override void onAnimationState (string state)
 	{
 		switch (state) {
