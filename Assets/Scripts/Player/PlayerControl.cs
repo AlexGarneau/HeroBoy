@@ -78,6 +78,9 @@ public class PlayerControl : AbstractClass
     public Collider2D chargePartPickup;
     public Collider2D chargeFullPickup;
 
+    //STANDARD MOVES LOCK
+    public bool canAttack;
+
     //SPECIAL MOVES INVENTORY
 	public bool hasMermaidCannon = false;
     public bool hasMaceOfTrit = false;
@@ -201,7 +204,10 @@ public class PlayerControl : AbstractClass
             case PlayerStates.mobile:
                 // Primary state. Player is normal. Can move and attack based on inputs. Check for input code here.
                 PlayerMovement();
-                PlayerAction();
+                if(canAttack != false)
+                {
+                    PlayerAction();
+                }
                 break;
             case PlayerStates.attacking:
                 PlayerAction();
