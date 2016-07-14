@@ -26,6 +26,7 @@ public class PlayerControl : AbstractClass
 
     public bool tempInvuln;
     public float tempInvulnTimer = 0f;
+    public float stunTime = 2f;
 
     public float dodgeForce = 5f;
     public float dodgeDecline = 0.5f;
@@ -80,6 +81,7 @@ public class PlayerControl : AbstractClass
 
     //STANDARD MOVES LOCK
     public bool canAttack;
+    public GameObject stunIcon;
 
     //SPECIAL MOVES INVENTORY
 	public bool hasMermaidCannon = false;
@@ -148,6 +150,10 @@ public class PlayerControl : AbstractClass
 		facingRight = true;
 
 		dc.gameObject.SetActive (false);
+
+        if (stunIcon != null) {
+            stunIcon.SetActive(false);
+        }
 
         setState(PlayerStates.mobile);
 	}
@@ -656,6 +662,15 @@ public class PlayerControl : AbstractClass
             tempInvuln = true;
             tempInvulnTimer = 1f;
 
+            if (type == AbstractDamageCollider.DamageType.stunAttack) {
+                StartCoroutine(stunAttack());
+            } else if (type == AbstractDamageCollider.DamageType.stunMove) {
+                StartCoroutine(stunMove());
+            } else if (type == AbstractDamageCollider.DamageType.stunAll) {
+                StartCoroutine(stunAttack());
+                StartCoroutine(stunMove());
+            }
+
             if (playerHealth > 0) {
 			    playerHealth -= damage;
 			    if (playerHealth <= 0) {
@@ -671,7 +686,23 @@ public class PlayerControl : AbstractClass
         setState(PlayerStates.dodging);
     }
 
-	protected IEnumerator fireMermaidCannon ()
+    public IEnumerator stunAttack () {
+        if (stunIcon != null) { stunIcon.SetActive(true); }
+        canAttack = false;
+        yield return new WaitForSeconds(stunTime);
+        canAttack = true;
+        if (stunIcon != null) { stunIcon.SetActive(false); }
+    }
+
+    public IEnumerator stunMove () {
+        _anim.SetTrigger("Stunned");
+        setState(PlayerStates.stunned);
+        yield return new WaitForSeconds(stunTime);
+        setState(PlayerStates.mobile);
+        _anim.SetTrigger("Unstunned");
+    }
+
+    protected IEnumerator fireMermaidCannon ()
 	{
 		yield return new WaitForSeconds (1f);
 

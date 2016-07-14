@@ -151,8 +151,8 @@ public class BossSpider: AbstractBossControl
 		switch (newState) {
 		    case BossAction.attack:            
 			    _anim.SetTrigger ("Attack");
-                fireWeb();
-			    break;
+                StartCoroutine(rapidFireWeb());
+                break;
             case BossAction.special:
                 _anim.SetTrigger("Spray");
                 StartCoroutine(rapidFireAcid());
@@ -206,10 +206,16 @@ public class BossSpider: AbstractBossControl
         bullet.transform.localScale = new Vector3(-1, 1, 1);
 
         // Stick the bullet in the spawner.
-        bullet.transform.position = webSpawn.position;
+        bullet.setSpawnAndTarget(webSpawn.position, _player.transform.position);
 
         // Put the bullet on the stage.
         bullet.transform.parent = transform.parent;
+    }
+    protected IEnumerator rapidFireWeb () {
+        for (int i = 3; i >= 0; i--) {
+            fireWeb();
+            yield return new WaitForSeconds(0.3f);
+        }
     }
 
     /* public void ThrowBomb()
