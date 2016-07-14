@@ -66,22 +66,23 @@ public class NightmareHalloweenEvents : MonoBehaviour {
         {
             case NightmareHalloweenStates.enter:
                 mom.SetActive(true);
-                mom.transform.position = new Vector2(-25, .95f);
+                mom.transform.position = new Vector2(-25, 0);
                 break;
             case NightmareHalloweenStates.candy1:
-                mom.transform.position = new Vector2(-20, 0.95f);
+                mom.transform.position = new Vector2(-20, 0);
                 break;
             case NightmareHalloweenStates.candy2:
-                mom.transform.position = new Vector2(-15, 0.95f);
+                mom.transform.position = new Vector2(-15, 0);
                 break;
             case NightmareHalloweenStates.candy3:
-                mom.transform.position = new Vector2(-8, 0.95f);
+                mom.transform.position = new Vector2(-8, 0);
                 break;
             case NightmareHalloweenStates.candy4:
 
                 break;
             case NightmareHalloweenStates.transform1:
                 player.canAttack = true;
+                maxGhost.SetActive(false);
                 mom.SetActive(false);
                 roadBlock.SetActive(false);
                 house1.SetTrigger("Spook");
@@ -162,7 +163,7 @@ public class NightmareHalloweenEvents : MonoBehaviour {
                 }
                 break;
             case "Transform3":
-                if (halloweenState == NightmareHalloweenStates.transform2)
+                if (halloweenState != NightmareHalloweenStates.transform3)
                 {
                     setState(NightmareHalloweenStates.transform3);
                 }
