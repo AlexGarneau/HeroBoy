@@ -12,7 +12,7 @@ public class BossKnight: AbstractBossControl
 	{
         base.Start();
 
-        base._bossMaxHealth = base._bossHealth = 3f;
+        base._bossMaxHealth = base._bossHealth = 300f;
         _anim.SetFloat("Health", _bossHealth);
 
         base._enemMoveSpeed = 1f;
