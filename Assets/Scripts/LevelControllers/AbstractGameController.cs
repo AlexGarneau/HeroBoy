@@ -4,9 +4,11 @@ using System.Collections;
 public class AbstractGameController : MonoBehaviour
 {
 	public SpawnZombie[] spawns;
+    public ArrayList activeEnemies;
 	public int enemyCount = 6;
 	public int killCount = 0;
     public int currentEnemyCount = 0;
+    public int numEnemiesAttackAtOnce = 1;
 
 	protected int nextLevel;
 
@@ -17,7 +19,7 @@ public class AbstractGameController : MonoBehaviour
 
     protected Animator _anim;
     protected bool levelComplete;
-
+    
 	// Use this for initialization
 	public virtual void Start ()
 	{
@@ -51,9 +53,10 @@ public class AbstractGameController : MonoBehaviour
 		if (enemyCount > 0) {
 			for (var i = spawns.Length - 1; i >= 0; i--) {
 				if (spawns [i].hasMissingEnemy) {
+					GameObject newEnemy = spawns [i].spawnEnemy ();
+                    activeEnemies.Add(newEnemy);
 					enemyCount--;
                     currentEnemyCount++;
-					spawns [i].spawnEnemy ();
 					if (enemyCount <= 0) {
 						return;
 					}
@@ -81,14 +84,19 @@ public class AbstractGameController : MonoBehaviour
 	
 	public virtual void enemyDied ()
 	{
-		Debug.Log ("Oh, an enemy died!");
-		if (chargeBar != null) {
+        // Increase charge bar.
+        if (chargeBar != null) {
 			chargeBar.IncreaseChargePercentage (20);
 		}
 		killCount++;
         currentEnemyCount--;
-		// TODO: Add some percentage to the charge bar.
-		// When the charge bar is full, then use Input to send a message to the player to use special from GameController.
+		
+        // Clean up enemies.
+        for (int i = activeEnemies.Count - 1; i >= 0; i--) {
+            if (activeEnemies[i] == null) {
+                activeEnemies.RemoveAt(i);
+            }
+        }
 	}
 
 	public void SavePlayerStats ()

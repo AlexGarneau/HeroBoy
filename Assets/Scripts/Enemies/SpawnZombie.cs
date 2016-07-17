@@ -72,30 +72,36 @@ public class SpawnZombie : AbstractClass
 		}
 	}
 
-	public void spawnEnemy ()
+	public GameObject spawnEnemy ()
 	{
 		for (int i = zedCount - 1; i >= 0; i--) {
 			if (_enemies [i].Equals (null) && !_isSpawning [i]) {
 				// Enemy died. Spawn one new enemy. Make multiple calls to fill the spawn.
 				StartCoroutine (createEnemy (i));
-				return;
+				return _enemies[i] as GameObject;
 			}
 		}
+
+        // Enemy didn't spawn. Meh.
+        return null;
 	}
 
     public ArrayList getEnemies () {
         return _enemies;
     }
 
-	private void autoSpawnEnemy ()
+	private GameObject autoSpawnEnemy ()
 	{
 		for (int i = zedCount - 1; i >= 0; i--) {
 			if (_enemies [i].Equals (null) && !_isSpawning [i]) {
 				// Enemy died. Spawn new enemy.
 				StartCoroutine (createEnemy (i));
-				return;
+				return _enemies[i] as GameObject;
 			}
 		}
+
+        // Enemy didn't spawn.
+        return null;
 	}
 
 	private IEnumerator createEnemy (int index)
