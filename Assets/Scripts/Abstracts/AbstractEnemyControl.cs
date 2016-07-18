@@ -77,10 +77,13 @@ public class AbstractEnemyControl : AbstractClass
         idle, // Enemy is idle. Doesn't do anything but stand and look pretty.
 		spawn, // Enemy goes through spawn animation.
         stand, // Enemy holds position and attacks if player gets close. Good for snipers or guards.
+        paceBack, // Enemy keeps his distance, waiting for an opening. Will attack if close enough or in range.
+        paceForth, // Enemy moves forward a bit to keep it interesting. Will attack if close enough or in range.
 		move, // Enemy moves and homes in on player.
 		attack, // Enemy currently attacking. Usually doesn't move during this.
 		stun, // Enemy is stunned. Use your imagination.
-		dead} // Enemy is dead. Big surprise.
+		dead
+    } // Enemy is dead. Big surprise.
 	;
 
 	public EnemyStates state;
