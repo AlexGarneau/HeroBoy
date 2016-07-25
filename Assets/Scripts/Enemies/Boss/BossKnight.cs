@@ -16,7 +16,7 @@ public class BossKnight: AbstractBossControl
         _anim.SetFloat("Health", _bossHealth);
 
         base._enemMoveSpeed = 1f;
-		base._enemDamage = 1;
+		base.enemDamage = 1;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
@@ -63,10 +63,10 @@ public class BossKnight: AbstractBossControl
 		base.setBossAction (newState);
 	}
     
-    public override void onAnimationState (string state)
+    public override void onAnimationState (string animState)
 	{
-        Debug.Log("BossKnight Animation State: " + state);
-		switch (state) {
+        Debug.Log("BossKnight Animation State: " + animState);
+		switch (animState) {
 		    case AbstractBossControl.ANIM_SPAWN_END:
                 setBossAction(BossAction.move);
                 break;

@@ -12,11 +12,12 @@ public class Bully : AbstractEnemyControl
         base.Start();
         base._enemHealth = 10000f;
 		base._enemMoveSpeed = 1f;
-		base._enemDamage = 1;
+		base.enemDamage = 1;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
 		base.isMoving = false;
+        base.hasGun = false;
 
         _controller = gameObject.GetComponent<MovementController2D> ();
 
@@ -74,7 +75,7 @@ public class Bully : AbstractEnemyControl
 		base.setState (newState);
 	}
 
-    protected override void MoveToAttack()
+    protected override void MoveToPlayer()
     {
         float hD = _player.transform.position.x - this.transform.position.x;
         float vD = _player.transform.position.y - this.transform.position.y;
@@ -130,11 +131,6 @@ public class Bully : AbstractEnemyControl
             normHD = 0;
         }
 
-        if (hD <= _attackRange && hD >= -_attackRange && vD <= _vertRange && vD >= -_vertRange)
-        {
-            setState(EnemyStates.attack);
-        }
-
         float targetVelX = normHD * _enemMoveSpeed;
         float targetVelY = normVD * _enemMoveSpeed;
         _vel.x = Mathf.SmoothDamp(_vel.x, targetVelX, ref velocityXSmoothing, .1f);
@@ -142,9 +138,9 @@ public class Bully : AbstractEnemyControl
         _controller.Move(_vel * Time.deltaTime);
     }
 
-    public override void onAnimationState (string state)
+    public override void onAnimationState (string animState)
 	{
-		switch (state) {
+		switch (animState) {
 		    case AbstractEnemyControl.ANIM_SPAWN_END:
                 break;
 		    case AbstractEnemyControl.ANIM_ATTACK_START:

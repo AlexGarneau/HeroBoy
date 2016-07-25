@@ -27,7 +27,7 @@ public class BossElephant : AbstractBossControl
 	{
 		base._bossMaxHealth = base._bossHealth = 400f;
 		base._enemMoveSpeed = 1f;
-		base._enemDamage = 5f;
+		base.enemDamage = 5f;
 		base._attackRange = 4f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
@@ -52,7 +52,7 @@ public class BossElephant : AbstractBossControl
 	{
 		switch (state) {
 		case BossAction.move:
-            MoveToAttack();
+            MoveToPlayer();
 			break;
 		case BossAction.attack:
 			break;
@@ -108,10 +108,10 @@ public class BossElephant : AbstractBossControl
 	}
 
     /** States called by the animator. */
-    public override void onAnimationState (string state) {
-        Debug.Log("AnimataionState:" + state);
+    public override void onAnimationState (string animState) {
+        Debug.Log("AnimataionState:" + animState);
 
-        switch (state) {
+        switch (animState) {
             case AbstractEnemyControl.ANIM_SPAWN_END:
                 // Boss spawned.
                 setBossAction(BossAction.move);

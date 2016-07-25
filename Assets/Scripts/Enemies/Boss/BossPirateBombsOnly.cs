@@ -67,11 +67,9 @@ public class BossPirateBombsOnly : AbstractBossControl
 	}
 
 	/** States called by the animator. */
-	public override void onAnimationState (string state)
+	public override void onAnimationState (string animState)
 	{
-		//Debug.Log ("AnimataionState:" + state);
-
-        switch (state)
+        switch (animState)
         {
             case AbstractBossControl.ANIM_ATTACK_END:
                 if (bombAmmo > 0) {

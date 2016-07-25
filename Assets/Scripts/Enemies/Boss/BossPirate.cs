@@ -25,7 +25,7 @@ public class BossPirate : AbstractBossControl
 	{
 		base._bossMaxHealth = base._bossHealth = 50f;
 		base._enemMoveSpeed = 1.2f;
-		base._enemDamage = 2f;
+		base.enemDamage = 2f;
 		base._attackRange = 2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
@@ -120,11 +120,11 @@ public class BossPirate : AbstractBossControl
 	}
 
 	/** States called by the animator. */
-	public override void onAnimationState (string state)
+	public override void onAnimationState (string animState)
 	{
-		Debug.Log ("AnimataionState:" + state);
+		Debug.Log ("AnimataionState:" + animState);
 
-		switch (state) {
+		switch (animState) {
 		case AbstractEnemyControl.ANIM_SPAWN_END:
 			// Boss spawned.
 			highGround = true;

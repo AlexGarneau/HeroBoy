@@ -11,11 +11,12 @@ public class Skeleton : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 100f;
 		base._enemMoveSpeed = 1f;
-		base._enemDamage = 2;
+		base.enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
 		base.isMoving = false;
+        base.hasGun = false;
 
         _controller = GetComponent<MovementController2D> ();
 
@@ -32,28 +33,6 @@ public class Skeleton : AbstractEnemyControl
 			eabs [i].enemy = this;
 		}
         _anim.SetFloat("Health", _enemHealth);
-
-        // Set the first state.
-        setState (EnemyStates.spawn);
-	}
-
-	protected override void Update ()
-	{
-		switch (state) {
-		case EnemyStates.move:
-			break;
-		case EnemyStates.attack:
-			break;
-		case EnemyStates.dead:
-			//DeathTimerDestroy ();
-			break;
-		}
-
-		_anim.SetFloat ("Health", _enemHealth);
-		_anim.SetBool ("FacingLeft", facingLeft);
-        _anim.SetInteger("PlayerHealth", _playerControl.playerHealth);
-
-		base.Update ();
 	}
 
 	protected override void setState (EnemyStates newState)
@@ -77,9 +56,6 @@ public class Skeleton : AbstractEnemyControl
 	public override void onAnimationState (string animState)
 	{
 		switch (animState) {
-		case AbstractEnemyControl.ANIM_SPAWN_END:
-			setState (EnemyStates.move);
-			break;
 		case AbstractEnemyControl.ANIM_ATTACK_START:
 
 			break;
@@ -103,7 +79,9 @@ public class Skeleton : AbstractEnemyControl
 			Destroy (gameObject);
 			break;
 		}
-	}
+
+        base.onAnimationState(animState);
+    }
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{

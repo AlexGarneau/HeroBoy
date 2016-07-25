@@ -15,11 +15,12 @@ public class RobotClaw: AbstractEnemyControl
         base.Start();
         base._enemHealth = 100f;
 		base._enemMoveSpeed = 1f;
-		base._enemDamage = 1;
+		base.enemDamage = 1;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
 		base.isMoving = false;
+        base.hasGun = false;
 
         _controller = gameObject.GetComponent<MovementController2D> ();
 
@@ -40,28 +41,11 @@ public class RobotClaw: AbstractEnemyControl
         {
             eabs[i].enemy = this;
         }
-
-        baseState = EnemyStates.move;
 	}
 
 	protected override void Update()
 	{
-		switch (state) {
-		case EnemyStates.move:
-			break;
-		case EnemyStates.attack:
-			break;
-		case EnemyStates.dead:
-			//DeathTimerDestroy ();
-			break;
-		}
-
         specialAttackCountdownTimer -= Time.deltaTime;
-
-        _anim.SetFloat ("Health", _enemHealth);
-        _anim.SetInteger("PlayerHealth", _playerControl.playerHealth);
-		_anim.SetBool ("FacingLeft", facingLeft);
-
 		base.Update ();
 	}
 
@@ -89,7 +73,7 @@ public class RobotClaw: AbstractEnemyControl
 		base.setState (newState);
 	}
 
-    protected override void MoveToAttack()
+    protected override void MoveToPlayer()
     {
         float hD = _player.transform.position.x - this.transform.position.x;
         float vD = _player.transform.position.y - this.transform.position.y;
@@ -145,11 +129,6 @@ public class RobotClaw: AbstractEnemyControl
             normHD = 0;
         }
 
-        if (hD <= _attackRange && hD >= -_attackRange && vD <= _vertRange && vD >= -_vertRange)
-        {
-            setState(EnemyStates.attack);
-        }
-
         float targetVelX = normHD * _enemMoveSpeed;
         float targetVelY = normVD * _enemMoveSpeed;
         _vel.x = Mathf.SmoothDamp(_vel.x, targetVelX, ref velocityXSmoothing, .1f);
@@ -157,12 +136,9 @@ public class RobotClaw: AbstractEnemyControl
         _controller.Move(_vel * Time.deltaTime);
     }
 
-    public override void onAnimationState (string state)
+    public override void onAnimationState (string animState)
 	{
-		switch (state) {
-		    case AbstractEnemyControl.ANIM_SPAWN_END:
-                setState(EnemyStates.move);
-                break;
+		switch (animState) {
 		    case AbstractEnemyControl.ANIM_ATTACK_START:
 			    break;
 		    case AbstractEnemyControl.ANIM_ATTACK_END:
@@ -178,7 +154,9 @@ public class RobotClaw: AbstractEnemyControl
 			    Destroy (gameObject);
 			    break;
 		}
-	}
+
+        base.onAnimationState(animState);
+    }
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{

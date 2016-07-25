@@ -11,7 +11,7 @@ public class BalloonDog : AbstractEnemyControl {
         base.Start();
         base._enemHealth = 1f;
         base._enemMoveSpeed = 1.5f;
-        base._enemDamage = 2;
+        base.enemDamage = 2;
         base._attackRange = 1f;
         base._vertRange = 0.2f;
         base.isAlive = true;

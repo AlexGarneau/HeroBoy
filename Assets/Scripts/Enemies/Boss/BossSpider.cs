@@ -41,7 +41,7 @@ public class BossSpider: AbstractBossControl
         _anim.SetFloat("Health", _bossHealth);
 
         base._enemMoveSpeed = 1f;
-		base._enemDamage = 1;
+		base.enemDamage = 1;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
@@ -142,7 +142,7 @@ public class BossSpider: AbstractBossControl
 		base.Update ();
 	}
 
-    protected override void MoveToAttack () {
+    protected override void MoveToPlayer () {
         // Spider doesn't move. This doesn't do squat.
     }
 
@@ -242,9 +242,9 @@ public class BossSpider: AbstractBossControl
          bomb.transform.parent = transform.parent;
      }*/
 
-    public override void onAnimationState (string state)
+    public override void onAnimationState (string animState)
 	{
-		switch (state) {
+		switch (animState) {
 		    case AbstractBossControl.ANIM_ATTACK_END:
 			    setBossAction (BossAction.stand);
 			    break;

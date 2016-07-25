@@ -13,11 +13,12 @@ public class BossBear : AbstractEnemyControl
         base.Start();
         base._enemHealth = 500f;
 		base._enemMoveSpeed = 1f;
-		base._enemDamage = 30;
+		base.enemDamage = 30;
 		base._attackRange = 2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
 		base.isMoving = false;
+        base.hasGun = false;
 
         _controller = gameObject.GetComponent<MovementController2D> ();
 
@@ -79,7 +80,7 @@ public class BossBear : AbstractEnemyControl
 		base.setState (newState);
 	}
 
-    protected override void MoveToAttack()
+    protected override void MoveToPlayer()
     {
         float hD = _player.transform.position.x - this.transform.position.x;
         float vD = _player.transform.position.y - this.transform.position.y;
@@ -135,11 +136,6 @@ public class BossBear : AbstractEnemyControl
             normHD = 0;
         }
 
-        if (hD <= _attackRange && hD >= -_attackRange && vD <= _vertRange && vD >= -_vertRange)
-        {
-            setState(EnemyStates.attack);
-        }
-
         float targetVelX = normHD * _enemMoveSpeed;
         float targetVelY = normVD * _enemMoveSpeed;
         _vel.x = Mathf.SmoothDamp(_vel.x, targetVelX, ref velocityXSmoothing, .1f);
@@ -147,12 +143,9 @@ public class BossBear : AbstractEnemyControl
         _controller.Move(_vel * Time.deltaTime);
     }
 
-    public override void onAnimationState (string state)
+    public override void onAnimationState (string animState)
 	{
-		switch (state) {
-		    case AbstractEnemyControl.ANIM_SPAWN_END:
-                setState(EnemyStates.move);
-                break;
+		switch (animState) {
 		    case AbstractEnemyControl.ANIM_ATTACK_START:
 			    break;
 		    case AbstractEnemyControl.ANIM_ATTACK_END:
@@ -165,7 +158,9 @@ public class BossBear : AbstractEnemyControl
 			    Destroy (gameObject);
 			    break;
 		}
-	}
+
+        base.onAnimationState(animState);
+    }
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{

@@ -10,7 +10,7 @@ public class BossBruno: AbstractBossControl
         base.Start();
         base._bossMaxHealth = base._bossHealth = 300f;
 		base._enemMoveSpeed = 1f;
-		base._enemDamage = 1;
+		base.enemDamage = 1;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
@@ -58,9 +58,9 @@ public class BossBruno: AbstractBossControl
 		base.setBossAction (newState);
 	}
     
-    public override void onAnimationState (string state)
+    public override void onAnimationState (string animState)
 	{
-		switch (state) {
+		switch (animState) {
 		    case AbstractEnemyControl.ANIM_SPAWN_END:
                 setBossAction(BossAction.move);
                 break;

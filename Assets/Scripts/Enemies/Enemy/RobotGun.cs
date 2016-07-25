@@ -4,10 +4,6 @@ using System.Collections;
 public class RobotGun : AbstractEnemyControl
 {
 	bool highGround;
-	float gunRangeMax = 5f;
-	float gunCooldown = 0f;
-	float gunCooldownTime = 4f;
-    float meleeCooldownTime = 10f;
 
     public Collider2D lightHit;
 
@@ -21,7 +17,7 @@ public class RobotGun : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 100f;
 		base._enemMoveSpeed = 1.2f;
-		base._enemDamage = 2;
+		base.enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;
 		base.isAlive = true;
@@ -45,64 +41,28 @@ public class RobotGun : AbstractEnemyControl
 		for (var i = eabs.Length - 1; i >= 0; i--) {
 			eabs [i].enemy = this;
 		}
-
-		// Set the first state. DEBUG
-		setState (EnemyStates.move);
-	}
-
-	protected override void Update ()
-	{
-		switch (state) {
-		case EnemyStates.move:
-			break;
-		case EnemyStates.attack:
-            break;
-		case EnemyStates.dead:
-			//DeathTimerDestroy ();
-			break;
-		}
-
-		_anim.SetFloat ("Health", _enemHealth);
-        _anim.SetInteger("PlayerHealth", _playerControl.playerHealth);
-        //_anim.SetBool ("HighGround", highGround);
-        //HighGroundCheck ();
-
-        if (meleeCooldown > 0)
-        {
-            meleeCooldown -= Time.deltaTime;
-            if (meleeCooldown < 0)
-            {
-                meleeCooldown = 0;
-            }
-        }
-
-        if (gunCooldown > 0) {
-			gunCooldown -= Time.deltaTime;
-			if (gunCooldown < 0) {
-				gunCooldown = 0;
-			}
-		}
-
-		base.Update ();
 	}
 
 	protected override void setState (EnemyStates newState)
 	{
-        Debug.Log("SetState: " + newState);
-
 		switch (newState) {
-		case EnemyStates.move:
-			_anim.SetBool ("IsMoving", true);
-			break;
-		case EnemyStates.attack:
-			_anim.SetBool ("IsMoving", false);
-			break;
-        case EnemyStates.stun:
-            _anim.SetBool("IsMoving", false);
-            break;
-        case EnemyStates.dead:
-			_anim.SetBool ("IsMoving", false);
-			break;
+		    case EnemyStates.move:
+			    _anim.SetBool ("IsMoving", true);
+			    break;
+		    case EnemyStates.attack:
+			    _anim.SetBool ("IsMoving", false);
+                _anim.SetTrigger("Heavy");
+                break;
+            case EnemyStates.shoot:
+                _anim.SetBool("IsMoving", false);
+                _anim.SetTrigger("Attack");
+                break;
+            case EnemyStates.stun:
+                _anim.SetBool("IsMoving", false);
+                break;
+            case EnemyStates.dead:
+			    _anim.SetBool ("IsMoving", false);
+			    break;
 		}
 
 		base.setState (newState);
@@ -110,42 +70,40 @@ public class RobotGun : AbstractEnemyControl
 
 	public override void onAnimationState (string animState)
 	{
-        Debug.Log("New State: " + animState);
-		switch (animState) {
-		case AbstractEnemyControl.ANIM_SPAWN_END:
-			setState (EnemyStates.move);
-			break;
-		case AbstractEnemyControl.ANIM_ATTACK_START:
+        switch (animState) {
+		    case AbstractEnemyControl.ANIM_ATTACK_START:
             
-			break;
-		case AbstractEnemyControl.ANIM_ATTACK_END:
-            if (state != EnemyStates.stun)
-            {
+			    break;
+		    case AbstractEnemyControl.ANIM_ATTACK_END:
+                if (state != EnemyStates.stun)
+                {
+                    setState(EnemyStates.move);
+                }
+			    break;
+		    case AbstractEnemyControl.ANIM_INJURED_END:
+			    if (_enemHealth > 0 && state != EnemyStates.stun) {
+				    setState (EnemyStates.move);
+			    }
+			    break;
+            case AbstractEnemyControl.ANIM_STUN_END:
+                _anim.SetBool("IsStunned", false);
                 setState(EnemyStates.move);
-            }
-			break;
-		case AbstractEnemyControl.ANIM_INJURED_END:
-			if (_enemHealth > 0 && state != EnemyStates.stun) {
-				setState (EnemyStates.move);
-			}
-			break;
-        case AbstractEnemyControl.ANIM_STUN_END:
-            _anim.SetBool("IsStunned", false);
-            setState(EnemyStates.move);
-            break;
-        case AbstractEnemyControl.ANIM_DEATH_END:
-			randomdrop (healItem);
-			Destroy (gameObject);
-			break;
-		case AbstractEnemyControl.ANIM_SHOOT_START:
-			Shoot ();
-			break;
+                break;
+            case AbstractEnemyControl.ANIM_DEATH_END:
+			    randomdrop (healItem);
+			    Destroy (gameObject);
+			    break;
+		    case AbstractEnemyControl.ANIM_SHOOT_START:
+			    Shoot ();
+			    break;
 		}
-	}
 
-	protected override void MoveToAttack ()
+        base.onAnimationState(animState);
+    }
+
+	protected override void MoveToPlayer ()
 	{
-		//Debug.Log ("This is working: MoveToAttack.");
+		//Debug.Log ("This is working: MoveToPlayer.");
 		float vD = this.transform.position.y - _player.transform.position.y;
 		
 		// Y-positioning - move enemy to the player's level at all times.
@@ -160,47 +118,38 @@ public class RobotGun : AbstractEnemyControl
 		// Pirate is different than zombie. If he's less than half the gun range, he moves in for attack.
 		// If more, then he will move back while firing his gun.
 		float hD = this.transform.position.x - _player.transform.position.x;
-		var rangedToMeleePoint = gunRangeMax * .5;
+		var rangedToMeleePoint = _gunRange * .5;
 		float targetX = this.transform.position.x;
 		float targetY = this.transform.position.y;
 
-		if (meleeCooldown > 0 || Mathf.Abs (hD) > rangedToMeleePoint || ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0))) {
+		if (_attackCooldown > 0 || Mathf.Abs (hD) > rangedToMeleePoint || ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0))) {
 			// At gun range (or other pirate in melee range). Back away.
-			if (hD > gunRangeMax) {
+			if (hD > _gunRange) {
 				// Out of gun range. Move in right.
 				facingLeft = true;
 				normHD = -1;
-				targetX = _player.transform.position.x + gunRangeMax;
-			} else if (hD < -gunRangeMax) {
+				targetX = _player.transform.position.x + _gunRange;
+			} else if (hD < -_gunRange) {
 				// Out of gun range. Move in left.
 				facingLeft = false;
 				normHD = 1;
-				targetX = _player.transform.position.x - gunRangeMax;
-			} else if (hD < gunRangeMax && hD > 0) {
+				targetX = _player.transform.position.x - _gunRange;
+			} else if (hD < _gunRange && hD > 0) {
 				// Within gun range. Move back right as you fire.
 				facingLeft = true;
 				normHD = 1;
-				targetX = _player.transform.position.x + gunRangeMax;
-				if (vD <= _vertRange && vD >= -_vertRange) {
-                    TryShoot();
-                }
-			} else if (hD > -gunRangeMax && hD < 0) {
+				targetX = _player.transform.position.x + _gunRange;
+			} else if (hD > -_gunRange && hD < 0) {
 				// Within gun range. Move back left as you fire.
 				facingLeft = false;
 				normHD = -1;
-				targetX = _player.transform.position.x - gunRangeMax;
-				if (vD <= _vertRange && vD >= -_vertRange) {
-                    TryShoot();
-                }
+				targetX = _player.transform.position.x - _gunRange;
 			} else {
 				// Exactly at gun range. How about that?
 				normHD = 0;
 				targetX = this.transform.position.x;
-				if (vD <= _vertRange && vD >= -_vertRange) {
-                    TryShoot();
-				}
 			}
-		} else if (meleeCooldown <= 0) {
+		} else if (_attackCooldown <= 0) {
 			// Go in for the melee.
 			// X-positioning - move enemy to its closest horizontal range. If too close to the player, back away.
 			//Debug.Log (hD + " - " + _attackRange);
@@ -227,10 +176,6 @@ public class RobotGun : AbstractEnemyControl
 			} else {
 				normHD = 0;
 			}
-
-			if (hD <= _attackRange && hD >= -_attackRange && vD <= _vertRange && vD >= -_vertRange) {
-                TryMelee();
-			}
 		}
 
 		float targetVelX = normHD * _enemMoveSpeed;
@@ -239,34 +184,33 @@ public class RobotGun : AbstractEnemyControl
 		_vel.y = Mathf.SmoothDamp (_vel.y, targetVelY, ref velocityYSmoothing, .1f);
 
 		_controller.Move (_vel * Time.deltaTime);
-
-		_anim.SetBool ("FacingLeft", facingLeft);
 	}
 
-    protected void TryShoot()
-    {
-        if (gunCooldown <= 0)
-        {
-            // OK, gun's ready. Set cooldown and fire.
-            gunCooldown = gunCooldownTime;
-            _anim.SetTrigger("Attack");
-            setState(EnemyStates.attack);
-        }
-    }
+    protected override void CheckToAttack () {
+        float hD = _player.transform.position.x - this.transform.position.x;
+        float vD = _player.transform.position.y - this.transform.position.y;
 
-    protected void TryMelee()
-    {
-        if (meleeCooldown <= 0)
-        {
-            meleeCooldown = meleeCooldownTime;
-            _anim.SetTrigger("Heavy");
-            setState(EnemyStates.attack);
+        if (vD <= _vertRange && vD >= -_vertRange) {
+            // In vertical range. Try horizontal.
+            if (hasAttack && hD <= _attackRange && hD >= -_attackRange) {
+                // In attack range. Strike!
+                if (_attackCooldown <= 0) {
+                    _attackCooldown = _attackCooldownTime;
+                    setState(EnemyStates.attack);
+                }
+            } else if (hasGun && hD <= _gunRange && hD >= -_gunRange) {
+                // In shooting range. Shoot!
+                if (_gunCooldown <= 0) {
+                    // OK, gun's ready. Set cooldown and fire.
+                    _gunCooldown = _gunCooldownTime;
+                    setState(EnemyStates.shoot);
+                }
+            }
         }
     }
 
 	protected override void Shoot ()
 	{
-        Debug.Log("Shooting the bullet");
 		GameObject go;
         RobotShot bullet;
 

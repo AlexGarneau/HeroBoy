@@ -14,7 +14,7 @@ public class Bandit: AbstractEnemyControl
         base.Start();
         base._enemHealth = 80f;
 		base._enemMoveSpeed = 1.5f;
-		base._enemDamage = 1;
+		base.enemDamage = 1;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
@@ -42,10 +42,6 @@ public class Bandit: AbstractEnemyControl
 	protected override void Update()
 	{
 		switch (state) {
-		case EnemyStates.move:
-			break;
-		case EnemyStates.attack:
-			break;
 		case EnemyStates.dead:
             AnimatorStateInfo info = _anim.GetCurrentAnimatorStateInfo(0);
                 Debug.Log(info.ToString() + " - " + info.fullPathHash);
@@ -64,8 +60,6 @@ public class Bandit: AbstractEnemyControl
             break;
 		}
 
-        _anim.SetFloat ("Health", _enemHealth);
-		_anim.SetBool ("FacingLeft", facingLeft);
 		_anim.SetBool ("HighGround", highGround);
 		HighGroundCheck ();
 
@@ -74,7 +68,6 @@ public class Bandit: AbstractEnemyControl
 
 	protected override void setState (EnemyStates newState)
 	{
-        Debug.Log("Bully Set State: " + newState);
 		switch (newState) {
 		case EnemyStates.move:
 			_anim.SetBool ("IsMoving", true);
@@ -92,7 +85,7 @@ public class Bandit: AbstractEnemyControl
 		base.setState (newState);
 	}
 
-    protected override void MoveToAttack()
+    protected override void MoveToPlayer()
     {
         float hD = _player.transform.position.x - this.transform.position.x;
         float vD = _player.transform.position.y - this.transform.position.y;
@@ -148,11 +141,6 @@ public class Bandit: AbstractEnemyControl
             normHD = 0;
         }
 
-        if (hD <= _attackRange && hD >= -_attackRange && vD <= _vertRange && vD >= -_vertRange)
-        {
-            setState(EnemyStates.attack);
-        }
-
         float targetVelX = normHD * _enemMoveSpeed;
         float targetVelY = normVD * _enemMoveSpeed;
         _vel.x = Mathf.SmoothDamp(_vel.x, targetVelX, ref velocityXSmoothing, .1f);
@@ -160,9 +148,9 @@ public class Bandit: AbstractEnemyControl
         _controller.Move(_vel * Time.deltaTime);
     }
 
-    public override void onAnimationState (string state)
+    public override void onAnimationState (string animState)
 	{
-		switch (state) {
+		switch (animState) {
 		    case AbstractEnemyControl.ANIM_SPAWN_END:
                 break;
 		    case AbstractEnemyControl.ANIM_ATTACK_START:

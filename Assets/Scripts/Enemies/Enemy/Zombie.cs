@@ -13,11 +13,12 @@ public class Zombie : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 200f;
 		base._enemMoveSpeed = 1f;
-		base._enemDamage = 2;
+		base.enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
 		base.isMoving = false;
+        base.hasGun = false;
 
         _controller = GetComponent<MovementController2D> ();
 
@@ -33,27 +34,11 @@ public class Zombie : AbstractEnemyControl
 		for (var i = eabs.Length - 1; i >= 0; i--) {
 			eabs [i].enemy = this;
 		}
-
-		// Set the first state.
-		setState (EnemyStates.spawn);
 	}
 
 	protected override void Update ()
 	{
-		switch (state) {
-		case EnemyStates.move:
-			break;
-		case EnemyStates.attack:
-			break;
-		case EnemyStates.dead:
-			//DeathTimerDestroy ();
-			break;
-		}
-
-		_anim.SetFloat ("Health", _enemHealth);
-		_anim.SetBool ("FacingLeft", facingLeft);
 		_anim.SetBool ("HighGround", highGround);
-        _anim.SetInteger("PlayerHealth", _playerControl.playerHealth);
 		HighGroundCheck ();
 
 		base.Update ();
@@ -63,14 +48,11 @@ public class Zombie : AbstractEnemyControl
 	{
 		switch (newState) {
 		case EnemyStates.move:
-			_anim.SetBool ("IsMoving", true);
 			break;
 		case EnemyStates.attack:
-			_anim.SetBool ("IsMoving", false);
 			_anim.SetTrigger ("Attack");
 			break;
 		case EnemyStates.dead:
-			_anim.SetBool ("IsMoving", false);
             GetComponent<BoxCollider2D>().enabled = false;
 			break;
 		}
@@ -81,9 +63,6 @@ public class Zombie : AbstractEnemyControl
 	public override void onAnimationState (string animState)
 	{
 		switch (animState) {
-		case AbstractEnemyControl.ANIM_SPAWN_END:
-			setState (EnemyStates.move);
-			break;
 		case AbstractEnemyControl.ANIM_ATTACK_START:
 
 			break;
@@ -107,7 +86,9 @@ public class Zombie : AbstractEnemyControl
             Destroy (gameObject);
 			break;
 		}
-	}
+
+        base.onAnimationState(animState);
+    }
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{

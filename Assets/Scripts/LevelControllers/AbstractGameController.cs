@@ -8,8 +8,8 @@ public class AbstractGameController : MonoBehaviour
 	public int killCount = 0;
     public int currentEnemyCount = 0;
     public int numEnemiesAttackAtOnce = 1;
-    protected ArrayList enemiesPacing;
-    protected ArrayList enemiesAttacking;
+    protected ArrayList enemiesPacing = new ArrayList();
+    protected ArrayList enemiesAttacking = new ArrayList();
 
 	protected int nextLevel;
 
@@ -57,7 +57,9 @@ public class AbstractGameController : MonoBehaviour
 			for (var i = spawns.Length - 1; i >= 0; i--) {
 				if (spawns [i].hasMissingEnemy) {
 					GameObject newEnemy = spawns [i].spawnEnemy ();
-                    enemiesPacing.Add(newEnemy.GetComponent<AbstractEnemyControl>());
+                    AbstractEnemyControl newControl = newEnemy.GetComponent<AbstractEnemyControl>();
+                    enemiesPacing.Add(newControl);
+                    newControl.setBaseState(Random.value >= 0.5f ? AbstractEnemyControl.EnemyStates.paceBack : AbstractEnemyControl.EnemyStates.paceForth);
 					enemyCount--;
                     currentEnemyCount++;
 					if (enemyCount <= 0) {
@@ -90,28 +92,36 @@ public class AbstractGameController : MonoBehaviour
     public virtual void UpdateEnemies() {
         if (enemiesAttacking.Count < numEnemiesAttackAtOnce) {
             AbstractEnemyControl enemy = getClosestPacingEnemyToPlayer();
+            if (enemy == null) {
+                // Never mind. No more enemies.
+                return;
+            }
             // Add closest enemy to the attack state.
             enemiesAttacking.Add(enemy);
             enemiesPacing.Remove(enemy);
-            // TODO: Change enemy state to move.
+            enemy.setEnemyState(AbstractEnemyControl.EnemyStates.move);
         }
     }
 
     public virtual void EnemyGotStunned(AbstractEnemyControl enemy) {
-        // Enemy got stunned. If he was active, return him to the pacing array.
+        // Enemy got stunned. If he was active, return him to the pacing array. If he'ss till the closest, he'll get converted back in a heartbeat.
         if (enemiesAttacking.Contains(enemy)) {
             enemiesPacing.Add(enemy);
             enemiesAttacking.Remove(enemy);
-            // TODO: Change enemy state to pacing.
+            enemy.setEnemyState(Random.value >= 0.5f ? AbstractEnemyControl.EnemyStates.paceBack : AbstractEnemyControl.EnemyStates.paceForth);
         }
     }
 
     public virtual AbstractEnemyControl getClosestPacingEnemyToPlayer () {
+        if (enemiesPacing.Count <= 0) {
+            // No enemies!
+            return null;
+        }
         object enemy = enemiesPacing[enemiesPacing.Count - 1];
         float lowestDistance = float.MaxValue;
         float testDistance;
         for (int i = enemiesPacing.Count - 1; i >= 0; i--) {
-            testDistance = Vector3.Distance((enemiesPacing[i] as GameObject).transform.position, player.transform.position);
+            testDistance = Vector3.Distance((enemiesPacing[i] as AbstractEnemyControl).transform.position, player.transform.position);
             if (testDistance < lowestDistance) {
                 lowestDistance = testDistance;
                 enemy = enemiesPacing[i];
@@ -120,7 +130,7 @@ public class AbstractGameController : MonoBehaviour
         return (enemy as AbstractEnemyControl);
     }
 	
-	public virtual void enemyDied ()
+	public virtual void enemyDied (AbstractEnemyControl enemy)
 	{
         // Increase charge bar.
         if (chargeBar != null) {
@@ -131,12 +141,12 @@ public class AbstractGameController : MonoBehaviour
 		
         // Clean up enemies.
         for (int i = enemiesPacing.Count - 1; i >= 0; i--) {
-            if (enemiesPacing[i] == null) {
+            if (enemiesPacing[i] == null || enemiesPacing[i] as AbstractEnemyControl == enemy) {;
                 enemiesPacing.RemoveAt(i);
             }
         }
         for (int i = enemiesAttacking.Count - 1; i >= 0; i--) {
-            if (enemiesAttacking[i] == null) {
+            if (enemiesAttacking[i] == null || enemiesAttacking[i] as AbstractEnemyControl == enemy) {
                 enemiesAttacking.RemoveAt(i);
             }
         }

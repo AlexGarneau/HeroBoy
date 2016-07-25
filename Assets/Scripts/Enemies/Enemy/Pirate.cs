@@ -4,9 +4,6 @@ using System.Collections;
 public class Pirate : AbstractEnemyControl
 {
 	bool highGround;
-	float gunRangeMax = 5f;
-	float gunCooldown = 0f;
-	float gunCooldownTime = 4f;
 
 	public Collider2D lightHit;
 
@@ -18,7 +15,7 @@ public class Pirate : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 50f;
 		base._enemMoveSpeed = 1.2f;
-		base._enemDamage = 2;
+		base.enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;
 		base.isAlive = true;
@@ -40,9 +37,6 @@ public class Pirate : AbstractEnemyControl
 		for (var i = eabs.Length - 1; i >= 0; i--) {
 			eabs [i].enemy = this;
 		}
-
-		// Set the first state.
-		setState (EnemyStates.move);
 	}
 
 	protected override void Update ()
@@ -71,10 +65,10 @@ public class Pirate : AbstractEnemyControl
             }
         }
 
-        if (gunCooldown > 0) {
-			gunCooldown -= Time.deltaTime;
-			if (gunCooldown < 0) {
-				gunCooldown = 0;
+        if (_gunCooldown > 0) {
+			_gunCooldown -= Time.deltaTime;
+			if (_gunCooldown < 0) {
+				_gunCooldown = 0;
 			}
 		}
 
@@ -90,21 +84,13 @@ public class Pirate : AbstractEnemyControl
 			_anim.SetBool ("IsMoving", true);
 			break;
 		case EnemyStates.attack:
-			if (Mathf.Abs (transform.position.x - _player.transform.position.x) > _attackRange) {
-				// Too far for melee. Shoot.
-				if (gunCooldown > 0) {
-					// Wait, gun's not ready yet. Don't switch state.
-					return;
-				} else {
-					// OK, gun's ready. Set cooldown and fire.
-					gunCooldown = gunCooldownTime;
-					_anim.SetTrigger ("Fire");
-				}
-			} else if (meleeCooldown <= 0) {
-                    _anim.SetTrigger (Random.value > .5 ? "Attack1" : "Attack2");
-			}
+            _anim.SetTrigger (Random.value > .5 ? "Attack1" : "Attack2");
 			_anim.SetBool ("IsMoving", false);
 			break;
+        case EnemyStates.shoot:
+            _anim.SetTrigger("Fire");
+            _anim.SetBool("IsMoving", false);
+            break;
         case EnemyStates.stun:
             _anim.SetBool("IsMoving", false);
             break;
@@ -119,9 +105,6 @@ public class Pirate : AbstractEnemyControl
 	public override void onAnimationState (string animState)
 	{
 		switch (animState) {
-		case AbstractEnemyControl.ANIM_SPAWN_END:
-			setState (EnemyStates.move);
-			break;
 		case AbstractEnemyControl.ANIM_ATTACK_START:
 
 			break;
@@ -148,11 +131,13 @@ public class Pirate : AbstractEnemyControl
 			Shoot ();
 			break;
 		}
+
+        base.onAnimationState(animState);
 	}
 
-	protected override void MoveToAttack ()
+	protected override void MoveToPlayer ()
 	{
-		//Debug.Log ("This is working: MoveToAttack.");
+		//Debug.Log ("This is working: MoveToPlayer.");
 		float vD = this.transform.position.y - _player.transform.position.y;
 		
 		// Y-positioning - move enemy to the player's level at all times.
@@ -167,50 +152,40 @@ public class Pirate : AbstractEnemyControl
 		// Pirate is different than zombie. If he's less than half the gun range, he moves in for attack.
 		// If more, then he will move back while firing his gun.
 		float hD = this.transform.position.x - _player.transform.position.x;
-		var rangedToMeleePoint = gunRangeMax * .5;
+		var rangedToMeleePoint = _gunRange * .5;
 		float targetX = this.transform.position.x;
 		float targetY = this.transform.position.y;
 
 		if (Mathf.Abs (hD) > rangedToMeleePoint || ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0))) {
 			// At gun range (or other pirate in melee range). Back away.
-			if (hD > gunRangeMax) {
+			if (hD > _gunRange) {
 				// Out of gun range. Move in right.
 				facingLeft = true;
 				normHD = -1;
-				targetX = _player.transform.position.x + gunRangeMax;
-			} else if (hD < -gunRangeMax) {
+				targetX = _player.transform.position.x + _gunRange;
+			} else if (hD < -_gunRange) {
 				// Out of gun range. Move in left.
 				facingLeft = false;
 				normHD = 1;
-				targetX = _player.transform.position.x - gunRangeMax;
-			} else if (hD < gunRangeMax && hD > 0) {
+				targetX = _player.transform.position.x - _gunRange;
+			} else if (hD < _gunRange && hD > 0) {
 				// Within gun range. Move back right as you fire.
 				facingLeft = true;
 				normHD = 1;
-				targetX = _player.transform.position.x + gunRangeMax;
-				if (vD <= _vertRange && vD >= -_vertRange) {
-					setState (EnemyStates.attack);
-				}
-			} else if (hD > -gunRangeMax && hD < 0) {
+				targetX = _player.transform.position.x + _gunRange;
+			} else if (hD > -_gunRange && hD < 0) {
 				// Within gun range. Move back left as you fire.
 				facingLeft = false;
 				normHD = -1;
-				targetX = _player.transform.position.x - gunRangeMax;
-				if (vD <= _vertRange && vD >= -_vertRange) {
-					setState (EnemyStates.attack);
-				}
+				targetX = _player.transform.position.x - _gunRange;
 			} else {
 				// Exactly at gun range. How about that?
 				normHD = 0;
 				targetX = this.transform.position.x;
-				if (vD <= _vertRange && vD >= -_vertRange) {
-					setState (EnemyStates.attack);
-				}
 			}
 		} else {
 			// Go in for the melee.
 			// X-positioning - move enemy to its closest horizontal range. If too close to the player, back away.
-			//Debug.Log (hD + " - " + _attackRange);
 			if (hD > _attackRange) {
 				// Zombie is to the left of player. Move right.
 				facingLeft = true;
@@ -234,10 +209,6 @@ public class Pirate : AbstractEnemyControl
 			} else {
 				normHD = 0;
 			}
-
-			if (hD <= _attackRange && hD >= -_attackRange && vD <= _vertRange && vD >= -_vertRange) {
-				setState (EnemyStates.attack);
-			}
 		}
 
 		float targetVelX = normHD * _enemMoveSpeed;
@@ -246,8 +217,6 @@ public class Pirate : AbstractEnemyControl
 		_vel.y = Mathf.SmoothDamp (_vel.y, targetVelY, ref velocityYSmoothing, .1f);
 
 		_controller.Move (_vel * Time.deltaTime);
-
-		_anim.SetBool ("FacingLeft", facingLeft);
 	}
 
 	protected override void Shoot ()

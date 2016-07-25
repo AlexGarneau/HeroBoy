@@ -4,9 +4,6 @@ using System.Collections;
 public class Monkey : AbstractEnemyControl
 {
 	protected bool highGround;
-	protected float bombRangeMax = 3.5f;
-	protected float bombCooldownTime = 3f;
-	protected float bombCooldown = 3f;
 
 	public GameObject monkeyBomb;
 	public Collider2D lightHit;
@@ -18,11 +15,12 @@ public class Monkey : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 40f;
 		base._enemMoveSpeed = 1f;
-		base._enemDamage = 2;
+		base.enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;
 		base.isAlive = true;
 		base.isMoving = false;
+        base.hasGun = false;
 
         base.bulletSpawn = transform.Find ("BulletSpawn");
 
@@ -59,10 +57,10 @@ public class Monkey : AbstractEnemyControl
 		//_anim.SetBool ("HighGround", highGround);
 		//HighGroundCheck ();
 
-		if (bombCooldown > 0) {
-			bombCooldown -= Time.deltaTime;
-			if (bombCooldown < 0) {
-				bombCooldown = 0;
+		if (_gunCooldown > 0) {
+			_gunCooldown -= Time.deltaTime;
+			if (_gunCooldown < 0) {
+				_gunCooldown = 0;
 			}
 		}
 
@@ -75,7 +73,7 @@ public class Monkey : AbstractEnemyControl
 		switch (newState) {
 		    case EnemyStates.move:
                 // Reset bomb cooldown.
-                bombCooldown = bombCooldownTime;
+                _gunCooldown = _gunCooldownTime;
                 _anim.SetBool ("IsMoving", true);
 			    break;
 		    case EnemyStates.attack:
@@ -88,18 +86,27 @@ public class Monkey : AbstractEnemyControl
                     setState(EnemyStates.move);
                 }
                 break;
-		    case EnemyStates.dead:
+            case EnemyStates.shoot:
+                if (_playerControl.playerHealth > 0) {
+                    // Only attack if player is still alive.
+                    _anim.SetTrigger("Fire");
+                    _anim.SetBool("IsMoving", false);
+                } else {
+                    // Stay on move.
+                    setState(EnemyStates.move);
+                }
+                break;
+            case EnemyStates.dead:
 			    _anim.SetBool ("IsMoving", false);
 			    break;
 		}
 	}
 
-	public override void onAnimationState (string state)
+	public override void onAnimationState (string animState)
 	{
-        Debug.Log("Animation State: " + state);
-		switch (state) {
+		switch (animState) {
 		    case AbstractEnemyControl.ANIM_SPAWN_END:
-                bombCooldown = bombCooldownTime;
+                _gunCooldown = _gunCooldownTime;
                 setState (EnemyStates.move);
 			    break;
 		    case AbstractEnemyControl.ANIM_ATTACK_START:
@@ -120,9 +127,9 @@ public class Monkey : AbstractEnemyControl
 		}
 	}
 
-	protected override void MoveToAttack ()
+	protected override void MoveToPlayer ()
 	{
-		//Debug.Log ("This is working: MoveToAttack.");
+		//Debug.Log ("This is working: MoveToPlayer.");
 		float vD = _player.transform.position.y - this.transform.position.y;
 		
 		// Y-positioning - move enemy to the player's level at all times.
@@ -137,29 +144,23 @@ public class Monkey : AbstractEnemyControl
 		float hD = this.transform.position.x - _player.transform.position.x;
 
 		// At gun range. Back away.
-		if (hD > bombRangeMax) {
+		if (hD > _gunRange) {
 			// Out of gun range. Move in right.
 			facingLeft = true;
-			transform.Translate (new Vector3 (Mathf.Max (bombRangeMax - hD, -_enemMoveSpeed * Time.deltaTime), 0, 0));
-		} else if (hD < -bombRangeMax) {
+			transform.Translate (new Vector3 (Mathf.Max (_gunRange - hD, -_enemMoveSpeed * Time.deltaTime), 0, 0));
+		} else if (hD < -_gunRange) {
 			// Out of gun range. Move in left.
 			facingLeft = false;
-			transform.Translate (new Vector3 (Mathf.Min (-bombRangeMax - hD, _enemMoveSpeed * Time.deltaTime), 0, 0));
-		} else if (hD <= bombRangeMax && hD >= 0) {
+			transform.Translate (new Vector3 (Mathf.Min (-_gunRange - hD, _enemMoveSpeed * Time.deltaTime), 0, 0));
+		} else if (hD <= _gunRange && hD >= 0) {
 			// Within gun range. Move back right as you fire.
 			facingLeft = true;
-			transform.Translate (new Vector3 (Mathf.Min (bombRangeMax - hD, _enemMoveSpeed * Time.deltaTime), 0, 0));
-		} else if (hD >= -bombRangeMax && hD < 0) {
+			transform.Translate (new Vector3 (Mathf.Min (_gunRange - hD, _enemMoveSpeed * Time.deltaTime), 0, 0));
+		} else if (hD >= -_gunRange && hD < 0) {
 			// Within gun range. Move back left as you fire.
 			facingLeft = false;
-			transform.Translate (new Vector3 (Mathf.Max (-bombRangeMax - hD, -_enemMoveSpeed * Time.deltaTime), 0, 0));
+			transform.Translate (new Vector3 (Mathf.Max (-_gunRange - hD, -_enemMoveSpeed * Time.deltaTime), 0, 0));
 		}
-
-		if (vD <= _vertRange && vD >= -_vertRange && bombCooldown <= 0) {
-			setState (EnemyStates.attack);
-		}
-
-		_anim.SetBool ("FacingLeft", facingLeft);
 	}
 
 	protected override void Shoot ()

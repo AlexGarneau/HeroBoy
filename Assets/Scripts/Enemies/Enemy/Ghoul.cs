@@ -13,11 +13,12 @@ public class Ghoul : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 200f;
 		base._enemMoveSpeed = 1f;
-		base._enemDamage = 2;
+		base.enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
 		base.isMoving = false;
+        base.hasGun = false;
 
         _controller = GetComponent<MovementController2D> ();
 
@@ -33,9 +34,6 @@ public class Ghoul : AbstractEnemyControl
 		for (var i = eabs.Length - 1; i >= 0; i--) {
 			eabs [i].enemy = this;
 		}
-
-		// Set the first state.
-		setState (EnemyStates.spawn);
 	}
 
 	protected override void Update ()
@@ -79,33 +77,27 @@ public class Ghoul : AbstractEnemyControl
 
 	public override void onAnimationState (string animState)
 	{
-        Debug.Log("Set Animation State: " + animState);
-		switch (animState) {
-		case AbstractEnemyControl.ANIM_SPAWN_END:
-			setState (EnemyStates.move);
-			break;
-		case AbstractEnemyControl.ANIM_ATTACK_START:
-
-			break;
-		case AbstractEnemyControl.ANIM_ATTACK_END:
-            if (state != EnemyStates.stun)
-            {
-                setState(EnemyStates.move);
-            }
-            break;
-		case AbstractEnemyControl.ANIM_INJURED_END:
-			if (_enemHealth > 0 && state != EnemyStates.stun) {
-				setState (EnemyStates.move);
-			}
-			break;
-		case AbstractEnemyControl.ANIM_DEATH_END:
-            if (healItem != null)
-            {
-                randomdrop(healItem);
-            }
-            break;
+        switch (animState) {
+		    case AbstractEnemyControl.ANIM_ATTACK_END:
+                if (state != EnemyStates.stun)
+                {
+                    setState(EnemyStates.move);
+                }
+                break;
+		    case AbstractEnemyControl.ANIM_INJURED_END:
+			    if (_enemHealth > 0 && state != EnemyStates.stun) {
+				    setState (EnemyStates.move);
+			    }
+			    break;
+		    case AbstractEnemyControl.ANIM_DEATH_END:
+                if (healItem != null)
+                {
+                    randomdrop(healItem);
+                }
+                break;
 		}
-	}
+        base.onAnimationState(animState);
+    }
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{

@@ -39,7 +39,7 @@ public class AbstractBossControl : AbstractClass
 	public float _bossHealth;
 	public float _bossMaxHealth;
 	public float _attackRange;
-	public float _enemDamage;
+	public float enemDamage;
 	public float _enemMoveSpeed;
 	public float _vertRange;
 	public bool isAlive;
@@ -132,7 +132,7 @@ public class AbstractBossControl : AbstractClass
 
 		switch (state) {
 		case BossAction.move:
-			MoveToAttack ();
+			MoveToPlayer ();
 			break;
 		case BossAction.attack:
 			Attack ();
@@ -176,9 +176,9 @@ public class AbstractBossControl : AbstractClass
 		}
 	}
 
-	public virtual void onAnimationState (string state)
+	public virtual void onAnimationState (string animState)
 	{
-		switch (state) {
+		switch (animState) {
 		case AbstractEnemyControl.ANIM_SPAWN_END:
 			setBossAction (BossAction.move);
 			break;
@@ -195,7 +195,7 @@ public class AbstractBossControl : AbstractClass
 		}
 	}
 
-	protected virtual void MoveToAttack ()
+	protected virtual void MoveToPlayer ()
 	{
 		float hD = _player.transform.position.x - this.transform.position.x;
 		float vD = _player.transform.position.y - this.transform.position.y;

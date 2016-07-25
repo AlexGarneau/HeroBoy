@@ -68,18 +68,20 @@ public class SpawnZombie : AbstractClass
 	{
 		// Used for unlimited automatic zombie spawning.
 		if (autoSpawn && !isCurrentlySpawning) {
-			autoSpawnEnemy ();
+			spawnEnemy ();
 		}
 	}
 
+    /** Spawns a single enemy. */
 	public GameObject spawnEnemy ()
 	{
 		for (int i = zedCount - 1; i >= 0; i--) {
 			if (_enemies [i].Equals (null) && !_isSpawning [i]) {
-				// Enemy died. Spawn one new enemy. Make multiple calls to fill the spawn.
-				StartCoroutine (createEnemy (i));
-				return _enemies[i] as GameObject;
-			}
+                // Enemy died. Spawn one new enemy. Make multiple calls to fill the spawn.
+                GameObject newEnemy = GameObject.Instantiate(prefabs[Random.Range(0, prefabs.Length)], transform.position, transform.rotation) as GameObject;
+                StartCoroutine(createEnemy(i, newEnemy));
+                return newEnemy;
+            }
 		}
 
         // Enemy didn't spawn. Meh.
@@ -90,27 +92,13 @@ public class SpawnZombie : AbstractClass
         return _enemies;
     }
 
-	private GameObject autoSpawnEnemy ()
-	{
-		for (int i = zedCount - 1; i >= 0; i--) {
-			if (_enemies [i].Equals (null) && !_isSpawning [i]) {
-				// Enemy died. Spawn new enemy.
-				StartCoroutine (createEnemy (i));
-				return _enemies[i] as GameObject;
-			}
-		}
-
-        // Enemy didn't spawn.
-        return null;
-	}
-
-	private IEnumerator createEnemy (int index)
+	private IEnumerator createEnemy (int index, GameObject newEnemy)
 	{
 		isCurrentlySpawning = true;
 		_isSpawning [index] = true;
 		yield return new WaitForSeconds (spawnDelay);
 
-        _enemies [index] = GameObject.Instantiate (prefabs [Random.Range (0, prefabs.Length)], transform.position, transform.rotation);
+        _enemies[index] = newEnemy;
         (_enemies [index] as GameObject).transform.parent = transform.parent.parent;
 		_isSpawning [index] = false;
 		isCurrentlySpawning = false;

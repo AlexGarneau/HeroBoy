@@ -4,9 +4,6 @@ using System.Collections;
 public class Clown : AbstractEnemyControl
 {
 	bool highGround;
-	float gunRangeMax = 5f;
-	float gunCooldown = 0f;
-	float gunCooldownTime = 4f;
 
 	public Collider2D lightHit;
 
@@ -32,7 +29,7 @@ public class Clown : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 50f;
 		base._enemMoveSpeed = .9f;
-		base._enemDamage = 2;
+		base.enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;
 		base.isAlive = true;
@@ -61,9 +58,6 @@ public class Clown : AbstractEnemyControl
         for (int i = body.childCount - 1; i >= 0; i--) {
             bodyParts[i] = body.GetChild(i).gameObject;
         }
-
-        // Set the first state.
-        setState (EnemyStates.move);
 	}
 
 	protected override void Update ()
@@ -107,22 +101,6 @@ public class Clown : AbstractEnemyControl
         //_anim.SetBool ("HighGround", highGround);
         //HighGroundCheck ();
 
-        if (meleeCooldown > 0)
-        {
-            meleeCooldown -= Time.deltaTime;
-            if (meleeCooldown < 0)
-            {
-                meleeCooldown = 0;
-            }
-        }
-
-        if (gunCooldown > 0) {
-			gunCooldown -= Time.deltaTime;
-			if (gunCooldown < 0) {
-				gunCooldown = 0;
-			}
-		}
-
         if (doShudder) { shudder(); }
 
 		base.Update ();
@@ -139,9 +117,9 @@ public class Clown : AbstractEnemyControl
 		case EnemyStates.attack:
 			if (Mathf.Abs (transform.position.x - _player.transform.position.x) > _attackRange) {
 				// Too far for melee. Shoot.
-				if (gunCooldown <= 0) {
+				if (_gunCooldown <= 0) {
 					// OK, gun's ready. Set cooldown and fire.
-					gunCooldown = gunCooldownTime;
+					_gunCooldown = _gunCooldownTime;
 					_anim.SetTrigger ("Fire");
 				}
 			} else if (meleeCooldown <= 0) {
@@ -163,40 +141,36 @@ public class Clown : AbstractEnemyControl
 	public override void onAnimationState (string animState)
 	{
 		switch (animState) {
-		case AbstractEnemyControl.ANIM_SPAWN_END:
-			setState (EnemyStates.move);
-			break;
-		case AbstractEnemyControl.ANIM_ATTACK_START:
-
-			break;
-		case AbstractEnemyControl.ANIM_ATTACK_END:
-            if (state != EnemyStates.stun)
-            {
+		    case AbstractEnemyControl.ANIM_ATTACK_END:
+                if (state != EnemyStates.stun)
+                {
+                    setState(EnemyStates.move);
+                }
+			    break;
+		    case AbstractEnemyControl.ANIM_INJURED_END:
+			    if (_enemHealth > 0 && state != EnemyStates.stun) {
+				    setState (EnemyStates.move);
+			    }
+			    break;
+            case AbstractEnemyControl.ANIM_STUN_END:
+                _anim.SetBool("IsStunned", false);
                 setState(EnemyStates.move);
-            }
-			break;
-		case AbstractEnemyControl.ANIM_INJURED_END:
-			if (_enemHealth > 0 && state != EnemyStates.stun) {
-				setState (EnemyStates.move);
-			}
-			break;
-        case AbstractEnemyControl.ANIM_STUN_END:
-            _anim.SetBool("IsStunned", false);
-            setState(EnemyStates.move);
-            break;
-        case AbstractEnemyControl.ANIM_DEATH_END:
-			randomdrop (healItem);
-			Destroy (gameObject);
-			break;
-		case AbstractEnemyControl.ANIM_SHOOT_START:
-			Shoot ();
-			break;
+                break;
+            case AbstractEnemyControl.ANIM_DEATH_END:
+			    randomdrop (healItem);
+			    Destroy (gameObject);
+			    break;
+		    case AbstractEnemyControl.ANIM_SHOOT_START:
+			    Shoot ();
+			    break;
 		}
-	}
 
-	protected override void MoveToAttack ()
+        base.onAnimationState(animState);
+    }
+
+	protected override void MoveToPlayer ()
 	{
-		//Debug.Log ("This is working: MoveToAttack.");
+		//Debug.Log ("This is working: MoveToPlayer.");
 		float vD = this.transform.position.y - _player.transform.position.y;
 		
 		// Y-positioning - move enemy to the player's level at all times.
@@ -211,44 +185,44 @@ public class Clown : AbstractEnemyControl
 		// Pirate is different than zombie. If he's less than half the gun range, he moves in for attack.
 		// If more, then he will move back while firing his gun.
 		float hD = this.transform.position.x - _player.transform.position.x;
-		var rangedToMeleePoint = gunRangeMax * .5;
+		var rangedToMeleePoint = _gunRange * .5;
 		float targetX = this.transform.position.x;
 		float targetY = this.transform.position.y;
 
 		if (Mathf.Abs (hD) > rangedToMeleePoint || ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0))) {
 			// At gun range (or other pirate in melee range). Back away.
-			if (hD > gunRangeMax) {
+			if (hD > _gunRange) {
 				// Out of gun range. Move in right.
 				facingLeft = true;
 				normHD = -1;
-				targetX = _player.transform.position.x + gunRangeMax;
-			} else if (hD < -gunRangeMax) {
+				targetX = _player.transform.position.x + _gunRange;
+			} else if (hD < -_gunRange) {
 				// Out of gun range. Move in left.
 				facingLeft = false;
 				normHD = 1;
-				targetX = _player.transform.position.x - gunRangeMax;
-			} else if (hD < gunRangeMax && hD > 0) {
+				targetX = _player.transform.position.x - _gunRange;
+			} else if (hD < _gunRange && hD > 0) {
 				// Within gun range. Move back right as you fire.
 				facingLeft = true;
 				normHD = 1;
-				targetX = _player.transform.position.x + gunRangeMax;
-				if (vD <= _vertRange && vD >= -_vertRange && gunCooldown <= 0) {
-					setState (EnemyStates.attack);
+				targetX = _player.transform.position.x + _gunRange;
+				if (vD <= _vertRange && vD >= -_vertRange && _gunCooldown <= 0) {
+					setState (EnemyStates.shoot);
 				}
-			} else if (hD > -gunRangeMax && hD < 0) {
+			} else if (hD > -_gunRange && hD < 0) {
 				// Within gun range. Move back left as you fire.
 				facingLeft = false;
 				normHD = -1;
-				targetX = _player.transform.position.x - gunRangeMax;
-				if (vD <= _vertRange && vD >= -_vertRange && gunCooldown <= 0) {
-					setState (EnemyStates.attack);
+				targetX = _player.transform.position.x - _gunRange;
+				if (vD <= _vertRange && vD >= -_vertRange && _gunCooldown <= 0) {
+					setState (EnemyStates.shoot);
 				}
 			} else {
 				// Exactly at gun range. How about that?
 				normHD = 0;
 				targetX = this.transform.position.x;
-				if (vD <= _vertRange && vD >= -_vertRange && gunCooldown <= 0) {
-					setState (EnemyStates.attack);
+				if (vD <= _vertRange && vD >= -_vertRange && _gunCooldown <= 0) {
+					setState (EnemyStates.shoot);
 				}
 			}
 		} else {

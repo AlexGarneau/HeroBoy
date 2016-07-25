@@ -18,7 +18,7 @@ public class Goblin : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 40f;
 		base._enemMoveSpeed = 3f;
-		base._enemDamage = 2;
+		base.enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;
 		base.isAlive = true;
@@ -38,36 +38,6 @@ public class Goblin : AbstractEnemyControl
 		for (var i = eabs.Length - 1; i >= 0; i--) {
 			eabs [i].enemy = this;
 		}
-
-		// Set the first state. DEBUG
-		setState (EnemyStates.move);
-	}
-
-	protected override void Update ()
-	{
-		switch (state) {
-		    case EnemyStates.move:
-			    break;
-		    case EnemyStates.attack:
-			    break;
-		    case EnemyStates.dead:
-			    //DeathTimerDestroy ();
-			    break;
-		}
-
-		_anim.SetFloat ("Health", _enemHealth);
-        _anim.SetInteger ("PlayerHealth", _playerControl.playerHealth);
-		//_anim.SetBool ("HighGround", highGround);
-		//HighGroundCheck ();
-
-		if (bombCooldown > 0) {
-			bombCooldown -= Time.deltaTime;
-			if (bombCooldown < 0) {
-				bombCooldown = 0;
-			}
-		}
-
-		base.Update ();
 	}
 
 	protected override void setState (EnemyStates newState)
@@ -89,19 +59,27 @@ public class Goblin : AbstractEnemyControl
                     setState(EnemyStates.move);
                 }
                 break;
-		    case EnemyStates.dead:
+            case EnemyStates.shoot:
+                if (_playerControl.playerHealth > 0) {
+                    // Only attack if player is still alive.
+                    _anim.SetTrigger("Fire");
+                    _anim.SetBool("IsMoving", false);
+                } else {
+                    // Stay on move.
+                    setState(EnemyStates.move);
+                }
+                break;
+            case EnemyStates.dead:
 			    _anim.SetBool ("IsMoving", false);
 			    break;
 		}
 	}
 
-	public override void onAnimationState (string state)
+	public override void onAnimationState (string animState)
 	{
-        Debug.Log("Animation State: " + state);
-		switch (state) {
+		switch (animState) {
 		    case AbstractEnemyControl.ANIM_SPAWN_END:
                 bombCooldown = bombCooldownTime;
-                setState (EnemyStates.move);
 			    break;
 		    case AbstractEnemyControl.ANIM_ATTACK_START:
 			    Shoot ();
@@ -122,11 +100,13 @@ public class Goblin : AbstractEnemyControl
 			    Destroy (gameObject);
 			    break;
 		}
-	}
 
-	protected override void MoveToAttack ()
+        base.onAnimationState(animState);
+    }
+
+	protected override void MoveToPlayer ()
 	{
-		//Debug.Log ("This is working: MoveToAttack.");
+		//Debug.Log ("This is working: MoveToPlayer.");
 		float vD = _player.transform.position.y - this.transform.position.y;
 		
 		// Y-positioning - move enemy to the player's level at all times.
@@ -158,12 +138,6 @@ public class Goblin : AbstractEnemyControl
 			facingLeft = false;
 			transform.Translate (new Vector3 (Mathf.Max (-bombRangeMax - hD, -_enemMoveSpeed * Time.deltaTime), 0, 0));
 		}
-
-		if (vD <= _vertRange && vD >= -_vertRange && bombCooldown <= 0) {
-			setState (EnemyStates.attack);
-		}
-
-		_anim.SetBool ("FacingLeft", facingLeft);
 	}
 
 	protected override void Shoot ()
