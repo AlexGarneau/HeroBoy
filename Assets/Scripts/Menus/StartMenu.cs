@@ -52,7 +52,7 @@ public class StartMenu : MonoBehaviour
         BackToTitle();
     }
 
-    public void StartLevel()
+    public void StartLevel1()
     {
         Time.timeScale = 1;
         // Start fresh.
@@ -60,7 +60,37 @@ public class StartMenu : MonoBehaviour
         {
             GlobalControl.instance.resetPlayerStats();
         }
-        Application.LoadLevel(7);
+        Application.LoadLevel(3);
+    }
+    public void StartLevel2()
+    {
+        Time.timeScale = 1;
+        // Start fresh.
+        if (GlobalControl.instance != null)
+        {
+            GlobalControl.instance.resetPlayerStats();
+        }
+        Application.LoadLevel(17);
+    }
+    public void StartLevel3()
+    {
+        Time.timeScale = 1;
+        // Start fresh.
+        if (GlobalControl.instance != null)
+        {
+            GlobalControl.instance.resetPlayerStats();
+        }
+        Application.LoadLevel(18);
+    }
+    public void StartLevel4()
+    {
+        Time.timeScale = 1;
+        // Start fresh.
+        if (GlobalControl.instance != null)
+        {
+            GlobalControl.instance.resetPlayerStats();
+        }
+        Application.LoadLevel(23);
     }
 
     public void ShowLevelSelect()

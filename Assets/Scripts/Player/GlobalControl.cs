@@ -6,6 +6,7 @@ public class GlobalControl : MonoBehaviour
 	public int playerHP;
 	public int playerCP;
 
+    
     public bool mermCannonUnlocked = false;
     public bool maceOfTritUnlocked = false;
     public bool rarLaserUnlocked = false;
@@ -81,65 +82,45 @@ public class GlobalControl : MonoBehaviour
 			source.Stop ();
 			break;
 		case 3:
-			// gameover
-			source.Stop ();
-			break;
-		case 4:
-			// gameover
-			source.Stop ();
-			break;
-		case 5:
-			// gameover
-			source.Stop ();
-			break;
-		case 6:
-			// gameover
-			source.Stop ();
-			break;
-		case 10:
-			// Bully fight
-			source.clip = musicClips [(int)clips.fightLoop];
-			source.Play ();
-			break;
-		case 11:
-			// Open pirate book
-			source.Stop ();
-			break;
-		case 12:
 			// Board ship
 			source.clip = musicClips [(int)clips.pirateLoop];
 			source.Play ();
 			break;
-        case 15:
-            // Checkpoint
-            source.clip = musicClips[(int)clips.pirateLoop];
-            source.Play();
-            break;
-            case 18:
+        case 9:
 			// Find cannon
 			source.Stop ();
 			break;
-		case 19:
+		case 10:
 			// Got cannon
 			source.clip = musicClips [(int)clips.pirateLoop];
-                mermCannonUnlocked = true;
-                source.Play ();
+            mermCannonUnlocked = true;
+            source.Play ();
 			break;
-        case 23:
+        case 14:
             // Challenge Boss
             source.clip = musicClips[(int)clips.actionLoop];
             source.Stop();
             break;
-		case 24:
+		case 15:
 			// Pirate boss
 			source.clip = musicClips [(int)clips.pirateLoop];
 			source.Play ();
 			break;
-		case 25:
+		case 16:
 			// Teacher
 			source.Stop ();
 			break;
-		default:
+        case 18:
+            // bandit attack
+            mermCannonUnlocked = false;
+            clownDrillUnlocked = false;
+            break;
+        case 23:
+            // clownforest
+            clownDrillUnlocked = true;
+            source.Stop();
+            break;
+        default:
 			break;
 		}
 	}
