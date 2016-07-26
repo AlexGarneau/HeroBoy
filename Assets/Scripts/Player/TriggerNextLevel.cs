@@ -3,9 +3,10 @@ using System.Collections;
 
 public class TriggerNextLevel : MonoBehaviour {
 
-    GameObject player;
+    public GameObject player;
+    public int nextLevel;
 
-    void start()
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -14,7 +15,7 @@ public class TriggerNextLevel : MonoBehaviour {
     {
         if(other.gameObject == player)
         {
-            Application.LoadLevel(Application.loadedLevel + 1);
+            Application.LoadLevel(nextLevel);
         }
     }
 }
