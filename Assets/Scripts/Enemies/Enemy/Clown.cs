@@ -89,17 +89,10 @@ public class Clown : AbstractEnemyControl
                     }
                 }
 			    break;
-		    case EnemyStates.attack:
-			    break;
 		    case EnemyStates.dead:
 			    //DeathTimerDestroy ();
 			    break;
 		}
-
-		_anim.SetFloat ("Health", _enemHealth);
-        _anim.SetInteger("PlayerHealth", _playerControl.playerHealth);
-        //_anim.SetBool ("HighGround", highGround);
-        //HighGroundCheck ();
 
         if (doShudder) { shudder(); }
 
@@ -108,26 +101,19 @@ public class Clown : AbstractEnemyControl
 
 	protected override void setState (EnemyStates newState)
 	{
-        Debug.Log("SetState: " + newState);
-
 		switch (newState) {
 		case EnemyStates.move:
 			_anim.SetBool ("IsMoving", true);
 			break;
 		case EnemyStates.attack:
-			if (Mathf.Abs (transform.position.x - _player.transform.position.x) > _attackRange) {
-				// Too far for melee. Shoot.
-				if (_gunCooldown <= 0) {
-					// OK, gun's ready. Set cooldown and fire.
-					_gunCooldown = _gunCooldownTime;
-					_anim.SetTrigger ("Fire");
-				}
-			} else if (meleeCooldown <= 0) {
-                _anim.SetTrigger ("Attack");
-			}
 			_anim.SetBool ("IsMoving", false);
+            _anim.SetTrigger ("Attack");
 			break;
-        case EnemyStates.stun:
+        case EnemyStates.shoot:
+            _anim.SetBool("IsMoving", false);
+            _anim.SetTrigger("Fire");
+            break;
+            case EnemyStates.stun:
             _anim.SetBool("IsMoving", false);
             break;
         case EnemyStates.dead:
@@ -206,24 +192,15 @@ public class Clown : AbstractEnemyControl
 				facingLeft = true;
 				normHD = 1;
 				targetX = _player.transform.position.x + _gunRange;
-				if (vD <= _vertRange && vD >= -_vertRange && _gunCooldown <= 0) {
-					setState (EnemyStates.shoot);
-				}
 			} else if (hD > -_gunRange && hD < 0) {
 				// Within gun range. Move back left as you fire.
 				facingLeft = false;
 				normHD = -1;
 				targetX = _player.transform.position.x - _gunRange;
-				if (vD <= _vertRange && vD >= -_vertRange && _gunCooldown <= 0) {
-					setState (EnemyStates.shoot);
-				}
 			} else {
 				// Exactly at gun range. How about that?
 				normHD = 0;
 				targetX = this.transform.position.x;
-				if (vD <= _vertRange && vD >= -_vertRange && _gunCooldown <= 0) {
-					setState (EnemyStates.shoot);
-				}
 			}
 		} else {
 			// Go in for the melee.
@@ -251,10 +228,6 @@ public class Clown : AbstractEnemyControl
 				targetX = _player.transform.position.x - _attackRange;
 			} else {
 				normHD = 0;
-			}
-
-			if (hD <= _attackRange && hD >= -_attackRange && vD <= _vertRange && vD >= -_vertRange) {
-				setState (EnemyStates.attack);
 			}
 		}
 
@@ -365,13 +338,4 @@ public class Clown : AbstractEnemyControl
             );
         }
     }
-
-    /*void HighGroundCheck ()
-	{
-		if (transform.position.y > 0) {
-			highGround = true;
-		} else {
-			highGround = false;
-		}
-	}*/
 }
