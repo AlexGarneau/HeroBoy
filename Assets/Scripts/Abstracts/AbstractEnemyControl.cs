@@ -270,7 +270,7 @@ public class AbstractEnemyControl : AbstractClass
                     facingLeft = false;
                     angle = ((Random.value * 90f) + 90f) * (Random.value > .5 ? -1f : 1f);
                 }
-                _paceTarget = new Vector3(_paceBackRange * Mathf.Cos(angle), _paceBackRange * Mathf.Sin(angle));
+                _paceTarget = new Vector3(_player.transform.position.x + (_paceBackRange * Mathf.Cos(angle)), _player.transform.position.y + (_paceBackRange * Mathf.Sin(angle)));
                 _paceTimer = _paceTimerMax;
                 break;
             case EnemyStates.paceForth:
@@ -287,7 +287,7 @@ public class AbstractEnemyControl : AbstractClass
                     facingLeft = false;
                     angle = ((Random.value * 90f) + 90f) * (Random.value > .5 ? -1f : 1f);
                 }
-                _paceTarget = new Vector3(_paceForthRange * Mathf.Cos(angle), _paceForthRange * Mathf.Sin(angle));
+                _paceTarget = new Vector3(_player.transform.position.x + (_paceForthRange * Mathf.Cos(angle)), _player.transform.position.y + (_paceForthRange * Mathf.Sin(angle)));
                 _paceTimer = _paceTimerMax;
                 break;
             case EnemyStates.dead:

@@ -104,7 +104,7 @@ public class AbstractGameController : MonoBehaviour
     }
 
     public virtual void EnemyGotStunned(AbstractEnemyControl enemy) {
-        // Enemy got stunned. If he was active, return him to the pacing array. If he'ss till the closest, he'll get converted back in a heartbeat.
+        // Enemy got stunned. If he was active, return him to the pacing array. If he's still the closest, he'll get converted back in a heartbeat.
         if (enemiesAttacking.Contains(enemy)) {
             enemiesPacing.Add(enemy);
             enemiesAttacking.Remove(enemy);
