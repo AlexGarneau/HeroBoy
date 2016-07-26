@@ -141,7 +141,7 @@ public class AbstractGameController : MonoBehaviour
 		
         // Clean up enemies.
         for (int i = enemiesPacing.Count - 1; i >= 0; i--) {
-            if (enemiesPacing[i] == null || enemiesPacing[i] as AbstractEnemyControl == enemy) {;
+            if (enemiesPacing[i] == null || enemiesPacing[i] as AbstractEnemyControl == enemy) {
                 enemiesPacing.RemoveAt(i);
             }
         }
