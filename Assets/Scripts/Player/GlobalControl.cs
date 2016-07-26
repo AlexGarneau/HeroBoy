@@ -64,7 +64,10 @@ public class GlobalControl : MonoBehaviour
 		if (lastLoaded == level) {
 			return;
 		}
-		lastLoaded = level;
+
+        if (level != 2) {
+            lastLoaded = level;
+        }
 
 		source.volume = .4f;
 
