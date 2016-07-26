@@ -10,11 +10,6 @@ Assets/2DPlatformer/RaycastController.cs
 Assets/2DPlatformer/RaycastController.cs.meta
 Assets/2DPlatformer/Spike.unity
 Assets/2DPlatformer/Spike.unity.meta
-Assets/Standard Assets/Utility/
-Assets/Standard Assets/ParticleSystems/
-Assets/Standard Assets/PhysicsMaterials/
-Assets/Standard Assets/Effects/
-Assets/Standard Assets/Cameras/
 Assets/Standard Assets/CrossPlatformInput/CrossPlatformInputGuidelines.txt
 Assets/Standard Assets/CrossPlatformInput/Prefabs/CarTiltControls.prefab
 Assets/Standard Assets/CrossPlatformInput/Prefabs/DualTouchControls.prefab
@@ -55,18 +50,14 @@ Assets/Standard Assets/CrossPlatformInput/Sprites/TouchpadSprite.png
 *.png~
 *.wav
 *.jpg
-*.kra
-*.mat
-*.flac
 *.WAV
 *.aif
 *.csproj
 *.sln
-*.userprefs
-Library/
-ProjectSettings/
 *.htm
 Temp/
 .vs/BraveBoy/v14/.suo
 .vs/
-obj/
+*.info
+*.resource
+Library/
