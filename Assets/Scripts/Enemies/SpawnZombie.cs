@@ -55,9 +55,7 @@ public class SpawnZombie : AbstractClass
 		zedCount = count;
 		_enemies = new ArrayList (zedCount);
 		_isSpawning = new bool[zedCount];
-
-        Debug.Log("SetZedCount: " + count + " - " + _enemies);
-		
+        
 		// Spawn enemies up to zedCount.
 		for (int i = zedCount - 1; i >= 0; i--) {
 			_enemies.Add (new Object ());

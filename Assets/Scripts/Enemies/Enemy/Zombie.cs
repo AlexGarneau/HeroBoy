@@ -13,7 +13,7 @@ public class Zombie : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 200f;
 		base._enemMoveSpeed = 1f;
-		base.enemDamage = 2;
+		base.enemDamage = 20;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
@@ -24,7 +24,7 @@ public class Zombie : AbstractEnemyControl
 
 		_damageColliders = GetComponentsInChildren<EnemyDamageCollider> ();
 		if (_damageColliders != null && _damageColliders.Length > 0) {
-			// Sets the damage of damage colliders. TODO: Independent damage set to different colliders, if multple exist.
+			// Sets the damage of damage colliders. TODO: Independent damage set to different colliders, if multiple exist.
 			for (int i = _damageColliders.Length - 1; i >= 0; i--) {
 				_damageColliders [i].gameObject.SetActive (false);
 			}
@@ -40,12 +40,17 @@ public class Zombie : AbstractEnemyControl
 	{
 		_anim.SetBool ("HighGround", highGround);
 		HighGroundCheck ();
-
-		base.Update ();
-	}
+        
+        base.Update();
+    }
 
 	protected override void setState (EnemyStates newState)
 	{
+        if (newState == EnemyStates.paceBack || newState == EnemyStates.paceForth)
+        {
+            // Zombies don't pace. They kill.
+            newState = EnemyStates.move;
+        }
 		switch (newState) {
 		case EnemyStates.move:
 			break;

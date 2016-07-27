@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bandit: AbstractEnemyControl
+public class Bandit : AbstractEnemyControl
 {
     public Collider2D lightHit;
 
@@ -19,6 +19,7 @@ public class Bandit: AbstractEnemyControl
 		base._vertRange = 0.2f;
 		base.isAlive = true;
 		base.isMoving = false;
+        base.hasGun = false;
 
         _controller = gameObject.GetComponent<MovementController2D> ();
 
@@ -35,8 +36,6 @@ public class Bandit: AbstractEnemyControl
         {
             eabs[i].enemy = this;
         }
-
-        setState(EnemyStates.move);
     }
 
 	protected override void Update()
@@ -44,9 +43,7 @@ public class Bandit: AbstractEnemyControl
 		switch (state) {
 		case EnemyStates.dead:
             AnimatorStateInfo info = _anim.GetCurrentAnimatorStateInfo(0);
-                Debug.Log(info.ToString() + " - " + info.fullPathHash);
-            if (info.IsName("BanditfleeL"))
-            {
+            if (info.IsName("BanditfleeL")) {
                 this.transform.Translate(fleeSpeed * Time.deltaTime, 0, 0);
             } else if (info.IsName("Banditflee"))
                 {
@@ -68,6 +65,12 @@ public class Bandit: AbstractEnemyControl
 
 	protected override void setState (EnemyStates newState)
 	{
+        if (state == EnemyStates.dead)
+        {
+            // What? I'm fleeing for my life! Shut up!
+            return;
+        }
+
 		switch (newState) {
 		case EnemyStates.move:
 			_anim.SetBool ("IsMoving", true);
@@ -84,86 +87,25 @@ public class Bandit: AbstractEnemyControl
 
 		base.setState (newState);
 	}
-
-    protected override void MoveToPlayer()
-    {
-        float hD = _player.transform.position.x - this.transform.position.x;
-        float vD = _player.transform.position.y - this.transform.position.y;
-
-        // Y-positioning - move enemy to the player's level at all times.
-        if (_player.transform.position.y - _vertRange > this.transform.position.y)
-        {
-            normVD = 1;
-        }
-        else if (_player.transform.position.y + _vertRange < this.transform.position.y)
-        {
-            normVD = -1;
-        }
-        else {
-            normVD = 0;
-        }
-
-        // Setup extended attack range in case player is already attacked by a melee enemy.
-        float attackRange = _attackRange;
-      
-        if (!inMeleeRange && ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0)))
-        {
-            attackRange = _attackRange * 2;
-        }
-
-        // X-positioning - move enemy to its closest horizontal range. If too close to the player, back away.
-        //Debug.Log (hD + " - " + _attackRange);
-        if (hD > attackRange)
-        {
-            // Zombie is to the left of player. Move right.
-            facingLeft = false;
-            normHD = 1;
-        }
-        else if (hD < -attackRange)
-        {
-            // Zombie is to the right of player. Move left.
-            facingLeft = true;
-            normHD = -1;
-        }
-        else if (hD < attackRange - 0.1f && hD >= 0)
-        {
-            // Zombie is to the left of player, but too close. Move left.
-            facingLeft = false;
-            normHD = -1;
-        }
-        else if (hD > -attackRange + 0.1f && hD < 0)
-        {
-            // Zombie is to the right of player, but too close. Move right.
-            facingLeft = true;
-            normHD = 1;
-        }
-        else {
-            normHD = 0;
-        }
-
-        float targetVelX = normHD * _enemMoveSpeed;
-        float targetVelY = normVD * _enemMoveSpeed;
-        _vel.x = Mathf.SmoothDamp(_vel.x, targetVelX, ref velocityXSmoothing, .1f);
-        _vel.y = Mathf.SmoothDamp(_vel.y, targetVelY, ref velocityYSmoothing, .1f);
-        _controller.Move(_vel * Time.deltaTime);
-    }
-
+    
     public override void onAnimationState (string animState)
 	{
 		switch (animState) {
-		    case AbstractEnemyControl.ANIM_SPAWN_END:
-                break;
-		    case AbstractEnemyControl.ANIM_ATTACK_START:
-			    break;
 		    case AbstractEnemyControl.ANIM_ATTACK_END:
 			    setState (baseState);
 			    break;
 		    case AbstractEnemyControl.ANIM_INJURED_END:
 			    setState (baseState);
 			    break;
-		    case AbstractEnemyControl.ANIM_DEATH_END:
+            case AbstractEnemyControl.ANIM_DEATH_START:
+                setState(EnemyStates.dead);
+                SendMessageUpwards ("enemyDied", this, SendMessageOptions.DontRequireReceiver);
+                break;
+            case AbstractEnemyControl.ANIM_DEATH_END:
 			    break;
 		}
+
+        base.onAnimationState(animState);
 	}
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)

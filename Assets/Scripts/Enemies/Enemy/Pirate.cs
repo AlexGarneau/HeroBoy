@@ -15,7 +15,7 @@ public class Pirate : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 50f;
 		base._enemMoveSpeed = 1.2f;
-		base.enemDamage = 2;
+		base.enemDamage = 10;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;
 		base.isAlive = true;
@@ -37,42 +37,6 @@ public class Pirate : AbstractEnemyControl
 		for (var i = eabs.Length - 1; i >= 0; i--) {
 			eabs [i].enemy = this;
 		}
-	}
-
-	protected override void Update ()
-	{
-		switch (state) {
-		case EnemyStates.move:
-			break;
-		case EnemyStates.attack:
-			break;
-		case EnemyStates.dead:
-			//DeathTimerDestroy ();
-			break;
-		}
-
-		_anim.SetFloat ("Health", _enemHealth);
-        _anim.SetInteger("PlayerHealth", _playerControl.playerHealth);
-        //_anim.SetBool ("HighGround", highGround);
-        //HighGroundCheck ();
-
-        if (meleeCooldown > 0)
-        {
-            meleeCooldown -= Time.deltaTime;
-            if (meleeCooldown < 0)
-            {
-                meleeCooldown = 0;
-            }
-        }
-
-        if (_gunCooldown > 0) {
-			_gunCooldown -= Time.deltaTime;
-			if (_gunCooldown < 0) {
-				_gunCooldown = 0;
-			}
-		}
-
-		base.Update ();
 	}
 
 	protected override void setState (EnemyStates newState)
@@ -231,20 +195,6 @@ public class Pirate : AbstractEnemyControl
 			bulletSpawn.position.Set (Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
 			bullet.direction = Vector2.right;
 		}
-	
-		/*
-		// Create a bullet and make it fly.
-		PirateBullet bullet = BulletFactory.createPirateBullet ();
-
-		// Position the spawner and the direction.
-		if (facingLeft) {
-			bulletSpawn.position.Set (-Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-			bullet.direction = Vector2.left;
-		} else {
-			bulletSpawn.position.Set (Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-			bullet.direction = Vector2.right;
-		}
-		*/
 
 		// Stick the bullet in the spawner.
 		bullet.transform.position = bulletSpawn.position;

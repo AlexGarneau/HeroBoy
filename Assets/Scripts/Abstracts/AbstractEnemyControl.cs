@@ -74,7 +74,7 @@ public class AbstractEnemyControl : AbstractClass
 
 	protected EnemyDamageCollider[] _damageColliders;
 	protected MovementController2D _controller;
-	protected Vector3 _vel;
+	protected Vector3 _vel = Vector3.zero;
 	protected float velocityXSmoothing;
 	protected float velocityYSmoothing;
 	protected float normVD = 0;
@@ -123,6 +123,8 @@ public class AbstractEnemyControl : AbstractClass
                 break;
             }
         }
+
+        baseState = EnemyStates.move;
 
         // Set the first state.
         setState(EnemyStates.spawn);
@@ -270,7 +272,7 @@ public class AbstractEnemyControl : AbstractClass
                     facingLeft = false;
                     angle = ((Random.value * 90f) + 90f) * (Random.value > .5 ? -1f : 1f);
                 }
-                _paceTarget = new Vector3(_player.transform.position.x + (_paceBackRange * Mathf.Cos(angle)), _player.transform.position.y + (_paceBackRange * Mathf.Sin(angle)));
+                _paceTarget = new Vector3(_player.transform.position.x + (_paceBackRange * Mathf.Cos(angle)), _player.transform.position.y + (_paceBackRange * Mathf.Sin(angle)) * .5f);
                 _paceTimer = _paceTimerMax;
                 break;
             case EnemyStates.paceForth:
@@ -287,7 +289,7 @@ public class AbstractEnemyControl : AbstractClass
                     facingLeft = false;
                     angle = ((Random.value * 90f) + 90f) * (Random.value > .5 ? -1f : 1f);
                 }
-                _paceTarget = new Vector3(_player.transform.position.x + (_paceForthRange * Mathf.Cos(angle)), _player.transform.position.y + (_paceForthRange * Mathf.Sin(angle)));
+                _paceTarget = new Vector3(_player.transform.position.x + (_paceForthRange * Mathf.Cos(angle)), _player.transform.position.y + (_paceForthRange * Mathf.Sin(angle)) * .5f);
                 _paceTimer = _paceTimerMax;
                 break;
             case EnemyStates.dead:
@@ -307,6 +309,24 @@ public class AbstractEnemyControl : AbstractClass
             case AbstractEnemyControl.ANIM_SPAWN_END:
                 setState(baseState);
                 break;
+            /*
+            case AbstractEnemyControl.ANIM_ATTACK_END:
+                if (state != EnemyStates.stun)
+                {
+                    setState(baseState);
+                }
+                break;
+            case AbstractEnemyControl.ANIM_INJURED_END:
+                if (_enemHealth > 0 && state != EnemyStates.stun)
+                {
+                    setState(baseState);
+                }
+                break;
+            case AbstractEnemyControl.ANIM_STUN_END:
+                _anim.SetBool("IsStunned", false);
+                setState(baseState);
+                break;
+            */
         }
 	}
 

@@ -13,7 +13,7 @@ public class GameControllerBossElephant : AbstractGameController
     protected bool bossSpawned = false;
     protected bool dieToWin = false;
 
-    protected float timeToAdvance = 2f;
+    protected float timeToAdvance = 20f;
 
 	public override void Start ()
 	{
@@ -95,7 +95,9 @@ public class GameControllerBossElephant : AbstractGameController
             timePassed -= timeToAdvance;
             enemyCount++;
         }
-	}
+
+        UpdateEnemies();
+    }
 
 	public void bossDying ()
 	{

@@ -6,10 +6,10 @@ public class AbstractGameController : MonoBehaviour
 	public SpawnZombie[] spawns;
 	public int enemyCount = 6;
 	public int killCount = 0;
-    public int currentEnemyCount = 0;
     public int numEnemiesAttackAtOnce = 1;
-    protected ArrayList enemiesPacing = new ArrayList();
-    protected ArrayList enemiesAttacking = new ArrayList();
+    protected int currentEnemyCount = 0;
+    protected ArrayList enemiesPacing;
+    protected ArrayList enemiesAttacking;
 
 	public int nextLevel;
 
@@ -47,6 +47,7 @@ public class AbstractGameController : MonoBehaviour
 		LevelBoundary.bottom = -3.9f; // Bottom is the lowest point in the boundary.
 		LevelBoundary.height = 0.64f - -3.9f; // Height is top minus bottom.
 
+        enemiesPacing = new ArrayList();
         enemiesAttacking = new ArrayList();
 	}
 	
@@ -90,6 +91,23 @@ public class AbstractGameController : MonoBehaviour
     }
 
     public virtual void UpdateEnemies() {
+        for (int i = enemiesPacing.Count - 1; i >= 0; i--)
+        {
+            // Keep it clean.
+            if (enemiesPacing[i] == null)
+            {
+                enemiesPacing.RemoveAt(i);
+            }
+        }
+        for (int i = enemiesAttacking.Count - 1; i >= 0; i--)
+        {
+            // Keep it clean.
+            if (enemiesAttacking[i] == null)
+            {
+                enemiesAttacking.RemoveAt(i);
+            }
+        }
+
         if (enemiesAttacking.Count < numEnemiesAttackAtOnce) {
             AbstractEnemyControl enemy = getClosestPacingEnemyToPlayer();
             if (enemy == null) {
@@ -100,6 +118,7 @@ public class AbstractGameController : MonoBehaviour
             enemiesAttacking.Add(enemy);
             enemiesPacing.Remove(enemy);
             enemy.setEnemyState(AbstractEnemyControl.EnemyStates.move);
+            enemy.setBaseState(AbstractEnemyControl.EnemyStates.move);
         }
     }
 
@@ -108,7 +127,9 @@ public class AbstractGameController : MonoBehaviour
         if (enemiesAttacking.Contains(enemy)) {
             enemiesPacing.Add(enemy);
             enemiesAttacking.Remove(enemy);
-            enemy.setEnemyState(Random.value >= 0.5f ? AbstractEnemyControl.EnemyStates.paceBack : AbstractEnemyControl.EnemyStates.paceForth);
+            AbstractEnemyControl.EnemyStates state = Random.value >= 0.5f ? AbstractEnemyControl.EnemyStates.paceBack : AbstractEnemyControl.EnemyStates.paceForth;
+            enemy.setEnemyState(state);
+            enemy.setBaseState(state);
         }
     }
 
@@ -140,16 +161,8 @@ public class AbstractGameController : MonoBehaviour
         currentEnemyCount--;
 		
         // Clean up enemies.
-        for (int i = enemiesPacing.Count - 1; i >= 0; i--) {
-            if (enemiesPacing[i] == null || enemiesPacing[i] as AbstractEnemyControl == enemy) {
-                enemiesPacing.RemoveAt(i);
-            }
-        }
-        for (int i = enemiesAttacking.Count - 1; i >= 0; i--) {
-            if (enemiesAttacking[i] == null || enemiesAttacking[i] as AbstractEnemyControl == enemy) {
-                enemiesAttacking.RemoveAt(i);
-            }
-        }
+        enemiesPacing.Remove(enemy);
+        enemiesAttacking.Remove(enemy);
     }
 
 	public void SavePlayerStats ()

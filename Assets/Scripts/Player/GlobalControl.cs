@@ -24,6 +24,10 @@ public class GlobalControl : MonoBehaviour
 	;
 
 	private int lastLoaded = 0;
+    public int getLastLoaded()
+    {
+        return lastLoaded;
+    }
 	//bool showGUI = false;
 
 	private static GlobalControl GlobalInstance;
@@ -128,7 +132,12 @@ public class GlobalControl : MonoBehaviour
 		}
 	}
 
-	void Update ()
+    public void PlayLastPlayedMusic()
+    {
+        source.Play();
+    }
+
+    void Update ()
 	{
 		//DEBUG - Pressing Space Skips Scenes
 		if (Input.GetKeyDown (KeyCode.P)) {

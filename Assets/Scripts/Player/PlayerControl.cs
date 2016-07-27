@@ -743,7 +743,9 @@ public class PlayerControl : AbstractClass
 	}
 
     protected IEnumerator fireClownDrill () {
-        yield return new WaitForSeconds(5f);
+        tempInvuln = true;
+        tempInvulnTimer = 8f;
+        yield return new WaitForSeconds(8f);
         _anim.SetTrigger("ClownDrillComplete");
     }
 

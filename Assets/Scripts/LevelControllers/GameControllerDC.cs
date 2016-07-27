@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameControllerNightmareSchool: AbstractGameController
+public class GameControllerDC: AbstractGameController
 {
 	PlayerControl _player;
 	
@@ -15,12 +15,13 @@ public class GameControllerNightmareSchool: AbstractGameController
 		_player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerControl> ();
 		timerActivate = timerReset;
 
-        LevelBoundary.bottom = -10000;
-        LevelBoundary.bottomWidth = 20000;
-        LevelBoundary.left = -10000;
-        LevelBoundary.topWidth = 20000;
-        LevelBoundary.height = 10000;
-	}
+        LevelBoundary.type = LevelBoundary.TYPE_RECTANGLE;
+        LevelBoundary.bottom = -3.4f;
+        LevelBoundary.height = 4;
+        LevelBoundary.left = -5000;
+        LevelBoundary.topWidth = 10000;
+        LevelBoundary.bottomWidth = 10000;
+    }
 
 	void Update ()
 	{
@@ -34,7 +35,7 @@ public class GameControllerNightmareSchool: AbstractGameController
 		if (timerActivate > 0) {
 			timerActivate -= 1 * Time.deltaTime;
 			if (timerActivate <= 0) {
-				Application.LoadLevel (25);
+				Application.LoadLevel (24);
 				timerActivate = 0;
 			}
 		}
