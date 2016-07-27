@@ -1,0 +1,308 @@
+fileFormatVersion: 2
+guid: 1254163d425e9704f8547901161997c4
+timeCreated: 1466307629
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Home_0
+    21300002: Home_1
+    21300004: Home_2
+    21300006: Home_3
+    21300008: Home_4
+    21300010: Home_5
+    21300012: Home_6
+    21300014: Home_7
+    21300016: Home_8
+    21300018: Home_9
+    21300020: Home_10
+    21300022: Home_11
+    21300024: Home_12
+    21300026: Home_13
+    21300028: Home_14
+    21300030: Home_15
+    21300032: Home_16
+    21300034: Home_17
+    21300036: Home_18
+    21300038: Home_19
+    21300040: Home_20
+    21300042: Home_21
+    21300044: Home_22
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Home_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1528
+        width: 788
+        height: 723
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_1
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 1696
+        width: 208
+        height: 502
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_2
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 1761
+        width: 462
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_3
+      rect:
+        serializedVersion: 2
+        x: 1717
+        y: 1704
+        width: 439
+        height: 553
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_4
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 1798
+        width: 616
+        height: 384
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_5
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 1093
+        width: 296
+        height: 398
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_6
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 987
+        width: 285
+        height: 460
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_7
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1076
+        width: 187
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_8
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 1229
+        width: 560
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_9
+      rect:
+        serializedVersion: 2
+        x: 1874
+        y: 1242
+        width: 548
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_10
+      rect:
+        serializedVersion: 2
+        x: 2767
+        y: 1270
+        width: 181
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_11
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 708
+        width: 1021
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_12
+      rect:
+        serializedVersion: 2
+        x: 1944
+        y: 669
+        width: 1064
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_13
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 486
+        width: 1025
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_14
+      rect:
+        serializedVersion: 2
+        x: 2013
+        y: 359
+        width: 985
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_15
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 188
+        width: 131
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_16
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 167
+        width: 104
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_17
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 58
+        width: 408
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_18
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 67
+        width: 408
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_19
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 40
+        width: 183
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_20
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 71
+        width: 71
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_21
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 61
+        width: 99
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Home_22
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 64
+        width: 76
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

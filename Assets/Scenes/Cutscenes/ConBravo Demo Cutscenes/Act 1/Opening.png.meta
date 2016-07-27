@@ -1,0 +1,275 @@
+fileFormatVersion: 2
+guid: 0d428551ac3923b4ea9c51cdfb057176
+timeCreated: 1466300667
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Opening_0
+    21300002: Opening_1
+    21300004: Opening_5
+    21300006: Opening_10
+    21300008: Opening_11
+    21300010: Opening_12
+    21300012: Opening_18
+    21300014: Opening_29
+    21300016: Opening_30
+    21300018: Opening_31
+    21300020: Opening_32
+    21300022: Opening_33
+    21300024: Opening_34
+    21300026: Opening_35
+    21300028: Opening_36
+    21300030: Opening_37
+    21300032: Opening_43
+    21300034: Opening_48
+    21300036: Opening_49
+    21300038: Opening_50
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Opening_0
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1525
+        width: 288
+        height: 709
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_1
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 2053
+        width: 325
+        height: 171
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_5
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 1872
+        width: 333
+        height: 334
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_10
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 2104
+        width: 74
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_11
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 1780
+        width: 505
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_12
+      rect:
+        serializedVersion: 2
+        x: 2064
+        y: 1798
+        width: 327
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_18
+      rect:
+        serializedVersion: 2
+        x: 2683
+        y: 1666
+        width: 158
+        height: 414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_29
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 1784
+        width: 82
+        height: 163
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_30
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 1295
+        width: 319
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_31
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 1275
+        width: 226
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_32
+      rect:
+        serializedVersion: 2
+        x: 1625
+        y: 1278
+        width: 325
+        height: 342
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_33
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 888
+        width: 877
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_34
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 583
+        width: 445
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_35
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 924
+        width: 102
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_36
+      rect:
+        serializedVersion: 2
+        x: 1863
+        y: 924
+        width: 83
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_37
+      rect:
+        serializedVersion: 2
+        x: 2036
+        y: 595
+        width: 445
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_43
+      rect:
+        serializedVersion: 2
+        x: 2581
+        y: 367
+        width: 445
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_48
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 31
+        width: 445
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_49
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 19
+        width: 444
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Opening_50
+      rect:
+        serializedVersion: 2
+        x: 2069
+        y: 13
+        width: 445
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
