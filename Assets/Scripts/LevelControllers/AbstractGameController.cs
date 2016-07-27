@@ -11,7 +11,7 @@ public class AbstractGameController : MonoBehaviour
     protected ArrayList enemiesPacing = new ArrayList();
     protected ArrayList enemiesAttacking = new ArrayList();
 
-	protected int nextLevel;
+	public int nextLevel;
 
 	protected PlayerControl player;
     protected ChargeBarScript chargeBar;

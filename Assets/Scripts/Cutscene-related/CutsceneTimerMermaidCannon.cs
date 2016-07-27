@@ -10,11 +10,11 @@ public class CutsceneTimerMermaidCannon : MonoBehaviour
 	{
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			// Skip the cutscene.
-			Application.LoadLevel (19);
+			Application.LoadLevel (10);
 		}
 		timer += Time.deltaTime;
 		if (timer > 23f) {
-			Application.LoadLevel (19);
+			Application.LoadLevel (10);
 		}
 	}
 }

@@ -6,9 +6,13 @@ public class StartMenu : MonoBehaviour
 {
     public GlobalControl gc;
 
-    public GameObject titleScreen;
-    public GameObject optionsScreen;
-    public GameObject levelSelectScreen;
+    public GameObject titleScreenObject;
+    public Animator titleScreen;            //TITLE
+    public GameObject mainScreen;           //MAIN
+    public GameObject optionsScreen;        //OPTIONS
+    public GameObject levelSelectScreen;    //LEVEL SELECT
+
+    bool titleIsActive = true;
 
     public GameObject title;
     public Button start;
@@ -49,8 +53,31 @@ public class StartMenu : MonoBehaviour
 
         Application.targetFrameRate = 60;
 
-        BackToTitle();
+        mainScreen.SetActive(false);
+        optionsScreen.SetActive(false);
+        levelSelectScreen.SetActive(false);
     }
+
+    void Update()
+    {
+        if(titleIsActive == true)
+        {
+        if (Input.anyKeyDown)
+            {
+                FromTitleToMain();
+                titleIsActive = false;
+            }
+        }
+    }
+
+    public void FromTitleToMain()
+    {
+        titleScreen.SetTrigger("OpenBook");
+        mainScreen.SetActive(true);
+        optionsScreen.SetActive(false);
+        levelSelectScreen.SetActive(false);
+    }
+
 
     public void StartLevel1()
     {
@@ -93,23 +120,24 @@ public class StartMenu : MonoBehaviour
         Application.LoadLevel(23);
     }
 
+
     public void ShowLevelSelect()
     {
-        titleScreen.SetActive(false);
+        mainScreen.SetActive(false);
         optionsScreen.SetActive(false);
         levelSelectScreen.SetActive(true);
     }
 
 	public void ShowOptions ()
 	{
-		titleScreen.SetActive (false);
+		mainScreen.SetActive (false);
 		optionsScreen.SetActive (true);
         levelSelectScreen.SetActive(false);
     }
 
 	public void BackToTitle ()
 	{
-		titleScreen.SetActive (true);
+		mainScreen.SetActive (true);
 		optionsScreen.SetActive (false);
         levelSelectScreen.SetActive(false);
     }

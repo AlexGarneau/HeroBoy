@@ -10,11 +10,11 @@ public class CutsceneTimerEnterBoss: MonoBehaviour
 	{
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			// Skip the cutscene.
-			Application.LoadLevel (24);
+			Application.LoadLevel (15);
 		}
 		timer += Time.deltaTime;
 		if (timer > 25f) {
-			Application.LoadLevel (24);
+			Application.LoadLevel (15);
 		}
 	}
 }
