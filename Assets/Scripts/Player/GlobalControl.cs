@@ -20,6 +20,8 @@ public class GlobalControl : MonoBehaviour
 		fightLoop = 0,
 		pirateLoop = 1,
         actionLoop = 2,
+        nightmareLoop = 3,
+        eerieLoop = 4
 	}
 	;
 
@@ -93,7 +95,32 @@ public class GlobalControl : MonoBehaviour
 			source.clip = musicClips [(int)clips.pirateLoop];
 			source.Play ();
 			break;
-        case 9:
+            case 4:
+                // Board ship
+                source.clip = musicClips[(int)clips.pirateLoop];
+                source.Play();
+                break;
+            case 5:
+                // Board ship
+                source.clip = musicClips[(int)clips.pirateLoop];
+                source.Play();
+                break;
+            case 6:
+                // Board ship
+                source.clip = musicClips[(int)clips.pirateLoop];
+                source.Play();
+                break;
+            case 7:
+                // Board ship
+                source.clip = musicClips[(int)clips.pirateLoop];
+                source.Play();
+                break;
+            case 8:
+                // Board ship
+                source.clip = musicClips[(int)clips.pirateLoop];
+                source.Play();
+                break;
+            case 9:
 			// Find cannon
 			source.Stop ();
 			break;
@@ -103,7 +130,22 @@ public class GlobalControl : MonoBehaviour
             mermCannonUnlocked = true;
             source.Play ();
 			break;
-        case 14:
+            case 11:
+                // Board ship
+                source.clip = musicClips[(int)clips.pirateLoop];
+                source.Play();
+                break;
+            case 12:
+                // Board ship
+                source.clip = musicClips[(int)clips.pirateLoop];
+                source.Play();
+                break;
+            case 13:
+                // Board ship
+                source.clip = musicClips[(int)clips.pirateLoop];
+                source.Play();
+                break;
+            case 14:
             // Challenge Boss
             source.clip = musicClips[(int)clips.actionLoop];
             source.Stop();
@@ -117,16 +159,51 @@ public class GlobalControl : MonoBehaviour
 			// Teacher
 			source.Stop ();
 			break;
+            case 17:
+                //nightmare school
+                mermCannonUnlocked = false;
+                source.Stop();
+                break;
         case 18:
             // bandit attack
             mermCannonUnlocked = false;
             clownDrillUnlocked = false;
+                source.clip = musicClips[(int)clips.nightmareLoop];
+                source.Play();
             break;
-        case 23:
-            // clownforest
+            case 19:
+                // bandit attack
+                source.clip = musicClips[(int)clips.nightmareLoop];
+                source.Play();
+                break;
+            case 20:
+                // bandit attack
+                source.clip = musicClips[(int)clips.nightmareLoop];
+                source.Play();
+                break;
+            case 21:
+                // bandit attack
+                source.clip = musicClips[(int)clips.nightmareLoop];
+                source.Play();
+                break;
+            case 22:
+                // bandit attack
+                source.clip = musicClips[(int)clips.nightmareLoop];
+                source.Play();
+                break;
+            case 23:
+                // clown forest
             clownDrillUnlocked = true;
-            source.Stop();
+                source.clip = musicClips[(int)clips.eerieLoop];
+                source.Play();
             break;
+            case 24:
+                // clown tent
+                mermCannonUnlocked = true;
+                clownDrillUnlocked = true;
+                source.clip = musicClips[(int)clips.nightmareLoop];
+                source.Play();
+                break;
         default:
 			break;
 		}

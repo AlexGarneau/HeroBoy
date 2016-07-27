@@ -17,9 +17,4 @@ public class GameOverMenuTBC : MonoBehaviour
 	{
 		Application.LoadLevel (1);
 	}
-
-	public void ExitLevel ()
-	{
-		Application.Quit ();
-	}
 }
