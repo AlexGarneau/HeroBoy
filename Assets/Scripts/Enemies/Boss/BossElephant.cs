@@ -25,6 +25,8 @@ public class BossElephant : AbstractBossControl
 
 	protected override void Start ()
 	{
+		base.Start ();
+
 		base._bossMaxHealth = base._bossHealth = 400f;
 		base._enemMoveSpeed = 1f;
 		base.enemDamage = 5f;
@@ -45,8 +47,9 @@ public class BossElephant : AbstractBossControl
 
 		bossState = BOSS_STATE_MELEE;
 
-		base.Start ();
-	}
+        // Demon spawn!
+        playSoundClip(clips[0], false);
+    }
 
 	protected override void Update ()
 	{
@@ -112,9 +115,16 @@ public class BossElephant : AbstractBossControl
         Debug.Log("AnimataionState:" + animState);
 
         switch (animState) {
-            case AbstractEnemyControl.ANIM_SPAWN_END:
+            case AbstractBossControl.ANIM_SPAWN_END:
                 // Boss spawned.
                 setBossAction(BossAction.move);
+                break;
+            case AbstractBossControl.ANIM_ATTACK_START:
+                if (bossState == BOSS_STATE_RANGED) {
+                    playSoundClip(clips[1], false);
+                } else {
+                    playSoundClip(clips[3], false);
+                }
                 break;
             case AbstractBossControl.ANIM_ATTACK_END:
                 meleeCooldown = MELEE_COOLDOWN;
@@ -141,6 +151,7 @@ public class BossElephant : AbstractBossControl
 		// Create a bomb and make it fly.
 		GameObject go = Instantiate (balloonDog);
 		BalloonDog balloon = go.GetComponent<BalloonDog> ();
+        balloon.setBaseState(AbstractEnemyControl.EnemyStates.move);
 
 		// Position the spawner and the direction.
 		if (facingLeft) {
@@ -170,6 +181,9 @@ public class BossElephant : AbstractBossControl
 			if (bossState == BOSS_STATE_MELEE) {
                 // Nope, boss is actually serious now.
                 bossState = BOSS_STATE_RANGED;
+
+                // Trunk fall SFX.
+                playSoundClip(clips[2], false);
 
                 // Set bossDying. The battle is effectively over, but the player doesn't know it yet.
                 SendMessageUpwards("bossDying", SendMessageOptions.DontRequireReceiver);

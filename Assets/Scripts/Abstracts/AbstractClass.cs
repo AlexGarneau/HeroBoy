@@ -55,6 +55,13 @@ public class AbstractClass : MonoBehaviour
 		audio.Play ();
 	}
 
+    public void playSoundClip (AudioClip clip, bool loop) {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.loop = loop;
+        audio.clip = clip;
+        audio.Play();
+    }
+
 	public virtual void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{
 
