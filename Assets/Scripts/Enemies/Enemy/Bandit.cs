@@ -13,8 +13,8 @@ public class Bandit : AbstractEnemyControl
 	{
         base.Start();
         base._enemHealth = 80f;
-		base._enemMoveSpeed = 1.5f;
-		base.enemDamage = 1;
+		base._enemMoveSpeed = 3.5f;
+		base.enemDamage = 20;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;

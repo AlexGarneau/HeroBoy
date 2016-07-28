@@ -108,7 +108,7 @@ public class PlayerControl : AbstractClass
     protected float friction = 0.5f;
 
     protected float dodgeSpeed = 0;
-    protected float dodgeSpeedMax = 12;
+    protected float dodgeSpeedMax = 10;
     protected Vector2 dodgeDirection;
 
     protected float clownDrillVelocity = 0f;

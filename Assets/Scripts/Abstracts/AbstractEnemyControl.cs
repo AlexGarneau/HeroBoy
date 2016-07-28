@@ -100,7 +100,7 @@ public class AbstractEnemyControl : AbstractClass
 	;
 
 	public EnemyStates state;
-    protected EnemyStates baseState;
+    protected EnemyStates baseState = EnemyStates.move;
 
 	public bool isDead {
 		get {
@@ -123,8 +123,6 @@ public class AbstractEnemyControl : AbstractClass
                 break;
             }
         }
-
-        baseState = EnemyStates.move;
 
         // Set the first state.
         setState(EnemyStates.spawn);

@@ -48,7 +48,7 @@ public class GameControllerBossElephant : AbstractGameController
                 AbstractEnemyControl newControl = newEnemy.GetComponent<AbstractEnemyControl>();
                 enemiesPacing.Add(newControl);
                 newControl.setBaseState(Random.value >= 0.5f ? AbstractEnemyControl.EnemyStates.paceBack : AbstractEnemyControl.EnemyStates.paceForth);
-
+                
                 // Make enemies go crazy upon spawning if dieToWin.
                 if (dieToWin) {
                     ArrayList enemies = spawns[i].getEnemies();

@@ -66,6 +66,7 @@ public class BossElephant : AbstractBossControl
 
         if (bossState == BOSS_STATE_RANGED) {
             shudder();
+            playSoundClip(clips[2], false);
         }
 
         if (meleeCooldown > 0) {
@@ -102,7 +103,7 @@ public class BossElephant : AbstractBossControl
 			break;
 		case BossAction.attack:
 			_anim.SetTrigger ("Attack");
-			break;
+                break;
 		case BossAction.dead:
 			break;
 		}
@@ -121,9 +122,9 @@ public class BossElephant : AbstractBossControl
                 break;
             case AbstractBossControl.ANIM_ATTACK_START:
                 if (bossState == BOSS_STATE_RANGED) {
-                    playSoundClip(clips[1], false);
-                } else {
                     playSoundClip(clips[3], false);
+                } else {
+                    playSoundClip(clips[1], false);
                 }
                 break;
             case AbstractBossControl.ANIM_ATTACK_END:
