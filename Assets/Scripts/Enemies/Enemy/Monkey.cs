@@ -20,7 +20,7 @@ public class Monkey : AbstractEnemyControl
 		base._vertRange = 0.1f;
 		base.isAlive = true;
 		base.isMoving = false;
-        base.hasGun = false;
+        base.hasAttack = false;
 
         base.bulletSpawn = transform.Find ("BulletSpawn");
 
@@ -36,35 +36,6 @@ public class Monkey : AbstractEnemyControl
 		for (var i = eabs.Length - 1; i >= 0; i--) {
 			eabs [i].enemy = this;
 		}
-
-		// Set the first state. DEBUG
-		setState (EnemyStates.move);
-	}
-
-	protected override void Update ()
-	{
-		switch (state) {
-		    case EnemyStates.move:
-			    break;
-		    case EnemyStates.attack:
-			    break;
-		    case EnemyStates.dead:
-			    //DeathTimerDestroy ();
-			    break;
-		}
-
-		_anim.SetFloat ("Health", _enemHealth);
-		//_anim.SetBool ("HighGround", highGround);
-		//HighGroundCheck ();
-
-		if (_gunCooldown > 0) {
-			_gunCooldown -= Time.deltaTime;
-			if (_gunCooldown < 0) {
-				_gunCooldown = 0;
-			}
-		}
-
-		base.Update ();
 	}
 
 	protected override void setState (EnemyStates newState)
@@ -76,16 +47,6 @@ public class Monkey : AbstractEnemyControl
                 _gunCooldown = _gunCooldownTime;
                 _anim.SetBool ("IsMoving", true);
 			    break;
-		    case EnemyStates.attack:
-                if (_playerControl.playerHealth > 0) {
-                    // Only attack if player is still alive.
-			        _anim.SetTrigger ("Fire");
-			        _anim.SetBool ("IsMoving", false);
-                } else {
-                    // Stay on move.
-                    setState(EnemyStates.move);
-                }
-                break;
             case EnemyStates.shoot:
                 if (_playerControl.playerHealth > 0) {
                     // Only attack if player is still alive.
@@ -107,17 +68,17 @@ public class Monkey : AbstractEnemyControl
 		switch (animState) {
 		    case AbstractEnemyControl.ANIM_SPAWN_END:
                 _gunCooldown = _gunCooldownTime;
-                setState (EnemyStates.move);
 			    break;
 		    case AbstractEnemyControl.ANIM_ATTACK_START:
+            case AbstractEnemyControl.ANIM_SHOOT_START:
 			    Shoot ();
 			    break;
 		    case AbstractEnemyControl.ANIM_ATTACK_END:
-			    setState (EnemyStates.move);
+			    setState (baseState);
 			    break;
 		    case AbstractEnemyControl.ANIM_INJURED_END:
 			    if (_enemHealth > 0) {
-				    setState (EnemyStates.move);
+				    setState (baseState);
 			    }
 			    break;
 		    case AbstractEnemyControl.ANIM_DEATH_END:
@@ -142,25 +103,42 @@ public class Monkey : AbstractEnemyControl
 		// Pirate is different than zombie. If he's less than half the gun range, he moves in for attack.
 		// If more, then he will move back while firing his gun.
 		float hD = this.transform.position.x - _player.transform.position.x;
+        float targetX = this.transform.position.x;
+        float targetY = this.transform.position.y;
 
-		// At gun range. Back away.
-		if (hD > _gunRange) {
-			// Out of gun range. Move in right.
-			facingLeft = true;
-			transform.Translate (new Vector3 (Mathf.Max (_gunRange - hD, -_enemMoveSpeed * Time.deltaTime), 0, 0));
-		} else if (hD < -_gunRange) {
-			// Out of gun range. Move in left.
-			facingLeft = false;
-			transform.Translate (new Vector3 (Mathf.Min (-_gunRange - hD, _enemMoveSpeed * Time.deltaTime), 0, 0));
-		} else if (hD <= _gunRange && hD >= 0) {
-			// Within gun range. Move back right as you fire.
-			facingLeft = true;
-			transform.Translate (new Vector3 (Mathf.Min (_gunRange - hD, _enemMoveSpeed * Time.deltaTime), 0, 0));
-		} else if (hD >= -_gunRange && hD < 0) {
-			// Within gun range. Move back left as you fire.
-			facingLeft = false;
-			transform.Translate (new Vector3 (Mathf.Max (-_gunRange - hD, -_enemMoveSpeed * Time.deltaTime), 0, 0));
-		}
+        // At gun range (or other pirate in melee range). Back away.
+        if (hD > _gunRange) {
+            // Out of gun range. Move in right.
+            facingLeft = true;
+            normHD = -1;
+            targetX = _player.transform.position.x + _gunRange;
+        } else if (hD < -_gunRange) {
+            // Out of gun range. Move in left.
+            facingLeft = false;
+            normHD = 1;
+            targetX = _player.transform.position.x - _gunRange;
+        } else if (hD < _gunRange && hD > 0) {
+            // Within gun range. Move back right as you fire.
+            facingLeft = true;
+            normHD = 1;
+            targetX = _player.transform.position.x + _gunRange;
+        } else if (hD > -_gunRange && hD < 0) {
+            // Within gun range. Move back left as you fire.
+            facingLeft = false;
+            normHD = -1;
+            targetX = _player.transform.position.x - _gunRange;
+        } else {
+            // Exactly at gun range. How about that?
+            normHD = 0;
+            targetX = this.transform.position.x;
+        }
+
+		float targetVelX = normHD * _enemMoveSpeed;
+        float targetVelY = normVD * _enemMoveSpeed;
+        _vel.x = Mathf.SmoothDamp (_vel.x, targetVelX, ref velocityXSmoothing, .1f);
+		_vel.y = Mathf.SmoothDamp (_vel.y, targetVelY, ref velocityYSmoothing, .1f);
+
+		_controller.Move (_vel* Time.deltaTime);
 	}
 
 	protected override void Shoot ()

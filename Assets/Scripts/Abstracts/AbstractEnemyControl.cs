@@ -134,9 +134,9 @@ public class AbstractEnemyControl : AbstractClass
 	{
 		base.Update ();
 
-		// Move enemy based on force.
-		transform.Translate (new Vector3 (xForce, yForce, 0));
-		if (xForce > friction) {
+        // Move enemy based on force.
+        _controller.Move(new Vector3(xForce, yForce, 0));
+        if (xForce > friction) {
 			xForce -= friction;
 		} else if (xForce < -friction) {
 			xForce += friction;
@@ -298,6 +298,11 @@ public class AbstractEnemyControl : AbstractClass
 		}
 	}
 
+    public virtual void setDirection (bool left) {
+        facingLeft = left;
+        _anim.SetBool("FacingLeft", left);
+    }
+
     public virtual void setEnemyDamage (int damage)
     {
         enemDamage = damage;
@@ -345,26 +350,52 @@ public class AbstractEnemyControl : AbstractClass
 			normVD = 0;
 		}
 
-		// X-positioning - move enemy to its closest horizontal range. If too close to the player, back away.
-		if (hD > _attackRange) {
-            // Enemy is to the left of player. Move right.
-            facingLeft = false;
-			normHD = 1;
-		} else if (hD < -_attackRange) {
-            // Enemy is to the right of player. Move left.
-            facingLeft = true;
-			normHD = -1;
-		} else if (hD < _attackRange - 0.1f && hD >= 0) {
-            // Enemy is to the left of player, but too close. Move left.
-            facingLeft = false;
-			normHD = -1;
-		} else if (hD > -_attackRange + 0.1f && hD < 0) {
-			// Enemy is to the right of player, but too close. Move right.
-			facingLeft = true;
-			normHD = 1;
-		} else {
-			normHD = 0;
-		}
+        float rangedToMeleePoint = _gunRange * .5f;
+
+        if (hasGun && Mathf.Abs(hD) > rangedToMeleePoint || ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0))) {
+            // At gun range (or other pirate in melee range). Back away.
+            if (hD > _gunRange) {
+                // Out of gun range. Move in right.
+                facingLeft = true;
+                normHD = -1;
+            } else if (hD < -_gunRange) {
+                // Out of gun range. Move in left.
+                facingLeft = false;
+                normHD = 1;
+            } else if (hD < _gunRange && hD > 0) {
+                // Within gun range. Move back right as you fire.
+                facingLeft = true;
+                normHD = 1;
+            } else if (hD > -_gunRange && hD < 0) {
+                // Within gun range. Move back left as you fire.
+                facingLeft = false;
+                normHD = -1;
+            } else {
+                // Exactly at gun range. How about that?
+                normHD = 0;
+            }
+        } else if (hasAttack) {
+            // X-positioning - move enemy to its closest horizontal range. If too close to the player, back away.
+            if (hD > _attackRange) {
+                // Enemy is to the left of player. Move right.
+                facingLeft = false;
+                normHD = 1;
+            } else if (hD < -_attackRange) {
+                // Enemy is to the right of player. Move left.
+                facingLeft = true;
+                normHD = -1;
+            } else if (hD < _attackRange - 0.1f && hD >= 0) {
+                // Enemy is to the left of player, but too close. Move left.
+                facingLeft = false;
+                normHD = -1;
+            } else if (hD > -_attackRange + 0.1f && hD < 0) {
+                // Enemy is to the right of player, but too close. Move right.
+                facingLeft = true;
+                normHD = 1;
+            } else {
+                normHD = 0;
+            }
+        }
 
 		float targetVelX = normHD * _enemMoveSpeed;
 		float targetVelY = normVD * _enemMoveSpeed;

@@ -23,6 +23,7 @@ public class PlayerControl : AbstractClass
 
     public int playerHealth;
 	public float moveSpeed = 3f;
+    public bool earnKills = true;
 
     public bool tempInvuln;
     public float tempInvulnTimer = 0f;
@@ -704,7 +705,8 @@ public class PlayerControl : AbstractClass
 
     protected IEnumerator fireMermaidCannon ()
 	{
-		yield return new WaitForSeconds (1f);
+        earnKills = false;
+        yield return new WaitForSeconds (1f);
 
 		GameObject go = Instantiate (mermaidBomb);
 		//TODO: Random between Mermaid and Merman.
@@ -731,7 +733,6 @@ public class PlayerControl : AbstractClass
 		float y = firstShot.transform.position.y;
 		MermaidBomb[] cluster = new MermaidBomb[mermaidCount];
 		for (int i = 0; i < mermaidCount; i++) {
-
 			go = Random.value > .5 ? Instantiate(mermanBomb) : Instantiate(mermaidBomb); 
 			bomb = cluster [i] = go.GetComponent<MermaidBomb> ();
 			bomb.life = Random.Range (1f, 2f);
@@ -740,13 +741,16 @@ public class PlayerControl : AbstractClass
 			bomb.transform.parent = transform.parent;
 			yield return new WaitForSeconds (.01f);
 		}
-	}
+        earnKills = true;
+    }
 
     protected IEnumerator fireClownDrill () {
         tempInvuln = true;
         tempInvulnTimer = 8f;
+        earnKills = false;
         yield return new WaitForSeconds(8f);
         _anim.SetTrigger("ClownDrillComplete");
+        earnKills = true;
     }
 
     protected IEnumerator fireMaceOfTrit () {

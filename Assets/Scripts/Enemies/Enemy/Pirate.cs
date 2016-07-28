@@ -69,28 +69,31 @@ public class Pirate : AbstractEnemyControl
 	public override void onAnimationState (string animState)
 	{
 		switch (animState) {
-		case AbstractEnemyControl.ANIM_ATTACK_END:
-            if (state != EnemyStates.stun)
-            {
+            case AbstractEnemyControl.ANIM_SPAWN_END:
+                _gunCooldown = _gunCooldownTime;
+                break;
+            case AbstractEnemyControl.ANIM_ATTACK_END:
+                if (state != EnemyStates.stun)
+                {
+                    setState(baseState);
+                }
+			    break;
+		    case AbstractEnemyControl.ANIM_INJURED_END:
+			    if (_enemHealth > 0 && state != EnemyStates.stun) {
+				    setState (baseState);
+			    }
+			    break;
+            case AbstractEnemyControl.ANIM_STUN_END:
+                _anim.SetBool("IsStunned", false);
                 setState(baseState);
-            }
-			break;
-		case AbstractEnemyControl.ANIM_INJURED_END:
-			if (_enemHealth > 0 && state != EnemyStates.stun) {
-				setState (baseState);
-			}
-			break;
-        case AbstractEnemyControl.ANIM_STUN_END:
-            _anim.SetBool("IsStunned", false);
-            setState(baseState);
-            break;
-        case AbstractEnemyControl.ANIM_DEATH_END:
-			randomdrop (healItem);
-			Destroy (gameObject);
-			break;
-		case AbstractEnemyControl.ANIM_SHOOT_START:
-			Shoot ();
-			break;
+                break;
+            case AbstractEnemyControl.ANIM_DEATH_END:
+			    randomdrop (healItem);
+			    Destroy (gameObject);
+			    break;
+		    case AbstractEnemyControl.ANIM_SHOOT_START:
+			    Shoot ();
+			    break;
 		}
 
         base.onAnimationState(animState);

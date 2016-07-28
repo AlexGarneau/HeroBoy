@@ -154,7 +154,7 @@ public class AbstractGameController : MonoBehaviour
 	public virtual void enemyDied (AbstractEnemyControl enemy)
 	{
         // Increase charge bar.
-        if (chargeBar != null) {
+        if (chargeBar != null && player.earnKills) {
 			chargeBar.IncreaseChargePercentage (20);
 		}
 		killCount++;
