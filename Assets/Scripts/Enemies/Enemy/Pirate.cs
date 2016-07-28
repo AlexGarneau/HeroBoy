@@ -15,7 +15,7 @@ public class Pirate : AbstractEnemyControl
         base.Start();
 		base._enemHealth = 50f;
 		base._enemMoveSpeed = 1.2f;
-		base.enemDamage = 10;
+		base.enemDamage = 20;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;
 		base.isAlive = true;
