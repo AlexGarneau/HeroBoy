@@ -68,10 +68,12 @@ public class NightmareClownForestEvents : MonoBehaviour {
     public GameObject bound8;
 
     Animator _anim;
+    AudioSource _audio;
 
     void Start()
     {
         _anim = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
         setState(ClownForestStates.enter);
     }
 

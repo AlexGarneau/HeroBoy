@@ -21,7 +21,8 @@ public class GlobalControl : MonoBehaviour
 		pirateLoop = 1,
         actionLoop = 2,
         nightmareLoop = 3,
-        eerieLoop = 4
+        eerieLoop = 4,
+        clownLoop = 5
 	}
 	;
 
@@ -194,14 +195,13 @@ public class GlobalControl : MonoBehaviour
             case 23:
                 // clown forest
             clownDrillUnlocked = true;
-                source.clip = musicClips[(int)clips.eerieLoop];
-                source.Play();
+                source.Stop();
             break;
             case 24:
                 // clown tent
                 mermCannonUnlocked = true;
                 clownDrillUnlocked = true;
-                source.clip = musicClips[(int)clips.nightmareLoop];
+                source.clip = musicClips[(int)clips.clownLoop];
                 source.Play();
                 break;
         default:

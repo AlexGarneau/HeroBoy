@@ -7,7 +7,7 @@ public class ClownWater : AbstractBullet
 	{
 		base.Start ();
 
-		damage = 5;
+		damage = 20;
 		velocity = 3.5f;
 		life = 4;
 		knockback = 1;
