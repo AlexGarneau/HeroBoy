@@ -63,11 +63,11 @@ public class NightmareClownForestEvents : MonoBehaviour {
 
     public enum sfx
     {
-        eerie = 0
+
     }
-    public AudioClip clip;
 
     public GameObject forestAmbiance;
+    public GameObject eerieMusic;
 
     Animator _anim;
     AudioSource _audio;
@@ -94,6 +94,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
         switch (newState)
         {
             case ClownForestStates.enter:
+                eerieMusic.SetActive(false);
                 treePack1.SetActive(true);
                 treePack2.SetActive(true);
                 treePack3.SetActive(true);
@@ -124,7 +125,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 spawnPoints.SetActive(false);
                 break;
             case ClownForestStates.farEnd1:
-                playSound(sfx.eerie, true);
+                eerieMusic.SetActive(true);
                 treePack1.SetActive(false);
                 treePack2.SetActive(true);
                 treePack3.SetActive(true);
@@ -460,18 +461,5 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 //Application.LoadLevel();
                 break;
         }
-    }
-
-    public void playSound(sfx sfx, bool loop)
-    {
-        if ((int)sfx >= clips.Length)
-        {
-            // Calling an out-of-range clip. No good.
-            return;
-        }
-        AudioSource audio = sources[(int)sfx];
-        audio.loop = loop;
-        audio.clip = clips[(int)sfx];
-        audio.Play();
     }
 }
