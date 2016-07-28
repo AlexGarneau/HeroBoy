@@ -20,7 +20,9 @@ public class AbstractClass : MonoBehaviour
 		powerkick = 9,
 		oraora = 10,
 		mermaid = 11,
-		omnom = 12}
+		omnom = 12,
+        clowndrill = 13
+    }
 	;
 
 	public AudioClip[] clips;
