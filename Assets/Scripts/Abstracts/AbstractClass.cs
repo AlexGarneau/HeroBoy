@@ -21,7 +21,9 @@ public class AbstractClass : MonoBehaviour
 		oraora = 10,
 		mermaid = 11,
 		omnom = 12,
-        clowndrill = 13
+        clowndrill = 13,
+        clowndrillrev = 14,
+        clowndrillend = 15
     }
 	;
 
