@@ -97,7 +97,10 @@ public class SpawnZombie : AbstractClass
 		yield return new WaitForSeconds (spawnDelay);
 
         _enemies[index] = newEnemy;
-        (_enemies [index] as GameObject).transform.parent = transform.parent.parent;
+        Debug.Log("New Enemy: " + newEnemy);
+        if (newEnemy != null) {
+            newEnemy.transform.parent = transform.parent.parent;
+        }
 		_isSpawning [index] = false;
 		isCurrentlySpawning = false;
 	}

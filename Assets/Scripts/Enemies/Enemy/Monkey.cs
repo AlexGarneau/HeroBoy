@@ -23,8 +23,9 @@ public class Monkey : AbstractEnemyControl
         base.hasAttack = false;
 
         base.bulletSpawn = transform.Find ("BulletSpawn");
+        _controller = GetComponent<MovementController2D>();
 
-		_damageColliders = GetComponentsInChildren<EnemyDamageCollider> ();
+        _damageColliders = GetComponentsInChildren<EnemyDamageCollider> ();
 		if (_damageColliders != null && _damageColliders.Length > 0) {
 			// Sets the damage of damage colliders. TODO: Independent damage set to different colliders, if multple exist.
 			for (int i = _damageColliders.Length - 1; i >= 0; i--) {
@@ -36,6 +37,8 @@ public class Monkey : AbstractEnemyControl
 		for (var i = eabs.Length - 1; i >= 0; i--) {
 			eabs [i].enemy = this;
 		}
+
+        setState(EnemyStates.paceBack);
 	}
 
 	protected override void setState (EnemyStates newState)
@@ -63,7 +66,15 @@ public class Monkey : AbstractEnemyControl
 		}
 	}
 
-	public override void onAnimationState (string animState)
+    protected override void CheckToAttack () {
+        // ALWAYS in shooting range. Shoot!
+        if (_gunCooldown <= 0) {
+            _gunCooldown = _gunCooldownTime;
+            setState(EnemyStates.shoot);
+        }
+    }
+
+    public override void onAnimationState (string animState)
 	{
 		switch (animState) {
 		    case AbstractEnemyControl.ANIM_SPAWN_END:
