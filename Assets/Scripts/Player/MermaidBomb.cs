@@ -52,7 +52,10 @@ public class MermaidBomb : AbstractBullet
 		rotation = Random.Range (-20f, 20f);
 		
 		audio = GetComponent<AudioSource> ();
-		audio.clip = AbstractAssetController.getSFX (AbstractAssetController.SFX_MERMAID);
+        AudioClip clip = AbstractAssetController.getSFX(AbstractAssetController.SFX_MERMAID);
+        if (clip != null) {
+            audio.clip = clip;
+        }
 		audio.maxDistance = 5;
 		audio.volume = .1f;
 		state = MermaidState.fly;

@@ -312,24 +312,9 @@ public class AbstractEnemyControl : AbstractClass
             case AbstractEnemyControl.ANIM_SPAWN_END:
                 setState(baseState);
                 break;
-            /*
-            case AbstractEnemyControl.ANIM_ATTACK_END:
-                if (state != EnemyStates.stun)
-                {
-                    setState(baseState);
-                }
+            case AbstractEnemyControl.ANIM_DEATH_END:
+                SendMessageUpwards("enemyDied", this, SendMessageOptions.DontRequireReceiver);
                 break;
-            case AbstractEnemyControl.ANIM_INJURED_END:
-                if (_enemHealth > 0 && state != EnemyStates.stun)
-                {
-                    setState(baseState);
-                }
-                break;
-            case AbstractEnemyControl.ANIM_STUN_END:
-                _anim.SetBool("IsStunned", false);
-                setState(baseState);
-                break;
-            */
         }
 	}
 
@@ -360,11 +345,11 @@ public class AbstractEnemyControl : AbstractClass
                 // Out of gun range. Move in left.
                 facingLeft = false;
                 normHD = 1;
-            } else if (hD < _gunRange && hD > 0) {
+            } else if (hD < _gunRange - 0.1f && hD > 0) {
                 // Within gun range. Move back right as you fire.
                 facingLeft = true;
                 normHD = 1;
-            } else if (hD > -_gunRange && hD < 0) {
+            } else if (hD > -_gunRange - 0.1f && hD < 0) {
                 // Within gun range. Move back left as you fire.
                 facingLeft = false;
                 normHD = -1;
@@ -475,7 +460,6 @@ public class AbstractEnemyControl : AbstractClass
 			if (_enemHealth <= 0) {
 				// Enemy is dead. Set state.
 				setState (EnemyStates.dead);
-				SendMessageUpwards ("enemyDied", this, SendMessageOptions.DontRequireReceiver);
 				// Don't do anything else. Make-Dead code will handle the rest.
 				return;
 			}

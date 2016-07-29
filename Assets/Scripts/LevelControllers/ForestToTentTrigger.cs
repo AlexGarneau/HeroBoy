@@ -15,7 +15,7 @@ public class ForestToTentTrigger : MonoBehaviour {
     {
         if (other == player)
         {
-            Application.LoadLevel(24);
+            Application.LoadLevel(25);
         }
     }
 }

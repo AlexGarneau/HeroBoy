@@ -124,7 +124,7 @@ public class BossElephant : AbstractBossControl
                 if (bossState == BOSS_STATE_RANGED) {
                     playSoundClip(clips[3], false);
                 } else {
-                    playSoundClip(clips[1], false);
+                    playSoundClip(clips[0], false);
                 }
                 break;
             case AbstractBossControl.ANIM_ATTACK_END:

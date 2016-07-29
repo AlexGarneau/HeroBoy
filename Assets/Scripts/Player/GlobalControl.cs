@@ -193,16 +193,22 @@ public class GlobalControl : MonoBehaviour
                 source.Play();
                 break;
             case 23:
+                source.Stop();
+                break;
+            case 24:
                 // clown forest
             clownDrillUnlocked = true;
                 source.Stop();
             break;
-            case 24:
+            case 25:
                 // clown tent
                 mermCannonUnlocked = true;
                 clownDrillUnlocked = true;
                 source.clip = musicClips[(int)clips.clownLoop];
                 source.Play();
+                break;
+            case 26:
+                source.Stop();
                 break;
         default:
 			break;

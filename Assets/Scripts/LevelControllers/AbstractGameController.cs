@@ -153,6 +153,8 @@ public class AbstractGameController : MonoBehaviour
 	
 	public virtual void enemyDied (AbstractEnemyControl enemy)
 	{
+        Debug.Log("Remove Enemy: " + enemy);
+
         // Increase charge bar.
         if (chargeBar != null && player.earnKills) {
 			chargeBar.IncreaseChargePercentage (20);

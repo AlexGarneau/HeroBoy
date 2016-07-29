@@ -6,6 +6,6 @@ public class PlayerOraOraAnimSound : StateMachineBehaviour
 
 	override public void OnStateEnter (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		animator.GetComponent<AbstractClass> ().playSound (AbstractClass.sfx.oraora, true);
+		animator.GetComponent<AbstractClass> ().playSound (AbstractClass.sfx.oraora, false);
 	}	
 }

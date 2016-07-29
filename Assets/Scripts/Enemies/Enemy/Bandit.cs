@@ -15,7 +15,7 @@ public class Bandit : AbstractEnemyControl
         base._enemHealth = 80f;
 		base._enemMoveSpeed = 3.5f;
 		base.enemDamage = 20;
-		base._attackRange = 1.2f;
+		base._attackRange = 1.6f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
 		base.isMoving = false;

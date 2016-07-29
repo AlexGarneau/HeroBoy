@@ -68,6 +68,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
 
     public GameObject forestAmbiance;
     public GameObject eerieMusic;
+    public GameObject intenseMusic;
 
     Animator _anim;
     AudioSource _audio;
@@ -94,6 +95,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
         switch (newState)
         {
             case ClownForestStates.enter:
+                intenseMusic.SetActive(false);
                 eerieMusic.SetActive(false);
                 treePack1.SetActive(true);
                 treePack2.SetActive(true);
@@ -364,6 +366,8 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 bound8.SetActive(false);
                 break;
             case ClownForestStates.upToTent:
+                eerieMusic.SetActive(false);
+                intenseMusic.SetActive(true);
                 treePack1.SetActive(true);
                 treePack2.SetActive(true);
                 treePack3.SetActive(false);

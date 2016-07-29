@@ -17,7 +17,7 @@ public class SpawnZombie : AbstractClass
 				return false;
 			}
 			for (int i = _enemies.Count - 1; i >= 0; i--) {
-				if (_enemies [i].Equals (null) && !_isSpawning [i]) {
+				if ((_enemies[i] == null || _enemies [i].Equals (null)) && !_isSpawning [i]) {
 					return true;
 				}
 			}
@@ -71,12 +71,13 @@ public class SpawnZombie : AbstractClass
 	}
 
     /** Spawns a single enemy. */
-	public GameObject spawnEnemy ()
-	{
-		for (int i = zedCount - 1; i >= 0; i--) {
+    public GameObject spawnEnemy()
+    {
+        for (int i = zedCount - 1; i >= 0; i--) {
 			if (_enemies [i].Equals (null) && !_isSpawning [i]) {
                 // Enemy died. Spawn one new enemy. Make multiple calls to fill the spawn.
                 GameObject newEnemy = GameObject.Instantiate(prefabs[Random.Range(0, prefabs.Length)], transform.position, transform.rotation) as GameObject;
+                _enemies[i] = newEnemy;
                 StartCoroutine(createEnemy(i, newEnemy));
                 return newEnemy;
             }
@@ -96,10 +97,10 @@ public class SpawnZombie : AbstractClass
 		_isSpawning [index] = true;
 		yield return new WaitForSeconds (spawnDelay);
 
-        _enemies[index] = newEnemy;
-        Debug.Log("New Enemy: " + newEnemy);
         if (newEnemy != null) {
             newEnemy.transform.parent = transform.parent.parent;
+        } else {
+            _enemies[index] = null;
         }
 		_isSpawning [index] = false;
 		isCurrentlySpawning = false;

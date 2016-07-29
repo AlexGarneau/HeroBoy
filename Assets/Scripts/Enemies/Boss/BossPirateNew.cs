@@ -32,7 +32,7 @@ public class BossPirateNew : AbstractBossControl
 	private bool highGround = true;
 	private Transform bombSpawn;
 	private float bombDelay = 0;
-	private float bombDelayMax = 2f;
+	private float bombDelayMax = 3f;
 
 	protected override void Start ()
 	{
