@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class AbstractBullet : AbstractClass
+public class AbstractBullet : MonoBehaviour
 {
 	private static WWW www;
 	private static WWW explosionWWW;
@@ -28,8 +28,7 @@ public class AbstractBullet : AbstractClass
 
 	public virtual void Update ()
 	{
-        base.Update();
-        /*
+		/*
 		if (isExploding) {
 			if (life > explosionTime * 2 / 3) {
 				life -= Time.deltaTime;
@@ -49,7 +48,7 @@ public class AbstractBullet : AbstractClass
 			}
 		}
 		*/
-    }
+	}
 
 	public virtual void destroy ()
 	{

@@ -26,7 +26,7 @@ public class GameOverSpawn : MonoBehaviour
 
 	void Update ()
 	{
-		if (_player != null && _player.playerHealth <= 0) {
+		if (_player.playerHealth <= 0) {
 			ActivateScreen ();
 		}
 	}

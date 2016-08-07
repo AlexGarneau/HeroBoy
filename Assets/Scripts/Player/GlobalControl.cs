@@ -6,7 +6,6 @@ public class GlobalControl : MonoBehaviour
 	public int playerHP;
 	public int playerCP;
 
-    
     public bool mermCannonUnlocked = false;
     public bool maceOfTritUnlocked = false;
     public bool rarLaserUnlocked = false;
@@ -20,17 +19,10 @@ public class GlobalControl : MonoBehaviour
 		fightLoop = 0,
 		pirateLoop = 1,
         actionLoop = 2,
-        nightmareLoop = 3,
-        eerieLoop = 4,
-        clownLoop = 5
 	}
 	;
 
 	private int lastLoaded = 0;
-    public int getLastLoaded()
-    {
-        return lastLoaded;
-    }
 	//bool showGUI = false;
 
 	private static GlobalControl GlobalInstance;
@@ -71,10 +63,7 @@ public class GlobalControl : MonoBehaviour
 		if (lastLoaded == level) {
 			return;
 		}
-
-        if (level != 2) {
-            lastLoaded = level;
-        }
+		lastLoaded = level;
 
 		source.volume = .4f;
 
@@ -92,135 +81,70 @@ public class GlobalControl : MonoBehaviour
 			source.Stop ();
 			break;
 		case 3:
+			// gameover
+			source.Stop ();
+			break;
+		case 4:
+			// gameover
+			source.Stop ();
+			break;
+		case 5:
+			// gameover
+			source.Stop ();
+			break;
+		case 6:
+			// gameover
+			source.Stop ();
+			break;
+		case 10:
+			// Bully fight
+			source.clip = musicClips [(int)clips.fightLoop];
+			source.Play ();
+			break;
+		case 11:
+			// Open pirate book
+			source.Stop ();
+			break;
+		case 12:
 			// Board ship
 			source.clip = musicClips [(int)clips.pirateLoop];
 			source.Play ();
 			break;
-            case 4:
-                // Board ship
-                source.clip = musicClips[(int)clips.pirateLoop];
-                source.Play();
-                break;
-            case 5:
-                // Board ship
-                source.clip = musicClips[(int)clips.pirateLoop];
-                source.Play();
-                break;
-            case 6:
-                // Board ship
-                source.clip = musicClips[(int)clips.pirateLoop];
-                source.Play();
-                break;
-            case 7:
-                // Board ship
-                source.clip = musicClips[(int)clips.pirateLoop];
-                source.Play();
-                break;
-            case 8:
-                // Board ship
-                source.clip = musicClips[(int)clips.pirateLoop];
-                source.Play();
-                break;
-            case 9:
+        case 15:
+            // Checkpoint
+            source.clip = musicClips[(int)clips.pirateLoop];
+            source.Play();
+            break;
+            case 18:
 			// Find cannon
 			source.Stop ();
 			break;
-		case 10:
+		case 19:
 			// Got cannon
 			source.clip = musicClips [(int)clips.pirateLoop];
-            mermCannonUnlocked = true;
-            source.Play ();
+                mermCannonUnlocked = true;
+                source.Play ();
 			break;
-            case 11:
-                // Board ship
-                source.clip = musicClips[(int)clips.pirateLoop];
-                source.Play();
-                break;
-            case 12:
-                // Board ship
-                source.clip = musicClips[(int)clips.pirateLoop];
-                source.Play();
-                break;
-            case 13:
-                // Board ship
-                source.clip = musicClips[(int)clips.pirateLoop];
-                source.Play();
-                break;
-            case 14:
+        case 23:
             // Challenge Boss
             source.clip = musicClips[(int)clips.actionLoop];
             source.Stop();
             break;
-		case 15:
+		case 24:
 			// Pirate boss
 			source.clip = musicClips [(int)clips.pirateLoop];
 			source.Play ();
 			break;
-		case 16:
+		case 25:
 			// Teacher
 			source.Stop ();
 			break;
-            case 17:
-                //nightmare school
-                mermCannonUnlocked = false;
-                source.Stop();
-                break;
-        case 18:
-            // bandit attack
-            mermCannonUnlocked = false;
-            clownDrillUnlocked = false;
-                source.clip = musicClips[(int)clips.nightmareLoop];
-                source.Play();
-            break;
-            case 19:
-                // bandit attack
-                source.clip = musicClips[(int)clips.nightmareLoop];
-                source.Play();
-                break;
-            case 20:
-                // bandit attack
-                source.clip = musicClips[(int)clips.nightmareLoop];
-                source.Play();
-                break;
-            case 21:
-                // bandit attack
-                source.clip = musicClips[(int)clips.nightmareLoop];
-                source.Play();
-                break;
-            case 22:
-                // bandit attack
-                source.clip = musicClips[(int)clips.nightmareLoop];
-                source.Play();
-                break;
-            case 23:
-                source.Stop();
-                break;
-            case 24:
-                // clown forest
-            clownDrillUnlocked = true;
-                source.Stop();
-            break;
-            case 25:
-                // clown tent
-                mermCannonUnlocked = true;
-                clownDrillUnlocked = true;
-                source.clip = musicClips[(int)clips.clownLoop];
-                source.Play();
-                break;
-            case 26:
-                source.Stop();
-                break;
-        default:
+		default:
 			break;
 		}
 	}
 
-    public void PlayLastPlayedMusic()
-    {
-        source.Play();
-    }
-
-    void Update ()
+	void Update ()
 	{
 		//DEBUG - Pressing Space Skips Scenes
 		if (Input.GetKeyDown (KeyCode.P)) {

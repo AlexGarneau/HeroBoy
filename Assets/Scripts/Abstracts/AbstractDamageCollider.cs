@@ -9,11 +9,7 @@ public class AbstractDamageCollider : AbstractClass
 	{
 		light,
 		medium,
-		heavy,
-        ranged,
-        stunAttack,
-        stunMove,
-        stunAll
+		heavy
 	}
 	;
 	public DamageType type;

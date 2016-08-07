@@ -15,11 +15,11 @@ public class GameControllerNightmareSchool: AbstractGameController
 		_player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerControl> ();
 		timerActivate = timerReset;
 
-        LevelBoundary.bottom = -10000;
-        LevelBoundary.bottomWidth = 20000;
-        LevelBoundary.left = -10000;
-        LevelBoundary.topWidth = 20000;
-        LevelBoundary.height = 10000;
+		LevelBoundary.topWidth = 100000;
+		LevelBoundary.bottomWidth = 100000;
+		LevelBoundary.left = -50000;
+		LevelBoundary.bottom = -50000;
+		LevelBoundary.height = 100000;
 	}
 
 	void Update ()
@@ -34,7 +34,7 @@ public class GameControllerNightmareSchool: AbstractGameController
 		if (timerActivate > 0) {
 			timerActivate -= 1 * Time.deltaTime;
 			if (timerActivate <= 0) {
-				Application.LoadLevel (26);
+				Application.LoadLevel (27);
 				timerActivate = 0;
 			}
 		}

@@ -4,7 +4,7 @@ using System.Collections;
 public class RockThrowScript : MonoBehaviour
 {
 	PlayerControl _player;
-	//Animator _anim;
+	Animator _anim;
 	float speed = 6f;
 	float _timer = 3f;
 	bool facingLeft;
@@ -22,7 +22,7 @@ public class RockThrowScript : MonoBehaviour
                 break;
             }
         }
-        //_anim = GetComponent<Animator> ();
+        _anim = GetComponent<Animator> ();
 		if (_player.throwRight) {
 			facingLeft = false;
 			rockDirection = new Vector2 (1, 0);

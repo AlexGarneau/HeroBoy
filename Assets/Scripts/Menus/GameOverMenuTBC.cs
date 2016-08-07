@@ -10,10 +10,16 @@ public class GameOverMenuTBC : MonoBehaviour
 	void Start ()
 	{
 		goRestart = goRestart.GetComponent<Button> ();
+		goQuit = goQuit.GetComponent<Button> ();
 	}
 
 	public void StartLevel ()
 	{
 		Application.LoadLevel (1);
+	}
+
+	public void ExitLevel ()
+	{
+		Application.Quit ();
 	}
 }

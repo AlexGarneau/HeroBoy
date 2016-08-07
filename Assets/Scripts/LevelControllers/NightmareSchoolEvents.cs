@@ -165,6 +165,7 @@ public class NightmareSchoolEvents : MonoBehaviour
 			break;
 		case SchoolEvents.getOutOfThere:
 			//objective.SetTrigger ("GetOut");
+			playNarration (narration.ShouldNotBeHere);
 			for (i = bookShelves.Length - 1; i >= 0; i--) {
 				bookShelves [i].GetComponent <Animator> ().SetTrigger ("Creepy");
 			}
