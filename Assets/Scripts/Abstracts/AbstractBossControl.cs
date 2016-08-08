@@ -51,8 +51,13 @@ public class AbstractBossControl : AbstractClass
 	protected float yForce = 0;
 	protected float friction = 0.005f;
     protected float meleeCooldown = 0f;
-	
-	protected Rigidbody rigidbody;
+
+    protected float _attackCooldown = 0f;
+    protected float _attackCooldownTime = 0f;
+    protected float _specialCooldown = 0f;
+    protected float _specialCooldownTime = 0f;
+
+    protected Rigidbody rigidbody;
 	protected Transform bulletSpawn;
     protected MovementController2D _controller;
     protected AbstractDamageCollider[] _damageColliders;
@@ -130,7 +135,10 @@ public class AbstractBossControl : AbstractClass
 			yForce = 0;
 		}
 
-		switch (state) {
+        _anim.SetFloat("Health", _bossHealth);
+        _anim.SetBool("FacingLeft", facingLeft);
+
+        switch (state) {
 		case BossAction.move:
 			MoveToPlayer ();
 			break;
@@ -168,10 +176,8 @@ public class AbstractBossControl : AbstractClass
 			isMoving = false;
 			break;
 		case BossAction.stun:
-			
 			break;
 		case BossAction.dead:
-			
 			break;
 		}
 	}
@@ -208,7 +214,6 @@ public class AbstractBossControl : AbstractClass
 		}
 		
 		// X-positioning - move enemy to its closest horizontal range. If too close to the player, back away.
-		//Debug.Log (hD + " - " + _attackRange);
 		if (hD > _attackRange) {
 			// Zombie is to the left of player. Move right.
 			facingLeft = false;
@@ -234,11 +239,26 @@ public class AbstractBossControl : AbstractClass
 		_anim.SetBool ("FacingLeft", facingLeft);
 	}
 
-	protected virtual void Attack ()
-	{
-	}
+    protected virtual void CheckToAttack () {
+        float hD = _player.transform.position.x - this.transform.position.x;
+        float vD = _player.transform.position.y - this.transform.position.y;
 
-	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
+        if (vD <= _vertRange && vD >= -_vertRange) {
+            // In vertical range. Try horizontal.
+            if (hD <= _attackRange && hD >= -_attackRange) {
+                // In attack range. Strike!
+                if (_attackCooldown <= 0) {
+                    _attackCooldown = _attackCooldownTime;
+                    setBossAction(BossAction.attack);
+                }
+            }
+        }
+    }
+
+    protected virtual void Attack () { }
+    protected virtual void Special () { }
+
+    public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{		
 		if (_bossHealth > 0) {
 			_bossHealth -= damage;
