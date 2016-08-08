@@ -18,10 +18,14 @@ public class AbstractBossControl : AbstractClass
 	public const string ANIM_REAPPEAR_END = "reappearEnd";
 
 	public const string ANIM_SPECIAL_START = "specialStart";
-	public const string ANIM_SPECIAL_END = "specialUpdate";
 	public const string ANIM_SPECIAL_UPDATE = "specialEnd";
+	public const string ANIM_SPECIAL_END = "specialUpdate";
 
-	public const string ANIM_DYING_START = "dyingStart";
+    public const string ANIM_RANGED_START = "rangedStart";
+    public const string ANIM_RANGED_UPDATE = "rangedEnd";
+    public const string ANIM_RANGED_END = "rangedUpdate";
+
+    public const string ANIM_DYING_START = "dyingStart";
 	public const string ANIM_DYING_UPDATE = "dyingUpdate";
 	public const string ANIM_DYING_END = "dyingEnd";
 
@@ -35,11 +39,12 @@ public class AbstractBossControl : AbstractClass
 	public float _bossHealth;
 	public float _bossMaxHealth;
 	public float _attackRange;
-	public float _enemDamage;
+	public float enemDamage;
 	public float _enemMoveSpeed;
 	public float _vertRange;
 	public bool isAlive;
 	public bool isMoving;
+    public bool isInvincible = false;
 	
 	protected GameObject _player;
 	protected float xForce = 0;
@@ -49,6 +54,8 @@ public class AbstractBossControl : AbstractClass
 	
 	protected Rigidbody rigidbody;
 	protected Transform bulletSpawn;
+    protected MovementController2D _controller;
+    protected AbstractDamageCollider[] _damageColliders;
 	
 	public bool facingLeft;
 
@@ -87,13 +94,17 @@ public class AbstractBossControl : AbstractClass
 	protected Animator _anim;
 
 	protected virtual void Start ()
-	{		
-		_anim = GetComponent<Animator> ();
-		BossAbstractBehaviour[] eabs = _anim.GetBehaviours<BossAbstractBehaviour> ();
-		for (var i = eabs.Length - 1; i >= 0; i--) {
-			eabs [i].boss = this;
-		}
-		
+	{
+        _player = GameObject.FindGameObjectWithTag("Player");
+
+        _anim = GetComponent<Animator> ();
+        if (_anim != null) {
+            BossAbstractBehaviour[] eabs = _anim.GetBehaviours<BossAbstractBehaviour>();
+            for (var i = eabs.Length - 1; i >= 0; i--) {
+                eabs[i].boss = this;
+            }
+        }
+        
 		// Set the first state.
 		setBossAction (BossAction.spawn);
 	}
@@ -121,7 +132,7 @@ public class AbstractBossControl : AbstractClass
 
 		switch (state) {
 		case BossAction.move:
-			MoveToAttack ();
+			MoveToPlayer ();
 			break;
 		case BossAction.attack:
 			Attack ();
@@ -165,9 +176,9 @@ public class AbstractBossControl : AbstractClass
 		}
 	}
 
-	public virtual void onAnimationState (string state)
+	public virtual void onAnimationState (string animState)
 	{
-		switch (state) {
+		switch (animState) {
 		case AbstractEnemyControl.ANIM_SPAWN_END:
 			setBossAction (BossAction.move);
 			break;
@@ -184,7 +195,7 @@ public class AbstractBossControl : AbstractClass
 		}
 	}
 
-	protected virtual void MoveToAttack ()
+	protected virtual void MoveToPlayer ()
 	{
 		float hD = _player.transform.position.x - this.transform.position.x;
 		float vD = _player.transform.position.y - this.transform.position.y;

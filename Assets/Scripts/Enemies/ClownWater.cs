@@ -7,7 +7,7 @@ public class ClownWater : AbstractBullet
 	{
 		base.Start ();
 
-		damage = 20;
+		damage = 10;
 		velocity = 3.5f;
 		life = 4;
 		knockback = 1;
@@ -15,7 +15,8 @@ public class ClownWater : AbstractBullet
 
 	public override void Update ()
 	{
-		if (life > 0) {
+        base.Update();
+        if (life > 0) {
 			transform.Translate (velocity * direction.x * Time.deltaTime, 0, 0);
 			life -= Time.deltaTime;
 			if (life <= 0) {

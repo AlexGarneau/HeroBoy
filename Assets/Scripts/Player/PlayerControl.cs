@@ -15,16 +15,19 @@ public class PlayerControl : AbstractClass
         dodging,
         stunned,
         dying,
-        shoulderdash
+        shoulderdash,
+        clownDrill
     }
     ;
     public PlayerStates state;
 
     public int playerHealth;
 	public float moveSpeed = 3f;
+    public bool earnKills = true;
 
     public bool tempInvuln;
     public float tempInvulnTimer = 0f;
+    public float stunTime = 2f;
 
     public float dodgeForce = 5f;
     public float dodgeDecline = 0.5f;
@@ -72,9 +75,14 @@ public class PlayerControl : AbstractClass
 	ChargeBarScript _chargeBar;
 
 	public PlayerDamageCollider dc;
+    public BoxCollider2D box;
 	public Collider2D healthPickup;
     public Collider2D chargePartPickup;
     public Collider2D chargeFullPickup;
+
+    //STANDARD MOVES LOCK
+    public bool canAttack;
+    public GameObject stunIcon;
 
     //SPECIAL MOVES INVENTORY
 	public bool hasMermaidCannon = false;
@@ -100,13 +108,18 @@ public class PlayerControl : AbstractClass
     protected float friction = 0.5f;
 
     protected float dodgeSpeed = 0;
-    protected float dodgeSpeedMax = 12;
+    protected float dodgeSpeedMax = 10;
     protected Vector2 dodgeDirection;
 
-    void Start ()
+    protected float clownDrillVelocity = 0f;
+    protected float clownDrillAccelPerSec = 12f;
+
+    bool gamePaused = false;
+
+    new void Start ()
 	{
 		_controller = GetComponent<MovementController2D> ();
-
+        box = GetComponent<BoxCollider2D>();
 		dc = GetComponentInChildren<PlayerDamageCollider> (true);
         
         _chargeBar = GameObject.Find("InGameUI").GetComponentInChildren<ChargeBarScript>();
@@ -139,6 +152,10 @@ public class PlayerControl : AbstractClass
 
 		dc.gameObject.SetActive (false);
 
+        if (stunIcon != null) {
+            stunIcon.SetActive(false);
+        }
+
         setState(PlayerStates.mobile);
 	}
 
@@ -160,7 +177,7 @@ public class PlayerControl : AbstractClass
 
 	public override void Update ()
 	{
-		base.Update ();
+        base.Update ();
     
         //INVINCIBILITY FRAMES
         if(tempInvulnTimer > 0)
@@ -194,10 +211,16 @@ public class PlayerControl : AbstractClass
             case PlayerStates.mobile:
                 // Primary state. Player is normal. Can move and attack based on inputs. Check for input code here.
                 PlayerMovement();
-                PlayerAction();
+                if(canAttack != false)
+                {
+                    PlayerAction();
+                }
                 break;
             case PlayerStates.attacking:
                 PlayerAction();
+                break;
+            case PlayerStates.clownDrill:
+                DrillMovement();
                 break;
             case PlayerStates.dodging:
                 // Player is currently dodging. Cannot move. Must wait until dodge is complete, then set state back to moving.
@@ -268,26 +291,21 @@ public class PlayerControl : AbstractClass
             case PlayerStates.mobile:
                 _anim.SetBool("Dodge", false);
                 inputA = inputB = inputC = inputD = false;
-                moveSpeed = 3f;
                 break;
             case PlayerStates.dodging:
                 _anim.SetBool("Dodge", true);
-                moveSpeed = 3f;
                 dodgeSpeed = dodgeSpeedMax;
                 dodgeDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
                 break;
             case PlayerStates.shoulderdash:
                 _anim.SetTrigger("ShoulderDash");
-                moveSpeed = 3f;
                 dodgeSpeed = dodgeSpeedMax;
                 dodgeDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
                 break;
             case PlayerStates.attacking:
-                moveSpeed = 0;
                 isMoving = false;
                 break;
             case PlayerStates.stunned:
-                moveSpeed = 0;
                 dodgeSpeed = dodgeSpeedMax;
                 if(facingRight == true)
                 {
@@ -330,6 +348,25 @@ public class PlayerControl : AbstractClass
         float targetVelY = moveInput.y * moveSpeed;
         _vel.x = Mathf.SmoothDamp(_vel.x, targetVelX, ref velocityXSmoothing, .1f);
         _vel.y = Mathf.SmoothDamp(_vel.y, targetVelY, ref velocityYSmoothing, .1f);
+        _controller.Move(_vel * Time.deltaTime);
+    }
+
+    void DrillMovement() {
+        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        if (moveInput.x < 0) {
+            facingLeft = true;
+            facingRight = false;
+        } else if (moveInput.x > 0) {
+            facingLeft = false;
+            facingRight = true;
+        }
+
+        clownDrillVelocity = Mathf.Max(-moveSpeed * 2, Mathf.Min(moveSpeed * 2, 
+            clownDrillVelocity + (clownDrillAccelPerSec * Time.deltaTime * (facingLeft ? -1f : 1f))
+        ));
+        _vel.x = clownDrillVelocity;
+        _vel.y = Mathf.SmoothDamp(_vel.y, moveInput.y * moveSpeed, ref velocityYSmoothing, .1f);
         _controller.Move(_vel * Time.deltaTime);
     }
 
@@ -513,17 +550,26 @@ public class PlayerControl : AbstractClass
 	{
         Debug.Log("ChargeBar: " + _chargeBar.chargePercentage);
 		if (_chargeBar != null && _chargeBar.chargePercentage >= 100) {
-			if (hasMermaidCannon) {
-				_anim.SetTrigger ("MermaidCannon");
-				StartCoroutine (fireMermaidCannon ());
-				_chargeBar.IncreaseChargePercentage (-200);
-			} else {
+
+            if (hasMermaidCannon) {
+                _anim.SetTrigger("MermaidCannon");
+                StartCoroutine(fireMermaidCannon());
+            } else if (hasClownDrill) {
+                _anim.SetTrigger("ClownDrill");
+                StartCoroutine(fireClownDrill());
+            } else if (hasMaceOfTrit) {
+                _anim.SetTrigger("Mace");
+                StartCoroutine(fireMaceOfTrit());
+            } else if (hasRARLaser) {
+                _anim.SetTrigger("Staff");
+                StartCoroutine(fireRARLaser());
+            } else {
 				inputD = true;
 				timerD = 0.1f;
 				dc.damage = 100;
 				dc.type = AbstractDamageCollider.DamageType.heavy;
-				_chargeBar.IncreaseChargePercentage (-200);
 			}
+			_chargeBar.IncreaseChargePercentage (-200);
             setState(PlayerStates.attacking);
         }
 	}
@@ -549,20 +595,23 @@ public class PlayerControl : AbstractClass
 		comboOrder [2] = 0;
 	}
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        EnemyDamageCollider collider = other.GetComponent<EnemyDamageCollider>();
+        if (collider != null)
+        {
+            damage(collider.damage, collider.type, collider.knockback);
+        }
+    }
+    
 	void OnTriggerEnter2D (Collider2D other)
 	{
-        //Debug.Log(other);
-        if (other.tag == "EnemHazard")
+        EnemyDamageCollider collider = other.GetComponent<EnemyDamageCollider>();
+        if (collider != null)
         {
-            if (tempInvuln != true)
-            {
-                setState(PlayerStates.stunned);
-                tempInvuln = true;
-                tempInvulnTimer = 1f;
-                _anim.SetTrigger("IsHit");
-                damage(20, AbstractDamageCollider.DamageType.light, 1);
-            }
+            damage(collider.damage, collider.type, collider.knockback);
         }
+
         // TODO: For other powerups, you will check their AbstractPowerup Class 
         // and find out what effects it has from there.
         // Eg; Check effect state (health, attack, defence, etc) and level (1, 10, 100) and raise the player's
@@ -606,14 +655,31 @@ public class PlayerControl : AbstractClass
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{
-		if (playerHealth > 0) {
-			playerHealth -= damage;
-			if (playerHealth <= 0) {
-				// Player dead, yo.
-			}
-		}
+        if (tempInvuln != true)
+        {
+            // Hit a player! Do death!
+            setState(PlayerStates.stunned);
+            _anim.SetTrigger("IsHit");
+            tempInvuln = true;
+            tempInvulnTimer = 1f;
 
-        // TODO: Apply stun and knockback.
+            if (type == AbstractDamageCollider.DamageType.stunAttack) {
+                StartCoroutine(stunAttack());
+            } else if (type == AbstractDamageCollider.DamageType.stunMove) {
+                StartCoroutine(stunMove());
+            } else if (type == AbstractDamageCollider.DamageType.stunAll) {
+                StartCoroutine(stunAttack());
+                StartCoroutine(stunMove());
+            }
+
+            if (playerHealth > 0) {
+			    playerHealth -= damage;
+			    if (playerHealth <= 0) {
+                    // Player dead, yo.
+                    SendMessageUpwards("playerDied", null, SendMessageOptions.DontRequireReceiver);
+			    }
+		    }
+        }
 	}
 
     public void dodge ()
@@ -621,9 +687,26 @@ public class PlayerControl : AbstractClass
         setState(PlayerStates.dodging);
     }
 
-	protected IEnumerator fireMermaidCannon ()
+    public IEnumerator stunAttack () {
+        if (stunIcon != null) { stunIcon.SetActive(true); }
+        canAttack = false;
+        yield return new WaitForSeconds(stunTime);
+        canAttack = true;
+        if (stunIcon != null) { stunIcon.SetActive(false); }
+    }
+
+    public IEnumerator stunMove () {
+        _anim.SetTrigger("Stunned");
+        setState(PlayerStates.stunned);
+        yield return new WaitForSeconds(stunTime);
+        setState(PlayerStates.mobile);
+        _anim.SetTrigger("Unstunned");
+    }
+
+    protected IEnumerator fireMermaidCannon ()
 	{
-		yield return new WaitForSeconds (1f);
+        earnKills = false;
+        yield return new WaitForSeconds (1f);
 
 		GameObject go = Instantiate (mermaidBomb);
 		//TODO: Random between Mermaid and Merman.
@@ -650,7 +733,6 @@ public class PlayerControl : AbstractClass
 		float y = firstShot.transform.position.y;
 		MermaidBomb[] cluster = new MermaidBomb[mermaidCount];
 		for (int i = 0; i < mermaidCount; i++) {
-
 			go = Random.value > .5 ? Instantiate(mermanBomb) : Instantiate(mermaidBomb); 
 			bomb = cluster [i] = go.GetComponent<MermaidBomb> ();
 			bomb.life = Random.Range (1f, 2f);
@@ -659,5 +741,23 @@ public class PlayerControl : AbstractClass
 			bomb.transform.parent = transform.parent;
 			yield return new WaitForSeconds (.01f);
 		}
-	}
+        earnKills = true;
+    }
+
+    protected IEnumerator fireClownDrill () {
+        tempInvuln = true;
+        tempInvulnTimer = 8f;
+        earnKills = false;
+        yield return new WaitForSeconds(8f);
+        _anim.SetTrigger("ClownDrillComplete");
+        earnKills = true;
+    }
+
+    protected IEnumerator fireMaceOfTrit () {
+        yield return new WaitForSeconds(.01f);
+    }
+
+    protected IEnumerator fireRARLaser () {
+        yield return new WaitForSeconds(.01f);
+    }
 }

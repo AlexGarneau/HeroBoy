@@ -7,7 +7,7 @@ public class PirateBullet : AbstractBullet
 	{
 		base.Start ();
 
-		damage = 20;
+		damage = 10;
 		velocity = 3.5f;
 		life = 4;
 		knockback = 1;

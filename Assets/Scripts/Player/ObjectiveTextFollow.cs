@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ObjectiveTextFollow : AbstractClass
+public class ObjectiveTextFollow : MonoBehaviour
 {
 	public GameObject player;
+    public GameObject camera;
 
 	void FixedUpdate ()
 	{
-		base.Update ();
-		transform.position = new Vector3 (player.transform.position.x, player.transform.position.y - 0.3f, player.transform.position.z - 5);
+		transform.position = new Vector3 (player.transform.position.x + 2.3f, player.transform.position.y - 3.3f, camera.transform.position.z + 1);
 	}
-
 }

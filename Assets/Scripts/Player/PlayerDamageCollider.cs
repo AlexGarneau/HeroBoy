@@ -15,8 +15,7 @@ public class PlayerDamageCollider : AbstractDamageCollider
 
 	void OnTriggerEnter2D (Collider2D other)
 	{
-        Debug.Log("I hit something! " + other.gameObject);
-		AbstractEnemyControl enemy = other.GetComponent <AbstractEnemyControl> ();
+        AbstractEnemyControl enemy = other.GetComponent <AbstractEnemyControl> ();
 		if (enemy) {
 			// Hit an enemy! Do death!
 			enemy.damage (damage, type, knockback);

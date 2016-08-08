@@ -146,10 +146,16 @@ public class AbstractAssetController : MonoBehaviour
 	{
 		switch (sfxID) {
 		case SFX_EXPLOSION:
-			return explosionSFXWWW.audioClip;
+            if (explosionSFXWWW != null)
+            {
+                return explosionSFXWWW.audioClip;
+            }
 			break;
 		case SFX_MERMAID:
-			return mermaidWhistleSFXWWW.audioClip;
+            if (mermaidWhistleSFXWWW != null)
+            {
+                return mermaidWhistleSFXWWW.audioClip;
+            }
 			break;
 		}
 

@@ -98,14 +98,14 @@ public class NightmareSchoolEvents : MonoBehaviour
 			postersAndMap [2].SetActive (false);
 			break;
 		case SchoolEvents.enterTwo:
-			//objective.SetTrigger ("AfterClassroom");
+			objective.SetTrigger ("AfterClassroom");
 			playNarration (narration.FirstLibrary);
 			doors [5].SetActive (false);
 			break;
 		case SchoolEvents.roundOne:
 			blue9Chair.transform.localScale = new Vector3 (-1.4f, 1.4f, 1);
 			green9Clock.GetComponent <Animator> ().SetTrigger ("Creepy");
-			//objective.SetTrigger ("RoundOne");
+			objective.SetTrigger ("RoundOne");
 			playNarration (narration.SearchAllA);
 
 			doors [0].SetActive (false);
@@ -116,7 +116,7 @@ public class NightmareSchoolEvents : MonoBehaviour
 			doors [5].SetActive (false);
 			break;
 		case SchoolEvents.roundTwo:
-			//objective.SetTrigger ("RoundTwo");
+			objective.SetTrigger ("RoundTwo");
 			StartCoroutine (screenFlicker ());
 			playNarration (narration.SearchAllB);
 			blue9 = false;
@@ -164,8 +164,7 @@ public class NightmareSchoolEvents : MonoBehaviour
 			doors [5].SetActive (false);
 			break;
 		case SchoolEvents.getOutOfThere:
-			//objective.SetTrigger ("GetOut");
-			playNarration (narration.ShouldNotBeHere);
+			objective.SetTrigger ("GetOut");
 			for (i = bookShelves.Length - 1; i >= 0; i--) {
 				bookShelves [i].GetComponent <Animator> ().SetTrigger ("Creepy");
 			}
@@ -182,7 +181,7 @@ public class NightmareSchoolEvents : MonoBehaviour
 			doors [4].SetActive (true);
 			break;
 		case SchoolEvents.darkSoulsTime:
-			//objective.SetTrigger ("Run");
+			objective.SetTrigger ("Run");
 			emblem.GetComponent <Animator> ().SetTrigger ("CreepyLogo");
 
 			for (i = spawns.Length - 1; i >= 0; i--) {

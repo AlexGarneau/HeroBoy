@@ -4,6 +4,7 @@ using System.Collections;
 
 public class GameOverMenu : MonoBehaviour
 {
+    public GlobalControl gc;
 	public Button goRestart;
 	public Button goQuit;
 
@@ -15,7 +16,8 @@ public class GameOverMenu : MonoBehaviour
 
 	public void StartLevel ()
 	{
-		Application.LoadLevel (12);
+		Application.LoadLevel (GlobalControl.instance.getLastLoaded());
+        GlobalControl.instance.PlayLastPlayedMusic();
 	}
 
 	public void ExitLevel ()

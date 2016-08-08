@@ -6,8 +6,12 @@ public class AbstractGameController : MonoBehaviour
 	public SpawnZombie[] spawns;
 	public int enemyCount = 6;
 	public int killCount = 0;
+    public int numEnemiesAttackAtOnce = 1;
+    protected int currentEnemyCount = 0;
+    protected ArrayList enemiesPacing;
+    protected ArrayList enemiesAttacking;
 
-	protected int nextLevel;
+	public int nextLevel;
 
 	protected PlayerControl player;
     protected ChargeBarScript chargeBar;
@@ -16,7 +20,7 @@ public class AbstractGameController : MonoBehaviour
 
     protected Animator _anim;
     protected bool levelComplete;
-
+    
 	// Use this for initialization
 	public virtual void Start ()
 	{
@@ -42,6 +46,9 @@ public class AbstractGameController : MonoBehaviour
 		LevelBoundary.left = -5.385192f; // Left is the left corner of the larger width (in this case, bottom)
 		LevelBoundary.bottom = -3.9f; // Bottom is the lowest point in the boundary.
 		LevelBoundary.height = 0.64f - -3.9f; // Height is top minus bottom.
+
+        enemiesPacing = new ArrayList();
+        enemiesAttacking = new ArrayList();
 	}
 	
 	// Update is called once per frame
@@ -50,8 +57,12 @@ public class AbstractGameController : MonoBehaviour
 		if (enemyCount > 0) {
 			for (var i = spawns.Length - 1; i >= 0; i--) {
 				if (spawns [i].hasMissingEnemy) {
+					GameObject newEnemy = spawns [i].spawnEnemy ();
+                    AbstractEnemyControl newControl = newEnemy.GetComponent<AbstractEnemyControl>();
+                    enemiesPacing.Add(newControl);
+                    newControl.setBaseState(Random.value >= 0.5f ? AbstractEnemyControl.EnemyStates.paceBack : AbstractEnemyControl.EnemyStates.paceForth);
 					enemyCount--;
-					spawns [i].spawnEnemy ();
+                    currentEnemyCount++;
 					if (enemyCount <= 0) {
 						return;
 					}
@@ -76,26 +87,85 @@ public class AbstractGameController : MonoBehaviour
 			}
 		}
 
-        /*for (var i = spawns.Length - 1; i >= 0; i--)
-        {
-            if (!spawns[i].hasNoEnemy)
-            {
-                hasEnemy = true;
-            }
-        }*/
+        UpdateEnemies();
     }
 
+    public virtual void UpdateEnemies() {
+        for (int i = enemiesPacing.Count - 1; i >= 0; i--)
+        {
+            // Keep it clean.
+            if (enemiesPacing[i] == null)
+            {
+                enemiesPacing.RemoveAt(i);
+            }
+        }
+        for (int i = enemiesAttacking.Count - 1; i >= 0; i--)
+        {
+            // Keep it clean.
+            if (enemiesAttacking[i] == null)
+            {
+                enemiesAttacking.RemoveAt(i);
+            }
+        }
+
+        if (enemiesAttacking.Count < numEnemiesAttackAtOnce) {
+            AbstractEnemyControl enemy = getClosestPacingEnemyToPlayer();
+            if (enemy == null) {
+                // Never mind. No more enemies.
+                return;
+            }
+            // Add closest enemy to the attack state.
+            enemiesAttacking.Add(enemy);
+            enemiesPacing.Remove(enemy);
+            enemy.setEnemyState(AbstractEnemyControl.EnemyStates.move);
+            enemy.setBaseState(AbstractEnemyControl.EnemyStates.move);
+        }
+    }
+
+    public virtual void EnemyGotStunned(AbstractEnemyControl enemy) {
+        // Enemy got stunned. If he was active, return him to the pacing array. If he's still the closest, he'll get converted back in a heartbeat.
+        if (enemiesAttacking.Contains(enemy)) {
+            enemiesPacing.Add(enemy);
+            enemiesAttacking.Remove(enemy);
+            AbstractEnemyControl.EnemyStates state = Random.value >= 0.5f ? AbstractEnemyControl.EnemyStates.paceBack : AbstractEnemyControl.EnemyStates.paceForth;
+            enemy.setEnemyState(state);
+            enemy.setBaseState(state);
+        }
+    }
+
+    public virtual AbstractEnemyControl getClosestPacingEnemyToPlayer () {
+        if (enemiesPacing.Count <= 0) {
+            // No enemies!
+            return null;
+        }
+        object enemy = enemiesPacing[enemiesPacing.Count - 1];
+        float lowestDistance = float.MaxValue;
+        float testDistance;
+        for (int i = enemiesPacing.Count - 1; i >= 0; i--) {
+            testDistance = Vector3.Distance((enemiesPacing[i] as AbstractEnemyControl).transform.position, player.transform.position);
+            if (testDistance < lowestDistance) {
+                lowestDistance = testDistance;
+                enemy = enemiesPacing[i];
+            }
+        }
+        return (enemy as AbstractEnemyControl);
+    }
 	
-	public virtual void enemyDied ()
+	public virtual void enemyDied (AbstractEnemyControl enemy)
 	{
-		Debug.Log ("Oh, an enemy died!");
-		if (chargeBar != null) {
+        Debug.Log("Remove Enemy: " + enemy);
+
+        // Increase charge bar.
+        if (chargeBar != null && player.earnKills) {
 			chargeBar.IncreaseChargePercentage (20);
 		}
 		killCount++;
-		// TODO: Add some percentage to the charge bar.
-		// When the charge bar is full, then use Input to send a message to the player to use special from GameController.
-	}
+        currentEnemyCount--;
+		
+        // Clean up enemies.
+        enemiesPacing.Remove(enemy);
+        enemiesAttacking.Remove(enemy);
+    }
 
 	public void SavePlayerStats ()
 	{

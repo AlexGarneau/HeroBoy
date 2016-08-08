@@ -7,7 +7,6 @@ public class GameControllerPirateL8 : AbstractGameController
 	public override void Start ()
 	{
 		base.Start ();
-		nextLevel = 15;
 		enemyCount = 9;
 		// TODO: Get references to all the SpawnZombie objects currently in the level.
 
