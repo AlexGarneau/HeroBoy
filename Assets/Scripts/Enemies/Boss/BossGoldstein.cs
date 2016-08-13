@@ -145,13 +145,14 @@ public class BossGoldstein : AbstractBossControl
     public override void onAnimationState (string animState)
 	{
 		switch (animState) {
-		    case AbstractEnemyControl.ANIM_ATTACK_START:
+		    case AbstractBossControl.ANIM_ATTACK_START:
 			    break;
-		    case AbstractEnemyControl.ANIM_ATTACK_END:
+		    case AbstractBossControl.ANIM_ATTACK_END:
 			    break;
-		    case AbstractEnemyControl.ANIM_INJURED_END:
-			    break;
-		    case AbstractEnemyControl.ANIM_DEATH_END:
+		    case AbstractBossControl.ANIM_SPECIAL_END:
+                isInvincible = false;
+                break;
+		    case AbstractBossControl.ANIM_DEATH_END:
 			    Destroy (gameObject);
 			    break;
 		}
@@ -160,8 +161,10 @@ public class BossGoldstein : AbstractBossControl
     }
 
     protected IEnumerator FireChestLaser () {
+        isInvincible = true;
         _anim.SetTrigger("Cannon");
         yield return new WaitForSeconds(1f);
+        
     }
 
     protected IEnumerator FireMissiles () {
