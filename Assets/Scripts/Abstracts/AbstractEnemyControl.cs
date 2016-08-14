@@ -335,24 +335,25 @@ public class AbstractEnemyControl : AbstractClass
 
         float rangedToMeleePoint = _gunRange * .5f;
 
-        if (hasGun && Mathf.Abs(hD) > rangedToMeleePoint || ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0))) {
+        if (hasGun && (Mathf.Abs(hD) > rangedToMeleePoint || ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0)))) {
+            Debug.Log("Gun Range: " + hD + " >=< " + _gunRange);
             // At gun range (or other pirate in melee range). Back away.
             if (hD > _gunRange) {
                 // Out of gun range. Move in right.
-                facingLeft = true;
-                normHD = -1;
+                facingLeft = false;
+                normHD = 1;
             } else if (hD < -_gunRange) {
                 // Out of gun range. Move in left.
-                facingLeft = false;
-                normHD = 1;
+                facingLeft = true;
+                normHD = -1;
             } else if (hD < _gunRange - 0.1f && hD > 0) {
                 // Within gun range. Move back right as you fire.
-                facingLeft = true;
-                normHD = 1;
-            } else if (hD > -_gunRange - 0.1f && hD < 0) {
-                // Within gun range. Move back left as you fire.
                 facingLeft = false;
                 normHD = -1;
+            } else if (hD > -_gunRange - 0.1f && hD < 0) {
+                // Within gun range. Move back left as you fire.
+                facingLeft = true;
+                normHD = 1;
             } else {
                 // Exactly at gun range. How about that?
                 normHD = 0;
@@ -371,7 +372,7 @@ public class AbstractEnemyControl : AbstractClass
                 // Enemy is to the left of player, but too close. Move left.
                 facingLeft = false;
                 normHD = -1;
-            } else if (hD > -_attackRange + 0.1f && hD < 0) {
+            } else if (hD > -_attackRange + 0.1f && hD <= 0) {
                 // Enemy is to the right of player, but too close. Move right.
                 facingLeft = true;
                 normHD = 1;
@@ -384,7 +385,8 @@ public class AbstractEnemyControl : AbstractClass
 		float targetVelY = normVD * _enemMoveSpeed;
 		_vel.x = Mathf.SmoothDamp (_vel.x, targetVelX, ref velocityXSmoothing, .1f);
 		_vel.y = Mathf.SmoothDamp (_vel.y, targetVelY, ref velocityYSmoothing, .1f);
-		_controller.Move (_vel * Time.deltaTime);
+
+        _controller.Move (_vel * Time.deltaTime);
 	}
 
     // Move toward the player and attack.
