@@ -57,6 +57,10 @@ public class AbstractBossControl : AbstractClass
     protected float _specialCooldown = 0f;
     protected float _specialCooldownTime = 0f;
 
+    protected Vector3 _vel;
+    protected float velocityXSmoothing;
+    protected float velocityYSmoothing;
+
     protected Rigidbody rigidbody;
 	protected Transform bulletSpawn;
     protected MovementController2D _controller;
@@ -138,13 +142,22 @@ public class AbstractBossControl : AbstractClass
         _anim.SetFloat("Health", _bossHealth);
         _anim.SetBool("FacingLeft", facingLeft);
 
+        if (_attackCooldown > 0) {
+            _attackCooldown -= Time.deltaTime;
+        }
+        if (_specialCooldown > 0) {
+            _specialCooldown -= Time.deltaTime;
+        }
+
         switch (state) {
-		case BossAction.move:
-			MoveToPlayer ();
-			break;
-		case BossAction.attack:
-			Attack ();
-			break;
+            case BossAction.stand:
+                break;
+		    case BossAction.move:
+			    MoveToPlayer ();
+			    break;
+		    case BossAction.attack:
+			    Attack ();
+			    break;
 		}
 	}
 
@@ -242,6 +255,8 @@ public class AbstractBossControl : AbstractClass
     protected virtual void CheckToAttack () {
         float hD = _player.transform.position.x - this.transform.position.x;
         float vD = _player.transform.position.y - this.transform.position.y;
+
+        Debug.Log("Check To Attack: " + hD + " / " + vD + " --- " + _attackRange + " / " + _vertRange);
 
         if (vD <= _vertRange && vD >= -_vertRange) {
             // In vertical range. Try horizontal.

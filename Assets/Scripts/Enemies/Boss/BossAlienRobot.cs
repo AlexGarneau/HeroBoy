@@ -1,36 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossGoldstein : AbstractBossControl
+public class BossAlienRobot : AbstractBossControl
 {
     protected bool _useMissiles = true;
 
-    public GameObject meleeBlast;
     public GameObject missile;
-    public GameObject chestBeam;
+    public Transform missileSpawn;
 
-    public Transform bulletSpawnLeft;
-    public Transform bulletSpawnRight;
-    public Transform bulletSpawnRocketLeft;
-    public Transform bulletSpawnRocketRight;
-    public Transform bulletSpawnChest;
+    public float stateTimer;
+    public float stateTimerMax = 10;
 
     protected override void Start ()
 	{
         base.Start();
         base._bossHealth = 500f;
-		base._enemMoveSpeed = .5f;
+		base._enemMoveSpeed = 1f;
 		base.enemDamage = 30;
 		base._attackRange = 3f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
 		base.isMoving = false;
 
+        base._attackCooldownTime = 5f;
+        base._attackCooldown = _attackCooldownTime;
         base._specialCooldownTime = 15f;
         base._specialCooldown = _specialCooldownTime;
 
         _controller = gameObject.GetComponent<MovementController2D> ();
         _vel = Vector3.zero;
+
+        stateTimer = stateTimerMax;
 
         _damageColliders = gameObject.GetComponentsInChildren<EnemyDamageCollider> (true);
 		if (_damageColliders != null && _damageColliders.Length > 0) {
@@ -50,12 +50,26 @@ public class BossGoldstein : AbstractBossControl
 	protected override void Update()
 	{
         _specialCooldown -= Time.deltaTime;
+
+        if (state == BossAction.stand || state == BossAction.move) {
+            if (stateTimer > 0) {
+                stateTimer -= Time.deltaTime;
+                if (stateTimer <= 0) {
+                    stateTimer = stateTimerMax;
+                    setBossAction(state == BossAction.stand ? BossAction.move : BossAction.stand);
+                }
+            }
+        }
+
 		switch (state) {
-	        case BossAction.move:
+            case BossAction.stand:
+                CheckToAttack();
+                return;
+            case BossAction.move:
                 CheckToAttack();
                 if (_specialCooldown <= 0) {
                     _specialCooldown = _specialCooldownTime;
-                    setBossAction(BossAction.special);
+                    setBossAction(BossAction.stand);
                 }
 		        break;
 	        case BossAction.attack:
@@ -73,19 +87,19 @@ public class BossGoldstein : AbstractBossControl
 		    case BossAction.move:
 			    _anim.SetBool ("IsMoving", true);
 			    break;
+            case BossAction.stand:
+                _anim.SetBool ("IsMoving", false);
+                break;
 		    case BossAction.attack:
-			    _anim.SetBool ("IsMoving", false);
+			    _anim.SetBool ("IsMoving", true);
                 _anim.SetTrigger("Attack");
                 break;
             case BossAction.special:
                 _anim.SetBool("IsMoving", false);
-                    if (_useMissiles) {
-                        StartCoroutine(FireMissiles());
-                        _useMissiles = false;
-                    } else {
-                        StartCoroutine(FireChestLaser());
-                        _useMissiles = true;
-                    }
+                if (_useMissiles) {
+                    StartCoroutine(FireMissiles());
+                    _useMissiles = false;
+                }
                 break;
             case BossAction.dead:
 			    _anim.SetBool ("IsMoving", false);
@@ -142,26 +156,24 @@ public class BossGoldstein : AbstractBossControl
     public override void onAnimationState (string animState)
 	{
 		switch (animState) {
+            case AbstractEnemyControl.ANIM_SPAWN_END:
+                setBossAction(BossAction.move);
+                break;
 		    case AbstractBossControl.ANIM_ATTACK_START:
 			    break;
 		    case AbstractBossControl.ANIM_ATTACK_END:
+                isInvincible = false;
+                setBossAction(BossAction.move);
 			    break;
 		    case AbstractBossControl.ANIM_SPECIAL_END:
                 isInvincible = false;
+                setBossAction(BossAction.stand);
                 break;
 		    case AbstractBossControl.ANIM_DEATH_END:
+                SendMessageUpwards("bossDead", SendMessageOptions.DontRequireReceiver);
 			    Destroy (gameObject);
 			    break;
-		}
-
-        base.onAnimationState(animState);
-    }
-
-    protected IEnumerator FireChestLaser () {
-        isInvincible = true;
-        _anim.SetTrigger("Cannon");
-        yield return new WaitForSeconds(1f);
-        
+        }
     }
 
     protected IEnumerator FireMissiles () {
@@ -169,7 +181,7 @@ public class BossGoldstein : AbstractBossControl
         yield return new WaitForSeconds(1f);
     }
 
-    protected void ShootMissile () {
+    protected void Shoot () {
         GameObject go;
         AbstractBullet bullet;
         go = Instantiate(missile);
@@ -185,19 +197,6 @@ public class BossGoldstein : AbstractBossControl
 
         // Stick the bullet in the spawner.
         bullet.transform.position = bulletSpawn.position;
-
-        // Put the bullet on the stage.
-        bullet.transform.parent = transform.parent;
-    }
-
-    protected void ShootBeam () {
-        GameObject go;
-        AbstractBullet bullet;
-        go = Instantiate(chestBeam);
-        bullet = go.GetComponent<AbstractBullet>();
-
-        // Stick the beam atop the player.
-        bullet.transform.position = _player.transform.position;
 
         // Put the bullet on the stage.
         bullet.transform.parent = transform.parent;

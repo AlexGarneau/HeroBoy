@@ -217,7 +217,7 @@ public class Illusion : AbstractEnemyControl
             _anim.SetBool("IsMoving", false);
             _anim.SetBool("FacingLeft", facingLeft);
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.02f);
             forms[tempIndex].SetActive(false);
         }
         setForm(Random.Range(0, forms.Length));
