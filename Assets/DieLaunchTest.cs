@@ -17,18 +17,19 @@ public class DieLaunchTest : MonoBehaviour {
     }
 
 	void Update () {
-        if (Input.GetButtonDown("InputA"))
-        {
-            if(rolling == false)
-            {
-                rolling = true;
-                transform.position += new Vector3 (0, 10f, 0);
-                rBody.AddForce(Random.onUnitSphere * forceAmount, forceMode);
-                rBody.AddTorque(Random.onUnitSphere * torque, forceMode);
-            }
+        if (rolling) {
+            diceTimer();
         }
-        diceTimer();
 	}
+
+    public void roll () {
+        if (rolling == false) {
+            rolling = true;
+            transform.position += new Vector3(0, 10f, 0);
+            rBody.AddForce(Random.onUnitSphere * forceAmount, forceMode);
+            rBody.AddTorque(Random.onUnitSphere * torque, forceMode);
+        }
+    }
 
     void diceTimer()
     {

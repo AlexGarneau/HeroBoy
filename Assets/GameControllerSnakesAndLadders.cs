@@ -3,13 +3,21 @@ using System.Collections;
 
 public class GameControllerSnakesAndLadders : MonoBehaviour {
 
+    public DieLaunchTest dieRoller;
     public DisplayDieValue die;
     public GameObject player1;
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
 
+    protected int player1Pos = 0;
+    protected int player2Pos = 0;
+    protected int player3Pos = 0;
+    protected int player4Pos = 0;
+
     public int nextLevel = 1;
+    protected bool rolling = false;
+    protected Vector3 targetSpace;
 
     Vector3[] Spaces = new Vector3[]
     {
@@ -131,15 +139,49 @@ public class GameControllerSnakesAndLadders : MonoBehaviour {
 	}
 	
 	void Update () {
-	    
-	}
+	    if (currentPlayer == WhoseTurn.p1 && !rolling && Input.GetButtonDown("InputA")) {
+            StartCoroutine(PrepareRollDie());
+        }
 
-    void RollDice(int dieValue)
-    {
-        dieValue = die.currentValue;
+        if (targetSpace != Vector3.zero) {
+            switch (currentPlayer) {
+                case WhoseTurn.p1: Vector3.Lerp(player1.transform.position, targetSpace, Time.deltaTime); break;
+                case WhoseTurn.p2: Vector3.Lerp(player2.transform.position, targetSpace, Time.deltaTime); break;
+                case WhoseTurn.p3: Vector3.Lerp(player3.transform.position, targetSpace, Time.deltaTime); break;
+                case WhoseTurn.p4: Vector3.Lerp(player4.transform.position, targetSpace, Time.deltaTime); break;
+            }
+        }
     }
 
+    void RollDiceComplete(int dieValue)
+    {
+        rolling = false;
+        dieValue = die.currentValue;
 
+        // Move active player here.
+        GameObject player;
+        int pos;
+        switch (currentPlayer) {
+            case WhoseTurn.p1: player = player1; player1Pos += dieValue; pos = player1Pos; break;
+            case WhoseTurn.p2: player = player2; player2Pos += dieValue; pos = player2Pos; break;
+            case WhoseTurn.p3: player = player3; player3Pos += dieValue; pos = player3Pos; break;
+            case WhoseTurn.p4: player = player4; player4Pos += dieValue; pos = player4Pos; break;
+            default: player = player1; player1Pos += dieValue; pos = player1Pos; break;
+        }
+        StartCoroutine(MovePlayer(player, dieValue, pos));
+    }
+
+    IEnumerator MovePlayer(GameObject player, int spaces, int pos) {
+        // Move selected player the specified number of spaces.
+        for (int i = spaces - 1; i >= 0; i--) {
+            targetSpace = Spaces[pos - i];
+            yield return new WaitForSeconds(1f);
+        }
+        targetSpace = Vector3.zero;
+
+        //TODO: If the spot the player landed on is a snake or ladder, move player to it.
+    }
+    
     void SetTurn(WhoseTurn player)
     {
         switch (player)
@@ -165,8 +207,10 @@ public class GameControllerSnakesAndLadders : MonoBehaviour {
 
     IEnumerator PrepareRollDie ()
     {
-        yield return new WaitForSeconds(1.5f);
-        RollDice(die.currentValue);
+        rolling = true;
+        dieRoller.roll();
+        yield return new WaitForSeconds(8f);
+        RollDiceComplete(die.currentValue);
     }
 
     IEnumerator PrepareEnd ()
