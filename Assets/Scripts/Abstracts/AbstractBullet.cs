@@ -14,6 +14,7 @@ public class AbstractBullet : AbstractClass
 	public float explosionTime = 1f;
 	public AudioClip explosionClip;
 	protected AudioSource source;
+    protected Transform target;
 
 	// Vars for obtaining bullet sprite.
 	//public SpriteRenderer renderer;
@@ -51,6 +52,10 @@ public class AbstractBullet : AbstractClass
 		*/
     }
 
+    public virtual void setTarget (Transform newTarget) {
+        target = newTarget;
+    }
+
 	public virtual void destroy ()
 	{
 		//Texture2D.DestroyImmediate (renderer.sprite.texture, true);
@@ -77,6 +82,13 @@ public class AbstractBullet : AbstractClass
 		//BoxCollider2D box = renderer.GetComponent<BoxCollider2D> ();
 		//box.size = new Vector2 (box.size.x, box.size.y / 3);
 	}
+
+    public virtual void explosionStart () {
+
+    }
+    public virtual void explosionEnd() {
+
+    }
 }
 
 

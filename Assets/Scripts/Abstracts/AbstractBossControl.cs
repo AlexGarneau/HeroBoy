@@ -256,8 +256,6 @@ public class AbstractBossControl : AbstractClass
         float hD = _player.transform.position.x - this.transform.position.x;
         float vD = _player.transform.position.y - this.transform.position.y;
 
-        Debug.Log("Check To Attack: " + hD + " / " + vD + " --- " + _attackRange + " / " + _vertRange);
-
         if (vD <= _vertRange && vD >= -_vertRange) {
             // In vertical range. Try horizontal.
             if (hD <= _attackRange && hD >= -_attackRange) {

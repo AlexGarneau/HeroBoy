@@ -8,8 +8,8 @@ public class BossAlienRobot : AbstractBossControl
     public GameObject missile;
     public Transform missileSpawn;
 
-    public float stateTimer;
-    public float stateTimerMax = 10;
+    protected float stateTimer;
+    protected float stateTimerMax = 1;
 
     protected override void Start ()
 	{
@@ -24,7 +24,7 @@ public class BossAlienRobot : AbstractBossControl
 
         base._attackCooldownTime = 5f;
         base._attackCooldown = _attackCooldownTime;
-        base._specialCooldownTime = 15f;
+        base._specialCooldownTime = 3f;
         base._specialCooldown = _specialCooldownTime;
 
         _controller = gameObject.GetComponent<MovementController2D> ();
@@ -49,8 +49,6 @@ public class BossAlienRobot : AbstractBossControl
 
 	protected override void Update()
 	{
-        _specialCooldown -= Time.deltaTime;
-
         if (state == BossAction.stand || state == BossAction.move) {
             if (stateTimer > 0) {
                 stateTimer -= Time.deltaTime;
@@ -63,15 +61,15 @@ public class BossAlienRobot : AbstractBossControl
 
 		switch (state) {
             case BossAction.stand:
-                CheckToAttack();
+                Debug.Log("Special Cooldown: " + _specialCooldown);
+                if (_specialCooldown <= 0) {
+                    _specialCooldown = _specialCooldownTime;
+                    setBossAction(BossAction.special);
+                }
                 return;
             case BossAction.move:
                 CheckToAttack();
-                if (_specialCooldown <= 0) {
-                    _specialCooldown = _specialCooldownTime;
-                    setBossAction(BossAction.stand);
-                }
-		        break;
+                break;
 	        case BossAction.attack:
 		        break;
 	        case BossAction.dead:
@@ -96,10 +94,7 @@ public class BossAlienRobot : AbstractBossControl
                 break;
             case BossAction.special:
                 _anim.SetBool("IsMoving", false);
-                if (_useMissiles) {
-                    StartCoroutine(FireMissiles());
-                    _useMissiles = false;
-                }
+                StartCoroutine(FireMissiles());
                 break;
             case BossAction.dead:
 			    _anim.SetBool ("IsMoving", false);
@@ -179,6 +174,10 @@ public class BossAlienRobot : AbstractBossControl
     protected IEnumerator FireMissiles () {
         _anim.SetTrigger("Rocket");
         yield return new WaitForSeconds(1f);
+        for (int i = 1; i > 0; i--) {
+            Shoot();
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     protected void Shoot () {
@@ -188,15 +187,17 @@ public class BossAlienRobot : AbstractBossControl
         bullet = go.GetComponent<AbstractBullet>();
 
         if (facingLeft) {
-            bulletSpawn.position.Set(-Mathf.Abs(bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
+            missileSpawn.position.Set(-Mathf.Abs(missileSpawn.position.x), missileSpawn.position.y, missileSpawn.position.z);
             bullet.direction = Vector2.left;
         } else {
-            bulletSpawn.position.Set(Mathf.Abs(bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
+            missileSpawn.position.Set(Mathf.Abs(missileSpawn.position.x), missileSpawn.position.y, missileSpawn.position.z);
             bullet.direction = Vector2.right;
         }
 
+        bullet.setTarget(_player.transform);
+
         // Stick the bullet in the spawner.
-        bullet.transform.position = bulletSpawn.position;
+        bullet.transform.position = missileSpawn.position;
 
         // Put the bullet on the stage.
         bullet.transform.parent = transform.parent;
