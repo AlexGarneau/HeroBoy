@@ -7,9 +7,12 @@ public class BossAlienRobot : AbstractBossControl
 
     public GameObject missile;
     public Transform missileSpawn;
+    public GameObject laser;
+    public Transform laserSpawn;
 
     protected float stateTimer;
-    protected float stateTimerMax = 1;
+    protected float stateTimerMax = 15;
+    protected BoxCollider2D box;
 
     protected override void Start ()
 	{
@@ -24,11 +27,12 @@ public class BossAlienRobot : AbstractBossControl
 
         base._attackCooldownTime = 5f;
         base._attackCooldown = _attackCooldownTime;
-        base._specialCooldownTime = 3f;
+        base._specialCooldownTime = 10f;
         base._specialCooldown = _specialCooldownTime;
 
         _controller = gameObject.GetComponent<MovementController2D> ();
         _vel = Vector3.zero;
+        box = GetComponent<BoxCollider2D>();
 
         stateTimer = stateTimerMax;
 
@@ -84,9 +88,11 @@ public class BossAlienRobot : AbstractBossControl
 		switch (newState) {
 		    case BossAction.move:
 			    _anim.SetBool ("IsMoving", true);
+                box.enabled = false;
 			    break;
             case BossAction.stand:
                 _anim.SetBool ("IsMoving", false);
+                box.enabled = true;
                 break;
 		    case BossAction.attack:
 			    _anim.SetBool ("IsMoving", true);
@@ -174,13 +180,45 @@ public class BossAlienRobot : AbstractBossControl
     protected IEnumerator FireMissiles () {
         _anim.SetTrigger("Rocket");
         yield return new WaitForSeconds(1f);
-        for (int i = 1; i > 0; i--) {
-            Shoot();
-            yield return new WaitForSeconds(0.5f);
+        if (this._bossHealth < this._bossMaxHealth / 2) {
+            // Low health. Fire missiles.
+            for (int i = 10; i > 0; i--) {
+                ShootMissile();
+                yield return new WaitForSeconds(0.5f);
+            }
+        } else {
+            // Good health. Fire lasers.
+            for (int i = 1; i > 0; i--) {
+                ShootLaser();
+                yield return new WaitForSeconds(10.25f);
+            }
         }
     }
 
-    protected void Shoot () {
+    protected void ShootLaser () {
+        GameObject go;
+        AbstractBullet bullet;
+        go = Instantiate(laser);
+        bullet = go.GetComponent<AbstractBullet>();
+
+        if (facingLeft) {
+            laserSpawn.position.Set(-Mathf.Abs(laserSpawn.position.x), laserSpawn.position.y, laserSpawn.position.z);
+            bullet.direction = Vector2.left;
+        } else {
+            laserSpawn.position.Set(Mathf.Abs(laserSpawn.position.x), laserSpawn.position.y, laserSpawn.position.z);
+            bullet.direction = Vector2.right;
+        }
+
+        bullet.setTarget(_player.transform);
+
+        // Stick the bullet in the spawner.
+        bullet.transform.position = laserSpawn.position;
+
+        // Put the bullet on the stage.
+        bullet.transform.parent = transform.parent;
+    }
+
+    protected void ShootMissile () {
         GameObject go;
         AbstractBullet bullet;
         go = Instantiate(missile);
