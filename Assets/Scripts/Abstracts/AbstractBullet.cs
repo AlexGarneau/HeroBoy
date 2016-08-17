@@ -14,6 +14,7 @@ public class AbstractBullet : AbstractClass
 	public float explosionTime = 1f;
 	public AudioClip explosionClip;
 	protected AudioSource source;
+    protected Transform spawn;
     protected Transform target;
 
 	// Vars for obtaining bullet sprite.
@@ -56,7 +57,12 @@ public class AbstractBullet : AbstractClass
         target = newTarget;
     }
 
-	public virtual void destroy ()
+    public virtual void setSpawnAndTarget (Transform newSpawn, Transform newTarget) {
+        spawn = newSpawn;
+        target = newTarget;
+    }
+
+    public virtual void destroy ()
 	{
 		//Texture2D.DestroyImmediate (renderer.sprite.texture, true);
 		Destroy (this.gameObject);

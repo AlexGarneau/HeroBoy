@@ -11,7 +11,7 @@ public class BossAlienRobot : AbstractBossControl
     public Transform laserSpawn;
 
     protected float stateTimer;
-    protected float stateTimerMax = 15;
+    protected float stateTimerMax = 1; // 15
     protected BoxCollider2D box;
 
     protected override void Start ()
@@ -27,7 +27,7 @@ public class BossAlienRobot : AbstractBossControl
 
         base._attackCooldownTime = 5f;
         base._attackCooldown = _attackCooldownTime;
-        base._specialCooldownTime = 10f;
+        base._specialCooldownTime = 1f;
         base._specialCooldown = _specialCooldownTime;
 
         _controller = gameObject.GetComponent<MovementController2D> ();
@@ -188,9 +188,9 @@ public class BossAlienRobot : AbstractBossControl
             }
         } else {
             // Good health. Fire lasers.
-            for (int i = 1; i > 0; i--) {
+            for (int i = 5; i > 0; i--) {
                 ShootLaser();
-                yield return new WaitForSeconds(10.25f);
+                yield return new WaitForSeconds(.1f);
             }
         }
     }
@@ -209,10 +209,7 @@ public class BossAlienRobot : AbstractBossControl
             bullet.direction = Vector2.right;
         }
 
-        bullet.setTarget(_player.transform);
-
-        // Stick the bullet in the spawner.
-        bullet.transform.position = laserSpawn.position;
+        bullet.setSpawnAndTarget(laserSpawn, _player.transform);
 
         // Put the bullet on the stage.
         bullet.transform.parent = transform.parent;
