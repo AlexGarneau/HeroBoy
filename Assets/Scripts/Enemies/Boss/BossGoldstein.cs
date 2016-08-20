@@ -160,31 +160,41 @@ public class BossGoldstein : AbstractBossControl
     protected IEnumerator FireChestLaser () {
         isInvincible = true;
         _anim.SetTrigger("Cannon");
-        yield return new WaitForSeconds(1f);
-        
+        yield return new WaitForSeconds(.5f);
+        for (int i = 10; i > 0; i--) {
+            ShootBeam();
+            yield return new WaitForSeconds(.2f);
+        }
     }
 
     protected IEnumerator FireMissiles () {
         _anim.SetTrigger("Rocket");
         yield return new WaitForSeconds(1f);
+        ShootMissile(true);
+        ShootMissile(false);
+        yield return new WaitForSeconds(.2f);
+        ShootMissile(true);
+        ShootMissile(false);
+        yield return new WaitForSeconds(.2f);
+        ShootMissile(true);
+        ShootMissile(false);
     }
 
-    protected void ShootMissile () {
+    protected void ShootMissile (bool leftSide) {
         GameObject go;
         AbstractBullet bullet;
         go = Instantiate(missile);
         bullet = go.GetComponent<AbstractBullet>();
-
-        if (facingLeft) {
-            bulletSpawn.position.Set(-Mathf.Abs(bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-            bullet.direction = Vector2.left;
-        } else {
-            bulletSpawn.position.Set(Mathf.Abs(bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
-            bullet.direction = Vector2.right;
-        }
+        bullet.direction = Vector2.left;
 
         // Stick the bullet in the spawner.
-        bullet.transform.position = bulletSpawn.position;
+        if (leftSide) {
+            bullet.transform.position = bulletSpawnRocketLeft.position;
+        } else {
+            bullet.transform.position = bulletSpawnRocketRight.position;
+        }
+
+        bullet.setTarget(_player.transform);
 
         // Put the bullet on the stage.
         bullet.transform.parent = transform.parent;
@@ -196,8 +206,8 @@ public class BossGoldstein : AbstractBossControl
         go = Instantiate(chestBeam);
         bullet = go.GetComponent<AbstractBullet>();
 
-        // Stick the beam atop the player.
-        bullet.transform.position = _player.transform.position;
+        // Stick the beam atop a random location.
+        bullet.transform.position = new Vector3(LevelBoundary.left + (LevelBoundary.bottomWidth * Random.value), LevelBoundary.bottom + (LevelBoundary.height * Random.value));
 
         // Put the bullet on the stage.
         bullet.transform.parent = transform.parent;
