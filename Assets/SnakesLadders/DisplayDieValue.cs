@@ -9,17 +9,18 @@ public class DisplayDieValue : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	    
 	}
 	
 	// Update is called once per frame
 	void Update () {
         RaycastHit hit;
-
+        
         if (Physics.Raycast(transform.position, Vector3.up, out hit, Mathf.Infinity, dieValueColliderLayer))
         {
             currentValue = hit.collider.GetComponent<DieNumberGenerator>().value;
         }
+        Debug.Log("Current Die Value: " + currentValue);
 	}
 
     void OnGUI()

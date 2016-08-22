@@ -206,8 +206,10 @@ public class BossGoldstein : AbstractBossControl
         go = Instantiate(chestBeam);
         bullet = go.GetComponent<AbstractBullet>();
 
+
         // Stick the beam atop a random location.
         bullet.transform.position = new Vector3(LevelBoundary.left + (LevelBoundary.bottomWidth * Random.value), LevelBoundary.bottom + (LevelBoundary.height * Random.value));
+        Debug.Log("Beam Goes Here: " + bullet.transform.position);
 
         // Put the bullet on the stage.
         bullet.transform.parent = transform.parent;
@@ -222,17 +224,5 @@ public class BossGoldstein : AbstractBossControl
             // Can't hurt this boy.
             return;
         }
-
-		switch (type) {
-		case AbstractDamageCollider.DamageType.light:
-			_anim.SetTrigger ("IsHit");
-			break;
-		case AbstractDamageCollider.DamageType.medium:
-			_anim.SetTrigger ("IsHit");
-			break;
-		case AbstractDamageCollider.DamageType.heavy:
-			_anim.SetTrigger ("IsHit");
-			break;
-		}
 	}
 }

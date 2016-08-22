@@ -11,7 +11,7 @@ public class BossAlienRobot : AbstractBossControl
     public Transform laserSpawn;
 
     protected float stateTimer;
-    protected float stateTimerMax = 1; // 15
+    protected float stateTimerMax = 15;
     protected BoxCollider2D box;
 
     protected override void Start ()
