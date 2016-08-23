@@ -30,7 +30,7 @@ public class AbstractClass : MonoBehaviour
 	public AudioClip[] clips;
 
 	// Use this for initialization
-	public void Start ()
+	protected virtual void Start ()
 	{
 	}
 	

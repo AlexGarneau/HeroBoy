@@ -3,8 +3,9 @@ using System.Collections;
 
 public class DieLaunchTest : MonoBehaviour {
 
-    public float torque = 10.0f;
-    public float forceAmount = 10.0f;
+    public Vector3 initialPosition = new Vector3(1.838978f, 20f, -2.327846f);
+    public float torque = 100.0f;
+    public float forceAmount = 100.0f;
     public ForceMode forceMode;
     public bool rolling = false;
     public float timer;
@@ -17,30 +18,11 @@ public class DieLaunchTest : MonoBehaviour {
     }
 
 	void Update () {
-        if (rolling) {
-            diceTimer();
-        }
 	}
 
     public void roll () {
-        if (rolling == false) {
-            rolling = true;
-            transform.position += new Vector3(0, 10f, 0);
-            rBody.AddForce(Random.onUnitSphere * forceAmount, forceMode);
-            rBody.AddTorque(Random.onUnitSphere * torque, forceMode);
-        }
-    }
-
-    void diceTimer()
-    {
-        if(rolling == true && timer <= 7f)
-        {
-            timer += Time.deltaTime;
-            if (timer >= 7f)
-            {
-                rolling = false;
-                timer = timerReset;
-            }
-        }
+        transform.localPosition = initialPosition;
+        rBody.AddForce(Random.onUnitSphere * forceAmount, forceMode);
+        rBody.AddTorque(Random.onUnitSphere * torque, forceMode);
     }
 }

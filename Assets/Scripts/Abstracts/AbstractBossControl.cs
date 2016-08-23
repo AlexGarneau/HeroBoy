@@ -61,7 +61,6 @@ public class AbstractBossControl : AbstractClass
     protected float velocityXSmoothing;
     protected float velocityYSmoothing;
 
-    protected Rigidbody rigidbody;
 	protected Transform bulletSpawn;
     protected MovementController2D _controller;
     protected AbstractDamageCollider[] _damageColliders;
@@ -102,7 +101,7 @@ public class AbstractBossControl : AbstractClass
 
 	protected Animator _anim;
 
-	protected virtual void Start ()
+	protected override void Start ()
 	{
         _player = GameObject.FindGameObjectWithTag("Player");
 
