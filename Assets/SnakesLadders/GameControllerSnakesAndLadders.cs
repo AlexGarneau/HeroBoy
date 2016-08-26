@@ -15,9 +15,11 @@ public class GameControllerSnakesAndLadders : MonoBehaviour {
     public SNLPlayer player4;
 
     public int nextLevel = 1;
-    protected bool isDieRolling = false;
     protected Vector3 targetSpace;
     protected float squareMoveTime = 0;
+    protected bool isDieRolling = false;
+    protected bool canReroll = false;
+    protected bool isRequestingReroll = false;
 
     SNLGameSquare[] Spaces = new SNLGameSquare[]
     {
@@ -146,7 +148,17 @@ public class GameControllerSnakesAndLadders : MonoBehaviour {
     }
 	
 	void Update () {
-	    if (currentPlayer == WhoseTurn.p1 && !isDieRolling && Input.GetButtonDown("InputA")) {
+        if (isRequestingReroll) {
+            if (Input.GetButtonDown("InputA")) {
+                // Rerolled!
+                isRequestingReroll = false;
+                StartCoroutine(RollDie());
+            } else if (Input.GetButtonDown("InputB")) {
+                // Kept!
+                isRequestingReroll = false;
+                MovePlayer();
+            }
+        } else if (currentPlayer == WhoseTurn.p1 && !isDieRolling && Input.GetButtonDown("InputA")) {
             StartCoroutine(RollDie());
         } else if (isDieRolling && dieRB.IsSleeping()) {
             // Die finished rolling.
@@ -167,6 +179,19 @@ public class GameControllerSnakesAndLadders : MonoBehaviour {
     void RollDiceComplete()
     {
         isDieRolling = false;
+
+        if (canReroll) {
+            // Player gets the option to reroll. Break out and await input.
+            isRequestingReroll = true;
+
+            // Can only reroll once.
+            canReroll = false;
+        } else {
+            MovePlayer();
+        }
+    }
+
+    void MovePlayer() {
         int dieValue = die.currentValue;
 
         Debug.Log("Dice Roll Complete: " + dieValue);
@@ -235,6 +260,7 @@ public class GameControllerSnakesAndLadders : MonoBehaviour {
         {
             case WhoseTurn.p1:
                 // Player manually inputs die roll.
+                canReroll = true;
                 break;
             case WhoseTurn.p2:
                 StartCoroutine(RollDie());
