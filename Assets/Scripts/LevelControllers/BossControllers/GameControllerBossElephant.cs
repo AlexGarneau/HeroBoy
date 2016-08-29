@@ -18,7 +18,7 @@ public class GameControllerBossElephant : AbstractGameController
     float timerActivate;
     float timerReset = 5f;
 
-    protected float timeToAdvance = 20f;
+    public float timeToAdvance = 20f;
 
 	public override void Start ()
 	{
@@ -42,7 +42,7 @@ public class GameControllerBossElephant : AbstractGameController
 
 	public override void Update ()
 	{
-        if (_player.playerHealth <= 0)
+        if (_player != null && _player.playerHealth <= 0)
         {
             ActivateScreen();
         }
@@ -67,6 +67,7 @@ public class GameControllerBossElephant : AbstractGameController
                     for (int j = enemies.Count - 1; j >= 0; j--) {
                         if (enemies[j] != null) {
                             Clown clown = (enemies[j] as GameObject).GetComponent<Clown>();
+                            if (clown == null) { continue; }
                             clown.setShudder(10);
                             clown.setPhaseChance(.3f);
                             clown.setEnemyDamage(10);
@@ -125,6 +126,7 @@ public class GameControllerBossElephant : AbstractGameController
             for (int j = enemies.Count - 1; j >= 0; j--) {
                 if (enemies[j] != null) {
                     clown = (enemies[j] as GameObject).GetComponent<Clown>();
+                    if (clown == null) { continue; }
                     clown.setShudder(10);
                     clown.setPhaseChance(.3f);
                     clown.setEnemyDamage(10);

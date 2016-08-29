@@ -4,7 +4,6 @@ using System.Collections;
 [RequireComponent (typeof(MovementController2D))]
 public class PlayerControl : AbstractClass
 {
-
     public const string PLAYER_ANIM_DODGE_START = "PlayerDodge";
 
     public enum PlayerStates
@@ -64,12 +63,6 @@ public class PlayerControl : AbstractClass
     float _doubleTapTimeRight;
     float _doubleTapTimeLeft;
 
-    //TIMERS FOR ^^ INPUTS
-	float timerA = 0;
-	float timerB = 0;
-	float timerC = 0;
-	float timerD = 0;
-
 	Animator _anim;
 	MovementController2D _controller;
 	ChargeBarScript _chargeBar;
@@ -79,6 +72,10 @@ public class PlayerControl : AbstractClass
 	public Collider2D healthPickup;
     public Collider2D chargePartPickup;
     public Collider2D chargeFullPickup;
+
+    public GameObject hitSplat;
+    public GameObject hitDust;
+    public Transform hitDustSpawn;
 
     //STANDARD MOVES LOCK
     public bool canAttack;
@@ -166,11 +163,12 @@ public class PlayerControl : AbstractClass
                 inCombo = true;
                 dc.damage = damage;
                 dc.knockback = knockback;
-                setState(PlayerStates.attacking);
+                //setState(PlayerStates.attacking);
                 break;
             case "comboAttackEnd":
                 inCombo = false;
                 setState(PlayerStates.mobile);
+                comboReset();
                 break;
         }
 	}
@@ -280,7 +278,7 @@ public class PlayerControl : AbstractClass
             return;
         }
 
-        //Debug.Log("Set State: " + newState);
+        Debug.Log("Set State: " + newState);
 
         // Switch to the new state.
         state = newState;
@@ -301,9 +299,13 @@ public class PlayerControl : AbstractClass
                 _anim.SetTrigger("ShoulderDash");
                 dodgeSpeed = dodgeSpeedMax;
                 dodgeDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                SpawnDust();
                 break;
             case PlayerStates.attacking:
                 isMoving = false;
+
+                //Spawn some dust. Cause we can.
+                SpawnDust();               
                 break;
             case PlayerStates.stunned:
                 dodgeSpeed = dodgeSpeedMax;
@@ -327,17 +329,25 @@ public class PlayerControl : AbstractClass
         {
             isMoving = true;
         }
-        if (moveInput.x < 0)
+        if (moveInput.x < 0 && (!isMoving || facingRight))
         {
             isMoving = true;
             facingLeft = true;
             facingRight = false;
+
+            // Position elements.
+            //hitDustSpawn.transform.localPosition = new Vector3(Mathf.Abs(hitDustSpawn.transform.localPosition.x), hitDustSpawn.transform.localPosition.y, 0);
+            hitDustSpawn.transform.localScale = new Vector3(1, 1, 1);
         }
-        else if (moveInput.x > 0)
+        else if (moveInput.x > 0 && (!isMoving || facingLeft))
         {
             isMoving = true;
             facingLeft = false;
             facingRight = true;
+
+            // Position elements.
+            //hitDustSpawn.transform.localPosition = new Vector3(Mathf.Abs(hitDustSpawn.transform.localPosition.x) * -1, hitDustSpawn.transform.localPosition.y, 0);
+            hitDustSpawn.transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (moveInput.x == 0 && moveInput.y == 0)
         {
@@ -354,12 +364,20 @@ public class PlayerControl : AbstractClass
     void DrillMovement() {
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if (moveInput.x < 0) {
+        if (moveInput.x < 0 && facingRight) {
             facingLeft = true;
             facingRight = false;
-        } else if (moveInput.x > 0) {
+
+            // Position elements.
+            //hitDustSpawn.transform.localPosition = new Vector3(Mathf.Abs(hitDustSpawn.transform.localPosition.x), hitDustSpawn.transform.localPosition.y, 0);
+            hitDustSpawn.transform.localScale = new Vector3(1, 1, 1);
+        } else if (moveInput.x > 0 && facingLeft) {
             facingLeft = false;
             facingRight = true;
+
+            // Position elements.
+            hitDustSpawn.transform.localPosition = new Vector3(Mathf.Abs(hitDustSpawn.transform.localPosition.x) * -1, hitDustSpawn.transform.localPosition.y, 0);
+            hitDustSpawn.transform.localScale = new Vector3(-1, 1, 1);
         }
 
         clownDrillVelocity = Mathf.Max(-moveSpeed * 2, Mathf.Min(moveSpeed * 2, 
@@ -372,45 +390,6 @@ public class PlayerControl : AbstractClass
 
     public void PlayerAction()
     {
-        if (timerA > 0)
-        {
-            timerA -= Time.deltaTime;
-            if (timerA <= 0)
-            {
-                timerA = 0;
-                inputA = false;
-                setState(PlayerStates.mobile);
-            }
-        }
-        if (timerB > 0)
-        {
-            timerB -= Time.deltaTime;
-            if (timerB <= 0)
-            {
-                timerB = 0;
-                inputB = false;
-                setState(PlayerStates.mobile);
-            }
-        }
-        if (timerC > 0)
-        {
-            timerC -= Time.deltaTime;
-            if (timerC <= 0)
-            {
-                timerC = 0;
-                inputC = false;
-                setState(PlayerStates.mobile);
-            }
-        }
-        if (timerD > 0)
-        {
-            timerD -= Time.deltaTime;
-            if (timerD <= 0)
-            {
-                timerD = 0;
-                setState(PlayerStates.mobile);
-            }
-        }
         if (Input.GetButtonDown("Dodge"))
         {
             actionDodge();
@@ -507,7 +486,6 @@ public class PlayerControl : AbstractClass
 		} else if (!inCombo) {
 			// Normal
 			inputA = true;
-			timerA = 0.1f;
 		}
 
         setState(PlayerStates.attacking);
@@ -523,7 +501,6 @@ public class PlayerControl : AbstractClass
 		} else if (!inCombo) {
 			// Normal
 			inputB = true;
-			timerB = 0.1f;
 		}
 
         setState(PlayerStates.attacking);
@@ -540,7 +517,6 @@ public class PlayerControl : AbstractClass
 		} else if (!inCombo) {
 			// Normal
 			inputC = true;
-			timerC = 0.1f;
 		}
 
         setState(PlayerStates.attacking);
@@ -565,7 +541,6 @@ public class PlayerControl : AbstractClass
                 StartCoroutine(fireRARLaser());
             } else {
 				inputD = true;
-				timerD = 0.1f;
 				dc.damage = 100;
 				dc.type = AbstractDamageCollider.DamageType.heavy;
 			}
@@ -685,6 +660,14 @@ public class PlayerControl : AbstractClass
     public void dodge ()
     {
         setState(PlayerStates.dodging);
+    }
+
+    void SpawnDust () {
+        GameObject dust = Instantiate(hitDust);
+        DustParticleEffect de = dust.GetComponent<DustParticleEffect>();
+        de.direction = facingLeft ? 1 : -1;
+        dust.transform.parent = hitDustSpawn.transform;
+        dust.transform.position = hitDustSpawn.transform.position;
     }
 
     public IEnumerator stunAttack () {

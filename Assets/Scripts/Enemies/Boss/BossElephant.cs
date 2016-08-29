@@ -35,7 +35,10 @@ public class BossElephant : AbstractBossControl
 		base.isAlive = true;
 		base.isMoving = false;
 		base._player = GameObject.FindGameObjectWithTag ("Player");
-        player = _player.GetComponent<PlayerControl>();
+        player = base._player.GetComponent<PlayerControl>();
+
+        Debug.Log("We have player? " + _player + " / " + player);
+
         balloonSpawn = transform.Find ("BalloonSpawn");
 
         Transform body = transform.FindChild("Body");
@@ -43,7 +46,6 @@ public class BossElephant : AbstractBossControl
         for (int i = body.childCount - 1; i >= 0; i--) {
             bodyParts[i] = body.GetChild(i).gameObject;
         }
-        Debug.Log(bodyParts + " - " + body.childCount);
 
 		bossState = BOSS_STATE_MELEE;
 

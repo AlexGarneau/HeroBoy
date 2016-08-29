@@ -161,10 +161,14 @@ public class BossGoldstein : AbstractBossControl
         isInvincible = true;
         _anim.SetTrigger("Cannon");
         yield return new WaitForSeconds(.5f);
+        Debug.Log("Start Beam");
         for (int i = 10; i > 0; i--) {
             ShootBeam();
+            Debug.Log("--- Beam ");
             yield return new WaitForSeconds(.2f);
         }
+        Debug.Log("--- End Beam");
+        isInvincible = false;
     }
 
     protected IEnumerator FireMissiles () {
@@ -206,10 +210,8 @@ public class BossGoldstein : AbstractBossControl
         go = Instantiate(chestBeam);
         bullet = go.GetComponent<AbstractBullet>();
 
-
         // Stick the beam atop a random location.
         bullet.transform.position = new Vector3(LevelBoundary.left + (LevelBoundary.bottomWidth * Random.value), LevelBoundary.bottom + (LevelBoundary.height * Random.value));
-        Debug.Log("Beam Goes Here: " + bullet.transform.position);
 
         // Put the bullet on the stage.
         bullet.transform.parent = transform.parent;

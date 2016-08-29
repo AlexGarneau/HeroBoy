@@ -65,4 +65,12 @@ public class BalloonDog : AbstractEnemyControl {
                 break;
         }
     }
+
+    public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback) {
+        if (damage > 0) {
+            // Yup, that's it. Kill him off.
+            _anim.SetTrigger("IsHit");
+            setState(EnemyStates.dead);
+        }
+    }
 }
