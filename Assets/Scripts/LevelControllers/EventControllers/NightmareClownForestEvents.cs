@@ -4,6 +4,15 @@ using System.Collections;
 public class NightmareClownForestEvents : MonoBehaviour {
 
     int progress = 0;
+    public GameObject player;
+
+    public GameObject wall;
+    public float flickerRateBoost = 2f;
+    public float flickerRateTime = 2f;
+    public int flickerRate = 1;
+    public float flickerMinRad = 9f;
+    public float flickerMaxRad = 12f;
+    public float flickerScale = 1.5f;
 
     public enum ClownForestStates
     {
@@ -387,7 +396,7 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 pathDescentTrick.SetActive(false);
                 pathClownEntrance.SetActive(true);
                 circusTent.SetActive(true);
-                spawnPoints.SetActive(true);
+                //spawnPoints.SetActive(true);
                 bound1.SetActive(false);
                 bound2.SetActive(false);
                 bound3.SetActive(false);
@@ -396,6 +405,8 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 bound6.SetActive(false);
                 bound7.SetActive(false);
                 bound8.SetActive(true);
+
+                CreateClownWall();
                 break;
         }
         forestState = newState;
@@ -468,5 +479,74 @@ public class NightmareClownForestEvents : MonoBehaviour {
                 //Application.LoadLevel();
                 break;
         }
+    }
+
+    public void CreateClownWall () {
+        // Create this big rigidbody collider to push the player upwards. Mass of clowns to disguise it.
+        wall = new GameObject();
+        BoxCollider2D coll = wall.AddComponent<BoxCollider2D>();
+        Rigidbody2D rgd = wall.AddComponent<Rigidbody2D>();
+        rgd.isKinematic = true;
+        coll.size = new Vector2(25f, 5f);
+        wall.transform.position = new Vector3(-8f, -70f, 0);
+    }
+
+    public void Update () {
+        if (wall != null) {
+            // Animate the wall up. ... if you want a wall, anyways.
+            /*
+            wall.transform.Translate(0, Time.deltaTime, 0);
+            StartCoroutine(flashClown());
+            */
+
+            flickerRateTime -= Time.deltaTime;
+            if (flickerRateTime <= 0) {
+                flickerRateTime = flickerRateBoost;
+                flickerRate = Mathf.Min(6, flickerRate + 1);
+                flickerMinRad = Mathf.Max(2f, flickerMinRad - .5f);
+                flickerScale = Mathf.Min(3f, flickerScale + .1f);
+            }
+
+            for (int i = flickerRate-1; i >= 0; i--) {
+                StartCoroutine(flickerClown());
+            }
+        }
+    }
+
+    protected IEnumerator flashClown () {
+        GameObject shadow = Instantiate(Random.value > .5f ? clownShadow : clownShadow2) as GameObject;
+        shadow.SetActive(true);
+        shadow.transform.parent = wall.transform;
+        shadow.transform.localPosition = new Vector3(Random.Range(-25f, 25f), Random.Range(-5f, 5f));
+        yield return new WaitForSeconds(.3f);
+        Destroy(shadow);
+    }
+
+    protected IEnumerator flickerClown () {
+        GameObject shadow = Instantiate(Random.value > .5f ? clownShadow : clownShadow2) as GameObject;
+        shadow.SetActive(true);
+        shadow.transform.parent = transform;
+        float angle = Random.Range(0, Mathf.PI * 2);
+        
+        shadow.transform.position = player.transform.position + new Vector3(Mathf.Cos(angle) * Random.Range(flickerMinRad, flickerMaxRad), Mathf.Sin(angle) * Random.Range(flickerMinRad, flickerMaxRad), 0);
+
+        float scale = Random.Range(flickerScale/2f, flickerScale);
+        shadow.transform.localScale = new Vector3(scale * (Random.value > .5f ? -1 : 1), scale);
+
+        yield return new WaitForSeconds(.04f);
+        shadow.transform.position += new Vector3(Random.value - .5f, Random.value - .5f, 0);
+        yield return new WaitForSeconds(.04f);
+        shadow.transform.position += new Vector3(Random.value - .5f, Random.value - .5f, 0);
+        yield return new WaitForSeconds(.04f);
+        shadow.transform.position += new Vector3(Random.value - .5f, Random.value - .5f, 0);
+        yield return new WaitForSeconds(.04f);
+        shadow.transform.position += new Vector3(Random.value - .5f, Random.value - .5f, 0);
+        yield return new WaitForSeconds(.04f);
+        shadow.transform.position += new Vector3(Random.value - .5f, Random.value - .5f, 0);
+        yield return new WaitForSeconds(.04f);
+        shadow.transform.position += new Vector3(Random.value - .5f, Random.value - .5f, 0);
+        yield return new WaitForSeconds(.04f);
+
+        Destroy(shadow);
     }
 }
