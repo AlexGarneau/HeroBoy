@@ -10,6 +10,7 @@ public class BossPirateBombsOnly : AbstractBossControl
     private Transform bombSpawn;
     private float bombDelay = 0;
     private float bombAmmo = 0;
+    private float bombAmmoMax = 2;
     private float bombDelayMax = 4f;
 
     protected override void Start ()
@@ -31,8 +32,10 @@ public class BossPirateBombsOnly : AbstractBossControl
                 // Just keep lobbing those bombs.
                 bombDelay -= Time.deltaTime;
                 if (bombDelay <= 0) {
-                    bombAmmo = 3;
+                    // Throw three bombs. Ammo doesn't count current throw.
+                    bombAmmo = bombAmmoMax;
                     _anim.SetTrigger("Bombthrow");
+                    bombDelay = bombDelayMax;
                 }
                 break;
 		    case BossAction.dead:
@@ -104,9 +107,9 @@ public class BossPirateBombsOnly : AbstractBossControl
 
 		// Setup the bomb's spawn and target. It will animate itself from spawn to the target by means of physics!
 		bomb.setSpawnAndTarget (bombSpawn.position, new Vector2 (_player.transform.position.x, _player.transform.position.y));
-		
-		// Put the bomb on the stage.
-		bomb.transform.parent = transform.parent;
+
+        // Put the bomb on the stage.
+		bomb.transform.parent = _player.transform.parent;
 	}
 
 	public override void stun (float timeInSec)

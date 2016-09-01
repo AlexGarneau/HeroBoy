@@ -17,7 +17,7 @@ public class BossAlienRobot : AbstractBossControl
     protected override void Start ()
 	{
         base.Start();
-        base._bossHealth = 500f;
+        base._bossHealth = 120f;
 		base._enemMoveSpeed = 1f;
 		base.enemDamage = 30;
 		base._attackRange = 3f;
@@ -170,7 +170,10 @@ public class BossAlienRobot : AbstractBossControl
                 isInvincible = false;
                 setBossAction(BossAction.stand);
                 break;
-		    case AbstractBossControl.ANIM_DEATH_END:
+            case AbstractBossControl.ANIM_STUN_END:
+                setBossAction(BossAction.move);
+                break;
+            case AbstractBossControl.ANIM_DEATH_END:
                 SendMessageUpwards("bossDead", SendMessageOptions.DontRequireReceiver);
 			    Destroy (gameObject);
 			    break;
@@ -259,5 +262,11 @@ public class BossAlienRobot : AbstractBossControl
 			_anim.SetTrigger ("IsHit");
 			break;
 		}
-	}
+
+        if (_bossHealth <= 0)
+        {
+            // Boos is dead. Or is it?
+            SendMessageUpwards("bossDead", SendMessageOptions.DontRequireReceiver);
+        }
+    }
 }

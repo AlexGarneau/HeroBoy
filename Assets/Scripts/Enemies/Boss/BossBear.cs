@@ -49,10 +49,14 @@ public class BossBear : AbstractEnemyControl
 			break;
 		}
 
-        rageMeter -= Time.deltaTime;
-        if (enraged && rageMeter <= damageToRage)
+        if (rageMeter > 0)
         {
-            enraged = false;
+            // Rage meter ticks down fast. Otherwise it's a second per damage point; way too long.
+            rageMeter -= Time.deltaTime * 8;
+            if (enraged && rageMeter <= damageToRage / 2)
+            {
+                enraged = false;
+            }
         }
 
         _anim.SetFloat ("Health", _enemHealth);

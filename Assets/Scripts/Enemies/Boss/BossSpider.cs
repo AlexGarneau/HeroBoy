@@ -146,6 +146,11 @@ public class BossSpider: AbstractBossControl
         // Spider doesn't move. This doesn't do squat.
     }
 
+    protected override void CheckToAttack()
+    {
+        // I'll check to attack myself. Don't you worry about me.
+    }
+
     public override void setBossAction (BossAction newState)
 	{
 		switch (newState) {
@@ -184,10 +189,10 @@ public class BossSpider: AbstractBossControl
         bullet.transform.localScale = new Vector3(-1, 1, 1);
 
         // Stick the bullet in the spawner.
-        bullet.transform.position = bulletSpawn.position;
+        go.transform.position = bulletSpawn.position;
 
         // Put the bullet on the stage.
-        bullet.transform.parent = transform.parent;
+        go.transform.parent = transform.parent;
     }
     protected IEnumerator rapidFireAcid () {
         for (int i = 15; i >= 0; i--) {

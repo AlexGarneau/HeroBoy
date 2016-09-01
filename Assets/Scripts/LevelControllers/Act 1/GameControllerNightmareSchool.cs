@@ -34,7 +34,7 @@ public class GameControllerNightmareSchool: AbstractGameController
 		if (timerActivate > 0) {
 			timerActivate -= 1 * Time.deltaTime;
 			if (timerActivate <= 0) {
-				Application.LoadLevel (26);
+				Application.LoadLevel (18);
 				timerActivate = 0;
 			}
 		}

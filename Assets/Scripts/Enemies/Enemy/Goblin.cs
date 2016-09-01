@@ -26,7 +26,8 @@ public class Goblin : AbstractEnemyControl
 
         base.bulletSpawn = transform.Find ("BulletSpawn");
 
-		_damageColliders = GetComponentsInChildren<EnemyDamageCollider> ();
+        _controller = GetComponent<MovementController2D>();
+        _damageColliders = GetComponentsInChildren<EnemyDamageCollider> ();
 		if (_damageColliders != null && _damageColliders.Length > 0) {
 			// Sets the damage of damage colliders. TODO: Independent damage set to different colliders, if multple exist.
 			for (int i = _damageColliders.Length - 1; i >= 0; i--) {

@@ -18,7 +18,7 @@ public class BossGoldstein : AbstractBossControl
     protected override void Start ()
 	{
         base.Start();
-        base._bossHealth = 500f;
+        base._bossHealth = 600f;
 		base._enemMoveSpeed = .5f;
 		base.enemDamage = 30;
 		base._attackRange = 3f;
@@ -226,5 +226,11 @@ public class BossGoldstein : AbstractBossControl
             // Can't hurt this boy.
             return;
         }
-	}
+
+        if (_bossHealth <= 0)
+        {
+            // Boos is dead. Or is it?
+            SendMessageUpwards("bossDead", SendMessageOptions.DontRequireReceiver);
+        }
+    }
 }

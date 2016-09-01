@@ -489,6 +489,12 @@ public class NightmareClownForestEvents : MonoBehaviour {
         rgd.isKinematic = true;
         coll.size = new Vector2(25f, 5f);
         wall.transform.position = new Vector3(-8f, -70f, 0);
+        float timer = 40;
+        timer -= Time.deltaTime;
+        if(timer <= 0)
+        {
+            Application.LoadLevel(54);
+        }
     }
 
     public void Update () {
