@@ -8,12 +8,12 @@ public class CutsceneTimerDCOutro : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // Skip the cutscene.
-            Application.LoadLevel(26);
+            Application.LoadLevel(148);
         }
     }
 
     public void CutsceneNextLevel()
     {
-        Application.LoadLevel(26);
+        Application.LoadLevel(148);
     }
 }

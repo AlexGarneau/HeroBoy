@@ -4,9 +4,6 @@ using System.Collections;
 public class BossBear : AbstractEnemyControl
 {
     public Collider2D lightHit;
-    protected float rageMeter = 0;
-    protected float damageToRage = 50;
-    protected bool enraged = false;
 
 	protected override void Start ()
 	{
@@ -15,7 +12,7 @@ public class BossBear : AbstractEnemyControl
 		base._enemMoveSpeed = 1f;
 		base.enemDamage = 30;
 		base._attackRange = 2f;
-		base._vertRange = 0.2f;
+		base._vertRange = 0.4f;
 		base.isAlive = true;
 		base.isMoving = false;
         base.hasGun = false;
@@ -48,16 +45,6 @@ public class BossBear : AbstractEnemyControl
 			//DeathTimerDestroy ();
 			break;
 		}
-
-        if (rageMeter > 0)
-        {
-            // Rage meter ticks down fast. Otherwise it's a second per damage point; way too long.
-            rageMeter -= Time.deltaTime * 8;
-            if (enraged && rageMeter <= damageToRage / 2)
-            {
-                enraged = false;
-            }
-        }
 
         _anim.SetFloat ("Health", _enemHealth);
         _anim.SetBool("FacingLeft", facingLeft);
@@ -168,31 +155,11 @@ public class BossBear : AbstractEnemyControl
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{
-        if (enraged)
-        {
-            // Only takes half damage if enraged.
-            damage /= 2;
-        }
-
 		base.damage (damage, type, knockback);
 
-        if (invincible)
+        if (invincible || _enraged)
         {
             // Can't hurt this boy.
-            return;
-        }
-
-        // Add to the rage meter.
-        rageMeter += damage;
-        if (!enraged && rageMeter >= damageToRage)
-        {
-            // Bear is now enraged.
-            enraged = true;
-        }
-
-        if (enraged)
-        {
-            // Is raging. No hitstun or knockback.
             return;
         }
 

@@ -4,7 +4,7 @@ using System.Collections;
 public class BossGiantCrab : AbstractBossControl {
     public static int BOSS_STATE_EASY = 0;
     public static int BOSS_STATE_HARD = 1;
-    private static float VOMIT_COOLDOWN = 8f;
+    private static float VOMIT_COOLDOWN = 30f;
     private static float VOMIT_IN_BETWEEN_TIME = 1f;
 
     public Collider2D lightHit;

@@ -26,7 +26,7 @@ public class PlayerControl : AbstractClass
 
     public bool tempInvuln;
     public float tempInvulnTimer = 0f;
-    public float stunTime = 2f;
+    public float stunTime = 1f;
 
     public float dodgeForce = 5f;
     public float dodgeDecline = 0.5f;
@@ -209,7 +209,8 @@ public class PlayerControl : AbstractClass
             case PlayerStates.mobile:
                 // Primary state. Player is normal. Can move and attack based on inputs. Check for input code here.
                 PlayerMovement();
-                if(canAttack != false)
+                //PlayerMovement360();
+                if (canAttack != false)
                 {
                     PlayerAction();
                 }
@@ -219,6 +220,7 @@ public class PlayerControl : AbstractClass
                 break;
             case PlayerStates.clownDrill:
                 DrillMovement();
+                //DrillMovement360();
                 break;
             case PlayerStates.dodging:
                 // Player is currently dodging. Cannot move. Must wait until dodge is complete, then set state back to moving.
@@ -361,6 +363,47 @@ public class PlayerControl : AbstractClass
         _controller.Move(_vel * Time.deltaTime);
     }
 
+    /*void PlayerMovement360()
+    {
+        Vector2 moveInput = new Vector2(Input.GetAxisRaw("X360HorizontalStick"), Input.GetAxisRaw("X360VerticalStick"));
+
+        if (moveInput.y > 0 || moveInput.y < 0)
+        {
+            isMoving = true;
+        }
+        if (moveInput.x < 0 && (!isMoving || facingRight))
+        {
+            isMoving = true;
+            facingLeft = true;
+            facingRight = false;
+
+            // Position elements.
+            //hitDustSpawn.transform.localPosition = new Vector3(Mathf.Abs(hitDustSpawn.transform.localPosition.x), hitDustSpawn.transform.localPosition.y, 0);
+            hitDustSpawn.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (moveInput.x > 0 && (!isMoving || facingLeft))
+        {
+            isMoving = true;
+            facingLeft = false;
+            facingRight = true;
+
+            // Position elements.
+            //hitDustSpawn.transform.localPosition = new Vector3(Mathf.Abs(hitDustSpawn.transform.localPosition.x) * -1, hitDustSpawn.transform.localPosition.y, 0);
+            hitDustSpawn.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (moveInput.x == 0 && moveInput.y == 0)
+        {
+            isMoving = false;
+        }
+
+        float targetVelX = moveInput.x * moveSpeed;
+        float targetVelY = moveInput.y * moveSpeed;
+        _vel.x = Mathf.SmoothDamp(_vel.x, targetVelX, ref velocityXSmoothing, .1f);
+        _vel.y = Mathf.SmoothDamp(_vel.y, targetVelY, ref velocityYSmoothing, .1f);
+        _controller.Move(_vel * Time.deltaTime);
+    }
+    */
+
     void DrillMovement() {
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
@@ -388,51 +431,83 @@ public class PlayerControl : AbstractClass
         _controller.Move(_vel * Time.deltaTime);
     }
 
+    /*void DrillMovement360()
+    {
+        Vector2 moveInput = new Vector2(Input.GetAxisRaw("X360HorizontalStick"), Input.GetAxisRaw("X360VerticalStick"));
+
+        if (moveInput.x < 0 && facingRight)
+        {
+            facingLeft = true;
+            facingRight = false;
+
+            // Position elements.
+            //hitDustSpawn.transform.localPosition = new Vector3(Mathf.Abs(hitDustSpawn.transform.localPosition.x), hitDustSpawn.transform.localPosition.y, 0);
+            hitDustSpawn.transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (moveInput.x > 0 && facingLeft)
+        {
+            facingLeft = false;
+            facingRight = true;
+
+            // Position elements.
+            hitDustSpawn.transform.localPosition = new Vector3(Mathf.Abs(hitDustSpawn.transform.localPosition.x) * -1, hitDustSpawn.transform.localPosition.y, 0);
+            hitDustSpawn.transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        clownDrillVelocity = Mathf.Max(-moveSpeed * 2, Mathf.Min(moveSpeed * 2,
+            clownDrillVelocity + (clownDrillAccelPerSec * Time.deltaTime * (facingLeft ? -1f : 1f))
+        ));
+        _vel.x = clownDrillVelocity;
+        _vel.y = Mathf.SmoothDamp(_vel.y, moveInput.y * moveSpeed, ref velocityYSmoothing, .1f);
+        _controller.Move(_vel * Time.deltaTime);
+    }
+    */
+
     public void PlayerAction()
     {
-        if (Input.GetButtonDown("Dodge"))
+        if (Input.GetButtonDown("Dodge") || Input.GetButtonDown("X360BumperL"))
         {
             actionDodge();
         }
 
-        if (Input.GetButtonDown("InputA"))
+        if (Input.GetButtonDown("InputA") || Input.GetButtonDown("X360X"))
         {
             attackLight();
         }
-        else if (!Input.GetButton("InputA"))
+        else if (!Input.GetButton("InputA") || !Input.GetButtonDown("X360X"))
         {
             inputA = false;
         }
 
-        if (Input.GetButtonDown("InputB"))
+        if (Input.GetButtonDown("InputB") || Input.GetButtonDown("X360Y"))
         {
             attackMed();
         }
-        else if (!Input.GetButton("InputB"))
+        else if (!Input.GetButton("InputB") || !Input.GetButtonDown("X360Y"))
         {
             inputB = false;
         }
 
-        if (Input.GetButtonDown("InputC"))
+        if (Input.GetButtonDown("InputC") || Input.GetButtonDown("X360B"))
         {
             attackHeavy();
         }
-        else if (!Input.GetButton("InputC"))
+        else if (!Input.GetButton("InputC") || !Input.GetButtonDown("X360B"))
         {
             inputC = false;
         }
 
-        if (Input.GetButtonDown("InputD"))
+        if (Input.GetButtonDown("InputD") || Input.GetButtonDown("X360A"))
         {
             attackCharged();
             throwRight = facingRight;
-        } else if (!Input.GetButton("InputD"))
+        } else if (!Input.GetButton("InputD") || !Input.GetButtonDown("X360A"))
         {
             inputD = false;
         }
 
 
-        if (Input.GetButton("InputD"))
+        if (Input.GetButton("InputD") || Input.GetButton("X360A"))
         {
             if (_chargeBar != null && state != PlayerStates.attacking && _chargeBar.chargePercentage < 100f)
             {
@@ -633,8 +708,6 @@ public class PlayerControl : AbstractClass
         if (tempInvuln != true)
         {
             // Hit a player! Do death!
-            setState(PlayerStates.stunned);
-            _anim.SetTrigger("IsHit");
             tempInvuln = true;
             tempInvulnTimer = 1f;
 
@@ -645,6 +718,10 @@ public class PlayerControl : AbstractClass
             } else if (type == AbstractDamageCollider.DamageType.stunAll) {
                 StartCoroutine(stunAttack());
                 StartCoroutine(stunMove());
+            } else {
+                // Normal hit. Show knockback anim.
+                _anim.SetTrigger("IsHit");
+                setState(PlayerStates.stunned);
             }
 
             if (playerHealth > 0) {
@@ -656,11 +733,6 @@ public class PlayerControl : AbstractClass
 		    }
         }
 	}
-
-    public void dodge ()
-    {
-        setState(PlayerStates.dodging);
-    }
 
     void SpawnDust () {
         GameObject dust = Instantiate(hitDust);

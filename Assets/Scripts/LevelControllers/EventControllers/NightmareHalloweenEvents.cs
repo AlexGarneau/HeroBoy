@@ -3,6 +3,11 @@ using System.Collections;
 
 public class NightmareHalloweenEvents : MonoBehaviour {
 
+    PlayerControl _player;
+
+    float timerActivate;
+    float timerReset = 5f;
+
     int progress = 0;
 
     public enum NightmareHalloweenStates
@@ -36,6 +41,8 @@ public class NightmareHalloweenEvents : MonoBehaviour {
     public GameObject mom;
     public GameObject roadBlock;
 
+    public GameObject spawnPoints;
+
     public Animator house1;
     public Animator house2;
     public Animator house3;
@@ -58,13 +65,24 @@ public class NightmareHalloweenEvents : MonoBehaviour {
     {
         _anim = GetComponent<Animator>();
         setState(NightmareHalloweenStates.enter);
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>();
     }
+
+    void Update()
+    {
+        if (_player.playerHealth <= 0)
+        {
+            ActivateScreen();
+        }
+    }
+
 
     void setState(NightmareHalloweenStates newState)
     {
         switch (newState)
         {
             case NightmareHalloweenStates.enter:
+                spawnPoints.SetActive(false);
                 mom.SetActive(true);
                 mom.transform.position = new Vector2(-25, 0);
                 break;
@@ -114,6 +132,7 @@ public class NightmareHalloweenEvents : MonoBehaviour {
                 house13.SetTrigger("SuperSpook");
                 house14.SetTrigger("SuperSpook");
                 house15.SetTrigger("SuperSpook");
+                spawnPoints.SetActive(true);
                 break;
         }
                 halloweenState = newState;
@@ -168,6 +187,19 @@ public class NightmareHalloweenEvents : MonoBehaviour {
                     setState(NightmareHalloweenStates.transform3);
                 }
                 break;
+        }
+    }
+
+    void ActivateScreen()
+    {
+        if (timerActivate > 0)
+        {
+            timerActivate -= 1 * Time.deltaTime;
+            if (timerActivate <= 0)
+            {
+                Application.LoadLevel(29);
+                timerActivate = 0;
+            }
         }
     }
 }

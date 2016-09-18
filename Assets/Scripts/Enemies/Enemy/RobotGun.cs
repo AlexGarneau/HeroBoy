@@ -16,8 +16,8 @@ public class RobotGun : AbstractEnemyControl
 	{
         base.Start();
 		base._enemHealth = 100f;
-		base._enemMoveSpeed = 1.2f;
-		base.enemDamage = 2;
+		base._enemMoveSpeed = 2.2f;
+		base.enemDamage = 10;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;
 		base.isAlive = true;
@@ -213,16 +213,14 @@ public class RobotGun : AbstractEnemyControl
 	{
 		GameObject go;
         RobotShot bullet;
+		go = Instantiate (robotShot);
+		bullet = go.GetComponent<RobotShot> ();
 
 		if (facingLeft) {
-			go = Instantiate (robotShot);
-			bullet = go.GetComponent<RobotShot> ();
-			bulletSpawn.position.Set (-Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
+			bulletSpawn.localPosition = new Vector3(-Mathf.Abs (bulletSpawn.localPosition.x), bulletSpawn.localPosition.y, bulletSpawn.localPosition.z);
 			bullet.direction = Vector2.left;
 		} else {
-			go = Instantiate (robotShot);
-			bullet = go.GetComponent<RobotShot> ();
-			bulletSpawn.position.Set (Mathf.Abs (bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
+			bulletSpawn.localPosition = new Vector3(Mathf.Abs (bulletSpawn.localPosition.x), bulletSpawn.localPosition.y, bulletSpawn.localPosition.z);
 			bullet.direction = Vector2.right;
 		}
 	

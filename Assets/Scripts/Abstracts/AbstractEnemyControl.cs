@@ -23,6 +23,9 @@ public class AbstractEnemyControl : AbstractClass
     public bool inMeleeRange;
     public bool hasAttack = true;
     public bool hasGun = true;
+    public float damageToRage = 50;
+    public float rageDecayPerSec = 1;
+    public RageMeter rageMeter;
 
     protected float _enemHealth;
     protected float _attackRange = 2f;
@@ -37,6 +40,12 @@ public class AbstractEnemyControl : AbstractClass
     protected float _paceTimerMax = 5f;
     protected float _enemMoveSpeed;
 	protected float _vertRange;
+
+    protected bool _useRage = false;
+    protected float _rageLevel = 0;
+    protected float _rageDecayTimer = 1f;
+    protected bool _enraged = false;
+
     protected Vector3 _paceTarget;
 
     protected int _enemDamage;
@@ -70,7 +79,7 @@ public class AbstractEnemyControl : AbstractClass
     protected EnemyRangeCollider pRangeCollider;
 
     protected Rigidbody body;
-	protected Transform bulletSpawn;
+	public Transform bulletSpawn;
 
 	protected EnemyDamageCollider[] _damageColliders;
 	protected MovementController2D _controller;
@@ -122,6 +131,12 @@ public class AbstractEnemyControl : AbstractClass
                 pRangeCollider = player.GetComponentInChildren<EnemyRangeCollider>();
                 break;
             }
+        }
+
+        if (rageMeter != null)
+        {
+            _useRage = true;
+            rageMeter.setRageLevelMax(damageToRage);
         }
 
         // Set the first state.
@@ -211,7 +226,19 @@ public class AbstractEnemyControl : AbstractClass
         if (state != EnemyStates.dead) {
             this.transform.position = LevelBoundary.adjustPositionToBoundary(this.transform.position);
         }
-	}
+
+        if (_useRage && _rageLevel > 0)
+        {
+            // Rage meter ticks down fast. Otherwise it's a second per damage point; way too long.
+            _rageLevel -= Time.deltaTime * rageDecayPerSec;
+            rageMeter.setDirection(facingLeft);
+            rageMeter.subtractRageLevel(Time.deltaTime * rageDecayPerSec);
+            if (_enraged && _rageLevel <= 0)
+            {
+                _enraged = false;
+            }
+        }
+    }
 
     public void setEnemyState(EnemyStates newState)
     {
@@ -336,7 +363,6 @@ public class AbstractEnemyControl : AbstractClass
         float rangedToMeleePoint = _gunRange * .5f;
 
         if (hasGun && (Mathf.Abs(hD) > rangedToMeleePoint || ((pRangeCollider.inRangeLeft && hD > 0) || (pRangeCollider.inRangeRight && hD < 0)))) {
-            Debug.Log("Gun Range: " + hD + " >=< " + _gunRange);
             // At gun range (or other pirate in melee range). Back away.
             if (hD > _gunRange) {
                 // Out of gun range. Move in right.
@@ -458,8 +484,25 @@ public class AbstractEnemyControl : AbstractClass
     public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{		
         if (!invincible && _enemHealth > 0) {
-			_enemHealth -= damage;
-			if (_enemHealth <= 0) {
+            if (_enraged)
+            {
+                // Only takes half damage if enraged.
+                damage /= 2;
+            }
+
+            _enemHealth -= damage;
+
+            if (_useRage)
+            {
+                _rageLevel += damage;
+                rageMeter.addRageLevel(damage);
+                if (!_enraged && _rageLevel >= damageToRage)
+                {
+                    // Boss is now enraged.
+                    _enraged = true;
+                }
+            }
+            if (_enemHealth <= 0) {
 				// Enemy is dead. Set state.
 				setState (EnemyStates.dead);
 				// Don't do anything else. Make-Dead code will handle the rest.

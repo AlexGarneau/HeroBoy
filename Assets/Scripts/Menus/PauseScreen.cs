@@ -8,7 +8,7 @@ public class PauseScreen : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetKeyDown (KeyCode.Escape)) {
+		if (Input.GetKeyDown (KeyCode.Escape) || Input.GetButtonDown("X360Start")) {
             // Pressed escape. Toggle pause.
             Pause(!pauseGame);
 		}

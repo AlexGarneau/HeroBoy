@@ -12,11 +12,6 @@ public class GameControllerBossCrab1 : AbstractGameController
 		for (var i = spawns.Length - 1; i >= 0; i--) {
 			spawns [i].spawnDelay = 2;
 		}
-
-		LevelBoundary.left = -5.4f;
-		LevelBoundary.bottom = -3.05f;
-		LevelBoundary.height = 4.94f;
-		LevelBoundary.bottomWidth = LevelBoundary.topWidth = 6f;
 	}
 
 	void Update ()

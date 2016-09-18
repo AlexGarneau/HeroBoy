@@ -6,6 +6,7 @@ public class RobotClaw: AbstractEnemyControl
     protected const float SPECIAL_ATTACK_COUNTDOWN = 30f;
 
     public Collider2D lightHit;
+    public GameObject healItem;
     public Animator robotHealthBarAnim;
 
     protected float specialAttackCountdownTimer = 0;
@@ -14,8 +15,8 @@ public class RobotClaw: AbstractEnemyControl
 	{
         base.Start();
         base._enemHealth = 100f;
-		base._enemMoveSpeed = 1f;
-		base.enemDamage = 1;
+		base._enemMoveSpeed = 2f;
+		base.enemDamage = 10;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.2f;
 		base.isAlive = true;
@@ -139,21 +140,30 @@ public class RobotClaw: AbstractEnemyControl
     public override void onAnimationState (string animState)
 	{
 		switch (animState) {
-		    case AbstractEnemyControl.ANIM_ATTACK_START:
-			    break;
-		    case AbstractEnemyControl.ANIM_ATTACK_END:
-			    setState (baseState);
-			    break;
-		    case AbstractEnemyControl.ANIM_INJURED_END:
-			    setState (baseState);
-			    break;
-            case AbstractEnemyControl.ANIM_DEATH_START:
-                setState(EnemyStates.dead);
+            case AbstractEnemyControl.ANIM_ATTACK_START:
+
+                break;
+            case AbstractEnemyControl.ANIM_ATTACK_END:
+                if (state != EnemyStates.stun)
+                {
+                    setState(EnemyStates.move);
+                }
+                break;
+            case AbstractEnemyControl.ANIM_INJURED_END:
+                if (_enemHealth > 0 && state != EnemyStates.stun)
+                {
+                    setState(EnemyStates.move);
+                }
+                break;
+            case AbstractEnemyControl.ANIM_STUN_END:
+                _anim.SetBool("IsStunned", false);
+                setState(EnemyStates.move);
                 break;
             case AbstractEnemyControl.ANIM_DEATH_END:
-			    Destroy (gameObject);
-			    break;
-		}
+                randomdrop(healItem);
+                Destroy(gameObject);
+                break;
+        }
 
         base.onAnimationState(animState);
     }

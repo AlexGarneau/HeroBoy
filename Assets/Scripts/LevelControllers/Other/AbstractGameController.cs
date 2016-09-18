@@ -20,6 +20,15 @@ public class AbstractGameController : MonoBehaviour
 
     protected Animator _anim;
     protected bool levelComplete;
+
+    public Vector3 circleCentre;
+    public float circleRadius;
+
+    public float rectTopWidth;
+    public float rectBottomWidth;
+    public float rectLeft;
+    public float rectBottom;
+    public float rectHeight;
     
 	// Use this for initialization
 	public virtual void Start ()
@@ -38,14 +47,14 @@ public class AbstractGameController : MonoBehaviour
             }
         }
         chargeBar = GetComponentInChildren<ChargeBarScript> ();
-		// TODO: Get references to all the SpawnZombie objects currently in the level.
+        // TODO: Get references to all the SpawnZombie objects currently in the level.
 
-		// Set the level boundaries. These form a trapezoid, which can be used to keep the enemies within.
-		LevelBoundary.topWidth = 5.893934f - -3.215067f; // Use the enemies positions during game play to get these coordinates.
-		LevelBoundary.bottomWidth = 8.103892f - -5.385192f; // Widths are right-corner minus left corner.
-		LevelBoundary.left = -5.385192f; // Left is the left corner of the larger width (in this case, bottom)
-		LevelBoundary.bottom = -3.9f; // Bottom is the lowest point in the boundary.
-		LevelBoundary.height = 0.64f - -3.9f; // Height is top minus bottom.
+        // Set the level boundaries. These form a trapezoid, which can be used to keep the enemies within.
+        LevelBoundary.topWidth = rectTopWidth; // Use the enemies positions during game play to get these coordinates.
+        LevelBoundary.bottomWidth = rectBottomWidth; // Widths are right-corner minus left corner.
+        LevelBoundary.left = rectLeft; // Left is the left corner of the larger width (in this case, bottom)
+        LevelBoundary.bottom = rectBottom; // Bottom is the lowest point in the boundary.
+        LevelBoundary.height = rectHeight; // Height is top minus bottom.
 
         enemiesPacing = new ArrayList();
         enemiesAttacking = new ArrayList();
@@ -71,7 +80,7 @@ public class AbstractGameController : MonoBehaviour
 		} else {
 			bool hasEnemy = false;
 			for (var i = spawns.Length - 1; i >= 0; i--) {
-				if (!spawns [i].hasNoEnemy) {
+                if (!spawns [i].hasNoEnemy) {
 					hasEnemy = true;
 				}
 			}
@@ -91,10 +100,14 @@ public class AbstractGameController : MonoBehaviour
     }
 
     public virtual void UpdateEnemies() {
+        if (enemiesPacing == null) { return; }
+
+        AbstractEnemyControl enemy;
         for (int i = enemiesPacing.Count - 1; i >= 0; i--)
         {
             // Keep it clean.
-            if (enemiesPacing[i] == null)
+            enemy = enemiesPacing[i] as AbstractEnemyControl;
+            if (enemy == null || enemy.Equals(null) || enemy.ToString() == "null")
             {
                 enemiesPacing.RemoveAt(i);
             }
@@ -102,14 +115,15 @@ public class AbstractGameController : MonoBehaviour
         for (int i = enemiesAttacking.Count - 1; i >= 0; i--)
         {
             // Keep it clean.
-            if (enemiesAttacking[i] == null)
+            enemy = enemiesAttacking[i] as AbstractEnemyControl;
+            if (enemy == null || enemy.Equals(null) || enemy.ToString() == "null")
             {
                 enemiesAttacking.RemoveAt(i);
             }
         }
 
         if (enemiesAttacking.Count < numEnemiesAttackAtOnce) {
-            AbstractEnemyControl enemy = getClosestPacingEnemyToPlayer();
+            enemy = getClosestPacingEnemyToPlayer();
             if (enemy == null) {
                 // Never mind. No more enemies.
                 return;
@@ -138,33 +152,46 @@ public class AbstractGameController : MonoBehaviour
             // No enemies!
             return null;
         }
-        object enemy = enemiesPacing[enemiesPacing.Count - 1];
         float lowestDistance = float.MaxValue;
         float testDistance;
+        AbstractEnemyControl enemy = enemiesPacing[enemiesPacing.Count - 1] as AbstractEnemyControl;
+        AbstractEnemyControl enemyPace;
         for (int i = enemiesPacing.Count - 1; i >= 0; i--) {
-            testDistance = Vector3.Distance((enemiesPacing[i] as AbstractEnemyControl).transform.position, player.transform.position);
+            enemyPace = enemiesPacing[i] as AbstractEnemyControl;
+            if (enemyPace == null || enemyPace.Equals(null) || enemyPace.ToString() == "null")
+            {
+                enemiesPacing.RemoveAt(i);
+                continue;
+            }
+
+            testDistance = Vector3.Distance(enemyPace.transform.position, player.transform.position);
             if (testDistance < lowestDistance) {
                 lowestDistance = testDistance;
-                enemy = enemiesPacing[i];
+                enemy = enemyPace;
             }
         }
-        return (enemy as AbstractEnemyControl);
+        return enemy;
     }
 	
 	public virtual void enemyDied (AbstractEnemyControl enemy)
 	{
         Debug.Log("Remove Enemy: " + enemy);
 
-        // Increase charge bar.
-        if (chargeBar != null && player.earnKills) {
-			chargeBar.IncreaseChargePercentage (20);
-		}
-		killCount++;
-        currentEnemyCount--;
-		
-        // Clean up enemies.
-        enemiesPacing.Remove(enemy);
-        enemiesAttacking.Remove(enemy);
+        // Only works if this is a registered enemy.
+        if (enemiesPacing.Contains(enemy) || enemiesAttacking.Contains(enemy))
+        {
+            // Increase charge bar.
+            if (chargeBar != null && player.earnKills)
+            {
+                chargeBar.IncreaseChargePercentage(20);
+            }
+            killCount++;
+            currentEnemyCount--;
+
+            // Clean up enemies.
+            enemiesPacing.Remove(enemy);
+            enemiesAttacking.Remove(enemy);
+        }
     }
 
 	public void SavePlayerStats ()
@@ -174,4 +201,23 @@ public class AbstractGameController : MonoBehaviour
 			GlobalControl.instance.playerCP = chargeBar.chargePercentage;
 		}
 	}
+
+    public virtual IEnumerator phaseEnemyAway(AbstractEnemyControl illusion)
+    {
+        float l = 1;
+        SpriteRenderer[] sprites = illusion.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer sprite;
+        for (float i = 0; i < l; i += .03f)
+        {
+            for (int j = sprites.Length - 1; j >= 0; j--)
+            {
+                sprite = sprites[j];
+                if (sprite == null) { continue; }
+                sprite.transform.Translate(Random.Range(-i, i), Random.Range(-i, i), 0);
+                sprite.GetComponent<Renderer>().material.color = new Color(0, 0, 0, l - i);
+            }
+            yield return new WaitForSeconds(.01f);
+        }
+        Destroy(illusion.gameObject);
+    }
 }

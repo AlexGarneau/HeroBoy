@@ -55,6 +55,7 @@ public class Skeleton : AbstractEnemyControl
 
 	public override void onAnimationState (string animState)
 	{
+        base.onAnimationState(animState);
 		switch (animState) {
 		case AbstractEnemyControl.ANIM_ATTACK_START:
 
@@ -80,7 +81,6 @@ public class Skeleton : AbstractEnemyControl
 			break;
 		}
 
-        base.onAnimationState(animState);
     }
 
 	public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)

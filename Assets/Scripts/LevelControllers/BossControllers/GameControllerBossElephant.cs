@@ -63,8 +63,8 @@ public class GameControllerBossElephant : AbstractGameController
                 
                 // Make enemies go crazy upon spawning if dieToWin.
                 if (dieToWin) {
-                    ArrayList enemies = spawns[i].getEnemies();
-                    for (int j = enemies.Count - 1; j >= 0; j--) {
+                    GameObject[] enemies = spawns[i].getEnemies();
+                    for (int j = enemies.Length - 1; j >= 0; j--) {
                         if (enemies[j] != null) {
                             Clown clown = (enemies[j] as GameObject).GetComponent<Clown>();
                             if (clown == null) { continue; }
@@ -119,11 +119,11 @@ public class GameControllerBossElephant : AbstractGameController
         dieToWin = true;
 
         // Make all the clowns go nuts.
-        ArrayList enemies;
+        GameObject[] enemies;
         Clown clown;
         for (int i = spawns.Length - 1; i >= 0; i--) {
             enemies = spawns[i].getEnemies();
-            for (int j = enemies.Count - 1; j >= 0; j--) {
+            for (int j = enemies.Length - 1; j >= 0; j--) {
                 if (enemies[j] != null) {
                     clown = (enemies[j] as GameObject).GetComponent<Clown>();
                     if (clown == null) { continue; }

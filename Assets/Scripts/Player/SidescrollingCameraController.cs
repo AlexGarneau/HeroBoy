@@ -11,7 +11,8 @@ public class SidescrollingCameraController : MonoBehaviour {
         if(other.gameObject == player)
         {
             Debug.Log("I'm inside this thing bro");
-            cam.transform.position = Vector3.Lerp(cam.transform.position, new Vector3(player.transform.position.x, 1.2f, -3), 2.5f * Time.deltaTime);
+            cam.transform.position = Vector3.Lerp(cam.transform.position,
+                new Vector3(player.transform.position.x, -1.6f, -20), 3f * Time.deltaTime);
         }
     }
 }

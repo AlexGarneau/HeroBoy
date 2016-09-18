@@ -5,6 +5,12 @@ public class EnemyHitAnimSound : StateMachineBehaviour
 {
 	override public void OnStateEnter (Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 	{
-		animator.GetComponent<AbstractClass> ().playSound (AbstractClass.sfx.walk, false);
+        AbstractClass c = animator.GetComponent<AbstractClass>();
+        if (c == null)
+        {
+            c = animator.transform.parent.GetComponent<AbstractClass>();
+        }
+
+        c.playSound (AbstractClass.sfx.walk, false);
 	}	
 }

@@ -8,12 +8,12 @@ public class CutsceneTimerEndPirateBoss : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // Skip the cutscene.
-            Application.LoadLevel(26);
+            Application.LoadLevel(17);
         }
     }
 
     public void CutsceneNextLevel()
     {
-        Application.LoadLevel(26);
+        Application.LoadLevel(17);
     }
 }

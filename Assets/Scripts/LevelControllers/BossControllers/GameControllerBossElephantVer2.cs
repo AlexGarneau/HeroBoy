@@ -30,10 +30,13 @@ public class GameControllerBossElephantVer2 : AbstractGameController
 			spawns [i].spawnDelay = 1;
 		}
 
-        LevelBoundary.type = LevelBoundary.TYPE_CIRCLE;
+        LevelBoundary.type = LevelBoundary.TYPE_RECTANGLE;
 
-		LevelBoundary.circleCenter = new Vector2(bossSpawnCenter.transform.position.x, bossSpawnCenter.transform.position.y);
-        LevelBoundary.circleRadius = 17f;
+        LevelBoundary.left = -6.16f;
+        LevelBoundary.bottom = -6.1f;
+        LevelBoundary.bottomWidth = 12.5f;
+        LevelBoundary.topWidth = 10f;
+        LevelBoundary.height = 7f;
 
         // Always spawning ads.
         enemyCount = 6;
@@ -63,8 +66,8 @@ public class GameControllerBossElephantVer2 : AbstractGameController
                 
                 // Make enemies go crazy upon spawning if dieToWin.
                 if (dieToWin) {
-                    ArrayList enemies = spawns[i].getEnemies();
-                    for (int j = enemies.Count - 1; j >= 0; j--) {
+                    GameObject[] enemies = spawns[i].getEnemies();
+                    for (int j = enemies.Length - 1; j >= 0; j--) {
                         if (enemies[j] != null) {
                             Clown clown = (enemies[j] as GameObject).GetComponent<Clown>();
                             if (clown == null) { continue; }
@@ -119,11 +122,11 @@ public class GameControllerBossElephantVer2 : AbstractGameController
         dieToWin = true;
 
         // Make all the clowns go nuts.
-        ArrayList enemies;
+        GameObject[] enemies;
         Clown clown;
         for (int i = spawns.Length - 1; i >= 0; i--) {
             enemies = spawns[i].getEnemies();
-            for (int j = enemies.Count - 1; j >= 0; j--) {
+            for (int j = enemies.Length - 1; j >= 0; j--) {
                 if (enemies[j] != null) {
                     clown = (enemies[j] as GameObject).GetComponent<Clown>();
                     if (clown == null) { continue; }

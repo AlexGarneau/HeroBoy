@@ -8,7 +8,7 @@ public class SpawnZombie : AbstractClass
 	public int zedCount = 1;
 	public float spawnDelay = 3;
 
-	private ArrayList _enemies;
+	private GameObject[] _enemies;
 	private bool[] _isSpawning;
 	private bool isCurrentlySpawning = false;
 	public bool hasMissingEnemy {
@@ -16,9 +16,9 @@ public class SpawnZombie : AbstractClass
 			if (_enemies == null) {
 				return false;
 			}
-			for (int i = _enemies.Count - 1; i >= 0; i--) {
-				if ((_enemies[i] == null || _enemies [i].Equals (null)) && !_isSpawning [i]) {
-					return true;
+			for (int i = _enemies.Length - 1; i >= 0; i--) {
+				if (_checkIfNull(_enemies[i]) && !_isSpawning [i]) {
+                    return true;
 				}
 			}
 			return false;
@@ -30,8 +30,8 @@ public class SpawnZombie : AbstractClass
             {
                 return true;
             }
-            for (int i = _enemies.Count - 1; i >= 0; i--) {
-				if (!_enemies [i].Equals (null) || _isSpawning [i]) {
+            for (int i = _enemies.Length - 1; i >= 0; i--) {
+				if (!_checkIfNull(_enemies[i]) || _isSpawning [i]) {
 					return false;
 				}
 			}
@@ -41,31 +41,31 @@ public class SpawnZombie : AbstractClass
 
 	void Start ()
 	{
-		_enemies = new ArrayList (zedCount);
+		_enemies = new GameObject[zedCount];
 		_isSpawning = new bool[zedCount];
 
 		// Spawn enemies up to zedCount.
 		for (int i = zedCount - 1; i >= 0; i--) {
-			_enemies.Add (new Object ());
+			_enemies[i] = null;
 		}
 	}
 
 	void setZedCount (int count)
 	{
 		zedCount = count;
-		_enemies = new ArrayList (zedCount);
+		_enemies = new GameObject[zedCount];
 		_isSpawning = new bool[zedCount];
         
 		// Spawn enemies up to zedCount.
 		for (int i = zedCount - 1; i >= 0; i--) {
-			_enemies.Add (new Object ());
+			_enemies[i] = null;
 		}
 	}
 
 	void Update ()
 	{
-		// Used for unlimited automatic zombie spawning.
-		if (autoSpawn && !isCurrentlySpawning) {
+        // Used for unlimited automatic zombie spawning.
+        if (autoSpawn && !isCurrentlySpawning) {
 			spawnEnemy ();
 		}
 	}
@@ -73,8 +73,10 @@ public class SpawnZombie : AbstractClass
     /** Spawns a single enemy. */
     public GameObject spawnEnemy()
     {
+        GameObject enemy;
         for (int i = zedCount - 1; i >= 0; i--) {
-			if (_enemies [i].Equals (null) && !_isSpawning [i]) {
+            enemy = _enemies[i];
+            if (_checkIfNull(_enemies[i]) && !_isSpawning [i]) {
                 // Enemy died. Spawn one new enemy. Make multiple calls to fill the spawn.
                 GameObject newEnemy = GameObject.Instantiate(prefabs[Random.Range(0, prefabs.Length)], transform.position, transform.rotation) as GameObject;
                 _enemies[i] = newEnemy;
@@ -87,7 +89,7 @@ public class SpawnZombie : AbstractClass
         return null;
 	}
 
-    public ArrayList getEnemies () {
+    public GameObject[] getEnemies () {
         return _enemies;
     }
 
@@ -105,4 +107,9 @@ public class SpawnZombie : AbstractClass
 		_isSpawning [index] = false;
 		isCurrentlySpawning = false;
 	}
+
+    private bool _checkIfNull(GameObject obj)
+    {
+        return object.Equals(obj, null) || obj == null || obj.ToString() == "null";
+    }
 }

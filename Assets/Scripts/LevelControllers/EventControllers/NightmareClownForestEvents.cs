@@ -523,7 +523,8 @@ public class NightmareClownForestEvents : MonoBehaviour {
         GameObject shadow = Instantiate(Random.value > .5f ? clownShadow : clownShadow2) as GameObject;
         shadow.SetActive(true);
         shadow.transform.parent = wall.transform;
-        shadow.transform.localPosition = new Vector3(Random.Range(-25f, 25f), Random.Range(-5f, 5f));
+        float angle = Random.Range(0, Mathf.PI * 2);
+        shadow.transform.position = player.transform.position + new Vector3(Mathf.Cos(angle) * Random.Range(flickerMinRad, flickerMaxRad), Mathf.Sin(angle) * Random.Range(flickerMinRad, flickerMaxRad), 0);
         yield return new WaitForSeconds(.3f);
         Destroy(shadow);
     }

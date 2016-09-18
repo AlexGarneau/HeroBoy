@@ -117,7 +117,7 @@ public class StartMenu : MonoBehaviour
         {
             GlobalControl.instance.resetPlayerStats();
         }
-        Application.LoadLevel(24);
+        Application.LoadLevel(18);
     }
 
 

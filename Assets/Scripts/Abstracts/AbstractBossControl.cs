@@ -45,8 +45,16 @@ public class AbstractBossControl : AbstractClass
 	public bool isAlive;
 	public bool isMoving;
     public bool isInvincible = false;
-	
-	protected GameObject _player;
+    public float damageToRage = 50;
+    public float rageDecayPerSec = 1;
+    public RageMeter rageMeter;
+
+    protected bool _useRage = false;
+    protected float _rageLevel = 0;
+    protected float _rageDecayTimer = 1f;
+    protected bool _enraged = false;
+
+    protected GameObject _player;
 	protected float xForce = 0;
 	protected float yForce = 0;
 	protected float friction = 0.005f;
@@ -112,6 +120,12 @@ public class AbstractBossControl : AbstractClass
                 eabs[i].boss = this;
             }
         }
+
+        if (rageMeter != null)
+        {
+            _useRage = true;
+            rageMeter.setRageLevelMax(damageToRage);
+        }
         
 		// Set the first state.
 		setBossAction (BossAction.spawn);
@@ -158,7 +172,19 @@ public class AbstractBossControl : AbstractClass
 			    Attack ();
 			    break;
 		}
-	}
+
+        if (_useRage && _rageLevel > 0)
+        {
+            // Rage meter ticks down fast. Otherwise it's a second per damage point; way too long.
+            _rageLevel -= Time.deltaTime * rageDecayPerSec;
+            rageMeter.setDirection(facingLeft);
+            rageMeter.subtractRageLevel(Time.deltaTime * rageDecayPerSec);
+            if (_enraged && _rageLevel <= 0)
+            {
+                _enraged = false;
+            }
+        }
+    }
 
 	public virtual void setBossAction (BossAction newState)
 	{
@@ -273,8 +299,24 @@ public class AbstractBossControl : AbstractClass
     public override void damage (int damage, AbstractDamageCollider.DamageType type, int knockback)
 	{		
 		if (_bossHealth > 0) {
-			_bossHealth -= damage;
-			if (_bossHealth <= 0) {
+            if (_enraged)
+            {
+                // Only takes half damage if enraged.
+                damage /= 2;
+            }
+
+            _bossHealth -= damage;
+            if (_useRage)
+            {
+                _rageLevel += damage;
+                if (!_enraged && _rageLevel >= damageToRage)
+                {
+                    // Boss is now enraged.
+                    _enraged = true;
+                }
+            }
+
+            if (_bossHealth <= 0) {
 				// Enemy is dead. Set state.
 				setBossAction (BossAction.dying);
 				SendMessageUpwards ("bossDying", SendMessageOptions.DontRequireReceiver);

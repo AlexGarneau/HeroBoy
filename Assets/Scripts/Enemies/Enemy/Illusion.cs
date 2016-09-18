@@ -4,6 +4,7 @@ using System.Collections;
 public class Illusion : AbstractEnemyControl
 {
     public Collider2D lightHit;
+    public GameObject healItem;
 
     public GameObject formBandit;
     public GameObject formClownClaw;
@@ -41,7 +42,7 @@ public class Illusion : AbstractEnemyControl
         base.hasGun = false;
 
         forms = new GameObject[] {
-            formBandit, formClownClaw, formClownHammer, formGhoul, formGoblin, formPirate, formRARClaw, formSkeleton, formZombie
+            formGhoul, formClownClaw, formClownHammer, formBandit, formGoblin, formPirate, formRARClaw, formSkeleton, formZombie
         };
 
         _controller = gameObject.GetComponent<MovementController2D> ();
@@ -54,7 +55,10 @@ public class Illusion : AbstractEnemyControl
 			}
 		}
 
-        setForm(Random.Range(0, forms.Length));
+        shiftTimer = Random.Range(shiftTimerMax * 3 / 4, shiftTimerMax);
+
+        // Form 0 will be their initial form. They will never return to this form.
+        setForm(0);
     }
 
 	protected override void Update()
@@ -77,16 +81,16 @@ public class Illusion : AbstractEnemyControl
         if (playerHealth != _prevPlayerHealth) {
             if (_prevPlayerHealth >= 80 && playerHealth < 80) {
                 shiftTimerMax = 60;
-                shiftTimer = shiftTimerMax;
+                shiftTimer = Mathf.Min(shiftTimer, shiftTimerMax);                
             } else if (_prevPlayerHealth >= 60 && playerHealth < 60) {
                 shiftTimerMax = 30;
-                shiftTimer = shiftTimerMax;
+                shiftTimer = Mathf.Min(shiftTimer, shiftTimerMax);
             } else if(_prevPlayerHealth >= 40 && playerHealth < 40) {
                 shiftTimerMax = 15;
-                shiftTimer = shiftTimerMax;
+                shiftTimer = Mathf.Min(shiftTimer, shiftTimerMax);
             } else if (_prevPlayerHealth >= 20 && playerHealth < 20) {
                 shiftTimerMax = 5;
-                shiftTimer = shiftTimerMax;
+                shiftTimer = Mathf.Min(shiftTimer, shiftTimerMax);
             }
             _prevPlayerHealth = playerHealth;
         }
@@ -140,6 +144,10 @@ public class Illusion : AbstractEnemyControl
                 break;
             case AbstractEnemyControl.ANIM_DEATH_START:
                 setState(EnemyStates.dead);
+                if (healItem != null)
+                {
+                    randomdrop(healItem);
+                }
                 SendMessageUpwards ("enemyDied", this, SendMessageOptions.DontRequireReceiver);
                 break;
             case AbstractEnemyControl.ANIM_DEATH_END:
@@ -205,6 +213,7 @@ public class Illusion : AbstractEnemyControl
         for (int i = forms.Length - 1; i >= 0; i--) {
             forms[i].SetActive(false);
         }
+        Debug.Log("DISABLE" + " --------- ");
 
         StartCoroutine(shuffleForm());
     }
@@ -220,12 +229,14 @@ public class Illusion : AbstractEnemyControl
             yield return new WaitForSeconds(0.02f);
             forms[tempIndex].SetActive(false);
         }
-        setForm(Random.Range(0, forms.Length));
+        setForm(Random.Range(1, forms.Length));
     }
 
     void setForm (int index) {
         formIndex = index;
         form = forms[index];
+
+        Debug.Log(form + " --------- " + index);
         form.SetActive(true);
 
         hasAttack = true;

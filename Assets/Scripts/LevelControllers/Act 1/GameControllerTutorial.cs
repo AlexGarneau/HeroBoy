@@ -160,7 +160,7 @@ public class GameControllerTutorial: AbstractGameController
 		if (activateTimer > 0) {
 			activateTimer -= 1 * Time.deltaTime;
 			if (activateTimer <= 0) {
-				Application.LoadLevel (11);
+				Application.LoadLevel (nextLevel);
 				activateTimer = 0;
 			}
 		}

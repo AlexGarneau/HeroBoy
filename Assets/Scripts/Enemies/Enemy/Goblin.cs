@@ -17,7 +17,7 @@ public class Goblin : AbstractEnemyControl
 	{
         base.Start();
 		base._enemHealth = 40f;
-		base._enemMoveSpeed = 3f;
+		base._enemMoveSpeed = 2.8f;
 		base.enemDamage = 2;
 		base._attackRange = 1.2f;
 		base._vertRange = 0.1f;
@@ -78,6 +78,7 @@ public class Goblin : AbstractEnemyControl
 
 	public override void onAnimationState (string animState)
 	{
+        base.onAnimationState(animState);
 		switch (animState) {
 		    case AbstractEnemyControl.ANIM_SPAWN_END:
                 bombCooldown = bombCooldownTime;
@@ -101,8 +102,6 @@ public class Goblin : AbstractEnemyControl
 			    Destroy (gameObject);
 			    break;
 		}
-
-        base.onAnimationState(animState);
     }
 
 	protected override void MoveToPlayer ()
@@ -151,13 +150,12 @@ public class Goblin : AbstractEnemyControl
             dart = go.GetComponent<GoblinDart>();
             bulletSpawn.position.Set(-Mathf.Abs(bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
             dart.direction = Vector2.left;
-        }
-        else {
+        } else {
             go = Instantiate(goblinDart);
             dart = go.GetComponent<GoblinDart>();
             bulletSpawn.position.Set(Mathf.Abs(bulletSpawn.position.x), bulletSpawn.position.y, bulletSpawn.position.z);
+            go.transform.localScale = new Vector3(-1, 1);
             dart.direction = Vector2.right;
-            dart.transform.localScale = new Vector3(-1,1,1);
         }
 
         // Stick the bullet in the spawner.

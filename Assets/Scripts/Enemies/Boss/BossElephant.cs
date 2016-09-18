@@ -196,7 +196,8 @@ public class BossElephant : AbstractBossControl
                 // YOU CAN'T KILL THIS ONE TODAY!
 				stun (1f);
                 _bossHealth = 400f;
-			}
+                SendMessageUpwards("bossDead", SendMessageOptions.DontRequireReceiver);
+            }
 		}
 	}
 

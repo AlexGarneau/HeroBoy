@@ -17,15 +17,16 @@ public class GameControllerDC: AbstractGameController
 
         LevelBoundary.type = LevelBoundary.TYPE_RECTANGLE;
         LevelBoundary.bottom = -3.4f;
-        LevelBoundary.height = 4;
+        LevelBoundary.height = 8;
         LevelBoundary.left = -5000;
         LevelBoundary.topWidth = 10000;
         LevelBoundary.bottomWidth = 10000;
     }
 
 	void Update ()
-	{
-		if (_player.playerHealth <= 0) {
+    {
+        base.Update();
+        if (_player.playerHealth <= 0) {
 			ActivateScreen ();
 		}
 	}

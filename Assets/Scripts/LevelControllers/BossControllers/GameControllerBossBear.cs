@@ -14,11 +14,6 @@ public class GameControllerBossBear : AbstractGameController
 		for (var i = spawns.Length - 1; i >= 0; i--) {
 			spawns [i].spawnDelay = 2;
 		}
-
-		LevelBoundary.left = -7f;
-		LevelBoundary.bottom = -2.1f;
-		LevelBoundary.height = 6f;
-		LevelBoundary.bottomWidth = LevelBoundary.topWidth = 14f;
 	}
 
     void Update()

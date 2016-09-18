@@ -7,7 +7,7 @@ public class GoblinDart : AbstractBullet
 	{
 		base.Start ();
 
-		damage = 20;
+		damage = 0;
 		velocity = 3.5f;
 		life = 4;
 		knockback = 1;
@@ -29,7 +29,7 @@ public class GoblinDart : AbstractBullet
 		Debug.Log ("What Did I Hit? " + collider.tag);
 		PlayerControl pc = collider.GetComponent<PlayerControl> ();
 		if (pc) {
-			pc.damage (damage, AbstractDamageCollider.DamageType.light, knockback);
+			pc.damage (damage, AbstractDamageCollider.DamageType.stunAll, knockback);
 			destroy ();
 		}
 	}

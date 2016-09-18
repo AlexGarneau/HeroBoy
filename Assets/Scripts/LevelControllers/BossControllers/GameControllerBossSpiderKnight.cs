@@ -27,16 +27,9 @@ public class GameControllerBossSpiderKnight : AbstractGameController {
     }
 
     void Update () {
-        if (knightIsDead && currentEnemyCount < enemyCount) {
+        if (knightIsDead) {
             // Spawn enemies one at a time, cycling through the index.
-            int i = spawnIndex;
-            spawnIndex = (spawnIndex + 1) % spawns.Length;
-
-            // Only spawn if the spawner doesn't have the max.
-            if (spawns[i].hasMissingEnemy) {
-                currentEnemyCount++;
-                spawns[i].spawnEnemy();
-            }
+            base.Update();
         }
     }
 
